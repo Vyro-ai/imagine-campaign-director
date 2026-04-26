@@ -73,6 +73,8 @@ Generate multiple variants, then isolate approved anchors.
 
 For storyboard/reference panels that primarily describe camera movement, GPT Image 2 is usually the preferred Imagine.Art image model when available. Use a conservative validated ratio such as `1:1` for automation unless the live workflow has already proven the requested ratio works. The visible UI model and ratio must be checked before launch.
 
+For product campaigns, keep generated stillframes free of final ad typography whenever possible. If the supplied product photo already contains label text, treat it as product truth, but do not ask image or video models to recreate final campaign copy. Add brand name, product name, captions, and CTA in deterministic edit/type layers.
+
 Stillframe nodes are not automatically motion sources. First-pass still outputs must be reviewed. Approved anchors should be copied, imported, or clearly selected into an `APPROVED` section before motion.
 
 ## Storyboard / Motion Reference Nodes
@@ -102,6 +104,8 @@ Create one motion node per shot or per coherent motion block. For 10-second clip
 
 Motion nodes should consume approved still anchors or explicit references. If a motion node is connected directly to an unreviewed look-development node, mark the workflow incomplete.
 
+Before launch, expand or inspect every motion node and verify the visible model, duration, quality, ratio, audio toggle, and source-frame/reference connections. Clipboard/import payloads are not enough. In testing, Seedance nodes pasted with a vertical payload still opened as `1:1` until corrected in the UI.
+
 ## Music Section
 
 Create a Music Studio task for:
@@ -121,6 +125,8 @@ A text note is acceptable as direction, but it is not the audio deliverable. Fin
 
 If the campaign is meant to be turnkey, generate the track in Imagine.Art Music Studio before calling the package finished.
 
+Music Studio currently works from text/lyrics/genre direction rather than direct image-to-music. Agents should translate visual inputs into music language: tempo, instrumentation, mood, structure, vocal/no vocal, duration, and avoid list. After generation, download the track and trim it in the edit if Music Studio produces a longer usable bed than the campaign duration.
+
 ## Edit Assembly
 
 Plan:
@@ -134,6 +140,8 @@ Plan:
 - music hits
 
 Use deterministic typography and end-card layout where possible.
+
+If the final edit embeds generated motion clips inside another HTML/video composition, re-encode selected clips with regular keyframes before render. Sparse keyframes can cause frame-accurate capture freezes in downstream assembly tools.
 
 ## QC / Review
 

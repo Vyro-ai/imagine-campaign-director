@@ -34,17 +34,21 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 12. Verify visible model and safe ratio before launch. For GPT Image 2 storyboard panels, prefer `1:1` unless the live UI has already proven another ratio works.
 13. Run storyboard/reference panels, inspect outputs, and approve only usable panels.
 14. Create motion nodes from approved anchors and reference panels.
-15. Run motion nodes in small batches and inspect the clips.
-16. Generate the Imagine.Art Music Studio track from the music prompt.
-17. Assemble or prepare the final edit with selected motion clips, selected music, deterministic typography, captions, crop, and product closeout.
-18. Complete QC.
-19. Delete failed, rejected, duplicate, abandoned, and unused nodes from the live final workflow after documenting them locally.
-20. Report the final status using one of: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, `blocked`.
+15. Before each motion launch, verify the live node panel shows the intended model, duration, quality, ratio, audio setting, and connected start/end/reference frames. Correct visible settings when they disagree with the written plan.
+16. Run motion nodes in small batches and inspect the clips.
+17. Generate the Imagine.Art Music Studio track from the music prompt. Verify the in-app prompt, instrumental/vocal setting, genre, and duration before generation.
+18. Download selected motion and music outputs into the local workspace.
+19. Assemble or prepare the final edit with selected motion clips, selected music, deterministic typography, captions, crop, and product closeout.
+20. Complete QC.
+21. Delete failed, rejected, duplicate, abandoned, and unused nodes from the live final workflow after documenting them locally.
+22. Report the final status using one of: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, `blocked`.
 
 ## Non-Negotiables
 
 - The visible UI model/settings are authoritative.
 - A pasted node is not valid until the UI confirms the model, ratio, and input connections.
+- Seedance nodes that paste as the wrong ratio are not ready. Correct the visible ratio or recreate the node before launch.
+- Music Studio page handoffs can alter the prompt. Verify the prompt inside the app before spending credits.
 - Do not launch motion from unreviewed stills.
 - Do not connect moderation placeholders downstream.
 - Do not preserve unused branches in the final workflow.

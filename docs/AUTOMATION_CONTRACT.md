@@ -54,6 +54,8 @@ Before launching any generation node, verify:
 
 Do not rely on pasted JSON alone. If a pasted node resolves to a different model in the UI, the UI value wins and the node must be corrected before launch.
 
+Known example: pasted Seedance 2.0 workflow nodes may resolve visually to `1:1` even when the payload requests `9:16`. The agent must inspect the node panel, correct the visible ratio to the delivery ratio, and only then launch.
+
 ## Staged Run Order
 
 Run stages in this order:
@@ -91,6 +93,30 @@ If a backend rejects an aspect ratio that the UI appeared to offer:
 - retry with a known safe ratio from `config/imagineart_model_matrix.json`
 - keep the same creative job, but simplify the frame if needed
 
+### Aspect Ratio Reset After Paste
+
+If a pasted or imported video node displays the wrong aspect ratio:
+
+- stop before launch
+- correct the visible UI ratio manually, or delete and recreate the node
+- record the mismatch in QA
+- do not assume the clipboard payload or config file won
+- launch only after the node panel visibly shows the intended ratio
+
+For vertical campaign deliverables, this is a hard gate. A `9:16` brief with a `1:1` live node is not ready.
+
+### Music Studio Handoff Drift
+
+If the public Music Studio page hands a prompt into the app:
+
+- verify the in-app prompt before generation
+- remove appended default phrases that change the brief
+- verify instrumental/vocal state
+- verify duration, genre, and mood fields where available
+- download the generated audio and copy it into the local workspace
+
+Music Studio may generate a longer track than the edit target. That is acceptable if the final assembly trims the generated audio intentionally and documents the source duration.
+
 ### Moderation Placeholder
 
 If an output is a moderation placeholder or generic failure image:
@@ -123,6 +149,8 @@ The final live workflow must contain only nodes actually used in the finished ca
 - edit/export/QC notes
 
 Delete failed, rejected, abandoned, experimental, duplicate, and unused nodes from the final production workflow after documenting them in the local QA report. A future agent should be able to open the workflow and understand the final production path without guessing which branches are real.
+
+If a run changes direction, old nodes must be removed from the live final workflow, not merely ignored. Keep the forensic record in local QA, not as clutter in the production graph.
 
 ## Completion Language
 
