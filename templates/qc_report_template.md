@@ -16,6 +16,17 @@ Choose: pass, pass with minor fixes, needs revision, reject.
 - no proxy/still-only draft is treated as final motion
 - final export path documented
 
+## Render Frame Review
+
+- review frames path:
+- contact sheet path:
+- first frame passes as intentional campaign footage:
+- first second free of source-board/UI/palette/reference residue:
+- product reveal order is intentional:
+- edit avoids repeated-packshot loop:
+- overlay typography does not duplicate readable product-label text:
+- final memory image feels earned:
+
 ## Scores
 
 | Criterion | Score | Notes |

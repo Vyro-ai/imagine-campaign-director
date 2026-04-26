@@ -118,6 +118,8 @@ Score stillframes, motion clips, music fit, typography, and final edit using `do
 
 Use `docs/BROLL_AND_PRODUCT_CLOSEOUT.md` before final assembly so the spot has breath and a product-first ending.
 
+Render QC is mandatory. After exporting, extract a frame sheet with `scripts/extract_review_frames.py` and inspect the first frame, first second, first product reveal, any hand/face/product contact, and final memory image. A technically successful export is not finished if the artifact review fails.
+
 ## 9. Revision
 
 Use `prompts/revision_diagnoser.md`. Do not regenerate blindly. Diagnose whether the problem is input analysis, prompt, model choice, motion complexity, music mismatch, edit rhythm, typography, or artifact failure.

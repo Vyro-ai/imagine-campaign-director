@@ -30,6 +30,10 @@ Use this before calling any generated campaign finished.
 
 - no Imagine.Art workflow plan
 - source assets are described but not imported/uploaded before generation
+- source boards, brand boards, palettes, typography specimens, prompt screenshots, or contact sheets appear as final footage
+- the opening frame exposes test-case residue, crop borders, UI, palette chips, or reference-board text
+- the edit is mostly repeated product packshots when the brief asks for a campaign world, subject, or story
+- generated label text is duplicated by deterministic overlay text in the same frame
 - motion nodes connected directly to unreviewed first-pass stills
 - Seedance motion launched without approved storyboard/reference panels when the move depends on camera choreography
 - no music plan
@@ -46,6 +50,52 @@ Use this before calling any generated campaign finished.
 ## Revision Rule
 
 Diagnose before regenerating. If the issue is timing, typography, crop, or CTA, fix it in the edit. If the issue is anatomy, product geometry, identity drift, or broken physical action, regenerate or simplify.
+
+## Render Review Gate
+
+Before final status can be `pass`, render the video and inspect extracted frames.
+
+Use:
+
+```bash
+python3 scripts/extract_review_frames.py path/to/render.mp4 --out review/render-name
+```
+
+The agent must review the contact sheet and at least these moments:
+
+- first frame
+- first second
+- first product reveal
+- any hand/face/product contact frame
+- final hero frame
+
+If any frame shows source-board residue, palette strips, UI, reference text, duplicated product typography, broken hands/faces, product drift, or repeated packshots with no campaign progression, the status is `needs revision` or `reject`. Technical render success is not QC pass.
+
+## First-Frame Gate
+
+Watch or inspect the first second before approving a render. A campaign fails immediately if the first frame looks like a source board, test asset, product mockup, or reference sheet instead of an intentional hook.
+
+For product campaigns, the first second should usually be one of:
+
+- macro material or surface
+- world/atmosphere
+- subject posture
+- product mystery detail
+- movement that motivates the reveal
+
+It should not be a full product board, palette card, generic packshot, or final hero frame.
+
+## Packshot Trap
+
+A product ad still needs campaign grammar. Do not build a 10-second spot by crossfading between nearly identical bottle shots unless the brief explicitly asks for a pure product loop.
+
+Before export, confirm the edit has:
+
+- at least one non-product world/atmosphere shot
+- at least one texture, subject, or use-context shot when the brief asks for lifestyle/fashion/editorial language
+- a real reveal order instead of product shown fully at second zero
+- a final product memory image that feels earned
+- no redundant title overlays repeating readable product-label text
 
 ## Workflow Completeness Check
 
