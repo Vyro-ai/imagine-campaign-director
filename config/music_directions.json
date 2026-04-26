@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "directions": [
+    {
+      "id": "fragrance_nocturne",
+      "use": "instrumental bed",
+      "genre": "cinematic electronic ambient",
+      "mood": "dark, tactile, restrained",
+      "tempo": "slow pulse",
+      "instruments": ["soft sub bass", "glass synth", "distant strings", "minimal percussion"]
+    },
+    {
+      "id": "streetwear_drop",
+      "use": "background score",
+      "genre": "minimal trap electronic",
+      "mood": "confident, nocturnal, sharp",
+      "tempo": "medium",
+      "instruments": ["sparse drums", "sub bass", "camera flash hits", "short synth stabs"]
+    },
+    {
+      "id": "chrome_beauty",
+      "use": "instrumental bed",
+      "genre": "glossy electronic editorial",
+      "mood": "precise, reflective, controlled",
+      "tempo": "slow-medium",
+      "instruments": ["glassy synth", "tight kick", "metallic accents", "warm pad"]
+    }
+  ]
+}

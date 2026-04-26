@@ -1,0 +1,51 @@
+{
+  "version": "1.0.0",
+  "gates": [
+    {
+      "id": "aesthetic_preflight",
+      "name": "Aesthetic Preflight",
+      "required_before": "stillframe generation",
+      "checks": [
+        "dominant campaign grammar chosen",
+        "first 1-2 second hook defined",
+        "product or subject hierarchy defined",
+        "final memory image defined"
+      ]
+    },
+    {
+      "id": "motion_launch",
+      "name": "Motion Launch",
+      "required_before": "paid motion generation",
+      "checks": [
+        "approved still anchors exist",
+        "music direction exists",
+        "motion prompt complexity is realistic",
+        "reference-dependent nodes have visible source connections",
+        "risky actions simplified"
+      ]
+    },
+    {
+      "id": "selects_review",
+      "name": "Selects Review",
+      "required_before": "edit assembly",
+      "checks": [
+        "all candidates inspected",
+        "rejects isolated",
+        "strongest clips selected by editorial job",
+        "artifact failures documented"
+      ]
+    },
+    {
+      "id": "delivery",
+      "name": "Delivery",
+      "required_before": "final handoff",
+      "checks": [
+        "music supports edit rhythm",
+        "product closeout is clear",
+        "typography is deterministic",
+        "used clips passed artifact review",
+        "final export specs documented"
+      ]
+    }
+  ]
+}

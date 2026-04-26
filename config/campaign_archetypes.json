@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "archetypes": [
+    {
+      "id": "product_hero",
+      "name": "Product Hero",
+      "best_for": ["launch", "ecommerce", "premium goods"],
+      "structure": ["hook", "hero reveal", "material detail", "use moment", "benefit", "cta"],
+      "tone": "confident, polished, product-first"
+    },
+    {
+      "id": "editorial_campaign",
+      "name": "Editorial Campaign",
+      "best_for": ["fashion", "lifestyle", "premium brand"],
+      "structure": ["striking opener", "world build", "movement", "detail", "hero hold", "cta"],
+      "tone": "cinematic, restrained, image-led"
+    },
+    {
+      "id": "fragrance_nocturne",
+      "name": "Fragrance Nocturne",
+      "best_for": ["fragrance", "beauty", "sensory products"],
+      "structure": ["atmosphere", "bottle detail", "human trace", "sensory metaphor", "packshot"],
+      "tone": "moody, tactile, restrained"
+    },
+    {
+      "id": "streetwear_drop",
+      "name": "Streetwear Drop",
+      "best_for": ["apparel", "streetwear", "limited drops"],
+      "structure": ["entrance", "attitude portrait", "garment detail", "world cue", "drop cta"],
+      "tone": "direct, kinetic, confident"
+    },
+    {
+      "id": "chrome_beauty",
+      "name": "Chrome Beauty",
+      "best_for": ["makeup", "skincare", "editorial beauty"],
+      "structure": ["reflection hook", "macro texture", "portrait", "product geometry", "final hold"],
+      "tone": "precise, reflective, controlled"
+    }
+  ]
+}

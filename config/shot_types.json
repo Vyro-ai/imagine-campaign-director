@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "shot_types": [
+    {
+      "id": "macro_detail",
+      "name": "Macro Detail",
+      "use": "Show texture, material, interface detail, or craftsmanship.",
+      "camera": "close macro lens feel, shallow depth of field, controlled focus pull",
+      "risks": ["focus drift", "warped text", "material inconsistency"]
+    },
+    {
+      "id": "hero_reveal",
+      "name": "Hero Reveal",
+      "use": "Introduce the product or central subject.",
+      "camera": "slow push-in, clean frontal or three-quarter angle",
+      "risks": ["unclear silhouette", "logo artifacts", "busy background"]
+    },
+    {
+      "id": "environment_establishing",
+      "name": "Environment Establishing",
+      "use": "Set world, tone, location, and campaign atmosphere.",
+      "camera": "wide shot, deliberate pan, dolly, or locked architectural frame",
+      "risks": ["generic scene", "crowd artifacts", "scale inconsistency"]
+    },
+    {
+      "id": "graphic_plate",
+      "name": "Graphic Plate",
+      "use": "Create clean space for edit-layer typography.",
+      "camera": "stable composition with negative space",
+      "risks": ["baked-in text", "busy background", "low contrast"]
+    },
+    {
+      "id": "final_hero_hold",
+      "name": "Final Hero Hold",
+      "use": "Close with product, brand mark, offer, or CTA.",
+      "camera": "locked or subtle drift, clean composition",
+      "risks": ["insufficient text space", "motion distraction", "product too small"]
+    }
+  ]
+}

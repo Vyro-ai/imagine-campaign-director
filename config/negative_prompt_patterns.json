@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "patterns": {
+    "general": [
+      "no accidental text",
+      "no fake logos",
+      "no watermark",
+      "no distorted anatomy",
+      "no warped product shape",
+      "no melting edges",
+      "no flicker",
+      "no unstable camera",
+      "no unreadable signage",
+      "no brand marks unless approved"
+    ],
+    "product": [
+      "preserve product geometry",
+      "no changing color between frames",
+      "no invented labels",
+      "no deformed packaging",
+      "no floating components",
+      "no incorrect reflections"
+    ],
+    "people": [
+      "consistent face",
+      "natural hands",
+      "no identity drift",
+      "no broken eye direction",
+      "no unnatural joints",
+      "no impossible object contact"
+    ],
+    "fashion": [
+      "consistent garment structure",
+      "natural fabric motion",
+      "no fused accessories",
+      "no broken jewelry",
+      "no impossible walking gait"
+    ]
+  }
+}

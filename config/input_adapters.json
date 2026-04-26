@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0",
+  "inputs": [
+    {
+      "id": "brief",
+      "name": "Brief",
+      "extract": ["goal", "audience", "platform", "duration", "cta", "constraints"],
+      "workflow_role": "campaign brief source"
+    },
+    {
+      "id": "raw_prompt",
+      "name": "Raw Prompt",
+      "extract": ["subject", "scene", "style", "action", "missing constraints"],
+      "workflow_role": "prompt seed"
+    },
+    {
+      "id": "product_photo",
+      "name": "Product Photo",
+      "extract": ["shape", "material", "color", "label risk", "hero angle", "closeout needs"],
+      "workflow_role": "product truth source"
+    },
+    {
+      "id": "style_image",
+      "name": "Style Image",
+      "extract": ["color", "lighting", "composition", "surface language", "camera angle"],
+      "workflow_role": "style reference"
+    },
+    {
+      "id": "mood_board",
+      "name": "Mood Board",
+      "extract": ["dominant palette", "materials", "environments", "wardrobe", "tone", "avoid list"],
+      "workflow_role": "taste system reference"
+    },
+    {
+      "id": "existing_video",
+      "name": "Existing Video",
+      "extract": ["usable shots", "pacing", "motion", "quality issues", "extension needs"],
+      "workflow_role": "video reference or source clip"
+    }
+  ]
+}

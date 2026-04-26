@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "ten_second_clip": {
+    "max_major_phases": 4,
+    "recommended_phases": ["hook", "first impact or reveal", "detail or action accent", "final hero hold"],
+    "timing_style": "broad time blocks"
+  },
+  "reference_roles": [
+    "product truth",
+    "character identity",
+    "material texture",
+    "environment",
+    "lighting",
+    "motion rhythm"
+  ],
+  "risk_simplifications": {
+    "hands": "hide, silhouette, fingers together, one simple motion",
+    "glass": "use reflection, light, droplets, condensation, or silhouette instead of finger contact",
+    "walking": "prefer one lead step, cropped legs, or hidden feet",
+    "mirrors_chrome": "use slow light movement instead of complex reflection choreography",
+    "text_logos": "use deterministic edit layers"
+  }
+}

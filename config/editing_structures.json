@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "structures": [
+    {
+      "id": "ten_second_campaign",
+      "name": "Ten Second Campaign",
+      "duration": "10s",
+      "beats": ["hook", "first reveal", "detail or action accent", "final hero hold"]
+    },
+    {
+      "id": "seven_beat_campaign",
+      "name": "Seven Beat Campaign",
+      "duration": "20-30s",
+      "beats": ["hook", "world reveal", "product reveal", "use case", "detail proof", "benefit", "cta"]
+    },
+    {
+      "id": "editorial_film",
+      "name": "Editorial Film",
+      "duration": "20-60s",
+      "beats": ["iconic opener", "atmosphere", "movement sequence", "detail accent", "emotional pause", "hero close"]
+    }
+  ]
+}

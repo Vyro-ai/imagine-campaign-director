@@ -1,0 +1,17 @@
+{
+  "name": "Sample Public Campaign Palette",
+  "description": "A fictional palette for demonstration only. Replace with your own brand system.",
+  "colors": {
+    "noir": "#050505",
+    "bone": "#F2EEE7",
+    "signal_red": "#B3261E",
+    "electric_violet": "#6E44FF",
+    "warm_gold": "#D6A84F",
+    "steel_blue": "#536878"
+  },
+  "usage": {
+    "background": ["noir", "bone"],
+    "accent": ["signal_red", "electric_violet", "warm_gold"],
+    "cool_shadow": ["steel_blue"]
+  }
+}

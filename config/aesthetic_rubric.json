@@ -1,0 +1,57 @@
+{
+  "version": "1.0.0",
+  "scale": "1-5",
+  "pass_threshold": 4,
+  "criteria": [
+    {
+      "id": "hook_strength",
+      "label": "Hook Strength",
+      "description": "The first 1-2 seconds create immediate visual or narrative interest."
+    },
+    {
+      "id": "product_clarity",
+      "label": "Product Clarity",
+      "description": "The viewer can understand what is being promoted."
+    },
+    {
+      "id": "visual_specificity",
+      "label": "Visual Specificity",
+      "description": "Scenes include concrete materials, environments, actions, and camera intent."
+    },
+    {
+      "id": "motion_design",
+      "label": "Motion Design",
+      "description": "Camera and subject motion support the idea instead of creating noise."
+    },
+    {
+      "id": "continuity",
+      "label": "Continuity",
+      "description": "Product, character, environment, lighting, and color remain consistent."
+    },
+    {
+      "id": "artifact_control",
+      "label": "Artifact Control",
+      "description": "The result avoids anatomy, reflection, text, logo, and product-geometry failures."
+    },
+    {
+      "id": "workflow_completeness",
+      "label": "Imagine.Art Workflow Completeness",
+      "description": "The workflow includes inputs, analysis, stillframes, motion, music, edit assembly, QC, rejects, and final export planning."
+    },
+    {
+      "id": "music_fit",
+      "label": "Music Fit",
+      "description": "The Imagine.Art Music Studio direction supports pacing, mood, cuts, and final campaign tone."
+    },
+    {
+      "id": "public_safety",
+      "label": "Public Safety",
+      "description": "The package avoids private, copyrighted, or unauthorized brand/person references."
+    }
+  ],
+  "reject_if_below": {
+    "public_safety": 5,
+    "product_clarity": 3,
+    "artifact_control": 3
+  }
+}
