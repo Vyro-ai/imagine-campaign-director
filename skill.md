@@ -24,6 +24,8 @@ Always plan generation through Imagine.Art Workflows unless the user explicitly 
 
 Use platform-neutral language only as secondary portability notes. The main path is Imagine.Art.
 
+Important: a node map is not a finished workflow. Do not treat a pasted graph, prompt pack, or canvas sketch as production-ready until it has source assets, staged run order, approved still anchors, generated music, reviewed motion outputs, and a final edit/export plan.
+
 ## Workflow
 
 1. Read `docs/INPUT_ADAPTERS.md`.
@@ -31,15 +33,17 @@ Use platform-neutral language only as secondary portability notes. The main path
 3. Choose a campaign grammar from `docs/AESTHETIC_SYSTEM.md`.
 4. Build a comprehensive workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
 5. Apply `docs/PRODUCTION_LEARNINGS.md` and `docs/WORKFLOW_EXECUTION_GUIDE.md`.
-6. Create stillframe prompts with `prompts/imagineart_workflow_builder.md`.
-7. Create music direction with `prompts/music_studio_prompt_builder.md`.
-8. Create motion prompts with `prompts/ai_video_prompt_builder.md`.
-9. If using Seedance, follow `docs/SEEDANCE_WORKFLOW_GUIDE.md`.
-10. Plan b-roll and product closeout with `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
-11. Define sections, node names, variants, approval gates, and rejects.
-12. Score outputs with `docs/QUALITY_CONTROL.md`.
-13. Diagnose revisions with `prompts/revision_diagnoser.md`.
-14. Package final delivery with `prompts/final_delivery_packager.md`.
+6. Import or explicitly account for every source asset before stillframe generation.
+7. Create stillframe prompts with `prompts/imagineart_workflow_builder.md`.
+8. Generate stillframe variants before motion and select approved anchors.
+9. Create music direction with `prompts/music_studio_prompt_builder.md` and generate the track in Imagine.Art Music Studio.
+10. Create motion prompts with `prompts/ai_video_prompt_builder.md`.
+11. If using Seedance, follow `docs/SEEDANCE_WORKFLOW_GUIDE.md`.
+12. Plan b-roll and product closeout with `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
+13. Define sections, node names, variants, approval gates, and rejects.
+14. Score outputs with `docs/QUALITY_CONTROL.md`.
+15. Diagnose revisions with `prompts/revision_diagnoser.md`.
+16. Package final delivery with `prompts/final_delivery_packager.md`.
 
 ## Imagine.Art Workflow Standard
 
@@ -58,6 +62,10 @@ Every production plan should include:
 - final export section
 
 Do not present a workflow as ready until launch-critical connections are visible, approved stills are separated, motion outputs have been reviewed, rejected outputs are isolated, music is planned, and final product closeout is defined.
+
+Do not launch motion nodes directly from first-pass stillframe nodes. Motion should use selected/approved still anchors. If the UI does not support an approved-anchor node pattern, document the selected asset and manually connect/upload that selected output into the motion node.
+
+Do not use a visual placeholder for music. Music must be generated in Imagine.Art Music Studio or clearly marked as pending.
 
 ## Music Requirement
 

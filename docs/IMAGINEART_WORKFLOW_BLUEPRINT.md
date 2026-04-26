@@ -29,6 +29,19 @@ Use import/input nodes for:
 - logo files supplied by the user
 - brand guide excerpts supplied by the user
 
+Every source asset needs a declared role:
+
+- product truth
+- style reference
+- mood/lighting reference
+- environment reference
+- casting/wardrobe reference
+- logo/type reference for deterministic post
+- motion reference
+- audio pacing reference
+
+Do not ask one source image to do every job. Do not proceed if the product truth asset is only described but not available.
+
 ## Analysis Nodes
 
 Use text, prompt, or AI Copilot-style analysis nodes to summarize:
@@ -55,6 +68,8 @@ Create stillframe branches for:
 
 Generate multiple variants, then isolate approved anchors.
 
+Stillframe nodes are not automatically motion sources. First-pass still outputs must be reviewed. Approved anchors should be copied, imported, or clearly selected into an `APPROVED` section before motion.
+
 ## Motion Nodes
 
 Create one motion node per shot or per coherent motion block. For 10-second clips, keep to about four major phases:
@@ -64,9 +79,11 @@ Create one motion node per shot or per coherent motion block. For 10-second clip
 3. detail/action accent
 4. final hero hold
 
+Motion nodes should consume approved still anchors or explicit references. If a motion node is connected directly to an unreviewed look-development node, mark the workflow incomplete.
+
 ## Music Section
 
-Create a text node for Imagine.Art Music Studio with:
+Create a Music Studio task for:
 
 - song/instrumental goal
 - genre
@@ -78,6 +95,8 @@ Create a text node for Imagine.Art Music Studio with:
 - avoid list
 
 If vocals are useful, create a separate lyrics or vocal-direction node.
+
+A text note is acceptable as direction, but it is not the audio deliverable. Final campaign assembly needs a generated or supplied music file.
 
 ## Edit Assembly
 

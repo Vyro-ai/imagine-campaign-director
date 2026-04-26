@@ -29,7 +29,10 @@ Use this before calling any generated campaign finished.
 ## Hard Fails
 
 - no Imagine.Art workflow plan
+- source assets are described but not imported/uploaded before generation
+- motion nodes connected directly to unreviewed first-pass stills
 - no music plan
+- music exists only as a visual note when final video needs audio
 - unreadable or fake critical text
 - accidental logos or watermarks
 - distorted hands, faces, eyes, teeth, or limbs in hero frames
@@ -37,6 +40,7 @@ Use this before calling any generated campaign finished.
 - broken reflections or impossible physical contact
 - final frame does not communicate product, brand, or CTA purpose
 - final edit built from unreviewed motion outputs
+- claiming a pasted node graph is a finished workflow
 
 ## Revision Rule
 
@@ -47,6 +51,7 @@ Diagnose before regenerating. If the issue is timing, typography, crop, or CTA, 
 A polished Imagine.Art campaign package should include:
 
 - source inputs
+- explicit asset-role assignments
 - asset-role analysis
 - campaign grammar
 - stillframe branches
