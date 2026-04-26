@@ -58,6 +58,22 @@ Stillframe operation must be staged:
 4. choose approved anchors
 5. only then wire or upload anchors into motion nodes
 
+## 4A. Motion Storyboard
+
+For Seedance or any reference-driven motion, create a motion storyboard before launching video.
+
+The storyboard should include:
+
+- one panel per major phase
+- shot size and camera position
+- camera movement direction
+- subject/product movement direction
+- stable identity/product details
+- transition intent into the next panel
+- which reference input each panel should become
+
+Use this board to constrain the model. A beautiful still is not enough if the camera path is vague.
+
 ## 5. Music
 
 Create and execute an Imagine.Art Music Studio prompt for every campaign. If the input is visual, translate it into text music direction.

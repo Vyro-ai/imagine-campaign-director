@@ -31,6 +31,7 @@ Use this before calling any generated campaign finished.
 - no Imagine.Art workflow plan
 - source assets are described but not imported/uploaded before generation
 - motion nodes connected directly to unreviewed first-pass stills
+- Seedance motion launched without approved storyboard/reference panels when the move depends on camera choreography
 - no music plan
 - music exists only as a visual note when final video needs audio
 - unreadable or fake critical text

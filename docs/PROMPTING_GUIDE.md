@@ -17,6 +17,17 @@ Include:
 - intended use
 - negative constraints
 
+For storyboard/reference-frame ladders, prefer GPT Image 2 inside Imagine.Art Workflows when available. The goal is not final poster art; the goal is a set of clean, coherent panels that Seedance can understand as camera and subject motion references.
+
+Each panel prompt should lock:
+
+- shot size
+- camera position
+- product/subject position
+- lighting direction
+- stable identity/product details
+- what changes from the previous panel
+
 ## Video Prompt
 
 Include:

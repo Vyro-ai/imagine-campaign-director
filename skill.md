@@ -36,14 +36,15 @@ Important: a node map is not a finished workflow. Do not treat a pasted graph, p
 6. Import or explicitly account for every source asset before stillframe generation.
 7. Create stillframe prompts with `prompts/imagineart_workflow_builder.md`.
 8. Generate stillframe variants before motion and select approved anchors.
-9. Create music direction with `prompts/music_studio_prompt_builder.md` and generate the track in Imagine.Art Music Studio.
-10. Create motion prompts with `prompts/ai_video_prompt_builder.md`.
-11. If using Seedance, follow `docs/SEEDANCE_WORKFLOW_GUIDE.md`.
-12. Plan b-roll and product closeout with `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
-13. Define sections, node names, variants, approval gates, and rejects.
-14. Score outputs with `docs/QUALITY_CONTROL.md`.
-15. Diagnose revisions with `prompts/revision_diagnoser.md`.
-16. Package final delivery with `prompts/final_delivery_packager.md`.
+9. Build storyboard/reference panels for motion, especially when using Seedance.
+10. Create music direction with `prompts/music_studio_prompt_builder.md` and generate the track in Imagine.Art Music Studio.
+11. Create motion prompts with `prompts/ai_video_prompt_builder.md`.
+12. If using Seedance, follow `docs/SEEDANCE_WORKFLOW_GUIDE.md`.
+13. Plan b-roll and product closeout with `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
+14. Define sections, node names, variants, approval gates, and failure notes.
+15. Score outputs with `docs/QUALITY_CONTROL.md`.
+16. Diagnose revisions with `prompts/revision_diagnoser.md`.
+17. Package final delivery with `prompts/final_delivery_packager.md`.
 
 ## Imagine.Art Workflow Standard
 
@@ -54,6 +55,7 @@ Every production plan should include:
 - campaign strategy section
 - stillframe look-development section
 - approved stillframes section
+- storyboard/reference panel section
 - motion generation section
 - music section
 - edit assembly section
@@ -87,6 +89,7 @@ Include:
 - Use one dominant campaign grammar.
 - Make product, wardrobe, material, surface, light, and camera choices concrete.
 - Prefer stillframes/keyframes before motion when consistency matters.
+- Prefer GPT Image 2 inside Imagine.Art Workflows for fast storyboard/reference-frame ladders when available. Feed approved panels into Seedance as start frames, end frames, or reference images with one clear job each.
 - Keep 10-second generated clips realistic: about four major motion phases.
 - Add important typography, logos, captions, and CTAs in deterministic edit layers.
 - Cut generic filler. Every frame needs a job.

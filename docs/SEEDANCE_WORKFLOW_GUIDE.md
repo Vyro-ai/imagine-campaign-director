@@ -27,6 +27,22 @@ When using multiple references:
 
 Do not ask one reference to control everything.
 
+## Storyboard References
+
+Seedance works better when the agent provides motion evidence, not just visual aspiration.
+
+Before launch, create a simple camera-movement storyboard for the clip or shot:
+
+- panel 1: opening composition and camera position
+- panel 2: approach or drift direction
+- panel 3: reveal, tilt, orbit, or transition moment
+- panel 4: detail/action accent
+- panel 5: final hero hold or pullback
+
+For each panel, describe camera path separately from subject/product path. Use arrows, notes, or filenames if the UI supports image references. Assign every connected image one job: start frame, end frame, product truth, style/lighting, or motion board.
+
+If the storyboard shows a complex long take, simplify it into broad blocks. Do not ask Seedance for seven exact moves in one 10-second node unless a previous run in the same workflow has proven it can follow that complexity.
+
 ## Beat Guide Mode
 
 If using a music or beat-guide video:

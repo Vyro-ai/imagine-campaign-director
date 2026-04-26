@@ -58,6 +58,8 @@ Analyze:
 
 Use the style image as visual direction, not as something to copy one-to-one. Create stillframe and motion prompts that preserve the taste logic while producing original campaign assets.
 
+If the style image implies a camera move, convert it into a storyboard/reference ladder before Seedance. Do not assume the video model will infer motion grammar from a single image.
+
 ## Product Photo Input
 
 Analyze:
@@ -71,6 +73,8 @@ Analyze:
 - closeout needs
 
 Default to an image-first workflow: product clean-up or isolation, product hero stills, environment plates, motion, product-first end card.
+
+For product campaigns, create separate references for product truth and motion. Product photos should stabilize shape, label, material, and proportions. Storyboard panels should describe camera path and scene evolution. Do not make one product image carry both jobs.
 
 ## Mood Board Input
 

@@ -10,7 +10,7 @@ Create a node-by-node workflow plan.
 
 List sections in order.
 
-Must include source inputs, analysis, strategy, still look-dev, approved stills, motion, b-roll, music, edit assembly, type/end card, QC/rejects, and export.
+Must include source inputs, analysis, strategy, still look-dev, approved stills, storyboard/motion references, motion, b-roll, music, edit assembly, type/end card, QC notes, and export.
 
 ### Input Nodes
 
@@ -40,6 +40,19 @@ For each still:
 - prompt
 - variants needed
 - approval gate
+
+### Storyboard / Motion Reference Nodes
+
+For each Seedance or reference-driven motion shot:
+
+- storyboard panel purpose
+- camera position
+- camera movement arrow/direction
+- subject/product movement arrow/direction
+- start/end frame relationship
+- stable details that must not drift
+- reference input role
+- approval criteria before video launch
 
 ### Motion Nodes
 
@@ -81,4 +94,4 @@ Include:
 - music prompt/beat map
 - motion complexity approval
 - Active Runs check after launch
-- reject section ready
+- QA note path for failures/rejections

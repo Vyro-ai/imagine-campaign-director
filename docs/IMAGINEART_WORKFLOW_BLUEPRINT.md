@@ -11,12 +11,13 @@ Build comprehensive workflows with these sections:
 3. `STRATEGY / Campaign Grammar`
 4. `STILLS / Look Development`
 5. `STILLS / Approved Anchors`
-6. `MOTION / Shot Ladder`
-7. `MUSIC / Music Studio Direction`
-8. `EDIT / Assembly + Timing`
-9. `TYPE / Captions + End Card`
-10. `QC / Review + Rejects`
-11. `EXPORT / Finals`
+6. `STORYBOARD / Motion References`
+7. `MOTION / Shot Ladder`
+8. `MUSIC / Music Studio Direction`
+9. `EDIT / Assembly + Timing`
+10. `TYPE / Captions + End Card`
+11. `QC / Review Notes`
+12. `EXPORT / Finals`
 
 ## Source Inputs
 
@@ -70,6 +71,22 @@ Generate multiple variants, then isolate approved anchors.
 
 Stillframe nodes are not automatically motion sources. First-pass still outputs must be reviewed. Approved anchors should be copied, imported, or clearly selected into an `APPROVED` section before motion.
 
+## Storyboard / Motion Reference Nodes
+
+Before Seedance, create a motion-reference board for any shot that depends on a real camera move.
+
+Each board should specify:
+
+- opening frame
+- approach or camera travel
+- reveal, tilt, orbit, pullback, or hero hold
+- subject/product movement path
+- shot size changes
+- what must stay consistent
+- which panels become start frames, end frames, or reference images
+
+This is the bridge between visual taste and usable motion. Do not rely on adjectives like `cinematic` or `premium` to define the move.
+
 ## Motion Nodes
 
 Create one motion node per shot or per coherent motion block. For 10-second clips, keep to about four major phases:
@@ -112,14 +129,11 @@ Plan:
 
 Use deterministic typography and end-card layout where possible.
 
-## QC / Rejects
+## QC / Review
 
-Keep rejected outputs visible but separated. Name rejects by reason:
+Keep the live production workflow clean. Failed or rejected outputs should be documented in QA notes, then deleted from the final workflow graph.
 
-- `REJECT / Hand artifact`
-- `REJECT / Product drift`
-- `REJECT / Weak hook`
-- `REJECT / Fake text`
+The final workflow should contain only source assets, approved anchors, motion/audio/edit nodes, and notes that directly support the finished output. This matters because future agents will treat visible nodes as available production material.
 
 ## Final Exports
 

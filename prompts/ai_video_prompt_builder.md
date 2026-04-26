@@ -7,6 +7,7 @@ Convert approved stillframes and shot ladder decisions into Imagine.Art video pr
 - clip ID
 - source stillframe or input asset role
 - reference mode: text-to-video, start-frame, end-frame, reference video, beat guide
+- storyboard/reference panels available
 - duration
 - aspect ratio
 - campaign grammar
@@ -41,3 +42,13 @@ Use about four major phases:
 ## Seedance / Time-Segmented Rule
 
 If using Seedance or another time-aware model, include broad time blocks and one hero event per block. If a reference or beat guide is used, state its role. Do not use `same as reference` language unless the workflow plan includes the actual connected input.
+
+If storyboard panels exist, translate them into the prompt as camera grammar:
+
+- camera starts at [panel/shot size]
+- camera moves [direction/speed]
+- subject/product moves [direction/action]
+- hold stable [identity/product details]
+- end on [approved panel/final hero]
+
+Do not ask for a vague premium camera move when the storyboard already defines the move.

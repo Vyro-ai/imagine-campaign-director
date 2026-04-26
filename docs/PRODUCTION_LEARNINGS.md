@@ -32,7 +32,7 @@ Before launching paid runs:
 - Are stillframes approved?
 - Are prompt nodes connected to the right source assets?
 - Are sections readable?
-- Are rejects isolated?
+- Have failed, rejected, abandoned, and unused nodes been removed from the live production workflow after local QA documentation?
 - Has the user approved launch-critical rows?
 
 ### 3. Selects Gate
@@ -42,6 +42,7 @@ Before editing:
 - inspect every generated candidate
 - build contact sheets or frame grabs when needed
 - reject artifact-heavy clips
+- delete rejected candidate nodes from the final workflow after documenting failures locally
 - select clips by editorial job, not recency
 
 ### 4. Delivery Gate
