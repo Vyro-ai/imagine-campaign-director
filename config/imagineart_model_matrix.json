@@ -1,0 +1,111 @@
+{
+  "name": "Imagine.Art model execution matrix",
+  "description": "Public-safe operational defaults for CampaignCraft agents. Validate against the live Imagine.Art UI before launch because model options can change.",
+  "models": {
+    "gpt_image_2": {
+      "display_name": "GPT Image 2",
+      "primary_use": [
+        "storyboard/reference panels",
+        "camera movement boards",
+        "clean product-anchored styleframes",
+        "shot-ladder stills for Seedance"
+      ],
+      "automation_default_ratio": "1:1",
+      "safe_retry_ratios": ["1:1", "16:9", "9:16"],
+      "known_risks": [
+        "workflow payloads may resolve to a different image model unless the visible UI model is checked",
+        "some ratios shown in the UI may still be rejected by backend validation",
+        "2:3 has been observed failing in workflow execution and should not be the first automated choice"
+      ],
+      "preflight": [
+        "confirm visible model label says GPT Image 2",
+        "use 1:1 for storyboard panels unless a validated ratio is required",
+        "download or inspect outputs for moderation placeholders before using them as references"
+      ]
+    },
+    "nano_banana_2": {
+      "display_name": "Nano Banana 2",
+      "primary_use": [
+        "fast stillframe variants",
+        "background plates",
+        "graphic inserts",
+        "simple product styleframes"
+      ],
+      "automation_default_ratio": "9:16",
+      "safe_retry_ratios": ["9:16", "16:9", "1:1"],
+      "known_risks": [
+        "can return moderation placeholder images",
+        "may need safer wording for product, body, or fashion imagery"
+      ],
+      "preflight": [
+        "confirm ratio matches final platform or reference role",
+        "inspect output before motion",
+        "do not use failed placeholder outputs as motion references"
+      ]
+    },
+    "nano_banana_pro": {
+      "display_name": "Nano Banana Pro",
+      "primary_use": [
+        "higher-polish still anchors",
+        "product hero frames",
+        "premium campaign key art"
+      ],
+      "automation_default_ratio": "9:16",
+      "safe_retry_ratios": ["9:16", "16:9", "1:1"],
+      "known_risks": [
+        "higher cost",
+        "still requires artifact review before motion"
+      ],
+      "preflight": [
+        "use when the campaign needs polished still anchors",
+        "avoid baked-in typography for final text"
+      ]
+    },
+    "seedance": {
+      "display_name": "Seedance",
+      "primary_use": [
+        "reference-guided motion",
+        "10-second campaign clips",
+        "controlled shot ladders"
+      ],
+      "automation_default_ratio": "9:16",
+      "safe_retry_ratios": ["9:16", "16:9"],
+      "known_risks": [
+        "too many actions in one prompt causes chaotic motion",
+        "hands, reflections, glass, logos, and product rotation need simplified direction",
+        "one reference image should have one dominant job"
+      ],
+      "preflight": [
+        "connect approved start/end/reference images",
+        "keep 10-second clips to about four major phases",
+        "make beat timing broad rather than frame-exact unless proven"
+      ]
+    },
+    "music_studio": {
+      "display_name": "Imagine.Art Music Studio",
+      "primary_use": [
+        "campaign music bed",
+        "beat map for edit pacing",
+        "platform-native audio generation"
+      ],
+      "automation_default_ratio": null,
+      "safe_retry_ratios": [],
+      "known_risks": [
+        "visual inputs must be translated into text direction",
+        "music may require regeneration to fit final edit length"
+      ],
+      "preflight": [
+        "specify instrumental/vocal choice",
+        "specify genre, mood, tempo, instrumentation, duration, and avoid list",
+        "map major edit hits to the intended campaign shot ladder"
+      ]
+    }
+  },
+  "global_rules": [
+    "the visible UI model and settings are authoritative before launch",
+    "do not launch motion from unapproved stills",
+    "delete failed and unused nodes from the final workflow",
+    "document failed runs locally before cleanup",
+    "never call a proxy edit finished when required Imagine.Art motion is missing"
+  ]
+}

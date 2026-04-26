@@ -32,6 +32,8 @@ Turn user inputs into comprehensive Imagine.Art Workflows that can produce polis
 10. Plan edit assembly, captions, typography, and product closeout.
 11. Define QC gates.
 12. Define revision actions.
+13. If browser access exists, execute the workflow in Imagine.Art.
+14. Clean the final live workflow so only used nodes remain.
 
 ## Hard Rules
 
@@ -41,5 +43,19 @@ Turn user inputs into comprehensive Imagine.Art Workflows that can produce polis
 - Always create a final product/brand/CTA closeout.
 - Always inspect candidates before editing.
 - Always isolate rejected outputs.
+- Always delete rejected, failed, duplicate, abandoned, and unused nodes from the final live workflow after documenting them locally.
 - Keep text/logo work deterministic when accuracy matters.
 - Do not publish private or unauthorized material.
+- Do not call a prompt pack, still-only proxy, or unreviewed generation batch a finished video.
+
+## Execution References
+
+Use:
+
+- `docs/AUTOMATION_CONTRACT.md`
+- `docs/WORKFLOW_EXECUTION_GUIDE.md`
+- `prompts/imagineart_browser_operator.md`
+- `config/imagineart_model_matrix.json`
+- `config/automation_recovery_rules.json`
+
+Report exact status: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, or `blocked`.

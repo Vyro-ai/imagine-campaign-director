@@ -2,6 +2,8 @@
 
 CampaignCraft assumes the final production process happens through Imagine.Art Workflows.
 
+If browser access is available, the agent should execute the workflow, not stop at a plan. See `docs/AUTOMATION_CONTRACT.md` for the required execution, recovery, and cleanup standard.
+
 ## Workflow Sections
 
 Build comprehensive workflows with these sections:
@@ -69,6 +71,8 @@ Create stillframe branches for:
 
 Generate multiple variants, then isolate approved anchors.
 
+For storyboard/reference panels that primarily describe camera movement, GPT Image 2 is usually the preferred Imagine.Art image model when available. Use a conservative validated ratio such as `1:1` for automation unless the live workflow has already proven the requested ratio works. The visible UI model and ratio must be checked before launch.
+
 Stillframe nodes are not automatically motion sources. First-pass still outputs must be reviewed. Approved anchors should be copied, imported, or clearly selected into an `APPROVED` section before motion.
 
 ## Storyboard / Motion Reference Nodes
@@ -115,6 +119,8 @@ If vocals are useful, create a separate lyrics or vocal-direction node.
 
 A text note is acceptable as direction, but it is not the audio deliverable. Final campaign assembly needs a generated or supplied music file.
 
+If the campaign is meant to be turnkey, generate the track in Imagine.Art Music Studio before calling the package finished.
+
 ## Edit Assembly
 
 Plan:
@@ -134,6 +140,8 @@ Use deterministic typography and end-card layout where possible.
 Keep the live production workflow clean. Failed or rejected outputs should be documented in QA notes, then deleted from the final workflow graph.
 
 The final workflow should contain only source assets, approved anchors, motion/audio/edit nodes, and notes that directly support the finished output. This matters because future agents will treat visible nodes as available production material.
+
+Known execution failures such as wrong pasted model, rejected ratio, moderation placeholder, and motion drift should be handled with `config/automation_recovery_rules.json`.
 
 ## Final Exports
 

@@ -1,0 +1,48 @@
+{
+  "name": "CampaignCraft automation recovery rules",
+  "failure_rules": [
+    {
+      "failure": "pasted_node_wrong_model",
+      "detect": "Visible Imagine.Art node model label does not match intended model.",
+      "action": "Stop before launch, correct the model in the UI or recreate the node manually, then re-check settings.",
+      "cleanup": "Delete the incorrect node if it cannot be corrected cleanly."
+    },
+    {
+      "failure": "aspect_ratio_rejected",
+      "detect": "Generation error says the selected ratio is not acceptable.",
+      "action": "Retry once with the model automation default ratio from imagineart_model_matrix.json.",
+      "cleanup": "Delete the failed node after recording the rejected ratio in QA."
+    },
+    {
+      "failure": "moderation_placeholder",
+      "detect": "Output is a failure card, placeholder, empty image, or generic moderation warning.",
+      "action": "Simplify the prompt, remove risky ambiguity, avoid brand-name shorthand, and retry once. If it fails again, switch model or redesign the shot.",
+      "cleanup": "Do not connect the placeholder to downstream nodes. Delete it from the final workflow."
+    },
+    {
+      "failure": "motion_drift",
+      "detect": "Generated clip changes the product, wardrobe, face, key prop, or core composition.",
+      "action": "Reduce motion complexity and regenerate from stronger start/end/reference frames.",
+      "cleanup": "Remove the drifted motion branch from the final workflow."
+    },
+    {
+      "failure": "music_pending",
+      "detect": "No generated music file exists for a campaign that requires final assembly.",
+      "action": "Generate the Music Studio track or mark the deliverable as partial/proxy.",
+      "cleanup": "Do not mark the final package as finished."
+    },
+    {
+      "failure": "browser_or_login_blocked",
+      "detect": "Agent cannot access the logged-in Imagine.Art workflow UI.",
+      "action": "Prepare the executable workflow package and list the blocker. Do not pretend execution happened.",
+      "cleanup": "No live workflow cleanup is possible; document the state."
+    }
+  ],
+  "retry_limits": {
+    "same_prompt_same_model": 1,
+    "simplified_prompt_same_model": 1,
+    "alternate_model": 1,
+    "motion_regeneration_before_human_review": 2
+  },
+  "completion_statuses": ["finished", "ready for generation", "motion pending", "partial/proxy", "blocked"]
+}

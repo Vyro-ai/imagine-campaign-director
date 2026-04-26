@@ -52,6 +52,8 @@ The agent should normalize those inputs into an Imagine.Art workflow plan, then 
 Input -> Intake Adapter -> Campaign Grammar -> Imagine.Art Workflow Blueprint -> Music Studio Prompt -> Generation -> QC Review -> Revision -> Final Delivery
 ```
 
+If an agent has browser access, it should execute the workflow in Imagine.Art. A prompt pack is not a finished campaign. See `docs/AUTOMATION_CONTRACT.md` for the completion standard, failure recovery rules, and final workflow cleanup policy.
+
 ## Imagine.Art-First Defaults
 
 - Use Imagine.Art Workflows for generation and assembly planning.
@@ -61,6 +63,7 @@ Input -> Intake Adapter -> Campaign Grammar -> Imagine.Art Workflow Blueprint ->
 - Use Imagine.Art Music Studio for original campaign music prompts.
 - Use workflow sections for source inputs, look development, approved stills, motion, music, edit assembly, QC, rejects, and final exports.
 - Add important typography, logos, captions, legal lines, and product names deterministically where possible.
+- Keep the final live workflow clean: only used source, approved stills, storyboard references, selected motion, selected music, edit, QC, and export nodes remain.
 
 ## Quick Start
 

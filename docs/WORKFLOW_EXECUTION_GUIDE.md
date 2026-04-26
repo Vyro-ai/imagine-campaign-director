@@ -2,6 +2,8 @@
 
 Use this when turning a CampaignCraft plan into an Imagine.Art Workflow.
 
+For hands-on browser execution, this guide is subordinate to `docs/AUTOMATION_CONTRACT.md`: the agent must preflight visible UI settings, run stages in order, recover from known failures, and clean the final workflow.
+
 ## Build Strategy
 
 Start from a relevant preset or featured workflow when it matches the job. Use a blank canvas for custom campaign systems. For complex repeatable graphs, create a structured workflow plan before opening the canvas.
@@ -13,6 +15,8 @@ For Seedance campaigns, the strongest path is usually:
 `source inputs -> GPT Image 2 storyboard/reference panels inside Imagine.Art -> approved anchors -> Seedance motion -> Music Studio -> deterministic edit/QC`
 
 Use another Imagine.Art image model only when it is better for the specific asset role or when GPT Image 2 is unavailable.
+
+Do not assume the workflow payload is truthful. The visible node model and settings in the Imagine.Art UI are authoritative.
 
 ## Canvas Sections
 
@@ -53,6 +57,8 @@ Before launch:
 - verify the model/input mode matches the intended reference role
 - verify the rendered canvas shows the connection
 - verify downstream motion is connected to an approved/selected still, not a first-pass unreviewed branch
+- verify pasted/imported nodes did not silently resolve to the wrong model
+- verify model ratios against `config/imagineart_model_matrix.json`
 
 ## Stage Gates
 
@@ -78,6 +84,9 @@ Do not run stages 3-7 as one bulk launch. The stillframe and storyboard approval
 - Do not click again because the UI is slow.
 - If duplicate runs appear, treat it as operator error and stop scaling until the workflow is controlled.
 - If a node fails, document the failure and continue with other branches.
+- If a model rejects a ratio, retry with that model's automation default ratio before redesigning the shot.
+- If a completed output is a moderation placeholder, treat it as failed and do not connect it downstream.
+- If a pasted node displays the wrong model, correct it before launch or delete/recreate it.
 - Do not leave all pasted nodes selected before launch.
 - If multiple nodes are selected accidentally, deselect and select only the intended stage.
 - Never launch motion nodes before their start frames, end frames, storyboard panels, or references are approved.
@@ -96,6 +105,8 @@ The final workflow should only contain:
 
 Do not keep rejected generations on the final canvas. Save failure notes, screenshots, output filenames, run IDs, and diagnosis in the project QA document instead. If a team needs a reject archive, keep it outside the production workflow or in a separate clearly named diagnostic workflow.
 
+This cleanup is not optional. A final workflow with stale experiments is misleading because future agents will treat visible nodes as production material.
+
 ## Completion Standard
 
 Do not report a workflow as ready until:
@@ -108,3 +119,4 @@ Do not report a workflow as ready until:
 - Music Studio prompt/track is generated or explicitly pending
 - final assembly plan exists
 - QC notes exist
+- failed, rejected, duplicate, abandoned, and unused nodes have been removed from the final live workflow

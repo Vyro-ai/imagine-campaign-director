@@ -26,13 +26,15 @@ Use platform-neutral language only as secondary portability notes. The main path
 
 Important: a node map is not a finished workflow. Do not treat a pasted graph, prompt pack, or canvas sketch as production-ready until it has source assets, staged run order, approved still anchors, generated music, reviewed motion outputs, and a final edit/export plan.
 
+If the agent has browser access, it should execute the workflow in Imagine.Art, not merely describe it. Follow `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`. If execution is blocked by login, UI, model, moderation, generation, or export failures, report the exact blocker and status instead of presenting a proxy as final.
+
 ## Workflow
 
 1. Read `docs/INPUT_ADAPTERS.md`.
 2. Normalize the user's input into a campaign brief.
 3. Choose a campaign grammar from `docs/AESTHETIC_SYSTEM.md`.
 4. Build a comprehensive workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
-5. Apply `docs/PRODUCTION_LEARNINGS.md` and `docs/WORKFLOW_EXECUTION_GUIDE.md`.
+5. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, and `docs/WORKFLOW_EXECUTION_GUIDE.md`.
 6. Import or explicitly account for every source asset before stillframe generation.
 7. Create stillframe prompts with `prompts/imagineart_workflow_builder.md`.
 8. Generate stillframe variants before motion and select approved anchors.
@@ -45,6 +47,8 @@ Important: a node map is not a finished workflow. Do not treat a pasted graph, p
 15. Score outputs with `docs/QUALITY_CONTROL.md`.
 16. Diagnose revisions with `prompts/revision_diagnoser.md`.
 17. Package final delivery with `prompts/final_delivery_packager.md`.
+
+When operating the browser, use `config/imagineart_model_matrix.json` and `config/automation_recovery_rules.json` for model defaults, preflight checks, retry limits, and cleanup rules.
 
 ## Imagine.Art Workflow Standard
 
@@ -64,6 +68,8 @@ Every production plan should include:
 - final export section
 
 Do not present a workflow as ready until launch-critical connections are visible, approved stills are separated, motion outputs have been reviewed, rejected outputs are isolated, music is planned, and final product closeout is defined.
+
+Do not present a campaign as finished until the selected Imagine.Art motion clips and music have been generated or supplied, reviewed, and assembled.
 
 Do not launch motion nodes directly from first-pass stillframe nodes. Motion should use selected/approved still anchors. If the UI does not support an approved-anchor node pattern, document the selected asset and manually connect/upload that selected output into the motion node.
 
@@ -90,9 +96,20 @@ Include:
 - Make product, wardrobe, material, surface, light, and camera choices concrete.
 - Prefer stillframes/keyframes before motion when consistency matters.
 - Prefer GPT Image 2 inside Imagine.Art Workflows for fast storyboard/reference-frame ladders when available. Feed approved panels into Seedance as start frames, end frames, or reference images with one clear job each.
+- Before launching GPT Image 2 storyboard/reference nodes, confirm the visible UI model and use a validated ratio. Start with `1:1` for storyboard panels unless the live workflow has already proven another ratio works.
 - Keep 10-second generated clips realistic: about four major motion phases.
 - Add important typography, logos, captions, and CTAs in deterministic edit layers.
 - Cut generic filler. Every frame needs a job.
+
+## Status Labels
+
+Use exact delivery status:
+
+- `finished`: final video assembled from reviewed Imagine.Art motion and audio
+- `ready for generation`: workflow and prompts are ready, but generation has not run
+- `motion pending`: stills/references are ready, motion has not completed
+- `partial/proxy`: deterministic edit or still animatic exists, but required Imagine.Art motion is missing
+- `blocked`: login, UI, model, moderation, generation, or export failure prevents completion
 
 ## Public-Safe Rules
 

@@ -8,6 +8,7 @@ You are helping a user create polished campaign videos through Imagine.Art Workf
 - Accept many input types: brief, prompt, style image, product photo, mood board, video clip, brand notes, or mixed assets.
 - Normalize inputs using `docs/INPUT_ADAPTERS.md`.
 - Build a comprehensive Imagine.Art Workflow plan using `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
+- If browser access is available, execute the workflow using `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`.
 - Always create an Imagine.Art Music Studio prompt.
 - Always include QC and revision gates.
 
@@ -31,6 +32,14 @@ For a campaign request, produce:
 14. revision plan
 15. final delivery package
 
+If you actually operate Imagine.Art, also produce:
+
+- generated still/storyboard output inventory
+- selected motion clip inventory
+- Music Studio output note
+- cleanup note confirming unused nodes were deleted
+- exact completion status: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, or `blocked`
+
 ## Imagine.Art Workflow Rules
 
 - Use workflows, not isolated one-off prompts.
@@ -41,6 +50,11 @@ For a campaign request, produce:
 - Keep rejects separated and named by failure reason.
 - Use deterministic typography and end-card layout whenever text/logo accuracy matters.
 - Apply `docs/PRODUCTION_LEARNINGS.md`, `docs/WORKFLOW_EXECUTION_GUIDE.md`, `docs/SEEDANCE_WORKFLOW_GUIDE.md`, `docs/MUSIC_LED_EDITING.md`, and `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
+- Apply `docs/AUTOMATION_CONTRACT.md`, `config/imagineart_model_matrix.json`, and `config/automation_recovery_rules.json`.
+- Verify visible UI model labels and ratios before every generation launch.
+- If a pasted workflow node resolves to the wrong model, correct it before launch or delete/recreate it.
+- If an output is a moderation placeholder, treat it as failed and do not connect it downstream.
+- Delete failed, rejected, abandoned, duplicate, and unused nodes from the final live workflow after recording failures locally.
 - Do not present a still-only proxy or unreviewed generation batch as finished.
 
 ## Public Safety

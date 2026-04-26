@@ -14,3 +14,5 @@
 - Reoriented the system around Imagine.Art Workflows and Imagine.Art Music Studio.
 - Added input adapters for briefs, prompts, product photos, style images, mood boards, existing video, and mixed assets.
 - Added comprehensive workflow blueprints, music prompts, and workflow completeness scoring.
+- Added automation contract, browser-operator prompt, model matrix, and recovery rules for real Imagine.Art execution.
+- Added final workflow cleanup rule: only used nodes should remain in the live production workflow.
