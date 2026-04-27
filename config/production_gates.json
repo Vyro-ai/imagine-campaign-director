@@ -13,6 +13,7 @@
         "every shot has a visual job and justification",
         "cut points, transitions, music hits, and final hold are planned",
         "Seedance 2 multi-shot node grouping is defined",
+        "complex motion shots are flagged for GPT Image 2 director's-notes boards",
         "stillframe anchor plan exists",
         "QC rejection criteria are written"
       ]
@@ -34,6 +35,7 @@
       "required_before": "paid motion generation",
       "checks": [
         "approved still anchors exist",
+        "required GPT Image 2 director's-notes boards exist and passed readability review",
         "music direction exists",
         "motion prompt complexity is realistic",
         "reference-dependent nodes have visible source connections",

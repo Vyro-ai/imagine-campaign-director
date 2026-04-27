@@ -46,7 +46,9 @@ Follow the music standard in `docs/PRODUCTION_STANDARD.md` and the detailed guid
 
 Be specific. Replace vague “premium cinematic” language with physical choices: product angle, material, light behavior, blocking, lens feel, camera movement, and final frame purpose.
 
-Generate all reference images needed for motion. Default priority: Nano Banana 2 for fast stillframe iteration and Nano Banana Pro for final hero/product-truth anchors. Use GPT Image 2 or another Imagine.Art image model only when references, storyboard panels, continuity control, model availability, or artifact risk make it better for the role.
+Generate all reference images needed for motion. Default priority: Nano Banana 2 for fast stillframe iteration and Nano Banana Pro for final hero/product-truth anchors. Use GPT Image 2 or another Imagine.Art image model only when references, storyboard panels, director's-notes boards, continuity control, model availability, or artifact risk make it better for the role.
+
+For complex Seedance 2 camera choreography, generate a GPT Image 2 director's-notes board using `docs/DIRECTORS_NOTES_STORYBOARDS.md`, review it for readable arrows/labels/phase order, and connect it as a motion reference before launch.
 
 If the user asks for a believable actress/model, build a consistency plan: identity description, wardrobe, hair, makeup, performance style, camera distance, and repeatable reference-frame strategy.
 

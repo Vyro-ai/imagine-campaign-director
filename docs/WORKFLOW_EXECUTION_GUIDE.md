@@ -16,7 +16,7 @@ Avoid the paste-first trap: a large pasted graph can look complete while being u
 
 For commercials, social campaigns, TikTok/Reels ads, 30s spots, and professionally shot/produced videos, the default path is image-first, Seedance-led video production:
 
-`source inputs -> analysis/user clarification -> NB2/NBP stillframes and reference frames -> approved anchors -> storyboard/reference panels -> Seedance 2 motion -> Music Studio -> HyperFrames/editor finishing -> QC/export`
+`source inputs -> analysis/user clarification -> NB2/NBP stillframes and reference frames -> approved anchors -> GPT Image 2 director's-notes boards where needed -> storyboard/reference panels -> Seedance 2 motion -> Music Studio -> HyperFrames/editor finishing -> QC/export`
 
 Use `Nano Banana 2` first for fast original stillframe iteration, look development, graphic inserts, and plates. Use `Nano Banana Pro` for final hero stills, product-truth plates, premium fidelity, and stills that will feed motion. Use GPT Image 2 or another Imagine.Art image model only when references, storyboard panels, continuity control, model availability, or artifact risk make it better for the specific asset role. Document any exception.
 
@@ -100,7 +100,7 @@ Run campaigns in stages:
 4. `SHOTLIST`: create the hero concept and shot ladder; use 8-12 shots for a 30s vertical ad unless the brief requires a different structure.
 5. `STILLS`: generate NB2/NBP look-development variants, product truth frames, model/actress reference frames, hero plates, and shot reference frames.
 6. `APPROVED`: select still anchors and document why they passed.
-7. `STORYBOARD`: create camera-movement reference panels for Seedance shots.
+7. `STORYBOARD`: create camera-movement reference panels for Seedance shots; use GPT Image 2 director's-notes boards for complicated camera choreography.
 8. `MOTION`: animate from approved anchors and storyboard references with Seedance 2 or the selected Imagine.Art video model.
 9. `BROLL`: generate inserts only after the main visual world is stable.
 10. `MUSIC`: generate or import the Music Studio track.

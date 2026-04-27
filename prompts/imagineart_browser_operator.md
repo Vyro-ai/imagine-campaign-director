@@ -14,6 +14,7 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 - workflow section map
 - stillframe prompts
 - storyboard/reference panel prompts
+- GPT Image 2 director's-notes board prompts for complex motion
 - Seedance or motion prompts
 - Music Studio prompt
 - QC checklist
@@ -36,17 +37,19 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 13. Inspect completed outputs. Reject moderation placeholders, bad anatomy, fake text, product drift, and incoherent frames.
 14. Move or recreate only approved stills into the approved-anchor stage.
 15. Create storyboard/reference panel nodes for the selected shot branches.
-16. Verify visible model and safe ratio before launch. For GPT Image 2 storyboard panels, prefer `1:1` unless the live UI has already proven another ratio works.
-17. Run storyboard/reference panels, inspect outputs, and approve only usable panels.
-18. Create motion nodes for the selected shot ladder from approved anchors and reference panels.
-19. Before each motion launch, verify the live node panel shows the intended model, duration, quality, ratio, audio setting, and connected start/end/reference frames. Correct visible settings when they disagree with the written plan. If a motion node has no visible image/start-frame/end-frame/reference connection, do not launch it.
-20. Run motion nodes in small batches and inspect the clips.
-21. Generate the Imagine.Art Music Studio track from the music prompt. Verify the in-app prompt, instrumental/vocal setting, genre, and duration before generation.
-22. Download selected motion and music outputs into the local workspace.
-23. Assemble or prepare the final edit with selected motion clips, selected music, deterministic typography, captions, crop, and product closeout.
-24. Complete QC.
-25. Delete failed, rejected, duplicate, abandoned, and unused nodes from the live final workflow after documenting them locally.
-26. Report the final status using one of: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, `blocked`.
+16. For any long take, multi-shot Seedance 2 node, staged camera move, simultaneous subject/camera move, orbit, tilt, reveal, pullback, rise/fall, vehicle, crowd, glass, mirror, fabric, or beat-synced reveal, create the GPT Image 2 director's-notes board required by `docs/DIRECTORS_NOTES_STORYBOARDS.md`.
+17. Verify visible model and safe ratio before launch. For GPT Image 2 director's-notes and storyboard panels, prefer `1:1` unless the live UI has already proven another ratio works.
+18. Run storyboard/reference panels and director's-notes boards, inspect outputs, and approve only usable panels.
+19. Reject or regenerate any director's-notes board with unreadable labels, ambiguous arrows, fake ad text, unclear phase order, or too many phases for the selected Seedance 2 duration.
+20. Create motion nodes for the selected shot ladder from approved anchors, reference panels, and approved director's-notes boards where required.
+21. Before each motion launch, verify the live node panel shows the intended model, duration, quality, ratio, audio setting, and connected start/end/reference frames. Correct visible settings when they disagree with the written plan. If a motion node has no visible image/start-frame/end-frame/reference connection, do not launch it.
+22. Run motion nodes in small batches and inspect the clips.
+23. Generate the Imagine.Art Music Studio track from the music prompt. Verify the in-app prompt, instrumental/vocal setting, genre, and duration before generation.
+24. Download selected motion and music outputs into the local workspace.
+25. Assemble or prepare the final edit with selected motion clips, selected music, deterministic typography, captions, crop, and product closeout.
+26. Complete QC.
+27. Delete failed, rejected, duplicate, abandoned, and unused nodes from the live final workflow after documenting them locally.
+28. Report the final status using one of: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, `blocked`.
 
 ## Non-Negotiables
 
@@ -57,6 +60,7 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 - Text-only campaign motion is forbidden. Every motion node must visibly consume an approved image/start-frame/end-frame/reference source.
 - Music Studio page handoffs can alter the prompt. Verify the prompt inside the app before spending credits.
 - Do not launch motion from unreviewed stills.
+- Do not launch complex Seedance 2 motion before the required GPT Image 2 director's-notes board is generated, reviewed, and visibly available as a motion reference.
 - Do not connect moderation placeholders downstream.
 - Do not preserve unused branches in the final workflow.
 - Do not leave nodes overlapping. If a node is created on top of another node, move it immediately before creating or launching more nodes.

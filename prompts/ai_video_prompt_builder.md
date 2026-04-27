@@ -8,6 +8,7 @@ Convert approved stillframes and shot ladder decisions into Imagine.Art video pr
 - source stillframe or input asset role
 - reference mode: text-to-video, start-frame, end-frame, reference video, beat guide
 - storyboard/reference panels available
+- director's-notes board available
 - duration
 - aspect ratio
 - campaign grammar
@@ -91,3 +92,10 @@ If storyboard panels exist, translate them into the prompt as camera grammar:
 - end on [approved panel/final hero]
 
 Do not ask for a vague premium camera move when the storyboard already defines the move.
+
+If a GPT Image 2 director's-notes board exists, use it as the motion-choreography reference:
+
+- map each board panel to a broad timing block
+- carry over camera movement, subject/product movement, and final hold
+- keep identity/product continuity anchored by the approved still or product-truth reference
+- do not ask Seedance 2 to reproduce labels, arrows, or typography from the board

@@ -41,11 +41,12 @@ If Computer Use/browser automation is available, use it to operate Imagine.Art d
 5. Create or open the workflow.
 6. Build sections and source/input nodes from the treatment.
 7. Generate still anchors and storyboard/reference panels.
-8. Run Seedance 2 or the specifically approved Imagine.Art campaign motion model.
-9. Generate Music Studio audio.
-10. Review/download outputs.
-11. Export or assemble a finished MP4 ready for review.
-12. Clean the final workflow and create a shot-source manifest.
+8. Generate GPT Image 2 director's-notes boards for complex Seedance 2 choreography.
+9. Run Seedance 2 or the specifically approved Imagine.Art campaign motion model.
+10. Generate Music Studio audio.
+11. Review/download outputs.
+12. Export or assemble a finished MP4 ready for review.
+13. Clean the final workflow and create a shot-source manifest.
 
 For campaign-video requests, do not return only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected return is a finished MP4 ready for review, plus supporting notes.
 
@@ -143,7 +144,8 @@ Follow the music standard in `docs/PRODUCTION_STANDARD.md` and the details in `d
 - Use `Nano Banana 2` or `Nano Banana Pro` inside Imagine.Art for stillframes, styleframes, first/last frames, background plates, graphic inserts, title cards, product hero frames, product closeout plates, and key art. Use NB2 for fast iteration and NBP for premium final anchors. Use GPT Image 2 or another Imagine.Art image model only when the asset role requires it, and document the exception.
 - Feed approved panels into Seedance as start frames, end frames, or reference images with one clear job each.
 - Do not launch final campaign motion from prompt text alone. Generate or upload the needed image reference first, then connect it visibly to the motion node.
-- Before launching GPT Image 2 storyboard/reference nodes, confirm the visible UI model and use a validated ratio. Start with `1:1` for storyboard panels unless the live workflow has already proven another ratio works.
+- Before launching GPT Image 2 storyboard/reference/director's-notes nodes, confirm the visible UI model and use a validated ratio. Start with `1:1` for storyboard panels unless the live workflow has already proven another ratio works.
+- Use `docs/DIRECTORS_NOTES_STORYBOARDS.md` for complex camera choreography; the board controls motion order and camera path, not identity, product truth, or final style.
 - Choose the Seedance 2 node duration by creative need, using the longest useful live duration available, including 15s when it improves continuity, mood, or editorial progression.
 - Add important typography, logos, captions, and CTAs in deterministic edit layers.
 - If live footage is needed, create `human-shoot.md` with exact lines, pickups, framing, camera angle, lens feel, performance, environment, wardrobe, and b-roll/overlay notes.

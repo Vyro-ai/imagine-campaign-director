@@ -28,6 +28,7 @@
       "primary_use": [
         "storyboard/reference panels",
         "camera movement boards",
+        "director's-notes boards for complex Seedance 2 choreography",
         "clean product-anchored styleframes",
         "shot-ladder stills for Seedance"
       ],
@@ -40,7 +41,8 @@
       ],
       "preflight": [
         "confirm visible model label says GPT Image 2",
-        "use 1:1 for storyboard panels unless a validated ratio is required",
+        "use 1:1 for storyboard or director's-notes boards unless a validated ratio is required",
+        "reject boards with unreadable labels, ambiguous arrows, fake ad text, or unclear phase order",
         "download or inspect outputs for moderation placeholders before using them as references"
       ]
     },

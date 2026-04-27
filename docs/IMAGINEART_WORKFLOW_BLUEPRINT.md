@@ -138,6 +138,10 @@ Each board should specify:
 
 This is the bridge between visual taste and usable motion. Do not rely on adjectives like `cinematic` or `premium` to define the move.
 
+For complex motion, create GPT Image 2 director's-notes boards using `docs/DIRECTORS_NOTES_STORYBOARDS.md`. These boards should be annotated production images with numbered phases, shot sizes, camera arrows, subject/product arrows, timing blocks, and camera-intent notes. Use them as motion choreography references for Seedance 2.
+
+Create these boards before motion nodes, review them for readability, and connect or import approved boards into the relevant Seedance 2 branch. Treat unreadable boards, ambiguous arrows, or boards with fake ad text as rejects.
+
 ## Motion Nodes
 
 Create one motion node per coherent Seedance 2 motion block, not necessarily one per final edit shot. Choose the longest useful available live duration for the creative job, including 15s when that improves continuity or editorial flow. Keep phase count realistic for the selected duration:
@@ -153,6 +157,7 @@ Create motion nodes as a shot system, not as an isolated still/video pair. Once 
 For high-realism commercials, Seedance 2 or the available Imagine.Art video-generation model is the core footage layer. Each shot should have:
 
 - approved start frame or image reference
+- GPT Image 2 director's-notes board when camera choreography is complex
 - shared continuity rules
 - shot-specific action
 - real production language: lens, camera movement, lighting setup, blocking, environment, practical reflections, restrained performance, and physical product interaction

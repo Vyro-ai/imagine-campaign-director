@@ -4,7 +4,7 @@ This repository is Imagine.Art-first.
 
 Computer Use is the default execution tool when available. If the Computer Use plugin, browser automation, or any desktop-control tool is available, use it to operate Imagine.Art directly before returning a static package.
 
-For campaign-video requests, the first action is a capability preflight: check whether Computer Use/browser automation can operate Imagine.Art. This preflight only verifies execution capability. It does not authorize opening the workflow canvas or creating generation nodes before planning.
+For campaign-video requests, the first action is a Computer Use/browser automation preflight: check whether Computer Use/browser automation can operate Imagine.Art. This preflight only verifies execution capability. It does not authorize opening the workflow canvas or creating generation nodes before planning.
 
 If Computer Use/browser automation is not available, immediately tell the user the request cannot be completed in this environment because CampaignCraft requires Computer Use/browser automation to generate the video in Imagine.Art. Return `blocked` and stop.
 

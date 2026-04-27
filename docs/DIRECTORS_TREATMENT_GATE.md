@@ -18,6 +18,7 @@ Do not create, paste, or launch workflow nodes until the active workspace contai
 - music direction and rough beat map
 - shot-by-shot timeline
 - stillframe anchor plan
+- director's-notes storyboard plan for complex shots
 - Seedance 2 multi-shot node plan
 - edit assembly plan
 - QC rejection criteria
@@ -36,6 +37,7 @@ Every planned shot must justify its place in the edit. For each shot, document:
 - camera movement
 - subject/product/environment action
 - source still or reference role
+- director's-notes board role when camera choreography is complex
 - Seedance 2 prompt role
 - transition in and transition out
 - music or beat relationship
@@ -78,6 +80,12 @@ For an explicitly 10-second fashion/luxury cutdown, prefer:
 
 Do not plan five isolated one-shot video nodes by default. Use separate motion nodes only when the edit, risk profile, or reference roles require separation.
 
+## Director's Notes Boards
+
+For complicated motion, apply `docs/DIRECTORS_NOTES_STORYBOARDS.md` before Seedance 2 prompting. Use GPT Image 2 to create annotated camera-movement boards with numbered phases, camera arrows, subject/product arrows, timing blocks, shot-size notes, and sequence notes.
+
+The treatment must identify which shots or Seedance 2 nodes need these boards and what each board controls. A director's-notes board should guide motion choreography and phase order; it should not replace identity, product-truth, or final hero still anchors.
+
 ## Workflow Translation
 
 After the treatment passes, translate it into the workflow:
@@ -86,6 +94,7 @@ After the treatment passes, translate it into the workflow:
 - one column per production stage
 - stillframe anchors generated in batches
 - approved anchors selected before motion
+- GPT Image 2 director's-notes boards created for complex motion before Seedance 2
 - Seedance 2 nodes created from the approved multi-shot plan
 - edit/QC/export notes matching the treatment
 

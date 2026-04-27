@@ -41,17 +41,18 @@ When Computer Use, browser automation, or desktop control is available, continue
 7. Create an Imagine.Art Workflow section map.
 8. Assign input assets to roles.
 9. Generate necessary NB2/NBP stillframe anchors, using GPT Image 2 or another Imagine.Art image model only when references, storyboard panels, continuity control, model availability, or artifact risk require it.
-10. Write Seedance 2 / video-generation prompts with continuity and negative prompts.
-11. Write an Imagine.Art Music Studio prompt or use supplied music.
-12. Plan b-roll.
-13. Plan HyperFrames/editor assembly, captions, typography, transitions, graphics, and product closeout only after Imagine.Art motion is generated or supplied.
-14. Define QC gates.
-15. Define revision actions.
-16. If Computer Use/browser automation exists, execute the workflow in Imagine.Art from the treatment.
-17. Download/review selected motion and music outputs.
-18. Assemble the final edit from reviewed motion, not still crops.
-19. Create a shot-source manifest.
-20. Clean the final live workflow so only used nodes remain.
+10. Generate GPT Image 2 director's-notes boards for complex Seedance 2 choreography before motion prompting.
+11. Write Seedance 2 / video-generation prompts with continuity and negative prompts.
+12. Write an Imagine.Art Music Studio prompt or use supplied music.
+13. Plan b-roll.
+14. Plan HyperFrames/editor assembly, captions, typography, transitions, graphics, and product closeout only after Imagine.Art motion is generated or supplied.
+15. Define QC gates.
+16. Define revision actions.
+17. If Computer Use/browser automation exists, execute the workflow in Imagine.Art from the treatment.
+18. Download/review selected motion and music outputs.
+19. Assemble the final edit from reviewed motion, not still crops.
+20. Create a shot-source manifest.
+21. Clean the final live workflow so only used nodes remain.
 
 ## Hard Rules
 

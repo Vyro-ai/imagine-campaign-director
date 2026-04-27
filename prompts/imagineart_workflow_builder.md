@@ -66,6 +66,8 @@ Model priority:
 For each Seedance or reference-driven motion shot:
 
 - storyboard panel purpose
+- director's-notes board required: yes/no
+- GPT Image 2 director's-notes prompt when required
 - camera position
 - camera movement arrow/direction
 - subject/product movement arrow/direction
@@ -73,6 +75,8 @@ For each Seedance or reference-driven motion shot:
 - stable details that must not drift
 - reference input role
 - approval criteria before video launch
+
+Use `docs/DIRECTORS_NOTES_STORYBOARDS.md` for complex camera choreography. A required board should be an annotated production image with numbered phases, timing blocks, shot-size labels, camera movement arrows, subject/product movement arrows, and sequence notes.
 
 ### Motion Nodes
 
@@ -91,6 +95,7 @@ For Seedance 2 multi-shot campaign nodes, include:
 - broad timing ladder
 - one hero event per block
 - reference role map
+- director's-notes board role if connected
 - start-frame or reference wiring requirement
 - visible model guard: reject if pasted/UI node resolves to Kling 3.0
 

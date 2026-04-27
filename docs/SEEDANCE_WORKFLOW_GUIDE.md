@@ -75,7 +75,7 @@ State those roles in the local workflow notes and only use literal reference tag
 
 Seedance works better when the agent provides motion evidence, not just visual aspiration.
 
-Before launch, create a simple camera-movement storyboard for the clip or shot:
+Before launch, create a camera-movement storyboard for the clip or shot:
 
 - panel 1: opening composition and camera position
 - panel 2: approach or drift direction
@@ -84,6 +84,10 @@ Before launch, create a simple camera-movement storyboard for the clip or shot:
 - panel 5: final hero hold or pullback
 
 For each panel, describe camera path separately from subject/product path. Use arrows, notes, or filenames if the UI supports image references. Assign every connected image one job: start frame, end frame, product truth, style/lighting, or motion board.
+
+For complex shots, use GPT Image 2 to generate a director's-notes storyboard following `docs/DIRECTORS_NOTES_STORYBOARDS.md`. This should look like a production board: numbered horizontal panels, camera icons or labels, colored arrows for camera/subject/environment movement, timing blocks, shot-size labels, right-side camera notes, and a bottom sequence strip.
+
+Use director's-notes boards when the Seedance 2 node needs to understand a long take, approach, tilt, orbit, follow, pullback, rise/fall, beat-synced reveal, or simultaneous subject/camera movement. The board's job is camera choreography and phase order. It does not replace identity anchors, product-truth images, or final hero stills.
 
 If the storyboard shows a complex long take, simplify it into broad blocks. Do not ask Seedance for seven exact moves in one 10-second node unless a previous run in the same workflow has proven it can follow that complexity.
 
@@ -130,6 +134,8 @@ Use this structure for advanced Seedance 2 campaign prompts:
 6. `Constraints`: visual positive constraints and a short avoid list.
 
 Do not waste prompt budget on workflow mechanics such as `use the connected image` when the image is structurally connected. Write what happens after frame 1 in direct shot language.
+
+When a GPT Image 2 director's-notes board is connected, translate its panels into the timing ladder. Do not ask Seedance 2 to copy labels or read the board as final visual style; use it to control motion sequence, camera path, and phase order.
 
 ## Simplify Risk
 
