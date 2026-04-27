@@ -78,6 +78,7 @@ If Computer Use/browser execution is unavailable after an explicit check, return
 6. Define reference parity: closest references/archetype, hook behavior, subject/world behavior, camera behavior, editorial progression, product reveal, and final memory image.
 7. Build a comprehensive workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
 8. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, and `docs/WORKFLOW_EXECUTION_GUIDE.md`.
+9. For paste-first workflows, apply `docs/PASTE_FIRST_WORKFLOWS.md` and `docs/IMAGINEART_LIVE_MODEL_STRINGS.md`; use `modelKey` values that materialize to the verified live IDs instead of stale numeric IDs.
 9. Import or explicitly account for every source asset before stillframe generation.
 10. Create ImagineArt 2.0 original stillframe prompts or GPT Image 2 reference-driven stillframe prompts with `prompts/imagineart_workflow_builder.md`.
 11. Generate stillframe variants before motion and select approved anchors.

@@ -4,6 +4,7 @@
   "models": {
     "imagineart_2": {
       "display_name": "ImagineArt 2.0",
+      "live_model_id_verified_2026_04_27": 41601,
       "primary_use": [
         "default original stillframe generation when no reference control is required",
         "hero/style frames",
@@ -25,6 +26,7 @@
     },
     "gpt_image_2": {
       "display_name": "GPT Image 2",
+      "live_model_id_verified_2026_04_27": 41701,
       "primary_use": [
         "storyboard/reference panels",
         "camera movement boards",
@@ -33,6 +35,8 @@
         "shot-ladder stills for Seedance"
       ],
       "automation_default_ratio": "1:1",
+      "automation_default_resolution": "2K",
+      "automation_default_quality": "high",
       "safe_retry_ratios": ["1:1", "16:9", "9:16"],
       "known_risks": [
         "workflow payloads may resolve to a different image model unless the visible UI model is checked",
@@ -41,6 +45,7 @@
       ],
       "preflight": [
         "confirm visible model label says GPT Image 2",
+        "confirm copied node JSON says modelId 41701, resolution 2K, and quality high",
         "use 1:1 for storyboard or director's-notes boards unless a validated ratio is required",
         "reject boards with unreadable labels, ambiguous arrows, fake ad text, or unclear phase order",
         "download or inspect outputs for moderation placeholders before using them as references"
@@ -48,6 +53,7 @@
     },
     "nano_banana_2": {
       "display_name": "Nano Banana 2",
+      "live_model_id_verified_2026_04_27": 40603,
       "primary_use": [
         "fast stillframe variants",
         "background plates",
@@ -85,7 +91,8 @@
       ]
     },
     "seedance": {
-      "display_name": "Seedance 2 / Seedance 2.0",
+      "display_name": "Seedance 2.0",
+      "live_model_id_verified_2026_04_27": 21905,
       "primary_use": [
         "reference-guided motion",
         "multi-shot campaign motion",
@@ -101,7 +108,8 @@
         "pasted or UI-created video nodes may default to Kling 3.0 and must be corrected before launch"
       ],
       "preflight": [
-        "confirm visible model label says Seedance 2 or Seedance 2.0",
+        "confirm visible model label says Seedance 2.0",
+        "confirm copied node JSON says modelId 21905",
         "connect approved start/end/reference images",
         "choose the longest useful live duration for the creative job, including 15s when available",
         "keep phase count realistic for the selected duration",

@@ -100,12 +100,23 @@ The helper rejects canonical specs when:
 
 ## Model Guard
 
+Use the live labels and copied JSON IDs in `docs/IMAGINEART_LIVE_MODEL_STRINGS.md`. Do not rely on older numeric IDs. As verified on 2026-04-27:
+
+- `ImagineArt 2.0` copies as `settings.modelId: 41601`
+- `GPT Image 2` copies as `settings.modelId: 41701`
+- `Seedance 2.0` copies as `settings.modelId: 21905`
+- `Nano Banana 2` copies as `settings.modelId: 40603`
+- `Kling 3.0` copies as `settings.modelId: 11020`
+
+For GPT Image 2, set `resolution: "2K"` and `quality: "high"`.
+
 Campaign motion nodes must use Seedance 2 or the specifically approved Imagine.Art campaign motion model. If a pasted or UI-created video node defaults to `Kling 3.0`, it is invalid for CampaignCraft campaign motion unless the user explicitly requested Kling.
 
 Before launch:
 
 - open or inspect each motion node
-- confirm the visible model label is Seedance 2 / Seedance 2.0 or the intended approved model
+- confirm the visible model label is `Seedance 2.0` or the intended approved model
+- copy the selected node/graph and confirm the JSON model ID matches the intended label
 - confirm `9:16` or the requested ratio
 - confirm image/start-frame/reference wiring is visible
 

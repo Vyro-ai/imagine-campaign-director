@@ -203,6 +203,139 @@ const IMAGE_TOKEN_PATTERN = /@\s*Image\s*(\d+)/gi;
 const CONTINUITY_SHORTHAND_PATTERN =
   /\b(?:same|matching|consistent)\s+(?:adult\s+)?(?:character|person|model|woman|man|subject|identity|face|hair|wardrobe|outfit|garment|coat|product|style|look)\b/i;
 
+const LIVE_MODEL_REGISTRY = {
+  image: {
+    imagineart_2: {
+      label: "ImagineArt 2.0",
+      modelId: 41601,
+      aliases: ["imagineart 2", "imagineart 2.0", "imagine art 2", "imagine art 2.0", "ia2"],
+    },
+    gpt_image_2: {
+      label: "GPT Image 2",
+      modelId: 41701,
+      aliases: ["gpt image 2", "gpt-image-2", "chatgpt image 2", "gpt image gen 2"],
+      defaultSettings: { resolution: "2K", quality: "high" },
+    },
+    nano_banana_2: {
+      label: "Nano Banana 2",
+      modelId: 40603,
+      aliases: ["nano banana 2", "nb2"],
+    },
+    nano_banana_pro: {
+      label: "Nano Banana Pro",
+      modelId: 41201,
+      aliases: ["nano banana pro", "nbp"],
+    },
+  },
+  video: {
+    seedance_2: {
+      label: "Seedance 2.0",
+      modelId: 21905,
+      aliases: ["seedance 2", "seedance 2.0", "seedance2", "seedance"],
+      defaultSettings: { resolution: "720p", generateAudio: false },
+    },
+    seedance_2_fast: {
+      label: "Seedance 2.0 Fast",
+      aliases: ["seedance 2 fast", "seedance 2.0 fast"],
+    },
+    kling_3: {
+      label: "Kling 3.0",
+      modelId: 11020,
+      aliases: ["kling 3", "kling 3.0"],
+    },
+  },
+};
+
+const STALE_OR_WRONG_MODEL_IDS = {
+  image: new Map([
+    [40603, "Nano Banana 2"],
+  ]),
+  video: new Map([
+    [11020, "Kling 3.0"],
+  ]),
+};
+
+function normalizedModelKey(value) {
+  return String(value ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ");
+}
+
+function findLiveModel(type, nodeSpec, settings) {
+  const raw =
+    nodeSpec.modelKey ??
+    nodeSpec.model ??
+    nodeSpec.modelName ??
+    nodeSpec.modelLabel ??
+    settings.modelKey ??
+    settings.model ??
+    settings.modelName ??
+    settings.modelLabel ??
+    "";
+  const normalized = normalizedModelKey(raw);
+
+  if (!normalized) {
+    const idMatch = Number(settings.modelId);
+    if (STALE_OR_WRONG_MODEL_IDS[type]?.has(idMatch)) {
+      return null;
+    }
+
+    if (Number.isFinite(idMatch)) {
+      for (const [key, model] of Object.entries(LIVE_MODEL_REGISTRY[type] ?? {})) {
+        if (model.modelId === idMatch) {
+          return { key, ...model };
+        }
+      }
+    }
+
+    return null;
+  }
+
+  for (const [key, model] of Object.entries(LIVE_MODEL_REGISTRY[type] ?? {})) {
+    const accepted = [key, model.label, ...(model.aliases ?? [])].map(normalizedModelKey);
+    if (accepted.includes(normalized)) {
+      return { key, ...model };
+    }
+  }
+
+  return null;
+}
+
+function applyLiveModelSettings(nodeSpec, settings) {
+  const model = findLiveModel(nodeSpec.type, nodeSpec, settings);
+
+  if (model) {
+    settings.modelId = model.modelId;
+    if (model.defaultSettings) {
+      for (const [key, value] of Object.entries(model.defaultSettings)) {
+        settings[key] ??= value;
+      }
+    }
+
+    if (nodeSpec.type === "image" && model.key === "gpt_image_2" && settings.quality !== "high") {
+      throw new Error(
+        `Image node "${nodeSpec.name ?? nodeSpec.id ?? "unnamed"}" uses GPT Image 2 but quality is "${settings.quality}". Use quality: "high" for GPT Image 2 workflow defaults.`
+      );
+    }
+
+    delete settings.modelKey;
+    delete settings.model;
+    delete settings.modelName;
+    delete settings.modelLabel;
+    return;
+  }
+
+  const modelId = Number(settings.modelId);
+  const wrongModel = STALE_OR_WRONG_MODEL_IDS[nodeSpec.type]?.get(modelId);
+  if (wrongModel) {
+    throw new Error(
+      `${nodeSpec.type} node "${nodeSpec.name ?? nodeSpec.id ?? "unnamed"}" uses modelId ${modelId}, which the live UI currently resolves to ${wrongModel}. Use a verified modelKey/modelName from docs/IMAGINEART_LIVE_MODEL_STRINGS.md instead of stale numeric IDs.`
+    );
+  }
+}
+
 function parseArgs(argv) {
   const args = {
     input: null,
@@ -818,8 +951,8 @@ function validateCanonicalImageModelReferenceChoices(source) {
     ).toLowerCase();
     const modelId = String(nodeSpec.settings?.modelId ?? "");
     const isReferenceDriven = imageReferenceCount > 0 || usesImageToken;
-    const appearsNanoBanana = /nano\s*banana|nb2|nbp/.test(modelHint);
-    const appearsImagineArt2 = /imagine\s*art\s*2|imagineart\s*2/.test(modelHint) || modelId === "40603";
+    const appearsNanoBanana = /nano\s*banana|nb2|nbp/.test(modelHint) || modelId === "40603" || modelId === "41201";
+    const appearsImagineArt2 = /imagine\s*art\s*2|imagineart\s*2/.test(modelHint) || modelId === "41601";
     const hasDocumentedException = Boolean(
       nodeSpec.referenceModelException ?? nodeSpec.metadata?.referenceModelException ?? nodeSpec.settings?.referenceModelException
     );
@@ -948,6 +1081,7 @@ function materializeCanonicalWorkflow(source, options) {
     const template = resolveTemplate(source, nodeSpec);
     const { handles, inputHandleSchemas, handleLookup } = materializeHandles(materializedId, template, nodeSpec);
     const settings = { ...(template.defaultSettings ?? {}), ...(nodeSpec.settings ?? {}) };
+    applyLiveModelSettings(nodeSpec, settings);
     const importOutputType = nodeSpec.type === "import" ? inferImportOutputType(nodeSpec) : null;
 
     if (importOutputType) {
