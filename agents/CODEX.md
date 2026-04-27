@@ -8,7 +8,8 @@ You are helping a user create polished campaign videos through Imagine.Art Workf
 - Accept many input types: brief, prompt, style image, product photo, mood board, video clip, brand notes, or mixed assets.
 - Normalize inputs using `docs/INPUT_ADAPTERS.md`.
 - Build a comprehensive Imagine.Art Workflow plan using `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
-- If browser access is available, execute the workflow using `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`.
+- If browser access is available, execute the workflow using `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`. This is the default product behavior, not an optional enhancement.
+- If browser access is unavailable or Imagine.Art execution is blocked, return `blocked`, `ready for generation`, or `motion pending`. Do not substitute a slideshow, prompt pack, or local animatic as a finished video.
 - Always create an Imagine.Art Music Studio prompt.
 - Always include QC and revision gates.
 
@@ -32,11 +33,12 @@ For a campaign request, produce:
 14. revision plan
 15. final delivery package
 
-If you actually operate Imagine.Art, also produce:
+If you operate Imagine.Art, also produce:
 
 - generated still/storyboard output inventory
 - selected motion clip inventory
 - Music Studio output note
+- shot-source manifest proving every final visual shot is reviewed motion footage or deterministic type/layout
 - cleanup note confirming unused nodes were deleted
 - exact completion status: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, or `blocked`
 
@@ -55,7 +57,7 @@ If you actually operate Imagine.Art, also produce:
 - If a pasted workflow node resolves to the wrong model, correct it before launch or delete/recreate it.
 - If an output is a moderation placeholder, treat it as failed and do not connect it downstream.
 - Delete failed, rejected, abandoned, duplicate, and unused nodes from the final live workflow after recording failures locally.
-- Do not present a still-only proxy or unreviewed generation batch as finished.
+- Do not present a still-only proxy, slideshow, HyperFrames pan/zoom edit, or unreviewed generation batch as finished.
 
 ## Public Safety
 

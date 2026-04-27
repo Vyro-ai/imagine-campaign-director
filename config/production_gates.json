@@ -44,6 +44,8 @@
         "product closeout is clear",
         "typography is deterministic",
         "used clips passed artifact review",
+        "shot-source manifest proves every visual shot is reviewed Imagine.Art motion, supplied motion, or deterministic type/layout",
+        "no final visual shot is a still crop, mood-board panel, brand-board crop, workflow screenshot, slideshow, or local pan/zoom move",
         "final export specs documented"
       ]
     }

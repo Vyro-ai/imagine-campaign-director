@@ -1,8 +1,8 @@
 # CampaignCraft for Imagine.Art
 
-An agent-ready creative direction system for building polished campaign videos in Imagine.Art Workflows.
+An agent-ready Imagine.Art operator system for generating polished campaign videos in Imagine.Art Workflows.
 
-CampaignCraft helps Codex, Claude Code, Cursor, and other agents turn loose creative inputs into comprehensive Imagine.Art workflow plans: input analysis, concept, shot ladder, stillframes, motion clips, music, edit structure, QC, revision, and final delivery.
+CampaignCraft helps Codex, Claude Code, Cursor, and other agents turn loose creative inputs into real Imagine.Art production runs: input analysis, workflow creation, stillframe generation, motion generation, Music Studio audio, QC, revision, and final delivery.
 
 The system is Imagine.Art-first. Other platforms can adapt the method, but the default execution target is Imagine.Art Workflows plus Imagine.Art Music Studio.
 
@@ -22,7 +22,7 @@ It is designed to work from many input types:
 - brand guidelines supplied by the user
 - mixed assets plus notes
 
-The agent should normalize those inputs into an Imagine.Art workflow plan, then produce the prompts, node map, model choices, music prompt, edit notes, QC checklist, and revision plan needed to finish a high-polish campaign.
+The agent should normalize those inputs into an executable Imagine.Art workflow, operate the workflow when browser access is available, generate the motion and music assets, inspect the outputs, revise failures, and assemble a finished campaign. A prompt pack or workflow map is only an intermediate artifact.
 
 ## Who It Is For
 
@@ -49,10 +49,10 @@ The agent should normalize those inputs into an Imagine.Art workflow plan, then 
 ## How It Works
 
 ```text
-Input -> Intake Adapter -> Campaign Grammar -> Imagine.Art Workflow Blueprint -> Music Studio Prompt -> Generation -> QC Review -> Revision -> Final Delivery
+Input -> Intake Adapter -> Campaign Grammar -> Imagine.Art Workflow Execution -> Music Studio Generation -> Motion Generation -> QC Review -> Revision -> Final Delivery
 ```
 
-If an agent has browser access, it should execute the workflow in Imagine.Art. A prompt pack is not a finished campaign. See `docs/AUTOMATION_CONTRACT.md` for the completion standard, failure recovery rules, and final workflow cleanup policy.
+If an agent has browser access, it must execute the workflow in Imagine.Art. A prompt pack is not a finished campaign. A still slideshow is not a finished campaign. See `docs/AUTOMATION_CONTRACT.md` for the completion standard, failure recovery rules, and final workflow cleanup policy.
 
 ## Imagine.Art-First Defaults
 
@@ -72,18 +72,18 @@ If an agent has browser access, it should execute the workflow in Imagine.Art. A
 2. Open it with Codex / Claude Code / Cursor.
 3. Give your agent agents/CODEX.md or agents/GENERAL_AGENT.md.
 4. Provide any input: brief, prompt, style image, product photo, mood board, or mixed assets.
-5. Ask the agent to create a comprehensive Imagine.Art workflow plan.
-6. Build or duplicate the matching Imagine.Art Workflow.
-7. Generate stillframes, motion, and music inside Imagine.Art.
-8. Score the result with docs/QUALITY_CONTROL.md.
-9. Revise using prompts/revision_diagnoser.md.
-10. Package final delivery.
+5. Ask the agent to operate Imagine.Art and generate the campaign.
+6. The agent creates or opens the workflow, uploads/imports source assets, and runs staged generation.
+7. The agent generates stillframes, motion clips, and Music Studio audio inside Imagine.Art.
+8. The agent downloads/reviews outputs, assembles the final edit, and creates a shot-source manifest.
+9. The agent scores the result with docs/QUALITY_CONTROL.md and revises failures.
+10. The agent packages final delivery only after the motion/audio requirements are satisfied.
 ```
 
 ## Example Agent Command
 
 ```text
-Using this CampaignCraft skill, create a 15-second Imagine.Art campaign for this product photo and mood board. Analyze the inputs, choose the campaign grammar, create a comprehensive Imagine.Art Workflow node plan, generate stillframe prompts, video prompts, an Imagine.Art Music Studio prompt, edit notes, QC gates, and a final delivery checklist.
+Using this CampaignCraft skill, operate Imagine.Art to create a 15-second campaign for this product photo and mood board. Create/open the workflow, import the source assets, generate approved still anchors, generate motion clips in Imagine.Art, generate Music Studio audio, assemble the final edit, run QC, and return the finished video plus a shot-source manifest. If you cannot operate Imagine.Art, mark the job blocked instead of returning a proxy.
 ```
 
 ## Philosophy
@@ -104,6 +104,7 @@ Using this CampaignCraft skill, create a 15-second Imagine.Art campaign for this
 
 - Outputs still depend on model capability and available Imagine.Art features.
 - Generated video usually needs iteration.
+- The skill requires browser/tool access for fully automated generation. Without execution access, it can prepare a workflow package but must not claim a finished video.
 - Text/logos can fail in generated media.
 - Identity and product consistency can fail.
 - Imagine.Art Music Studio currently works from text/lyrics/genre-style direction, not direct image-to-music generation, so agents should translate visual inputs into a music brief.
