@@ -4,24 +4,28 @@ This repository is Imagine.Art-first.
 
 Computer Use is the default execution tool when available. If the Computer Use plugin, browser automation, or any desktop-control tool is available, use it to operate Imagine.Art directly before returning a static package.
 
-For campaign-video requests, the first action is a Computer Use/browser automation preflight. Before creating markdown files, prompt packs, workflow maps, or local folders, check whether Computer Use/browser automation can operate Imagine.Art.
+For campaign-video requests, the first action is a capability preflight: check whether Computer Use/browser automation can operate Imagine.Art. This preflight only verifies execution capability. It does not authorize opening the workflow canvas or creating generation nodes before planning.
 
 If Computer Use/browser automation is not available, immediately tell the user the request cannot be completed in this environment because CampaignCraft requires Computer Use/browser automation to generate the video in Imagine.Art. Return `blocked` and stop.
 
-If Computer Use/browser automation is available, do not come back until there is a finished MP4 ready for user review, or until a specific blocker requiring user action stops generation. Supporting markdown files are secondary artifacts.
+If Computer Use/browser automation is available, continue through planning and execution until there is a finished MP4 ready for user review, or until a specific blocker requiring user action stops generation. Supporting markdown files are secondary artifacts, but the director's treatment is a required execution artifact.
+
+Before touching the Imagine.Art workflow canvas, creating workflow nodes, pasting workflow payloads, or launching generation, complete the director's treatment required by `docs/DIRECTORS_TREATMENT_GATE.md`. The film must be planned first: shot-by-shot timeline, visual job and justification for every shot, cut points, music hits, transition logic, stillframe anchors, Seedance 2 multi-shot node grouping, QC rejects, and final memory image.
 
 For any user request to create a campaign video, ad, fashion film, commercial, TikTok/Reels spot, social campaign, product video, or professionally produced video:
 
 1. Preflight Computer Use/browser automation availability.
-2. Use Computer Use/browser automation to open or operate Imagine.Art.
-3. Create or open the Imagine.Art workflow.
-4. Build the workflow sections and source/input nodes.
-5. Generate image-grounded still/reference anchors.
-6. Run Imagine.Art video generation such as Seedance for campaign motion.
-7. Generate Imagine.Art Music Studio audio or use supplied music.
-8. Review/download outputs and create a shot-source manifest.
-9. Export or assemble a finished MP4 ready for review.
-10. Use HyperFrames, HTML, canvas, or local rendering only after reviewed/generated motion exists, and only for finishing, assembly, timing, captions, typography, effects, and export.
+2. Normalize the brief, apply vague-prompt rescue when needed, and write the director's treatment.
+3. Plan the near-deterministic edit, shot ladder, still anchors, Seedance 2 multi-shot node grouping, Music Studio direction, and QC gates.
+4. Use Computer Use/browser automation to open or operate Imagine.Art.
+5. Create or open the Imagine.Art workflow.
+6. Build the workflow sections and source/input nodes from the treatment.
+7. Generate image-grounded still/reference anchors.
+8. Run Imagine.Art video generation such as Seedance 2 for campaign motion.
+9. Generate Imagine.Art Music Studio audio or use supplied music.
+10. Review/download outputs and create a shot-source manifest.
+11. Export or assemble a finished MP4 ready for review.
+12. Use HyperFrames, HTML, canvas, or local rendering only after reviewed/generated motion exists, and only for finishing, assembly, timing, captions, typography, effects, and export.
 
 Do not begin by saying you will use a HyperFrames workflow, HyperFrames composition, HTML-based composition, local video composition, canvas animation, slideshow, or motion-graphics piece for the campaign. Those are proxy/finishing paths, not the CampaignCraft production default.
 
@@ -32,7 +36,7 @@ Never say "browser execution is unavailable here" as a generic reason to stop. F
 Correct first response pattern:
 
 ```text
-I'll build this in Imagine.Art using Computer Use/browser automation: create the workflow, generate image-grounded references, run Seedance/video nodes, create the Music Studio track, QC the outputs, and produce a manifest. HyperFrames/editor work is only for finishing after reviewed motion exists.
+I'll build this Imagine.Art-first. I'll preflight Computer Use/browser access, then write the director's treatment and shot plan before touching the workflow canvas. After the film plan is locked, I'll build the workflow, generate image-grounded references, run Seedance 2 motion, create the Music Studio track, QC the outputs, and produce a manifest. HyperFrames/editor work is only for finishing after reviewed motion exists.
 ```
 
 Correct final response pattern:

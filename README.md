@@ -4,7 +4,7 @@ An agent-ready Imagine.Art operator system for generating polished campaign vide
 
 CampaignCraft helps Codex, Claude Code, Cursor, and other agents turn loose creative inputs into real Imagine.Art production runs: input analysis, workflow creation, stillframe generation, motion generation, Music Studio audio, QC, revision, and final delivery. The canonical delivery rules live in `docs/PRODUCTION_STANDARD.md`.
 
-For agents: read `AGENTS.md` first. Campaign-video requests must start with a Computer Use/browser automation preflight. If unavailable, say the request cannot be completed in this environment. If available, route to Imagine.Art and return a finished MP4 ready for review unless a specific blocker prevents generation.
+For agents: read `AGENTS.md` first. Campaign-video requests must start with a Computer Use/browser automation capability preflight. If unavailable, say the request cannot be completed in this environment. If available, write the director's treatment and shot plan before touching the workflow canvas, then route to Imagine.Art and return a finished MP4 ready for review unless a specific blocker prevents generation.
 
 ## What This Is
 

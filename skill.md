@@ -28,21 +28,24 @@ If Computer Use, browser automation, or desktop control is available, the agent 
 
 ## Computer Use Execution Rule
 
-For campaign-video requests, the first action is a Computer Use/browser automation preflight. Before creating markdown files, prompt packs, workflow maps, or local folders, check whether Computer Use/browser automation can operate Imagine.Art.
+For campaign-video requests, the first action is a Computer Use/browser automation capability preflight. This only verifies whether Imagine.Art execution is possible. It does not authorize workflow canvas work before planning.
 
 If Computer Use/browser automation is unavailable, immediately tell the user the request cannot be completed in this environment because CampaignCraft requires Computer Use/browser automation to generate the video in Imagine.Art. Return `blocked` and stop.
 
 If Computer Use/browser automation is available, use it to operate Imagine.Art directly:
 
-1. Open or operate Imagine.Art.
-2. Create or open the workflow.
-3. Build sections and source/input nodes.
-4. Generate still anchors and storyboard/reference panels.
-5. Run Seedance or the selected Imagine.Art video model.
-6. Generate Music Studio audio.
-7. Review/download outputs.
-8. Export or assemble a finished MP4 ready for review.
-9. Clean the final workflow and create a shot-source manifest.
+1. Apply vague-prompt rescue when needed.
+2. Write the director's treatment and justified shot plan.
+3. Plan the near-deterministic edit, still anchors, Seedance 2 multi-shot node grouping, Music Studio direction, and QC gates.
+4. Open or operate Imagine.Art.
+5. Create or open the workflow.
+6. Build sections and source/input nodes from the treatment.
+7. Generate still anchors and storyboard/reference panels.
+8. Run Seedance 2 or the specifically approved Imagine.Art campaign motion model.
+9. Generate Music Studio audio.
+10. Review/download outputs.
+11. Export or assemble a finished MP4 ready for review.
+12. Clean the final workflow and create a shot-source manifest.
 
 For campaign-video requests, do not return only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected return is a finished MP4 ready for review, plus supporting notes.
 
