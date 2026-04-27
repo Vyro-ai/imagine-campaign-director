@@ -14,7 +14,7 @@ Computer Use/browser automation is the default execution path. The first action 
 
 If Computer Use/browser automation is unavailable, immediately tell the user the request cannot be completed in this environment because CampaignCraft requires Computer Use/browser automation to generate the video in Imagine.Art. Return `blocked` and stop.
 
-If Computer Use/browser automation is available, use it to operate Imagine.Art directly. Do not return to the user with only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected result is a finished MP4 ready for review, with supporting files as secondary artifacts.
+If Computer Use/browser automation is available, use it to operate Imagine.Art directly. Do not return to the user with only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected result is a finished MP4 ready for review, with supporting files as secondary artifacts. A finished MP4 requires locally exported/generated motion files and audio when music was planned.
 
 Use Computer Use/browser automation to:
 
@@ -26,7 +26,7 @@ Use Computer Use/browser automation to:
 - run Seedance or the selected Imagine.Art video model
 - generate Music Studio audio
 - review, download, and inventory outputs
-- export or assemble a finished MP4 ready for review
+- export or assemble a finished MP4 ready for review only after local motion export and audio gates pass
 - clean the final workflow and create a shot-source manifest
 
 Do not mark a campaign `ready for generation` or `motion pending` until you have attempted or explicitly preflighted Computer Use/browser automation for Imagine.Art. Only return `blocked` when a specific blocker prevents execution: missing Computer Use/browser automation, login, subscription/credits, missing source asset, unavailable model, UI failure, moderation, generation failure, export failure, or a confirmed missing automation capability.
@@ -115,7 +115,9 @@ If the repository has a workspace log, update it when a workspace is created or 
 
 ## Director's Treatment Standard
 
-Before touching the Imagine.Art workflow canvas, apply `docs/DIRECTORS_TREATMENT_GATE.md`. The agent must think through the film first: campaign thesis, visual world, model/styling continuity, shot-by-shot timeline, music/beat map, transition logic, Seedance 2 multi-shot node plan, stillframe anchors, QC rejects, and final memory image.
+Before touching the Imagine.Art workflow canvas, apply `docs/DIRECTORS_TREATMENT_GATE.md`. The agent must think through the film first: campaign thesis, visual world, model/styling continuity, shot-by-shot timeline, directional diversity, music/beat map, transition logic, Seedance 2 multi-shot node plan, stillframe anchors, QC rejects, and final memory image.
+
+Before calling a review MP4 ready, apply `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`. Completed canvas nodes and browser previews are not deliverable sources until the motion files are exported/downloaded locally and verified with `ffprobe`.
 
 The director's treatment is an execution gate, not a user-confirmation gate. Once it exists, continue into workflow construction and generation unless a real blocker appears.
 

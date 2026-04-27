@@ -15,6 +15,7 @@
         "Seedance 2 multi-shot node grouping is defined",
         "complex motion shots are flagged for GPT Image 2 director's-notes boards",
         "stillframe anchor plan exists",
+        "directional diversity table exists",
         "QC rejection criteria are written"
       ]
     },
@@ -26,7 +27,9 @@
         "dominant campaign grammar chosen",
         "first 1-2 second hook defined",
         "product or subject hierarchy defined",
-        "final memory image defined"
+        "final memory image defined",
+        "directional diversity table passes",
+        "shot ladder is not repeated same subject/location/pose grammar"
       ]
     },
     {
@@ -59,6 +62,10 @@
       "required_before": "final handoff",
       "checks": [
         "music supports edit rhythm",
+        "export contains audio when music was planned",
+        "every planned generated motion segment is exported locally and verified with ffprobe",
+        "reviewed motion coverage is at least 80 percent unless the user requested a slideshow",
+        "still/proxy coverage is no more than 10 percent unless explicitly labeled partial/proxy",
         "product closeout is clear",
         "typography is deterministic",
         "used clips passed artifact review",

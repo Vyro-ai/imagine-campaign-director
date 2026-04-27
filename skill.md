@@ -44,13 +44,13 @@ If Computer Use/browser automation is available, use it to operate Imagine.Art d
 8. Generate GPT Image 2 director's-notes boards for complex Seedance 2 choreography.
 9. Run Seedance 2 or the specifically approved Imagine.Art campaign motion model.
 10. Generate Music Studio audio.
-11. Review/download outputs.
-12. Export or assemble a finished MP4 ready for review.
+11. Review/download outputs, verify generated motion files with `ffprobe`, and block on export failures.
+12. Export or assemble a finished MP4 ready for review only after all planned motion files and audio pass delivery gates.
 13. Clean the final workflow and create a shot-source manifest.
 
 Do not stop after creating the director's treatment, prompt pack, or workflow payload. Those files authorize the next execution stage. Proceed into the Imagine.Art workflow canvas unless the user explicitly requested approval before canvas changes or a specific blocker prevents automation.
 
-For campaign-video requests, do not return only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected return is a finished MP4 ready for review, plus supporting notes.
+For campaign-video requests, do not return only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected return is a finished MP4 ready for review, plus supporting notes. If planned motion clips cannot be exported, return `blocked: export failure`; do not assemble around the missing clips with still anchors.
 
 Do not mark a campaign `ready for generation` or `motion pending` until attempting or explicitly preflighting Computer Use/browser automation for Imagine.Art. Only return `blocked` when a specific blocker prevents execution. Do not use generic "browser execution is unavailable here" language without checking Computer Use/browser automation first.
 
@@ -74,10 +74,10 @@ If Computer Use/browser execution is unavailable after an explicit check, return
 2. Normalize the user's input into a campaign brief.
 3. If the input is vague or mostly taste language, apply `docs/VAGUE_PROMPT_RESCUE.md`.
 4. Choose a campaign grammar from `docs/AESTHETIC_SYSTEM.md`.
-5. Write a director's treatment using `docs/DIRECTORS_TREATMENT_GATE.md`; do not touch the workflow canvas until the film, edit, shots, music spine, and Seedance 2 node plan are justified.
+5. Write a director's treatment using `docs/DIRECTORS_TREATMENT_GATE.md`; do not touch the workflow canvas until the film, edit, shots, directional diversity table, music spine, and Seedance 2 node plan are justified.
 6. Define reference parity: closest references/archetype, hook behavior, subject/world behavior, camera behavior, editorial progression, product reveal, and final memory image.
 7. Build a comprehensive workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
-8. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, and `docs/WORKFLOW_EXECUTION_GUIDE.md`.
+8. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, `docs/WORKFLOW_EXECUTION_GUIDE.md`, `docs/DIRECTIONAL_DIVERSITY_GATE.md`, and `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`.
 9. For paste-first workflows, apply `docs/PASTE_FIRST_WORKFLOWS.md` and `docs/IMAGINEART_LIVE_MODEL_STRINGS.md`; use `modelKey` values that materialize to the verified live IDs instead of stale numeric IDs.
 10. For recurring people, products, garments, or other continuity-sensitive subjects, apply `docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md`; lock references first, wire them into every dependent node, and keep production nodes to one run unless an exploration budget is explicitly documented.
 9. Import or explicitly account for every source asset before stillframe generation.
@@ -89,7 +89,7 @@ If Computer Use/browser execution is unavailable after an explicit check, return
 15. If using Seedance, follow `docs/SEEDANCE_WORKFLOW_GUIDE.md`.
 16. Plan b-roll and product closeout with `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
 17. Define sections, node names, variants, approval gates, and failure notes.
-18. Score outputs with `docs/QUALITY_CONTROL.md`, including the reference-parity table.
+18. Score outputs with `docs/QUALITY_CONTROL.md`, including the reference-parity table and local motion/audio export audit.
 19. Diagnose revisions with `prompts/revision_diagnoser.md`.
 20. Package final delivery with `prompts/final_delivery_packager.md`.
 
@@ -149,6 +149,8 @@ Follow the music standard in `docs/PRODUCTION_STANDARD.md` and the details in `d
 - If a stillframe should preserve identity, product, wardrobe, or style from another source, connect that source as an image reference and refer to it with explicit `@Image1`, `@Image2`, etc. language. Do not write `same model`, `same person`, or `same product` in generation prompts.
 - Feed approved panels into Seedance as start frames, end frames, or reference images with one clear job each.
 - Do not launch final campaign motion from prompt text alone. Generate or upload the needed image reference first, then connect it visibly to the motion node.
+- A generated video node is not a usable source until it has been exported or downloaded as a local file, verified with `ffprobe`, and listed in the manifest.
+- Do not call a silent export ready when music was planned. Missing audio is `blocked`, `music pending`, or explicitly approved `silent review only`.
 - Before launching GPT Image 2 storyboard/reference/director's-notes nodes, confirm the visible UI model and use a validated ratio. Start with `1:1` for storyboard panels unless the live workflow has already proven another ratio works.
 - Use `docs/DIRECTORS_NOTES_STORYBOARDS.md` for complex camera choreography; the board controls motion order and camera path, not identity, product truth, or final style.
 - Choose the Seedance 2 node duration by creative need, using the longest useful live duration available, including 15s when it improves continuity, mood, or editorial progression.

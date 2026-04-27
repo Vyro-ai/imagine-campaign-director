@@ -12,7 +12,9 @@ Return:
 - delivery risk
 - final recommendation
 
-Flag identity drift, distorted anatomy, broken product geometry, accidental text/logos, warped reflections, impossible object contact, flicker, unstable camera, and continuity errors.
+Flag identity drift, distorted anatomy, broken product geometry, accidental text/logos, warped reflections, impossible object contact, flicker, unstable camera, continuity errors, missing music, still/proxy coverage, and repeated shot grammar.
+
+For campaign films, a timeline with mostly still anchors and one motion clip is `partial/proxy`, not `pass`.
 
 ## Required Artifact Review
 
@@ -29,6 +31,8 @@ Then explicitly answer:
 - Does the first frame look like intentional campaign footage?
 - Does the first second avoid source-board residue, palette strips, UI, crop borders, and reference text?
 - Is the edit more than repeated packshots?
+- Is the edit more than repeated versions of the same pose, location, lens, and action?
+- Does the MP4 contain audio when music was planned?
 - Is the product withheld, revealed, and then held with purpose?
 - Does any deterministic overlay duplicate readable generated label text?
 - Does the final memory image feel earned?
@@ -51,6 +55,8 @@ Return this table:
 
 If the output is a clean product loop but the references are fashion, beauty, fragrance, lifestyle, luxury, or cinematic campaign films, status must be `needs revision` or `reject and regenerate`.
 
+If the output is mostly stills, a slideshow, or a proxy edit but the request was a campaign video, status must be `reject and regenerate`, `motion pending`, or `blocked`.
+
 ## Workflow Review
 
 Also check:
@@ -62,3 +68,5 @@ Also check:
 - b-roll has a real visual job
 - product closeout is product-first
 - no still-only proxy is being treated as final motion
+- no missing/non-exportable planned motion is hidden by still filler
+- music exists in the export when the treatment includes music direction

@@ -10,6 +10,8 @@ Start from a relevant preset or featured workflow when it matches the job. Use a
 
 Before opening or touching the canvas, complete the director's treatment in `docs/DIRECTORS_TREATMENT_GATE.md`. The workflow should execute a near-deterministic edit plan with justified shots, cut points, music hits, transition logic, and Seedance 2 node grouping already decided.
 
+Before still generation, apply `docs/DIRECTIONAL_DIVERSITY_GATE.md`. A full shot ladder that varies only crop distance around the same person, outfit, corridor, and slow push is not ready for generation.
+
 After the director's treatment is complete, continue into the canvas. Do not ask for confirmation just because the treatment or workflow payload is ready; ask only when the user requested approval before canvas changes or a specific blocker requires human action.
 
 For multi-node campaign workflows, use the paste-first construction path in `docs/PASTE_FIRST_WORKFLOWS.md` by default. Generate a canonical workflow spec locally, materialize it with `scripts/imagineart_workflow_clipboard.mjs`, copy it through the text-only clipboard path, paste once, and verify the rendered canvas. Manual node creation is fallback when the node schema is unknown or paste validation fails.
@@ -130,6 +132,7 @@ Plan the full shot system before generation. The operator should create the shot
 - Do not leave all pasted nodes selected before launch.
 - If multiple nodes are selected accidentally, deselect and select only the intended stage.
 - Never launch motion nodes before their start frames, end frames, storyboard panels, or references are approved.
+- Never replace failed, timed-out, or non-exportable planned motion with still anchors unless the output is explicitly labeled `partial/proxy`.
 - Never launch a multi-reference motion prompt from only one connected start frame. If the prompt says `references`, uses `@Image`, or depends on a storyboard/director's-notes board, the visible node must expose and connect those reference inputs.
 - Never use edit-absolute timing inside a shorter motion node. A 5-second node must use 0-5s local timing, not 22-30s campaign timeline timing.
 - Never launch campaign motion as text-only.
@@ -162,9 +165,11 @@ Do not report a workflow as ready until:
 - launch-critical connections are visible
 - approved stills are separated
 - motion outputs are reviewed
-- Music Studio prompt/track is generated or explicitly pending
+- each planned generated motion segment is exported/downloaded locally and verified with `ffprobe`
+- Music Studio prompt/track is generated, downloaded, and present in the edit when music was planned
 - final assembly plan exists
 - QC notes exist
+- `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md` passes for any `ready`, `finished`, or `delivered` claim
 - failed, rejected, duplicate, abandoned, and unused nodes have been removed from the final live workflow
 
 ## HyperFrames Render Notes

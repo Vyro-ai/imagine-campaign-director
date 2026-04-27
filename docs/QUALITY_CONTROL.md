@@ -78,6 +78,10 @@ If the best honest comparison is "this is a product loop, but the references are
 - final frame does not communicate product, brand, or CTA purpose
 - final edit built from unreviewed motion outputs
 - claiming a pasted node graph is a finished workflow
+- final or review-ready campaign export is silent when a music plan exists
+- final or review-ready campaign export is mostly still anchors, slideshow frames, local pan/zoom, storyboard panels, or contact-sheet crops
+- planned motion clips failed, timed out, or became non-exportable and were replaced with stills without labeling the result `partial/proxy`
+- approved anchors fail `docs/DIRECTIONAL_DIVERSITY_GATE.md` because they are visually interchangeable
 
 ## Revision Rule
 
@@ -102,6 +106,14 @@ The agent must review the contact sheet and at least these moments:
 - final hero frame
 
 If any frame shows source-board residue, palette strips, UI, reference text, duplicated product typography, broken hands/faces, product drift, or repeated packshots with no campaign progression, the status is `needs revision` or `reject`. Technical render success is not QC pass.
+
+Also run the delivery audit when packaging a local campaign folder:
+
+```bash
+python3 scripts/audit_campaign_delivery.py path/to/campaign
+```
+
+If it fails, the final recommendation cannot be `pass`.
 
 ## First-Frame Gate
 

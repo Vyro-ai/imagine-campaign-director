@@ -10,11 +10,13 @@ If Computer Use/browser automation is not available, immediately tell the user t
 
 If Computer Use/browser automation is available, continue through planning and execution until there is a finished MP4 ready for user review, or until a specific blocker requiring user action stops generation. Supporting markdown files are secondary artifacts, but the director's treatment is a required execution artifact.
 
-Before touching the Imagine.Art workflow canvas, creating workflow nodes, pasting workflow payloads, or launching generation, complete the director's treatment required by `docs/DIRECTORS_TREATMENT_GATE.md`. The film must be planned first: shot-by-shot timeline, visual job and justification for every shot, cut points, music hits, transition logic, stillframe anchors, Seedance 2 multi-shot node grouping, QC rejects, and final memory image.
+Before touching the Imagine.Art workflow canvas, creating workflow nodes, pasting workflow payloads, or launching generation, complete the director's treatment required by `docs/DIRECTORS_TREATMENT_GATE.md`. The film must be planned first: shot-by-shot timeline, visual job and justification for every shot, directional diversity table, cut points, music hits, transition logic, stillframe anchors, Seedance 2 multi-shot node grouping, QC rejects, and final memory image.
 
 When creating or pasting workflow nodes, use `docs/IMAGINEART_LIVE_MODEL_STRINGS.md` and `docs/PASTE_FIRST_WORKFLOWS.md`. The current live UI is model-ID driven: `ImagineArt 2.0` is `41601`, `GPT Image 2` is `41701`, and `Seedance 2.0` is `21905`. For GPT Image 2, set `resolution: "2K"` and `quality: "high"`.
 
 For recurring people, products, garments, or other continuity-sensitive subjects, apply `docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md`: lock the required identities first, wire those locked references into every dependent still and Seedance node, and keep live `Number of runs` at `1` unless an explicit identity/look-dev exploration budget is documented.
+
+For campaign motion, apply `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`: every planned generated motion segment must be exported/downloaded locally, verified with `ffprobe`, and listed in the manifest before any `ready` or `finished` claim. A completed canvas node or browser preview is not enough. If a planned Seedance clip cannot be exported, return `blocked: export failure`; do not replace it with still anchors, slideshow assembly, HyperFrames, or local rendering.
 
 Completing the treatment is not a stopping point and does not require user confirmation. Once the treatment and workflow payload are ready and Imagine.Art access is confirmed, immediately open or focus the workflow canvas, paste/build the readable workflow, and continue execution unless there is a specific blocker or the user explicitly asked to approve before canvas changes.
 
@@ -29,8 +31,8 @@ For any user request to create a campaign video, ad, fashion film, commercial, T
 7. Generate image-grounded still/reference anchors.
 8. Run Imagine.Art video generation such as Seedance 2 for campaign motion.
 9. Generate Imagine.Art Music Studio audio or use supplied music.
-10. Review/download outputs and create a shot-source manifest.
-11. Export or assemble a finished MP4 ready for review.
+10. Review/download outputs, verify every planned motion file with `ffprobe`, and create a shot-source manifest.
+11. Export or assemble a finished MP4 ready for review only after motion export, audio, and QC gates pass.
 12. Use HyperFrames, HTML, canvas, or local rendering only after reviewed/generated motion exists, and only for finishing, assembly, timing, captions, typography, effects, and export.
 
 Do not begin by saying you will use a HyperFrames workflow, HyperFrames composition, HTML-based composition, local video composition, canvas animation, slideshow, or motion-graphics piece for the campaign. Those are proxy/finishing paths, not the CampaignCraft production default.
@@ -48,5 +50,7 @@ I'll build this Imagine.Art-first. I'll preflight Computer Use/browser access, t
 Correct final response pattern:
 
 ```text
-The review MP4 is ready: [path]. I also included the shot-source manifest, QC notes, and revision notes.
+The review MP4 is ready: [path]. I verified the exported motion sources and audio, and included the shot-source manifest, QC notes, and revision notes.
 ```
+
+If motion export, audio, motion coverage, or reference-parity gates fail, do not use that pattern. Lead with the blocker and status instead.

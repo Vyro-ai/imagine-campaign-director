@@ -48,12 +48,13 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 24. For each motion node, compare the live canvas against the reference connection map. If the prompt depends on multiple references, `@Image` tokens, storyboard panels, or director's-notes boards, verify the node exposes `Reference Images` and each required input is visibly connected. A single `Start Frame` edge is not enough for a multi-reference prompt.
 25. Before each motion launch, verify the live node panel shows the intended model, duration, quality, ratio, audio setting, local timing, run count, and connected start/end/reference frames. Correct visible settings when they disagree with the written plan. If a motion node has no visible image/start-frame/end-frame/reference connection, do not launch it.
 26. Run motion nodes in small batches and inspect the clips.
-27. Generate the Imagine.Art Music Studio track from the music prompt. Verify the in-app prompt, instrumental/vocal setting, genre, and duration before generation.
-28. Download selected motion and music outputs into the local workspace.
-29. Assemble or prepare the final edit with selected motion clips, selected music, deterministic typography, captions, crop, and product closeout.
-30. Complete QC.
-31. Delete failed, rejected, duplicate, abandoned, and unused nodes from the live final workflow after documenting them locally.
-32. Report the final status using one of: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, `blocked`.
+27. After each generated video node completes, immediately perform export QC from `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`: play 2-3 seconds, download/capture the direct asset source, save it locally, verify it with `ffprobe`, and record it in the manifest before moving on.
+28. Generate the Imagine.Art Music Studio track from the music prompt. Verify the in-app prompt, instrumental/vocal setting, genre, and duration before generation.
+29. Download selected motion and music outputs into the local workspace.
+30. Assemble or prepare the final edit with selected motion clips, selected music, deterministic typography, captions, crop, and product closeout.
+31. Complete QC, including `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`.
+32. Delete failed, rejected, duplicate, abandoned, and unused nodes from the live final workflow after documenting them locally.
+33. Report the final status using one of: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, `blocked`.
 
 ## Non-Negotiables
 
@@ -75,6 +76,7 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 - Do not use the workflow canvas to discover the film. The director's treatment must define the shots, cut points, music hits, transitions, and Seedance 2 node grouping before canvas work starts.
 - Do not stop at `ready for confirmation` after the treatment or workflow payload is prepared. If access is confirmed, open/focus the canvas and execute the staged workflow.
 - Do not call the job finished without reviewed Imagine.Art motion and generated/supplied audio.
+- Do not fill missing or non-exportable Seedance clips with still anchors and call the MP4 ready. That output is `partial/proxy` or `blocked: export failure`.
 - Do not return only markdown files, prompt packs, workflow maps, or `ready for generation` for a campaign-video request unless a specific blocker prevents generation.
 
 ## Failure Note Format

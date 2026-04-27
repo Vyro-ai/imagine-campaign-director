@@ -24,6 +24,7 @@ Do not create, paste, or launch workflow nodes until the active workspace contai
 - edit assembly plan
 - QC rejection criteria
 - final memory image
+- directional diversity table from `docs/DIRECTIONAL_DIVERSITY_GATE.md`
 
 If the user gives a vague prompt, apply `docs/VAGUE_PROMPT_RESCUE.md` first, then write the treatment from that expanded direction.
 
@@ -46,6 +47,8 @@ Every planned shot must justify its place in the edit. For each shot, document:
 
 Delete or merge any shot that has the same job, same shot size, same movement, and same subject behavior as another shot.
 
+Apply `docs/DIRECTIONAL_DIVERSITY_GATE.md` before still generation. If the shot ladder or approved anchor contact sheet reads as the same subject in the same location with the same pose language, revise the concept before spending motion credits.
+
 ## Near-Deterministic Edit Plan
 
 Before generation, define the edit enough that the final assembly is mostly mechanical:
@@ -59,6 +62,7 @@ Before generation, define the edit enough that the final assembly is mostly mech
 - caption/type policy, including `no text` when requested
 - b-roll/detail insert locations
 - final hold duration
+- minimum motion coverage, local export verification, and audio completion requirements from `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`
 
 If the user did not specify duration, set the target duration to `30s` and plan an 8-12 shot edit.
 
