@@ -11,6 +11,7 @@
 - Added root agent guard files and broader audit checks for HyperFrames-first routing language.
 - Made Computer Use/browser automation the default path for operating Imagine.Art before static package delivery.
 - Tightened campaign-video completion rules so static packages are supporting artifacts, not acceptable final returns.
+- Made Computer Use/browser automation preflight the first step and clarified that successful delivery must be a finished MP4.
 
 ## 0.1.0
 

@@ -28,7 +28,11 @@ If Computer Use, browser automation, or desktop control is available, the agent 
 
 ## Computer Use Execution Rule
 
-Use Computer Use/browser automation to operate Imagine.Art directly before returning a static package:
+For campaign-video requests, the first action is a Computer Use/browser automation preflight. Before creating markdown files, prompt packs, workflow maps, or local folders, check whether Computer Use/browser automation can operate Imagine.Art.
+
+If Computer Use/browser automation is unavailable, immediately tell the user the request cannot be completed in this environment because CampaignCraft requires Computer Use/browser automation to generate the video in Imagine.Art. Return `blocked` and stop.
+
+If Computer Use/browser automation is available, use it to operate Imagine.Art directly:
 
 1. Open or operate Imagine.Art.
 2. Create or open the workflow.
@@ -37,9 +41,10 @@ Use Computer Use/browser automation to operate Imagine.Art directly before retur
 5. Run Seedance or the selected Imagine.Art video model.
 6. Generate Music Studio audio.
 7. Review/download outputs.
-8. Clean the final workflow and create a shot-source manifest.
+8. Export or assemble a finished MP4 ready for review.
+9. Clean the final workflow and create a shot-source manifest.
 
-For campaign-video requests, do not return only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected return is a generated video ready for review, plus supporting notes.
+For campaign-video requests, do not return only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected return is a finished MP4 ready for review, plus supporting notes.
 
 Do not mark a campaign `ready for generation` or `motion pending` until attempting or explicitly preflighting Computer Use/browser automation for Imagine.Art. Only return `blocked` when a specific blocker prevents execution. Do not use generic "browser execution is unavailable here" language without checking Computer Use/browser automation first.
 

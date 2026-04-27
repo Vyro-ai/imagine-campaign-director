@@ -10,9 +10,11 @@ For social media campaigns, TikTok/Reels ads, 30s spots, commercials, and profes
 
 ## Computer Use Execution Rule
 
-Computer Use/browser automation is the default execution path. If it is available, use it to operate Imagine.Art directly before returning a static package.
+Computer Use/browser automation is the default execution path. The first action after receiving a campaign-video request is to preflight whether Computer Use/browser automation can operate Imagine.Art.
 
-For campaign-video requests, the agent should not return to the user with only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected result is a generated video ready for review, with supporting files as secondary artifacts.
+If Computer Use/browser automation is unavailable, immediately tell the user the request cannot be completed in this environment because CampaignCraft requires Computer Use/browser automation to generate the video in Imagine.Art. Return `blocked` and stop.
+
+If Computer Use/browser automation is available, use it to operate Imagine.Art directly. Do not return to the user with only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected result is a finished MP4 ready for review, with supporting files as secondary artifacts.
 
 Use Computer Use/browser automation to:
 
@@ -24,9 +26,10 @@ Use Computer Use/browser automation to:
 - run Seedance or the selected Imagine.Art video model
 - generate Music Studio audio
 - review, download, and inventory outputs
+- export or assemble a finished MP4 ready for review
 - clean the final workflow and create a shot-source manifest
 
-Do not mark a campaign `ready for generation` or `motion pending` until you have attempted or explicitly preflighted Computer Use/browser automation for Imagine.Art. Only return `blocked` when a specific blocker prevents execution: login, subscription/credits, missing source asset, unavailable model, UI failure, moderation, generation failure, export failure, or a confirmed missing automation capability.
+Do not mark a campaign `ready for generation` or `motion pending` until you have attempted or explicitly preflighted Computer Use/browser automation for Imagine.Art. Only return `blocked` when a specific blocker prevents execution: missing Computer Use/browser automation, login, subscription/credits, missing source asset, unavailable model, UI failure, moderation, generation failure, export failure, or a confirmed missing automation capability.
 
 Do not use generic language like "browser execution is unavailable here" unless you first checked whether Computer Use, browser automation, desktop control, or the in-app browser can operate Imagine.Art. If execution cannot be attempted, report `blocked`; do not present the package as the campaign deliverable.
 
@@ -83,7 +86,7 @@ Every campaign plan should account for:
 
 Use these exact labels:
 
-- `finished`: final video assembled from reviewed Imagine.Art motion or supplied motion, generated or supplied audio, deterministic type/layout where needed, QC notes, and a shot-source manifest
+- `finished`: final MP4 assembled from reviewed Imagine.Art motion or supplied motion, generated or supplied audio, deterministic type/layout where needed, QC notes, and a shot-source manifest
 - `ready for generation`: workflow, prompts, references, and run order are ready, but generation has not run
 - `motion pending`: stills, references, or workflow structure are ready, but required motion is missing or incomplete
 - `partial/proxy`: deterministic edit or still animatic exists, but required Imagine.Art motion is missing

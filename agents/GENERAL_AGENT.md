@@ -14,9 +14,9 @@ When a user asks for a campaign video, first state that the work will be built i
 
 ## Computer Use Default
 
-When Computer Use, browser automation, or desktop control is available, use it to operate Imagine.Art before returning a static workflow package. Do not mark the campaign `ready for generation` or `motion pending` until checking whether Computer Use/browser automation can create/open the workflow, generate still anchors, run Seedance/video nodes, generate Music Studio audio, review outputs, and export/download deliverables.
+For campaign-video requests, the first action is to check whether Computer Use/browser automation can operate Imagine.Art. If it is not available, immediately tell the user the request cannot be completed in this environment, return `blocked`, and stop.
 
-For campaign-video requests, do not return only a campaign package. Stay in execution until there is a generated video ready for review, or until a specific blocker requires user action.
+When Computer Use, browser automation, or desktop control is available, use it to operate Imagine.Art before returning a static workflow package. Stay in execution until there is a finished MP4 ready for review, or until a specific blocker requires user action.
 
 ## Inputs You Can Use
 
@@ -56,7 +56,7 @@ For campaign-video requests, do not return only a campaign package. Stay in exec
 
 - Follow `docs/PRODUCTION_STANDARD.md`.
 - Follow `docs/AUTOMATION_CONTRACT.md` when operating Imagine.Art.
-- Return a video ready for review for campaign-video requests, not just markdown planning files.
+- Return a finished MP4 ready for review for campaign-video requests, not just markdown planning files.
 - Keep text/logo work deterministic when accuracy matters.
 - Inspect candidates before editing.
 - Isolate rejected outputs.

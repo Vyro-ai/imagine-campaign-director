@@ -19,9 +19,9 @@ CANONICAL_DOCS = [
     "docs/IMAGINEART_MUSIC_STUDIO.md",
 ]
 REQUIRED_TEXT = {
-    "AGENTS.md": ("Computer Use is the default execution tool", "generated video ready for user review"),
-    "docs/PRODUCTION_STANDARD.md": ("Computer Use/browser automation is the default execution path", "generated video ready for review"),
-    "docs/AUTOMATION_CONTRACT.md": ("generated video ready for user review", "Computer Use/browser execution"),
+    "AGENTS.md": ("first action is a Computer Use/browser automation preflight", "finished MP4 ready for user review"),
+    "docs/PRODUCTION_STANDARD.md": ("first action after receiving a campaign-video request", "finished MP4 ready for review"),
+    "docs/AUTOMATION_CONTRACT.md": ("finished MP4 ready for user review", "Computer Use/browser execution"),
 }
 FORBIDDEN_ROUTING_PATTERNS = [
     re.compile(r"\bI['’]?ll\s+(use|build|create|make|start)\b.*\bHyperFrames\b", re.I),
@@ -37,6 +37,7 @@ FORBIDDEN_ROUTING_PATTERNS = [
     re.compile(r"\bbrowser execution is unavailable here\b", re.I),
     re.compile(r"\bI don['’]?t have an Imagine\.Art browser session\b", re.I),
     re.compile(r"\bcreate a self-contained campaign folder\b", re.I),
+    re.compile(r"\bexpected return is a generated video ready for review\b", re.I),
 ]
 ALLOWED_ROUTING_CONTEXT = (
     "wrong first response",

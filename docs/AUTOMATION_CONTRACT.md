@@ -4,7 +4,7 @@ CampaignCraft is not finished when it writes prompts. A successful run must move
 
 ## Default Interpretation
 
-When the user asks for a `social media campaign`, `30s spot`, `TikTok/Reels ad`, `commercial`, or `professionally shot/produced video`, the default deliverable is a generated video ready for user review. Computer Use, browser automation, or desktop control should be used to operate Imagine.Art whenever available.
+When the user asks for a `social media campaign`, `30s spot`, `TikTok/Reels ad`, `commercial`, or `professionally shot/produced video`, the default deliverable is a finished MP4 ready for user review. Computer Use, browser automation, or desktop control should be used to operate Imagine.Art whenever available.
 
 The primary creative output should be a believable real-world video commercial. Do not silently substitute:
 
