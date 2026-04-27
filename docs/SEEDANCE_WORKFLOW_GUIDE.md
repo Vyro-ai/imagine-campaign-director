@@ -156,7 +156,7 @@ When a GPT Image 2 director's-notes board is connected, translate its panels int
 ## Better Multi-Shot Campaign Pattern
 
 ```text
-Subject: modern luxury fashion campaign, one adult model in a sharply tailored black coat, rain-wet concrete and glass walkway at night, cool shadows with warm practical light, restrained editorial nocturne.
+Subject: modern luxury fashion campaign, one adult model in a sharply tailored black coat, rain-wet concrete and glass walkway at night, cool shadows with warm practical light, restrained modern night fashion film.
 
 0-3s: low-angle silhouette hook. The model crosses a narrow strip of warm light, coat hem moving in light wind, wet concrete reflecting the figure.
 3-5s: cut to lateral tracking world reveal through glass and chrome architecture, reflections sliding across the frame, model seen three-quarter from behind.

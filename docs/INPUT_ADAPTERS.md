@@ -62,7 +62,7 @@ Extract:
 
 Then rewrite it into a full Imagine.Art workflow package. Do not simply expand the prompt with adjectives.
 
-For vague luxury/fashion prompts with no assets, default to the `editorial nocturne` rescue pattern: 30-second 9:16 vertical, no text unless requested, one adult model in sharply tailored black outerwear, rain-wet concrete/glass/chrome night environment, cool shadows with warm practical light, NB2/NBP still anchors, image-grounded Seedance 2 motion, sparse instrumental music, and QC against generic AI luxury.
+For vague luxury/fashion prompts with no assets, default to a `modern night fashion film` rescue pattern: 30-second 9:16 vertical, no text unless requested, one adult model in sharply tailored black outerwear, rain-wet concrete/glass/chrome night environment, cool shadows with warm practical light, NB2/NBP still anchors, image-grounded Seedance 2 motion, sparse instrumental music, and QC against generic AI luxury.
 
 ## Style Image Input
 

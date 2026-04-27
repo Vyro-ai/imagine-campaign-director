@@ -12,7 +12,7 @@ When the user asks for a generic luxury or modern fashion campaign and supplies 
 - runtime: `30s`
 - text: none unless the user asks for brand/product/CTA
 - audio: no vocals, sparse modern electronic pulse
-- campaign grammar: `editorial nocturne`
+- campaign grammar: `modern night fashion film`
 - audience: Gen Z fashion/lifestyle viewer
 - visual world: rain-wet concrete, glass, chrome, and warm practical light at night
 - subject: one adult model in sharply tailored black outerwear
@@ -54,7 +54,7 @@ If Computer Use/browser automation is available, continue into Imagine.Art execu
 For a 30-second generic luxury fashion prompt:
 
 1. `0.0-2.0s` silhouette hook: low-angle model crossing wet concrete, warm light edge on coat
-2. `2.0-5.0s` nocturnal world reveal: lateral track through glass/chrome walkway, reflections moving
+2. `2.0-5.0s` nighttime world reveal: lateral track through glass/chrome walkway, reflections moving
 3. `5.0-8.0s` styling portrait: composed three-quarter posture, sharp coat silhouette, no logo
 4. `8.0-11.0s` material detail: black fabric, sleeve, collar, rain bead, or chrome reflection
 5. `11.0-15.0s` movement beat: model turns once or takes one controlled step as fabric moves

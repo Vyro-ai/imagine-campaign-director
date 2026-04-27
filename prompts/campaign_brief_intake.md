@@ -52,7 +52,7 @@ If the user input is mostly broad taste language, such as `generic luxury fashio
 For a generic luxury fashion request with no assets, default to:
 
 - `9:16`, `30s`, no text unless requested
-- campaign grammar: `editorial nocturne`
+- campaign grammar: `modern night fashion film`
 - one adult model in sharply tailored black outerwear
 - rain-wet concrete/glass/chrome night environment
 - cool shadows, warm practical light, restrained contrast
