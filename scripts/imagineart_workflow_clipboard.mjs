@@ -1166,24 +1166,56 @@ function validateCanonicalPromptReferences(source) {
   });
 }
 
-function isCampaignWorkflow(source, options = {}) {
-  const policy = source.swarmPolicy ?? source.metadata?.swarmPolicy ?? {};
-  if (policy.required === false || policy.mode === "not-required") {
-    if (!policy.reason) {
-      throw new Error('swarmPolicy disables campaign swarm validation but no reason was provided.');
-    }
+function nodeLooksLikeVideoGeneration(nodeSpec) {
+  if (!nodeSpec || typeof nodeSpec !== "object") {
     return false;
+  }
+
+  if (nodeSpec.type === "video") {
+    return true;
+  }
+
+  const endpoint = String(nodeSpec.url?.endpoint ?? nodeSpec.data?.url?.endpoint ?? "");
+  if (/\/video(?:\/|$)/i.test(endpoint)) {
+    return true;
+  }
+
+  const modelId = Number(nodeSpec.settings?.modelId ?? nodeSpec.data?.settings?.modelId);
+  if ([21905, 11020].includes(modelId)) {
+    return true;
+  }
+
+  const outputs = [
+    ...(nodeSpec.outputSchemas ?? []),
+    ...(nodeSpec.data?.outputSchemas ?? []),
+    ...(nodeSpec.data?.handles?.outputs ?? []),
+    ...(nodeSpec.handles?.outputs ?? []),
+  ];
+  const hasVideoOutput = outputs.some((output) => output?.type === "video");
+  const hasPromptInput = [
+    ...(nodeSpec.inputSchemas ?? []),
+    ...(nodeSpec.inputHandleSchemas ?? []),
+    ...(nodeSpec.data?.inputHandleSchemas ?? []),
+    ...(nodeSpec.data?.handles?.inputs ?? []),
+  ].some((input) => input?.key === "prompt" || input?.type === "text");
+
+  return hasVideoOutput && hasPromptInput;
+}
+
+function isCampaignWorkflow(source, options = {}) {
+  const hasVideo = (source.nodes ?? []).some((nodeSpec) => nodeLooksLikeVideoGeneration(nodeSpec));
+  if (hasVideo) {
+    return true;
   }
 
   if (source.campaignVideo === true || source.workflowKind === "campaign" || source.metadata?.workflowKind === "campaign") {
     return true;
   }
 
-  if (typeof options.input === "string" && /(?:^|[/\\])campaigns[/\\]/.test(options.input)) {
+  if (typeof options.input === "string" && /(?:^|[/\\])(?:campaigns|workspaces)[/\\]/.test(options.input)) {
     return true;
   }
 
-  const hasVideo = (source.nodes ?? []).some((nodeSpec) => nodeSpec?.type === "video");
   const prompts = (source.nodes ?? [])
     .map((nodeSpec) => nodeSpec?.settings?.prompt ?? "")
     .filter((prompt) => typeof prompt === "string")
@@ -1192,7 +1224,7 @@ function isCampaignWorkflow(source, options = {}) {
     /\b(?:campaign|commercial|fashion film|social ad|reels|tiktok|seedance|music studio)\b/i.test(prompts) ||
     Boolean(source.musicDirection || source.directorsTreatment || source.metadata?.directorsTreatment);
 
-  return hasVideo && campaignLanguage;
+  return campaignLanguage;
 }
 
 function resolveCampaignDir(source, options = {}) {
@@ -1212,32 +1244,91 @@ function readCriticStatus(filePath) {
   const text = fs.readFileSync(filePath, "utf8");
   const statusMatch = text.match(/^\s*status:\s*(pass|revise|block)\s*$/im);
   const modeMatch = text.match(/^\s*critic_mode:\s*(.+)\s*$/im);
+  const subagentMatch = text.match(/^\s*subagent_ids?:\s*(.+)\s*$/im);
+  const artifactMatch = text.match(/^\s*subagent_artifacts?:\s*(.+)\s*$/im);
   return {
     status: statusMatch?.[1]?.toLowerCase() ?? null,
     mode: modeMatch?.[1]?.trim() ?? null,
+    subagentIds: subagentMatch?.[1]?.trim() ?? null,
+    subagentArtifacts: artifactMatch?.[1]?.trim() ?? null,
   };
+}
+
+function parseSubagentIds(value) {
+  return String(value ?? "")
+    .split(/[,\s]+/)
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+}
+
+function hasValidSubagentIds(value) {
+  const ids = parseSubagentIds(value);
+  return ids.length > 0 && ids.every((id) => /^019[0-9a-f]{5,}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id));
+}
+
+function validateSubagentProvenance(campaignDir, filename, subagentIds, artifactList) {
+  const ids = parseSubagentIds(subagentIds);
+  const artifacts = String(artifactList ?? "")
+    .split(/[,\s]+/)
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+
+  for (const id of ids) {
+    const matchingArtifacts = artifacts.filter((entry) => entry.includes(id));
+    if (matchingArtifacts.length === 0) {
+      throw new Error(
+        `Required swarm artifact qa/critics/${filename} must list a subagent_artifacts path for ${id}.`
+      );
+    }
+
+    for (const artifact of matchingArtifacts) {
+      const artifactPath = path.resolve(campaignDir, artifact);
+      if (!artifactPath.startsWith(path.resolve(campaignDir) + path.sep)) {
+        throw new Error(`Subagent artifact path for ${id} must stay inside the campaign directory: ${artifact}`);
+      }
+      if (!fs.existsSync(artifactPath)) {
+        throw new Error(`Subagent artifact for ${id} does not exist: ${artifact}`);
+      }
+
+      const text = fs.readFileSync(artifactPath, "utf8");
+      if (!new RegExp(`^\\s*agent_id:\\s*${id}\\s*$`, "im").test(text)) {
+        throw new Error(`Subagent artifact ${artifact} must include matching agent_id: ${id}.`);
+      }
+      if (!/^\s*status:\s*completed\s*$/im.test(text)) {
+        throw new Error(`Subagent artifact ${artifact} must include status: completed.`);
+      }
+    }
+  }
 }
 
 function validateRequiredCriticArtifact(campaignDir, filename) {
   const filePath = path.join(campaignDir, "qa", "critics", filename);
   if (!fs.existsSync(filePath)) {
     throw new Error(
-      `Campaign workflow is missing required swarm artifact qa/critics/${filename}. Run the adversarial swarm or write the documented single-agent fallback before materializing/pasting the workflow.`
+      `Campaign workflow is missing required swarm artifact qa/critics/${filename}. Run the adversarial swarm with subagents before materializing/pasting the workflow.`
     );
   }
 
-  const { status, mode } = readCriticStatus(filePath);
+  const { status, mode, subagentIds, subagentArtifacts } = readCriticStatus(filePath);
   if (status !== "pass") {
     throw new Error(
       `Required swarm artifact qa/critics/${filename} has status "${status ?? "missing"}". Resolve critic blockers before materializing/pasting the workflow.`
     );
   }
 
-  if (!mode) {
+  if (mode !== "subagent") {
     throw new Error(
-      `Required swarm artifact qa/critics/${filename} is missing critic_mode. Use "critic_mode: subagent" or "critic_mode: single-agent fallback".`
+      `Required swarm artifact qa/critics/${filename} must have critic_mode: subagent. Single-agent fallback is not valid for campaign workflow materialization.`
     );
   }
+
+  if (!hasValidSubagentIds(subagentIds)) {
+    throw new Error(
+      `Required swarm artifact qa/critics/${filename} must include subagent_ids with spawned critic agent id(s) matching the Codex subagent id format.`
+    );
+  }
+
+  validateSubagentProvenance(campaignDir, filename, subagentIds, subagentArtifacts);
 }
 
 function validateCanonicalSwarmArtifacts(source, options = {}) {

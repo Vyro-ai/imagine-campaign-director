@@ -29,7 +29,7 @@ Turn the user's input into a comprehensive Imagine.Art Workflow package. The inp
 
 - Use Imagine.Art Workflows as the default production environment.
 - If the prompt is vague or mostly taste language, apply `docs/VAGUE_PROMPT_RESCUE.md` before workflow planning.
-- When subagents are available, run the ideation swarm in `docs/ADVERSARIAL_SWARM_PROTOCOL.md` before choosing the creative spine.
+- Run the ideation swarm in `docs/ADVERSARIAL_SWARM_PROTOCOL.md` before choosing the creative spine. If subagents cannot be spawned, return `blocked: subagents unavailable` before canvas work or paid generation.
 - Apply `docs/CREATIVE_DIRECTION_GATE.md` before the director's treatment. Do not build a workflow from generic luxury vocabulary.
 - Apply `docs/DIRECTORS_TREATMENT_GATE.md` before touching the workflow canvas. Every shot must have a timeline range, visual job, justification, camera plan, transition logic, music relationship, and artifact-risk note.
 - Use Music Studio for original music direction.

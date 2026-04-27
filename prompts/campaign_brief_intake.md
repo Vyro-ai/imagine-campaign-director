@@ -45,7 +45,7 @@ If the user wants speed or does not answer, make conservative assumptions and la
 
 If runtime is missing, default to a `30s` campaign video.
 
-Before shot-listing a vague campaign, run the ideation swarm in `docs/ADVERSARIAL_SWARM_PROTOCOL.md` when subagents are available, then apply `docs/CREATIVE_DIRECTION_GATE.md`: create distinct premises, choose one creative spine, and document why it is stronger than the rejected options.
+Before shot-listing a vague campaign, run the ideation swarm in `docs/ADVERSARIAL_SWARM_PROTOCOL.md`, then apply `docs/CREATIVE_DIRECTION_GATE.md`: create distinct premises, choose one creative spine, and document why it is stronger than the rejected options. If subagents cannot be spawned, return `blocked: subagents unavailable` before canvas work or paid generation.
 
 ## Vague Prompt Rescue
 

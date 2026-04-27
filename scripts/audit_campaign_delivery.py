@@ -32,6 +32,11 @@ REQUIRED_CRITIC_ARTIFACTS = (
     "delivery-critic.md",
 )
 
+SUBAGENT_ID_PATTERN = re.compile(
+    r"^019[0-9a-f]{5,}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+    re.IGNORECASE,
+)
+
 
 def read_text(path: Path) -> str:
     if not path.exists():
@@ -89,12 +94,65 @@ def find_export(campaign_dir: Path, explicit: str | None) -> Path | None:
     return exports[0] if exports else None
 
 
-def parse_critic_status(text: str) -> tuple[str | None, str | None]:
+def parse_critic_status(text: str) -> tuple[str | None, str | None, str | None, str | None]:
     status_match = re.search(r"^\s*status:\s*(pass|revise|block)\s*$", text, re.IGNORECASE | re.MULTILINE)
     mode_match = re.search(r"^\s*critic_mode:\s*(.+)\s*$", text, re.IGNORECASE | re.MULTILINE)
+    subagent_match = re.search(r"^\s*subagent_ids?:\s*(.+)\s*$", text, re.IGNORECASE | re.MULTILINE)
+    artifact_match = re.search(r"^\s*subagent_artifacts?:\s*(.+)\s*$", text, re.IGNORECASE | re.MULTILINE)
     status = status_match.group(1).lower() if status_match else None
     mode = mode_match.group(1).strip() if mode_match else None
-    return status, mode
+    subagent_ids = subagent_match.group(1).strip() if subagent_match else None
+    subagent_artifacts = artifact_match.group(1).strip() if artifact_match else None
+    return status, mode, subagent_ids, subagent_artifacts
+
+
+def has_valid_subagent_ids(value: str | None) -> bool:
+    ids = [entry.strip() for entry in re.split(r"[,\s]+", value or "") if entry.strip()]
+    return bool(ids) and all(SUBAGENT_ID_PATTERN.fullmatch(entry) for entry in ids)
+
+
+def parse_subagent_ids(value: str | None) -> list[str]:
+    return [entry.strip() for entry in re.split(r"[,\s]+", value or "") if entry.strip()]
+
+
+def validate_subagent_provenance(campaign_dir: Path, filename: str, subagent_ids: str | None, artifact_list: str | None) -> list[str]:
+    failures: list[str] = []
+    artifacts = [entry.strip() for entry in re.split(r"[,\s]+", artifact_list or "") if entry.strip()]
+    for agent_id in parse_subagent_ids(subagent_ids):
+        matching = [entry for entry in artifacts if agent_id in entry]
+        if not matching:
+            failures.append(f"Critic artifact qa/critics/{filename} must list a subagent_artifacts path for {agent_id}.")
+            continue
+
+        for artifact in matching:
+            path = (campaign_dir / artifact).resolve()
+            try:
+                path.relative_to(campaign_dir)
+            except ValueError:
+                failures.append(f"Subagent artifact path for {agent_id} must stay inside the campaign directory: {artifact}.")
+                continue
+            if not path.exists():
+                failures.append(f"Subagent artifact for {agent_id} does not exist: {artifact}.")
+                continue
+
+            text = read_text(path)
+            if not re.search(rf"^\s*agent_id:\s*{re.escape(agent_id)}\s*$", text, re.IGNORECASE | re.MULTILINE):
+                failures.append(f"Subagent artifact {artifact} must include matching agent_id: {agent_id}.")
+            if not re.search(r"^\s*status:\s*completed\s*$", text, re.IGNORECASE | re.MULTILINE):
+                failures.append(f"Subagent artifact {artifact} must include status: completed.")
+    return failures
+
+
+def count_generated_video_sources(manifest: str) -> int:
+    sources: set[str] = set()
+    for line in manifest.splitlines():
+        stripped = line.strip()
+        if not stripped or re.fullmatch(r"\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)+\|?", stripped):
+            continue
+        lower = stripped.lower()
+        if re.search(r"\b(video|seedance|motion|imagineart_motion|generated_motion)\b|/video/|\.(mp4|mov|webm|m4v)\b", lower):
+            sources.add(stripped)
+    return len(sources)
 
 
 def validate_critic_artifacts(campaign_dir: Path) -> list[str]:
@@ -106,15 +164,49 @@ def validate_critic_artifacts(campaign_dir: Path) -> list[str]:
             failures.append(f"Missing required critic artifact: qa/critics/{filename}.")
             continue
 
-        status, mode = parse_critic_status(read_text(path))
+        status, mode, subagent_ids, subagent_artifacts = parse_critic_status(read_text(path))
         if status != "pass":
             failures.append(
                 f"Critic artifact qa/critics/{filename} has status {status or 'missing'}; delivery requires status: pass."
             )
-        if not mode:
+        if mode != "subagent":
             failures.append(
-                f"Critic artifact qa/critics/{filename} is missing critic_mode."
+                f"Critic artifact qa/critics/{filename} must have critic_mode: subagent; single-agent fallback is not valid for campaign delivery."
             )
+        if not has_valid_subagent_ids(subagent_ids):
+            failures.append(
+                f"Critic artifact qa/critics/{filename} must include subagent_ids with spawned critic agent id(s) matching the Codex subagent id format."
+            )
+        else:
+            failures.extend(validate_subagent_provenance(campaign_dir, filename, subagent_ids, subagent_artifacts))
+    return failures
+
+
+def validate_clip_critic_artifacts(campaign_dir: Path, manifest_text: str) -> list[str]:
+    failures: list[str] = []
+    expected_clip_critics = count_generated_video_sources(manifest_text)
+    critics = sorted((campaign_dir / "qa" / "critics").glob("clip-critic-*.md"))
+    if expected_clip_critics and len(critics) < expected_clip_critics:
+        failures.append(
+            f"Expected at least {expected_clip_critics} clip critic artifact(s), found {len(critics)} under qa/critics/clip-critic-*.md."
+        )
+
+    for path in critics:
+        status, mode, subagent_ids, subagent_artifacts = parse_critic_status(read_text(path))
+        if status != "pass":
+            failures.append(
+                f"Clip critic artifact qa/critics/{path.name} has status {status or 'missing'}; delivery requires status: pass."
+            )
+        if mode != "subagent":
+            failures.append(
+                f"Clip critic artifact qa/critics/{path.name} must have critic_mode: subagent."
+            )
+        if not has_valid_subagent_ids(subagent_ids):
+            failures.append(
+                f"Clip critic artifact qa/critics/{path.name} must include subagent_ids with spawned critic agent id(s) matching the Codex subagent id format."
+            )
+        else:
+            failures.extend(validate_subagent_provenance(campaign_dir, path.name, subagent_ids, subagent_artifacts))
     return failures
 
 
@@ -146,6 +238,7 @@ def main() -> int:
 
     qc_text = read_text(campaign_dir / "qc-notes.md")
     manifest_text = read_text(campaign_dir / "shot-source-manifest.md")
+    failures.extend(validate_clip_critic_artifacts(campaign_dir, manifest_text))
     combined_notes = f"{qc_text}\n{manifest_text}".lower()
     for term in BAD_STATUS_TERMS:
         if term in combined_notes:

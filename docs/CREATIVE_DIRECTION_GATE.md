@@ -2,7 +2,7 @@
 
 Use this before the director's treatment. This gate exists because a workflow can be technically correct, diverse, and still boring.
 
-When subagents are available, run the ideation swarm from `docs/ADVERSARIAL_SWARM_PROTOCOL.md` before this gate. Use the swarm to produce divergent ideas, not to validate a default.
+Run the ideation swarm from `docs/ADVERSARIAL_SWARM_PROTOCOL.md` before this gate. Use the swarm to produce divergent ideas, not to validate a default. If subagents cannot be spawned, return `blocked: subagents unavailable` before canvas work or paid generation.
 
 ## Core Rule
 

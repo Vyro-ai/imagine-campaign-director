@@ -24,7 +24,7 @@ Then paste once into the focused Imagine.Art workflow canvas and verify the rend
 ## Default Operator Flow
 
 1. Run the required swarm gates from `docs/ADVERSARIAL_SWARM_PROTOCOL.md`.
-2. Confirm the active workspace contains `qa/critics/ideation-swarm.md`, `qa/critics/treatment-critic.md`, and `qa/critics/pre-spend-critic.md` with `status: pass`.
+2. Confirm the active workspace contains `qa/critics/ideation-swarm.md`, `qa/critics/treatment-critic.md`, and `qa/critics/pre-spend-critic.md` with `status: pass`, `critic_mode: subagent`, Codex-shaped `subagent_ids`, and matching `subagent_artifacts` provenance files.
 3. Write a canonical workflow spec in the active workspace.
 4. Lay out nodes in readable stage columns and shot rows in the spec.
 5. Materialize the spec with `scripts/imagineart_workflow_clipboard.mjs`.
@@ -106,7 +106,7 @@ Default run budget is one run per node. Multi-run exploration is allowed only fo
 
 The helper rejects canonical specs when:
 
-- campaign-video workflows are missing passing swarm artifacts under `qa/critics/`
+- campaign-video workflows are missing passing subagent swarm artifacts under `qa/critics/`
 - a generation prompt uses ambiguous continuity shorthand such as `same model`, `same person`, `same character`, or `same product`
 - a multi-node human/model workflow has no locked identity source
 - a dependent human/model still or video is not wired to the locked identity source

@@ -13,11 +13,11 @@ The swarm has two modes:
 
 The main operator synthesizes ideas and owns execution. Critics return blocking reports. The main operator must apply or resolve those reports before moving to the next spend or delivery stage.
 
-If subagents are not available, run the same critic checklists locally and write the same reports with `critic_mode: single-agent fallback`.
+For campaign workflow materialization and delivery, `critic_mode: subagent` is required. If subagents are not available, stop before canvas work or delivery and report `blocked: subagents unavailable`; do not create `single-agent fallback` reports and continue spending credits.
 
 ## Required Ideation Swarm
 
-Run this before `docs/CREATIVE_DIRECTION_GATE.md` when subagents are available, especially for sparse or taste-led briefs.
+Run this before `docs/CREATIVE_DIRECTION_GATE.md`, especially for sparse or taste-led briefs. If subagents cannot be spawned, return `blocked: subagents unavailable` before canvas work or paid generation.
 
 ### Ideation Roles
 
@@ -46,7 +46,9 @@ Use this format:
 ```md
 status: pass | revise | block
 gate: ideation
-critic_mode: subagent | single-agent fallback
+critic_mode: subagent
+subagent_ids:
+subagent_artifacts:
 premises_considered:
 premises_rejected:
 selected_premise:
@@ -123,7 +125,9 @@ Each critic report must use this header:
 status: pass | revise | block
 gate: treatment | pre_spend | directors_eye | motion_launch | clip | delivery
 critic_role:
-critic_mode: subagent | single-agent fallback
+critic_mode: subagent
+subagent_ids:
+subagent_artifacts:
 blocking_items:
 required_operator_actions:
 shot_or_node_notes:
@@ -131,6 +135,20 @@ status_label_allowed:
 ```
 
 Reports should be short, concrete, and actionable. A critic that writes only taste prose has failed its job.
+
+`single-agent fallback` is not valid for campaign materialization or delivery. It may only be used in non-campaign planning notes where no workflow will be pasted, no paid generation will be launched, and no deliverable will be marked ready.
+
+Each listed subagent id must have a matching provenance note under `qa/critics/subagents/<subagent-id>.md` with:
+
+```md
+agent_id: <subagent-id>
+status: completed
+critic_role:
+source_report:
+summary:
+```
+
+The report's `subagent_artifacts` line must list those provenance paths. A bare `subagent_ids` line is not enough for campaign workflow materialization or delivery audit.
 
 ## Storage
 

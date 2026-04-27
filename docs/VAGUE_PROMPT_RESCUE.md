@@ -32,7 +32,7 @@ Do not automatically choose:
 
 Those can be selected only if the creative-direction pass chooses them for a reason.
 
-Before generation, run the ideation swarm in `docs/ADVERSARIAL_SWARM_PROTOCOL.md` when subagents are available, then apply `docs/CREATIVE_DIRECTION_GATE.md` and produce distinct campaign premises. Each premise should make different choices for:
+Before generation, run the ideation swarm in `docs/ADVERSARIAL_SWARM_PROTOCOL.md`, then apply `docs/CREATIVE_DIRECTION_GATE.md` and produce distinct campaign premises. If subagents cannot be spawned, return `blocked: subagents unavailable` before canvas work or paid generation. Each premise should make different choices for:
 
 - subject or product role
 - world/location
