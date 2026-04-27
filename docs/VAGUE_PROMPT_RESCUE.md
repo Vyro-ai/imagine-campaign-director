@@ -1,106 +1,90 @@
 # Vague Prompt Rescue
 
-Use this when the user gives broad taste language without enough production direction, especially phrases like `generic luxury fashion campaign`, `modern brand`, `mystique`, `elegance`, `Gen Z`, `cinematic`, `premium`, or `no text`.
+Use this when the user gives broad taste language without enough production direction, especially phrases like `luxury fashion campaign`, `modern brand`, `mystique`, `elegance`, `Gen Z`, `cinematic`, `premium`, or `no text`.
 
-The goal is to convert vague taste words into specific campaign decisions before generating. Do not merely add more adjectives.
+The goal is not to default into a canned film. The goal is to invent a specific campaign from sparse direction while keeping the practical production constraints clear.
 
-## Default Luxury Fashion Expansion
+## What Can Default
 
-When the user asks for a generic luxury or modern fashion campaign and supplies no assets, use this default unless the prompt contradicts it:
+When the user gives a sparse campaign brief and supplies no assets, default only the production frame:
 
-- platform: vertical social, `9:16`
-- runtime: `30s`
-- text: none unless the user asks for brand/product/CTA
-- audio: no vocals, sparse modern electronic pulse
-- campaign grammar: `modern night fashion film`
-- audience: Gen Z fashion/lifestyle viewer
-- visual world: rain-wet concrete, glass, chrome, and warm practical light at night
-- subject: one adult model in sharply tailored black outerwear
-- styling: clean silhouette, minimal accessories, controlled hair and makeup, no visible logos
-- camera: low-angle silhouette, slow lateral track, restrained push, detail insert, locked final hold
-- motion: one simple walk, turn, fabric movement, reflection sweep, or light pass per shot
-- color: cool shadows, warm highlights, restrained contrast, no neon overload
-- final memory image: model held in silhouette or three-quarter portrait with negative space, fabric and city reflections carrying the frame
+- runtime: `30s` unless the user asks for a cutdown
+- format: social-first vertical `9:16` unless another platform is specified
+- text: none when the user says no text/logos/captions
+- audio: original instrumental music unless the user requests silence, voiceover, or vocals
+- workflow: Imagine.Art workflow, image-grounded stills/references, Seedance 2 motion, Music Studio audio
+- safety: adult subjects only, no fake logos/signage/watermarks
+- continuity: lock any recurring person, product, garment, or setting before dependent shots
 
-Avoid:
+Everything else is a creative decision, not a default.
 
-- fake brand logos or generated text
-- runway montage energy unless requested
-- static portrait loops
-- repeated centered slow push-ins
-- overstuffed luxury props
-- complex hand gestures
-- two-foot walking closeups
-- crowds unless supplied as a deliberate reference
+## What Must Be Invented
+
+Do not automatically choose:
+
+- black tailored outerwear
+- rain-wet concrete
+- glass/chrome architecture
+- night setting
+- one model
+- slow push-ins
+- generic silhouette/portrait/macro/final-hold coverage
+
+Those can be selected only if the creative-direction pass chooses them for a reason.
+
+Before generation, apply `docs/CREATIVE_DIRECTION_GATE.md` and produce three distinct campaign premises. Each premise should make different choices for:
+
+- subject or product role
+- world/location
+- status change
+- physical event
+- camera grammar
+- styling/product authority
+- final memory image
+
+Then apply `docs/PRE_SPEND_CONFIDENCE_GATE.md`. Do not spend credits until the selected idea clears the scorecard.
 
 ## Required Expansion Output
 
 Before generating, write the expanded brief into the active workspace:
 
-- assumptions
-- chosen campaign grammar
+- production assumptions
+- three creative premises
+- selected creative spine and rejected-premise notes
+- campaign grammar chosen from the idea, not from a canned default
 - visual world
-- model/styling continuity
+- model/product/styling continuity
 - shot ladder
 - stillframe anchor list
 - motion prompt intent
 - music direction
+- pre-spend confidence score
+- run budget
 - QC rejects
 
-If Computer Use/browser automation is available, continue into Imagine.Art execution after writing the expansion. Do not stop at the expansion unless execution is blocked.
+If Computer Use/browser automation is available, continue into Imagine.Art execution after writing the expansion and critic reports. Do not stop at the expansion unless execution is blocked.
 
-## Default Shot Ladder
+## Example Premise Families
 
-For a 30-second generic luxury fashion prompt:
+For a sparse luxury fashion request, possible directions include:
 
-1. `0.0-2.0s` silhouette hook: low-angle model crossing wet concrete, warm light edge on coat
-2. `2.0-5.0s` nighttime world reveal: lateral track through glass/chrome walkway, reflections moving
-3. `5.0-8.0s` styling portrait: composed three-quarter posture, sharp coat silhouette, no logo
-4. `8.0-11.0s` material detail: black fabric, sleeve, collar, rain bead, or chrome reflection
-5. `11.0-15.0s` movement beat: model turns once or takes one controlled step as fabric moves
-6. `15.0-18.5s` environmental breath: empty architecture, light sweep, wet surface, or reflection
-7. `18.5-22.0s` attitude close/medium: face, shoulder, or silhouette with controlled expression
-8. `22.0-26.0s` final approach or reveal: model enters stronger composition, camera settles
-9. `26.0-30.0s` final hold: composed three-quarter portrait or back-view silhouette with clean negative space
+- a model moving through a sealed private building that gradually opens around them
+- a garment revealed through wind, fabric, and streetlight rather than face-forward posing
+- an underground transit, hotel, gallery, rooftop, atelier, or backstage world
+- a daytime hard-sun architectural campaign instead of another night-glass film
+- a tactile material ritual built around gloves, coat closure, collar, bag, shoe, or jewelry
+- a social-status shift: ignored figure becomes the center of gravity, door opens, room turns, light finds them
 
-Each motion shot or Seedance 2 multi-shot node needs an approved ImagineArt 2.0 original still anchor, GPT Image 2 reference-driven still anchor, or storyboard/reference panel before video generation. Group related beats into the longest useful Seedance 2 node duration available in the live UI, including 15s when that improves continuity, mood, or editorial progression.
-
-## Default Still Anchors
-
-Generate 2-4 variants for:
-
-- silhouette opener
-- glass/chrome city walkway
-- styling portrait
-- fabric/material detail
-- model turn or posture frame
-- environmental breath
-- attitude close/medium
-- final approach
-- final hero hold
-
-Use `ImagineArt 2.0` for original exploration stills. If the shots need a consistent model/style/product across frames, first generate or select an identity/style/product reference, then use `GPT Image 2` reference-driven image nodes connected to that reference for dependent still anchors. Use explicit `@Image1`, `@Image2`, etc. language. Use Nano Banana models only when the specific asset role or live model availability justifies it.
-
-## Default Music
-
-Use an instrumental 30-second bed:
-
-- sparse modern electronic pulse with enough progression for a 30-second edit
-- 82-96 BPM
-- low sub bass
-- soft metallic percussion
-- airy pad or glass tone
-- major accents around `2s`, `8s`, `15s`, `22s`, and `26s`, with a clean final 4-second hold
-- no vocals, no lyrics, no EDM drop, no runway-house cliche
+These are examples, not defaults.
 
 ## QC Gate
 
 The result is not finished if:
 
-- it looks like generic AI luxury rather than a directed fashion film
-- the model identity, wardrobe, or silhouette drifts between shots
-- walking, hands, face, or fabric breaks in hero frames
-- shots repeat the same slow push-in shape
-- first second is a static portrait with no hook
+- it feels like the agent defaulted to a known archetype instead of inventing a campaign
+- it looks like generic AI luxury rather than a directed film
+- shots repeat the same pose, crop, background, or slow push-in shape
+- the first second is a static portrait with no hook event
+- the contact sheet fails `docs/DIRECTORS_EYE_GATE.md`
 - accidental text, logos, signage, or watermarks appear
 - the final hold is not memorable

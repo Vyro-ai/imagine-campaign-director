@@ -51,18 +51,15 @@ Before shot-listing a vague campaign, apply `docs/CREATIVE_DIRECTION_GATE.md`: c
 
 If the user input is mostly broad taste language, such as `generic luxury fashion campaign`, `modern brand`, `mystique`, `elegance`, `Gen Z`, `premium`, or `cinematic`, apply `docs/VAGUE_PROMPT_RESCUE.md` before workflow planning.
 
-For a generic luxury fashion request with no assets, default to:
+For a generic luxury/fashion request with no assets, default only the production frame:
 
 - `9:16`, `30s`, no text unless requested
-- campaign grammar: `modern night fashion film`
-- one adult model in sharply tailored black outerwear
-- rain-wet concrete/glass/chrome night environment
-- cool shadows, warm practical light, restrained contrast
-- 8-12 shot ladder with silhouette hook, world reveal, styling portrait, material detail, controlled movement, environmental breath, attitude close/medium, final approach, and final hero hold
+- original instrumental music unless the user requests silence, vocals, or voiceover
 - ImagineArt 2.0 original still anchors, or GPT Image 2 reference-driven still anchors when character/style/product continuity is required
 - image-grounded Seedance/video only
-- sparse instrumental modern electronic music
 - QC rejects for fake text/logos, static portrait loops, repeated slow push-ins, broken walking/hands/faces, and generic AI luxury
+
+Do not default the creative world, wardrobe, location, time of day, pose language, or shot ladder. Use `docs/CREATIVE_DIRECTION_GATE.md` to invent three premises and choose one.
 
 Document these as assumptions, then continue into Imagine.Art execution when automation is available.
 

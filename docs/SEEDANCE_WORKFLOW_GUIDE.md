@@ -157,19 +157,19 @@ This is bad because it uses vague continuity language instead of explicit refere
 
 ## Better Prompt Pattern
 
-`Subject: full-body editorial portrait of a model in a black technical coat on a wet rooftop. 0-2s hard flash reveal. 2-5s slow push as wind lifts the coat hem. 5-8s macro cut to reflective piping catching light. 8-10s locked back-view silhouette with clean sky for end-card typography.`
+`Subject: editorial campaign built from the selected creative spine. 0-2s concrete hook event from the director's treatment. 2-5s camera discovers the campaign world through the approved environment reference. 5-8s tactile proof or performance beat from the approved material/product/wardrobe reference. 8-10s final memory image with the planned status change visible.`
 
 ## Better Multi-Shot Campaign Pattern
 
 ```text
-Subject: modern luxury fashion campaign. @Image1 controls identity and wardrobe. @Image2 controls the rain-wet concrete/glass/chrome night environment. @Image3 controls camera choreography from the director's-notes board.
+Subject: campaign film from the selected creative spine. @Image1 controls identity/product/wardrobe truth. @Image2 controls the chosen campaign world and production design. @Image3 controls camera choreography from the director's-notes board.
 
-0-3s: low-angle silhouette hook. The model crosses a narrow strip of warm light, coat hem moving in light wind, wet concrete reflecting the figure.
-3-5s: cut to lateral tracking world reveal through glass and chrome architecture, reflections sliding across the frame, model seen three-quarter from behind.
-5-8s: close material accent on black wool sleeve, collar, rain beads, and chrome reflection; the model turns one shoulder, no hand gesture.
-8-10s: locked final three-quarter hero hold with clean negative space, composed posture, warm rim light on cheek and coat edge.
+0-3s: concrete hook event from the treatment; the subject/product crosses a threshold, reveals a status change, or triggers the campaign's signature physical event.
+3-5s: camera discovers the specific world; use foreground, architecture, surface, weather, or set movement from @Image2 to motivate the cut.
+5-8s: tactile proof or performance beat; show material, product truth, gesture, posture shift, or environmental interaction without risky hand complexity.
+8-10s: locked final memory hold; preserve the final composition and visible status change planned in the treatment.
 
-Camera: controlled low-angle opening, smooth lateral track, brief macro insert, locked final hold. No fast orbit, no runway montage.
+Camera: use the camera phase order from @Image3. No generic slow push, fast orbit, or montage unless the treatment specifically justifies it.
 Continuity: preserve the identity/wardrobe from @Image1, the environment and lighting from @Image2, and the camera phase order from @Image3. No visible logos or text.
-Constraints: elegant modern fashion film, natural walk with hidden feet, clean face and hands, no fake signage, no generated typography, no crowd, no chaotic fabric.
+Constraints: preserve the selected creative spine, clean face/product geometry, no fake signage, no generated typography, no unplanned crowd, no chaotic fabric or reflections.
 ```

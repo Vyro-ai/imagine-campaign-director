@@ -10,7 +10,7 @@ Best for fashion, beauty, and lifestyle. Structure: iconic opener, world build, 
 
 ## Modern Night Fashion Film
 
-Best default for vague luxury fashion prompts aimed at Gen Z when no brand assets are supplied. Structure: silhouette hook, nighttime world reveal, material/detail accent, controlled model movement, final elegant hold. Use one model, restrained styling, rain-wet concrete/glass/chrome, cool shadows, warm practical light, no logos, and no text unless requested.
+One possible editorial direction for luxury fashion when the creative spine calls for nocturnal architecture, reflected light, and controlled restraint. It is not the default for vague prompts. Use it only after `docs/CREATIVE_DIRECTION_GATE.md` selects this world over other premises.
 
 ## Fragrance Nocturne
 
