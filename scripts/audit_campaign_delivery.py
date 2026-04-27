@@ -23,6 +23,15 @@ BAD_STATUS_TERMS = (
     "could not export",
 )
 
+REQUIRED_CRITIC_ARTIFACTS = (
+    "ideation-swarm.md",
+    "treatment-critic.md",
+    "pre-spend-critic.md",
+    "directors-eye-critic.md",
+    "motion-launch-critic.md",
+    "delivery-critic.md",
+)
+
 
 def read_text(path: Path) -> str:
     if not path.exists():
@@ -80,6 +89,35 @@ def find_export(campaign_dir: Path, explicit: str | None) -> Path | None:
     return exports[0] if exports else None
 
 
+def parse_critic_status(text: str) -> tuple[str | None, str | None]:
+    status_match = re.search(r"^\s*status:\s*(pass|revise|block)\s*$", text, re.IGNORECASE | re.MULTILINE)
+    mode_match = re.search(r"^\s*critic_mode:\s*(.+)\s*$", text, re.IGNORECASE | re.MULTILINE)
+    status = status_match.group(1).lower() if status_match else None
+    mode = mode_match.group(1).strip() if mode_match else None
+    return status, mode
+
+
+def validate_critic_artifacts(campaign_dir: Path) -> list[str]:
+    failures: list[str] = []
+    critics_dir = campaign_dir / "qa" / "critics"
+    for filename in REQUIRED_CRITIC_ARTIFACTS:
+        path = critics_dir / filename
+        if not path.exists():
+            failures.append(f"Missing required critic artifact: qa/critics/{filename}.")
+            continue
+
+        status, mode = parse_critic_status(read_text(path))
+        if status != "pass":
+            failures.append(
+                f"Critic artifact qa/critics/{filename} has status {status or 'missing'}; delivery requires status: pass."
+            )
+        if not mode:
+            failures.append(
+                f"Critic artifact qa/critics/{filename} is missing critic_mode."
+            )
+    return failures
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("campaign_dir", type=Path)
@@ -90,6 +128,8 @@ def main() -> int:
     campaign_dir = args.campaign_dir.resolve()
     failures: list[str] = []
     warnings: list[str] = []
+
+    failures.extend(validate_critic_artifacts(campaign_dir))
 
     export_path = find_export(campaign_dir, args.export)
     export_duration = 0.0

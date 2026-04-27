@@ -1166,6 +1166,97 @@ function validateCanonicalPromptReferences(source) {
   });
 }
 
+function isCampaignWorkflow(source, options = {}) {
+  const policy = source.swarmPolicy ?? source.metadata?.swarmPolicy ?? {};
+  if (policy.required === false || policy.mode === "not-required") {
+    if (!policy.reason) {
+      throw new Error('swarmPolicy disables campaign swarm validation but no reason was provided.');
+    }
+    return false;
+  }
+
+  if (source.campaignVideo === true || source.workflowKind === "campaign" || source.metadata?.workflowKind === "campaign") {
+    return true;
+  }
+
+  if (typeof options.input === "string" && /(?:^|[/\\])campaigns[/\\]/.test(options.input)) {
+    return true;
+  }
+
+  const hasVideo = (source.nodes ?? []).some((nodeSpec) => nodeSpec?.type === "video");
+  const prompts = (source.nodes ?? [])
+    .map((nodeSpec) => nodeSpec?.settings?.prompt ?? "")
+    .filter((prompt) => typeof prompt === "string")
+    .join("\n");
+  const campaignLanguage =
+    /\b(?:campaign|commercial|fashion film|social ad|reels|tiktok|seedance|music studio)\b/i.test(prompts) ||
+    Boolean(source.musicDirection || source.directorsTreatment || source.metadata?.directorsTreatment);
+
+  return hasVideo && campaignLanguage;
+}
+
+function resolveCampaignDir(source, options = {}) {
+  const explicit = source.campaignDir ?? source.workspaceDir ?? source.metadata?.campaignDir ?? source.metadata?.workspaceDir;
+  if (explicit) {
+    return path.resolve(String(explicit));
+  }
+
+  if (typeof options.input === "string") {
+    return path.dirname(path.resolve(options.input));
+  }
+
+  return null;
+}
+
+function readCriticStatus(filePath) {
+  const text = fs.readFileSync(filePath, "utf8");
+  const statusMatch = text.match(/^\s*status:\s*(pass|revise|block)\s*$/im);
+  const modeMatch = text.match(/^\s*critic_mode:\s*(.+)\s*$/im);
+  return {
+    status: statusMatch?.[1]?.toLowerCase() ?? null,
+    mode: modeMatch?.[1]?.trim() ?? null,
+  };
+}
+
+function validateRequiredCriticArtifact(campaignDir, filename) {
+  const filePath = path.join(campaignDir, "qa", "critics", filename);
+  if (!fs.existsSync(filePath)) {
+    throw new Error(
+      `Campaign workflow is missing required swarm artifact qa/critics/${filename}. Run the adversarial swarm or write the documented single-agent fallback before materializing/pasting the workflow.`
+    );
+  }
+
+  const { status, mode } = readCriticStatus(filePath);
+  if (status !== "pass") {
+    throw new Error(
+      `Required swarm artifact qa/critics/${filename} has status "${status ?? "missing"}". Resolve critic blockers before materializing/pasting the workflow.`
+    );
+  }
+
+  if (!mode) {
+    throw new Error(
+      `Required swarm artifact qa/critics/${filename} is missing critic_mode. Use "critic_mode: subagent" or "critic_mode: single-agent fallback".`
+    );
+  }
+}
+
+function validateCanonicalSwarmArtifacts(source, options = {}) {
+  if (!isCampaignWorkflow(source, options)) {
+    return;
+  }
+
+  const campaignDir = resolveCampaignDir(source, options);
+  if (!campaignDir) {
+    throw new Error(
+      "Campaign workflow requires swarm artifacts, but no campaign directory could be resolved. Provide --input from the campaign folder or set top-level campaignDir/workspaceDir."
+    );
+  }
+
+  for (const filename of ["ideation-swarm.md", "treatment-critic.md", "pre-spend-critic.md"]) {
+    validateRequiredCriticArtifact(campaignDir, filename);
+  }
+}
+
 function resolveTemplate(source, nodeSpec) {
   const customTemplate = source.templates?.[nodeSpec.type];
   const template = customTemplate ?? BUILTIN_TEMPLATES[nodeSpec.type];
@@ -1217,6 +1308,7 @@ function materializeCanonicalWorkflow(source, options) {
 
   validateCanonicalPromptReferences(source);
   validateCanonicalContinuityPromptLanguage(source);
+  validateCanonicalSwarmArtifacts(source, options);
   validateCanonicalIdentityLockContracts(source);
   validateCanonicalRunBudget(source);
   validateCanonicalImageReferenceContracts(source);
@@ -1373,10 +1465,12 @@ function materializeCanonicalWorkflow(source, options) {
   };
 }
 
-function materializeRawWorkflow(source) {
+function materializeRawWorkflow(source, options = {}) {
   if (!Array.isArray(source.nodes) || !Array.isArray(source.edges)) {
     throw new Error("Raw mode expects top-level nodes and edges arrays.");
   }
+
+  validateCanonicalSwarmArtifacts(source, options);
 
   return cloneJson({
     nodes: source.nodes,
@@ -1403,7 +1497,11 @@ function main() {
   const source = JSON.parse(readInput(args.input));
   const mode = args.mode ?? detectMode(source);
   const output =
-    mode === "raw" ? materializeRawWorkflow(source) : mode === "canonical" ? materializeCanonicalWorkflow(source, args) : null;
+    mode === "raw"
+      ? materializeRawWorkflow(source, args)
+      : mode === "canonical"
+        ? materializeCanonicalWorkflow(source, args)
+        : null;
 
   if (!output) {
     throw new Error(`Unsupported mode: ${mode}`);

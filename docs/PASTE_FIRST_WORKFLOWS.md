@@ -23,13 +23,15 @@ Then paste once into the focused Imagine.Art workflow canvas and verify the rend
 
 ## Default Operator Flow
 
-1. Write a canonical workflow spec in the active workspace.
-2. Lay out nodes in readable stage columns and shot rows in the spec.
-3. Materialize the spec with `scripts/imagineart_workflow_clipboard.mjs`.
-4. Clear the clipboard, copy the materialized JSON as plain text, and paste once.
-5. Recenter/zoom until the pasted block is readable.
-6. Verify visible sections, node labels, model labels, ratios, and structural wires.
-7. Deselect the pasted block and select only the intended batch before running.
+1. Run the required swarm gates from `docs/ADVERSARIAL_SWARM_PROTOCOL.md`.
+2. Confirm the active workspace contains `qa/critics/ideation-swarm.md`, `qa/critics/treatment-critic.md`, and `qa/critics/pre-spend-critic.md` with `status: pass`.
+3. Write a canonical workflow spec in the active workspace.
+4. Lay out nodes in readable stage columns and shot rows in the spec.
+5. Materialize the spec with `scripts/imagineart_workflow_clipboard.mjs`.
+6. Clear the clipboard, copy the materialized JSON as plain text, and paste once.
+7. Recenter/zoom until the pasted block is readable.
+8. Verify visible sections, node labels, model labels, ratios, and structural wires.
+9. Deselect the pasted block and select only the intended batch before running.
 
 Do not hand-create a large campaign workflow node by node when a paste-first graph can be generated locally.
 
@@ -104,6 +106,7 @@ Default run budget is one run per node. Multi-run exploration is allowed only fo
 
 The helper rejects canonical specs when:
 
+- campaign-video workflows are missing passing swarm artifacts under `qa/critics/`
 - a generation prompt uses ambiguous continuity shorthand such as `same model`, `same person`, `same character`, or `same product`
 - a multi-node human/model workflow has no locked identity source
 - a dependent human/model still or video is not wired to the locked identity source
