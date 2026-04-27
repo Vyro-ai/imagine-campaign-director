@@ -6,6 +6,9 @@
       "name": "Director's Treatment",
       "required_before": "workflow canvas work",
       "checks": [
+        "creative direction gate completed",
+        "selected creative spine documented",
+        "rejected premise notes documented",
         "campaign thesis defined",
         "visual world and production design system defined",
         "model/styling continuity defined",

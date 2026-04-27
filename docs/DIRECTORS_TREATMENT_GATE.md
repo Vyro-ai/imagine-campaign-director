@@ -4,11 +4,14 @@ Use this before touching the Imagine.Art workflow canvas. The campaign should be
 
 The canvas is not the place to discover the concept. It is the place to execute a nearly deterministic edit plan.
 
+Before this gate, apply `docs/CREATIVE_DIRECTION_GATE.md`. The treatment must execute a selected creative spine, not generic luxury taste language.
+
 ## Hard Gate
 
 Do not create, paste, or launch workflow nodes until the active workspace contains a director's treatment with:
 
 - campaign thesis
+- selected creative spine and rejected-premise notes
 - audience and platform
 - dominant campaign grammar
 - visual world

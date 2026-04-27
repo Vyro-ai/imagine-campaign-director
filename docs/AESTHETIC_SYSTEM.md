@@ -2,6 +2,8 @@
 
 Premium AI campaign work is usually not expensive because it has more detail. It feels expensive because it has hierarchy, restraint, control, and a point of view.
 
+Before shot-listing, apply `docs/CREATIVE_DIRECTION_GATE.md`. A point of view means the campaign has a selected premise, tension, event, and final memory, not just an aesthetic category.
+
 ## Core Rules
 
 - Use one dominant visual idea per shot.

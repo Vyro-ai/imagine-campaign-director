@@ -74,7 +74,7 @@ If Computer Use/browser execution is unavailable after an explicit check, return
 2. Normalize the user's input into a campaign brief.
 3. If the input is vague or mostly taste language, apply `docs/VAGUE_PROMPT_RESCUE.md`.
 4. Choose a campaign grammar from `docs/AESTHETIC_SYSTEM.md`.
-5. Write a director's treatment using `docs/DIRECTORS_TREATMENT_GATE.md`; do not touch the workflow canvas until the film, edit, shots, directional diversity table, music spine, and Seedance 2 node plan are justified.
+5. Apply `docs/CREATIVE_DIRECTION_GATE.md`, then write a director's treatment using `docs/DIRECTORS_TREATMENT_GATE.md`; do not touch the workflow canvas until the selected creative spine, film, edit, shots, directional diversity table, music spine, and Seedance 2 node plan are justified.
 6. Define reference parity: closest references/archetype, hook behavior, subject/world behavior, camera behavior, editorial progression, product reveal, and final memory image.
 7. Build a comprehensive workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
 8. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, `docs/WORKFLOW_EXECUTION_GUIDE.md`, `docs/DIRECTIONAL_DIVERSITY_GATE.md`, and `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`.

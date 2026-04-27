@@ -45,6 +45,8 @@ If the user wants speed or does not answer, make conservative assumptions and la
 
 If runtime is missing, default to a `30s` campaign video.
 
+Before shot-listing a vague campaign, apply `docs/CREATIVE_DIRECTION_GATE.md`: create three distinct premises, choose one creative spine, and document why it is stronger than the rejected options.
+
 ## Vague Prompt Rescue
 
 If the user input is mostly broad taste language, such as `generic luxury fashion campaign`, `modern brand`, `mystique`, `elegance`, `Gen Z`, `premium`, or `cinematic`, apply `docs/VAGUE_PROMPT_RESCUE.md` before workflow planning.
@@ -73,6 +75,7 @@ Return:
 - open questions or answered clarifications
 - input asset role table
 - recommended campaign grammar
+- selected creative spine and rejected premise notes
 - shot-list requirements
 - model/actress continuity requirements
 - required Imagine.Art workflow sections

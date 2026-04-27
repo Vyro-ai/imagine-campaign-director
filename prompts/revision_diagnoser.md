@@ -18,6 +18,8 @@ Return feedback summary, root cause, revision type, specific changes, updated pr
 
 If the failure is reference parity, do not suggest polish-only fixes. Rewrite the shot ladder and generation plan so the next pass adds missing campaign behavior: world, subject/casting, wardrobe/posture, location specificity, physical action, camera discovery, editorial escalation, or earned product reveal.
 
+If the failure is creative blandness, apply `docs/CREATIVE_DIRECTION_GATE.md` again instead of only tweaking prompts. Return three new premises, choose one stronger creative spine, name the controlled risk, and rewrite the first 10 seconds and final memory image before touching workflow nodes.
+
 ## Regeneration Discipline
 
 Do not regenerate everything by default. Decide whether to:
