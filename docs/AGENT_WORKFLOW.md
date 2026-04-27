@@ -11,7 +11,7 @@ This file is a routing guide. The delivery standard is `docs/PRODUCTION_STANDARD
 5. Build the workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
 6. Apply the production standard from `docs/PRODUCTION_STANDARD.md`.
 7. Create or update the active context workspace and local deliverables.
-8. Generate NB2/NBP stillframe anchors before motion unless a documented exception applies.
+8. Generate ImagineArt 2.0 original stillframe anchors or GPT Image 2 reference-driven anchors before motion unless a documented exception applies.
 9. Execute with `docs/WORKFLOW_EXECUTION_GUIDE.md` and `prompts/imagineart_browser_operator.md` when browser access exists.
 10. Use `docs/SEEDANCE_WORKFLOW_GUIDE.md` for image-grounded motion.
 11. Use `docs/IMAGINEART_MUSIC_STUDIO.md` and `prompts/music_studio_prompt_builder.md` for music.

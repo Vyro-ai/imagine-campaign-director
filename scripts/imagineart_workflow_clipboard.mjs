@@ -200,6 +200,8 @@ const PLURAL_REFERENCE_PATTERN =
 const STORYBOARD_REFERENCE_PATTERN = /\b(?:director['’]s-notes|storyboard|motion\s+board|camera-movement\s+board)\b/i;
 const TIME_RANGE_PATTERN = /\b(\d+(?:\.\d+)?)\s*(?:-|–|—|to)\s*(\d+(?:\.\d+)?)\s*s\b/gi;
 const IMAGE_TOKEN_PATTERN = /@\s*Image\s*(\d+)/gi;
+const CONTINUITY_SHORTHAND_PATTERN =
+  /\b(?:same|matching|consistent)\s+(?:adult\s+)?(?:character|person|model|woman|man|subject|identity|face|hair|wardrobe|outfit|garment|coat|product|style|look)\b/i;
 
 function parseArgs(argv) {
   const args = {
@@ -697,6 +699,26 @@ function validateCanonicalVideoTiming(source) {
   });
 }
 
+function validateCanonicalContinuityPromptLanguage(source) {
+  source.nodes.forEach((nodeSpec, index) => {
+    const logicalId = nodeSpec.id ?? `node-${index + 1}`;
+    const prompt = nodeSpec.settings?.prompt;
+
+    if (typeof prompt !== "string" || prompt.trim() === "") {
+      return;
+    }
+
+    const match = prompt.match(CONTINUITY_SHORTHAND_PATTERN);
+    if (!match) {
+      return;
+    }
+
+    throw new Error(
+      `Node "${nodeSpec.name ?? logicalId}" uses ambiguous continuity shorthand "${match[0]}". Use explicit @Image references instead, such as "@Image1 controls identity/wardrobe", and wire the matching referenceUrl edge(s).`
+    );
+  });
+}
+
 function validateCanonicalVideoReferenceContracts(source) {
   const incomingByTarget = collectIncomingReferenceDetails(source);
 
@@ -744,6 +766,67 @@ function validateCanonicalVideoReferenceContracts(source) {
     if (!usesStartFrameMode && referenceImageCount === 0 && (startFrameCount > 0 || endFrameCount > 0)) {
       throw new Error(
         `Video node "${name}" has start/end frame edges but does not declare inputMode: "start-frame". Add the explicit inputMode so the pasted node exposes the intended Start Frame/End Frame handles.`
+      );
+    }
+  });
+}
+
+function validateCanonicalImageReferenceContracts(source) {
+  const incomingByTarget = collectIncomingReferenceDetails(source);
+
+  source.nodes.forEach((nodeSpec, index) => {
+    if (nodeSpec?.type !== "image") {
+      return;
+    }
+
+    const logicalId = nodeSpec.id ?? `node-${index + 1}`;
+    const name = nodeSpec.name ?? logicalId;
+    const prompt = nodeSpec.settings?.prompt ?? "";
+    const requiredImageTokens = maxImageTokenIndex(prompt);
+
+    if (requiredImageTokens === 0) {
+      return;
+    }
+
+    const incoming = incomingByTarget.get(logicalId);
+    const imageReferenceCount = incoming?.byKey.get("imageUrl") ?? 0;
+
+    if (imageReferenceCount < requiredImageTokens) {
+      throw new Error(
+        `Image node "${name}" references @Image${requiredImageTokens} but only has ${imageReferenceCount} incoming imageUrl reference edge(s). Add the missing imageUrl slots/edges or remove the @Image tokens.`
+      );
+    }
+  });
+}
+
+function validateCanonicalImageModelReferenceChoices(source) {
+  const incomingByTarget = collectIncomingReferenceDetails(source);
+
+  source.nodes.forEach((nodeSpec, index) => {
+    if (nodeSpec?.type !== "image") {
+      return;
+    }
+
+    const logicalId = nodeSpec.id ?? `node-${index + 1}`;
+    const name = nodeSpec.name ?? logicalId;
+    const incoming = incomingByTarget.get(logicalId);
+    const imageReferenceCount = incoming?.byKey.get("imageUrl") ?? 0;
+    const prompt = nodeSpec.settings?.prompt ?? "";
+    const usesImageToken = maxImageTokenIndex(prompt) > 0;
+    const modelHint = String(
+      nodeSpec.model ?? nodeSpec.modelName ?? nodeSpec.settings?.modelName ?? nodeSpec.settings?.model ?? ""
+    ).toLowerCase();
+    const modelId = String(nodeSpec.settings?.modelId ?? "");
+    const isReferenceDriven = imageReferenceCount > 0 || usesImageToken;
+    const appearsNanoBanana = /nano\s*banana|nb2|nbp/.test(modelHint);
+    const appearsImagineArt2 = /imagine\s*art\s*2|imagineart\s*2/.test(modelHint) || modelId === "40603";
+    const hasDocumentedException = Boolean(
+      nodeSpec.referenceModelException ?? nodeSpec.metadata?.referenceModelException ?? nodeSpec.settings?.referenceModelException
+    );
+
+    if (isReferenceDriven && !hasDocumentedException && (appearsImagineArt2 || appearsNanoBanana)) {
+      throw new Error(
+        `Image node "${name}" is reference-driven but appears to use ${modelHint || `modelId ${modelId}`}. Use GPT Image 2 for reference-driven style/product/character continuity images unless a documented exception is encoded in the node.`
       );
     }
   });
@@ -826,6 +909,9 @@ function materializeCanonicalWorkflow(source, options) {
   }
 
   validateCanonicalPromptReferences(source);
+  validateCanonicalContinuityPromptLanguage(source);
+  validateCanonicalImageReferenceContracts(source);
+  validateCanonicalImageModelReferenceChoices(source);
   validateCanonicalVideoTiming(source);
   validateCanonicalVideoReferenceContracts(source);
 

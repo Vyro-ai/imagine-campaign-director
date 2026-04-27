@@ -35,7 +35,7 @@ Use a stage-column layout:
 | --- | --- | --- |
 | 1 | `SOURCE / Inputs` | uploaded assets, assumptions |
 | 2 | `ANALYSIS / STRATEGY` | brief, asset roles, campaign grammar, risk, music direction |
-| 3 | `STILLS / Look Development` | NB2/NBP variants for each planned shot |
+| 3 | `STILLS / Look Development` | ImagineArt 2.0 originals or GPT Image 2 reference-driven variants for each planned shot |
 | 4 | `STILLS / Approved Anchors` | selected stills only |
 | 5 | `STORYBOARD / Motion References` | camera/movement panels and reference boards |
 | 6 | `MOTION / Shot Ladder` | Seedance/video nodes and selected outputs |
@@ -116,7 +116,9 @@ Generate multiple variants, then isolate approved anchors.
 
 Create the full stillframe batch for the shot ladder before launching the first still run. For a 10-second campaign, this usually means 4-5 still anchor roles. For 15-30 seconds, plan the full 8-12 shot ladder. Each still branch should name its shot number and visual job, not just the model name.
 
-Use `Nano Banana 2` first for fast original stillframe iteration, look development, graphic inserts, and plates. Use `Nano Banana Pro` for final hero stills, product-truth plates, premium fidelity, and stills that will feed motion. Use GPT Image 2 or another Imagine.Art image model only when references, storyboard panels, continuity control, model availability, or artifact risk make it better for the specific asset role. Document any exception. The visible UI model and ratio must be checked before launch.
+Use `ImagineArt 2.0` first for original stillframes, look development, graphic inserts, environment plates, and visual systems that do not need reference control. Use `GPT Image 2` when the still needs a connected style image, character/model reference, product photo, storyboard panel, continuity frame, or other reference. Use `Nano Banana 2` only when ImagineArt 2.0/GPT Image 2 are not the right fit for the specific asset role or live workflow availability. Use `Nano Banana Pro` only when premium final still fidelity, product truth, or another specific role justifies it. Document any exception. The visible UI model and ratio must be checked before launch.
+
+For character-led campaigns, generate or upload one approved identity/style reference before producing shot stills that should show that person. Every dependent stillframe node must connect that identity/style reference through its reference-image input and refer to it as `@Image1`, `@Image2`, etc. Text like `same adult model` is invalid.
 
 For product campaigns, keep generated stillframes free of final ad typography whenever possible. If the supplied product photo already contains label text, treat it as product truth, but do not ask image or video models to recreate final campaign copy. Add brand name, product name, captions, and CTA in deterministic edit/type layers.
 

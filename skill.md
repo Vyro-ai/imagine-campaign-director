@@ -79,7 +79,7 @@ If Computer Use/browser execution is unavailable after an explicit check, return
 7. Build a comprehensive workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
 8. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, and `docs/WORKFLOW_EXECUTION_GUIDE.md`.
 9. Import or explicitly account for every source asset before stillframe generation.
-10. Create NB2/NBP stillframe prompts with `prompts/imagineart_workflow_builder.md`.
+10. Create ImagineArt 2.0 original stillframe prompts or GPT Image 2 reference-driven stillframe prompts with `prompts/imagineart_workflow_builder.md`.
 11. Generate stillframe variants before motion and select approved anchors.
 12. Build storyboard/reference panels for motion, especially when using Seedance.
 13. Create music direction with `prompts/music_studio_prompt_builder.md` and generate the track in Imagine.Art Music Studio.
@@ -143,7 +143,8 @@ Follow the music standard in `docs/PRODUCTION_STANDARD.md` and the details in `d
 - If the user asks for a believable main actress/model, prioritize consistency across Seedance clips: identity description, wardrobe, hair, makeup, performance style, camera distance, and repeatable reference-frame strategy.
 - Make product, wardrobe, material, surface, light, and camera choices concrete.
 - Prefer stillframes/keyframes before motion when consistency matters.
-- Use `Nano Banana 2` or `Nano Banana Pro` inside Imagine.Art for stillframes, styleframes, first/last frames, background plates, graphic inserts, title cards, product hero frames, product closeout plates, and key art. Use NB2 for fast iteration and NBP for premium final anchors. Use GPT Image 2 or another Imagine.Art image model only when the asset role requires it, and document the exception.
+- Use `ImagineArt 2.0` inside Imagine.Art for original stillframes, styleframes, first/last frames, background plates, graphic inserts, title cards, product hero frames, product closeout plates, and key art when no reference control is required. Use `GPT Image 2` when style, product, character, storyboard, or continuity references are required. Use Nano Banana 2/Pro only when the specific asset role or live model availability justifies it, and document the exception.
+- If a stillframe should preserve identity, product, wardrobe, or style from another source, connect that source as an image reference and refer to it with explicit `@Image1`, `@Image2`, etc. language. Do not write `same model`, `same person`, or `same product` in generation prompts.
 - Feed approved panels into Seedance as start frames, end frames, or reference images with one clear job each.
 - Do not launch final campaign motion from prompt text alone. Generate or upload the needed image reference first, then connect it visibly to the motion node.
 - Before launching GPT Image 2 storyboard/reference/director's-notes nodes, confirm the visible UI model and use a validated ratio. Start with `1:1` for storyboard panels unless the live workflow has already proven another ratio works.

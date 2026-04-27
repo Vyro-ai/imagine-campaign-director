@@ -12,7 +12,7 @@ This file keeps the short lessons that should influence campaign judgment. The c
 - B-roll needs an editorial job.
 - Product closeouts should be designed intentionally and handled with deterministic type/layout when accuracy matters.
 - Reference parity is a creative requirement, not a polish pass.
-- NB2/NBP stillframes are the default taste-transfer layer before motion; save and document the approved still before animating from it.
+- ImagineArt 2.0 original stillframes and GPT Image 2 reference-driven stillframes are the default taste-transfer layer before motion; save and document the approved still before animating from it.
 - A text-only motion clip invalidates a final campaign source even if the clip looks useful. If only product/orchid/source-grounded clips survive QC, either label the result as limited or revise; do not smuggle ungrounded subject or gesture clips into the final.
 - Music Studio handoffs can append default wording or reset duration. Verify the in-app prompt and trim longer usable tracks intentionally in the edit.
 - HyperFrames nested-video renders may need regular-keyframe re-encodes. If a lint fix breaks nested timing, document the warning and rely on verified playback/export rather than forcing the lint workaround.

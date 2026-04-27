@@ -49,7 +49,7 @@ If you operate Imagine.Art, also produce:
 - Use workflows, not isolated one-off prompts.
 - Use source/input nodes for product photos, style images, mood boards, and clips.
 - Use analysis/prompt nodes to assign asset roles.
-- Generate all necessary reference images before motion. Default priority: NB2/NBP stillframe anchors; GPT Image 2 or another Imagine.Art image model only when refs, storyboard panels, director's-notes boards, continuity control, model availability, or artifact risk require it.
+- Generate all necessary reference images before motion. Default stillframe priority: ImagineArt 2.0 for original stills; GPT Image 2 for reference-driven/style/product/character continuity stills; Nano Banana 2 only when IA2/GPT Image 2 are not right for the role; Nano Banana Pro only when premium final still fidelity or product truth specifically requires it.
 - Use `docs/DIRECTORS_NOTES_STORYBOARDS.md` for complex Seedance 2 camera choreography; generate, review, and connect the GPT Image 2 board before launching motion.
 - Generate motion clips from approved anchors, start frames, end frames, product-truth images, or storyboard/reference panels. The live workflow must show the connection before launch.
 - If a believable actress/model is requested, create a continuity strategy covering identity, wardrobe, hair, makeup, performance style, camera distance, and repeatable reference frames.

@@ -152,11 +152,11 @@ For high-realism ads, Seedance 2 or the available Imagine.Art video model is the
 
 ## Stillframe Model Standard
 
-Generate stillframes, styleframes, first/last frames, background plates, graphic inserts, title cards, product hero frames, product closeout plates, and key art inside Imagine.Art with `Nano Banana 2` or `Nano Banana Pro` by default.
+Generate stillframes, styleframes, first/last frames, background plates, graphic inserts, title cards, product hero frames, product closeout plates, and key art inside Imagine.Art. Use `ImagineArt 2.0` by default when no reference control is required.
 
-Use `Nano Banana 2` for fast look development, exploratory variants, graphic inserts, and speed-sensitive preflight. Use `Nano Banana Pro` for final selects, premium hero stills, product-truth plates, and anything that will anchor final motion.
+Use `GPT Image 2` when style, product, character, storyboard, or continuity references are required. Use `Nano Banana 2` only when ImagineArt 2.0/GPT Image 2 are not right for the role or live workflow availability requires it. Use `Nano Banana Pro` only when premium final still fidelity or product-truth precision specifically justifies it.
 
-Do not substitute local image generation, generic one-off prompting, or another image model for these stillframe roles unless the model is unavailable or the asset has a specific documented requirement that NB2/NBP cannot meet. Save approved stills into the active workspace and document the model, purpose, prompt, ratio, and selected output before animating from them.
+Do not substitute local image generation or generic one-off prompting for these stillframe roles. Save approved stills into the active workspace and document the model, purpose, prompt, ratio, reference inputs, and selected output before animating from them.
 
 ## Music Standard
 

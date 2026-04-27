@@ -42,7 +42,7 @@ Do not treat a completed director's treatment, prompt pack, or workflow payload 
 6. Create a justified shot list, near-deterministic edit plan, beat map, transition logic, and Seedance 2 multi-shot node grouping.
 7. Create an Imagine.Art Workflow section map.
 8. Assign input assets to roles.
-9. Generate necessary NB2/NBP stillframe anchors, using GPT Image 2 or another Imagine.Art image model only when references, storyboard panels, continuity control, model availability, or artifact risk require it.
+9. Generate necessary stillframe anchors: ImagineArt 2.0 for original stills, GPT Image 2 for reference-driven/continuity stills, Nano Banana models only when specifically justified.
 10. Generate GPT Image 2 director's-notes boards for complex Seedance 2 choreography before motion prompting.
 11. Write Seedance 2 / video-generation prompts with continuity and negative prompts.
 12. Write an Imagine.Art Music Studio prompt or use supplied music.

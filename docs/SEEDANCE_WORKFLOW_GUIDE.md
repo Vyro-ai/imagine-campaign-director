@@ -33,7 +33,7 @@ If the user asks for a believable main actress/model, create a continuity strate
 - approved reference frames/start frames
 - per-shot continuity risks
 
-Use repeatable reference frames for the same character. Prefer medium/wide shots for action and closeups only when the reference frame is strong enough. Do not rely on text alone to preserve identity.
+Use repeatable reference frames for character continuity. Prefer medium/wide shots for action and closeups only when the reference frame is strong enough. Do not rely on text alone to preserve identity. When the UI exposes reference tags, write explicit roles such as `@Image1 controls identity and wardrobe`; do not write `same model`, `same person`, or `same character`.
 
 ## Start-Frame Mode
 
@@ -147,7 +147,9 @@ When a GPT Image 2 director's-notes board is connected, translate its panels int
 
 ## Bad Prompt Pattern
 
-`Use the connected hero still and keep the same person and same product while doing a cinematic luxury transition on the beat.`
+`Use the connected hero still and preserve continuity while doing a cinematic luxury transition on the beat.`
+
+This is bad because it uses vague continuity language instead of explicit reference roles.
 
 ## Better Prompt Pattern
 
@@ -156,7 +158,7 @@ When a GPT Image 2 director's-notes board is connected, translate its panels int
 ## Better Multi-Shot Campaign Pattern
 
 ```text
-Subject: modern luxury fashion campaign, one adult model in a sharply tailored black coat, rain-wet concrete and glass walkway at night, cool shadows with warm practical light, restrained modern night fashion film.
+Subject: modern luxury fashion campaign. @Image1 controls identity and wardrobe. @Image2 controls the rain-wet concrete/glass/chrome night environment. @Image3 controls camera choreography from the director's-notes board.
 
 0-3s: low-angle silhouette hook. The model crosses a narrow strip of warm light, coat hem moving in light wind, wet concrete reflecting the figure.
 3-5s: cut to lateral tracking world reveal through glass and chrome architecture, reflections sliding across the frame, model seen three-quarter from behind.
@@ -164,6 +166,6 @@ Subject: modern luxury fashion campaign, one adult model in a sharply tailored b
 8-10s: locked final three-quarter hero hold with clean negative space, composed posture, warm rim light on cheek and coat edge.
 
 Camera: controlled low-angle opening, smooth lateral track, brief macro insert, locked final hold. No fast orbit, no runway montage.
-Continuity: same black coat silhouette, same adult model, same wet city night world, no visible logos or text.
+Continuity: preserve the identity/wardrobe from @Image1, the environment and lighting from @Image2, and the camera phase order from @Image3. No visible logos or text.
 Constraints: elegant modern fashion film, natural walk with hidden feet, clean face and hands, no fake signage, no generated typography, no crowd, no chaotic fabric.
 ```

@@ -51,11 +51,11 @@ For a vague generic luxury fashion prompt with no assets, use the `modern_night_
 8. 22.0-26.0s final approach or reveal
 9. 26.0-30.0s final elegant hero hold
 
-Keep it text-free when requested. Require NB2/NBP still anchors for each motion source and reject repeated slow push-ins, static portraits, fake text/logos, broken walking, and generic AI luxury.
+Keep it text-free when requested. Require ImagineArt 2.0 original still anchors or GPT Image 2 reference-driven anchors for each motion source, and reject repeated slow push-ins, static portraits, fake text/logos, broken walking, and generic AI luxury.
 
 Before the workflow canvas is touched, the shot list must read like a near-deterministic edit: ordered timeline, cut points, transitions, final hold, music hits, and which shots are combined into each Seedance 2 multi-shot node. If a shot cannot be justified, remove it before generation.
 
-If the user requests a believable main actress/model, every relevant shot must repeat the continuity strategy: identity description, wardrobe, hair, makeup, performance style, camera distance, and which reference frame/start frame controls the shot.
+If the user requests a believable main actress/model, every relevant shot must repeat the continuity strategy: identity description, wardrobe, hair, makeup, performance style, camera distance, and which connected reference frame/start frame controls the shot. Image prompts must use explicit `@Image1`, `@Image2`, etc. references instead of phrases like `same model` or `same person`.
 
 Default 20-second structure:
 

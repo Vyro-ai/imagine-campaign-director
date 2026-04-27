@@ -57,7 +57,7 @@ For a generic luxury fashion request with no assets, default to:
 - rain-wet concrete/glass/chrome night environment
 - cool shadows, warm practical light, restrained contrast
 - 8-12 shot ladder with silhouette hook, world reveal, styling portrait, material detail, controlled movement, environmental breath, attitude close/medium, final approach, and final hero hold
-- NB2/NBP still anchors before motion
+- ImagineArt 2.0 original still anchors, or GPT Image 2 reference-driven still anchors when character/style/product continuity is required
 - image-grounded Seedance/video only
 - sparse instrumental modern electronic music
 - QC rejects for fake text/logos, static portrait loops, repeated slow push-ins, broken walking/hands/faces, and generic AI luxury

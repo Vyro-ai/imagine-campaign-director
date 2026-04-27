@@ -42,7 +42,7 @@ Keep typography clear and utilitarian. Do not include brand logos, final ad copy
 
 ## GPT Image 2 Prompt Pattern
 
-Use GPT Image 2 for these boards when NB2/NBP stillframes are not enough to communicate camera choreography.
+Use GPT Image 2 for these boards when ordinary stillframes are not enough to communicate camera choreography.
 
 Prompt structure:
 

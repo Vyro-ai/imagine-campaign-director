@@ -89,6 +89,9 @@ If the prompt relies on a source but the map has no edge for it, the workflow is
 
 The helper rejects canonical specs when:
 
+- a generation prompt uses ambiguous continuity shorthand such as `same model`, `same person`, `same character`, or `same product`
+- an image prompt uses `@ImageN` without at least N connected image-reference inputs
+- a reference-driven image node appears to use ImagineArt 2.0 or Nano Banana without a documented exception; use GPT Image 2 for reference-driven style/product/character continuity images
 - a video prompt contains timing beyond the node duration
 - a prompt says it uses multiple approved references but no `referenceUrl` edges exist
 - a prompt uses `@ImageN` without at least N `referenceUrl` inputs

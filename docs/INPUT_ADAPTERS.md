@@ -62,7 +62,7 @@ Extract:
 
 Then rewrite it into a full Imagine.Art workflow package. Do not simply expand the prompt with adjectives.
 
-For vague luxury/fashion prompts with no assets, default to a `modern night fashion film` rescue pattern: 30-second 9:16 vertical, no text unless requested, one adult model in sharply tailored black outerwear, rain-wet concrete/glass/chrome night environment, cool shadows with warm practical light, NB2/NBP still anchors, image-grounded Seedance 2 motion, sparse instrumental music, and QC against generic AI luxury.
+For vague luxury/fashion prompts with no assets, default to a `modern night fashion film` rescue pattern: 30-second 9:16 vertical, no text unless requested, one adult model in sharply tailored black outerwear, rain-wet concrete/glass/chrome night environment, cool shadows with warm practical light, ImagineArt 2.0 original still anchors or GPT Image 2 reference-driven anchors when continuity is required, image-grounded Seedance 2 motion, sparse instrumental music, and QC against generic AI luxury.
 
 ## Style Image Input
 
@@ -146,8 +146,8 @@ When the user's wording implies a produced ad, default to a real-world video-gen
 
 - brand assets become creative direction and continuity references
 - Seedance 2 or another Imagine.Art video model becomes the core footage generator
-- NB2/NBP generates original still/reference anchors by default
-- GPT Image 2 or another Imagine.Art image model generates reference-driven panels when refs, continuity control, model availability, or artifact risk require it
+- ImagineArt 2.0 generates original still/reference anchors by default when no reference control is required
+- GPT Image 2 generates reference-driven panels when refs, style/product/character continuity, storyboard control, or artifact risk require it
 - HyperFrames/editor handles finishing: pacing, transitions, text, logo lockup, CTA, captions, effects, and final assembly
 
 Do not silently substitute a storyboard, prompt pack, static image sequence, or HTML-only animation for the requested commercial.

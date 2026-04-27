@@ -18,9 +18,11 @@ Avoid the paste-first trap: a large pasted graph can look complete while being u
 
 For commercials, social campaigns, TikTok/Reels ads, 30s spots, and professionally shot/produced videos, the default path is image-first, Seedance-led video production:
 
-`source inputs -> analysis/user clarification -> NB2/NBP stillframes and reference frames -> approved anchors -> GPT Image 2 director's-notes boards where needed -> storyboard/reference panels -> Seedance 2 motion -> Music Studio -> HyperFrames/editor finishing -> QC/export`
+`source inputs -> analysis/user clarification -> ImagineArt 2.0 original stillframes or GPT Image 2 reference-driven stillframes -> approved anchors -> GPT Image 2 director's-notes boards where needed -> storyboard/reference panels -> Seedance 2 motion -> Music Studio -> HyperFrames/editor finishing -> QC/export`
 
-Use `Nano Banana 2` first for fast original stillframe iteration, look development, graphic inserts, and plates. Use `Nano Banana Pro` for final hero stills, product-truth plates, premium fidelity, and stills that will feed motion. Use GPT Image 2 or another Imagine.Art image model only when references, storyboard panels, continuity control, model availability, or artifact risk make it better for the specific asset role. Document any exception.
+Use `ImagineArt 2.0` first for original stillframe generation when no reference control is required. Use `GPT Image 2` when the still must consume a style image, character/model reference, product photo, storyboard panel, continuity frame, or other reference. Use `Nano Banana 2` only when ImagineArt 2.0/GPT Image 2 are not the right fit for the specific asset role or live model availability. Use `Nano Banana Pro` only when final premium still fidelity or product-truth quality specifically justifies it. Document any exception.
+
+If a stillframe prompt depends on visual continuity, the image node must visibly consume the relevant reference and use explicit `@Image1`, `@Image2`, etc. language. Repeated text descriptions like `same model`, `same person`, or `same product` are invalid.
 
 HyperFrames is the finishing layer for edit timing, effects, transitions, typography, graphics, logo/product lockup, captions, CTA, and final assembly. It is not the replacement for generated commercial footage when the user asked for a real video ad.
 
@@ -101,7 +103,7 @@ Run campaigns in stages:
 2. `CLARIFY`: ask targeted user questions or document assumptions for platform, runtime, CTA, audience, realism, model/casting, and music.
 3. `ANALYSIS`: assign asset roles and identify continuity/artifact risks.
 4. `SHOTLIST`: create the hero concept and shot ladder; use 8-12 shots for a 30s vertical ad unless the brief requires a different structure.
-5. `STILLS`: generate NB2/NBP look-development variants, product truth frames, model/actress reference frames, hero plates, and shot reference frames.
+5. `STILLS`: generate ImagineArt 2.0 original stillframe variants or GPT Image 2 reference-driven product truth frames, model/actress reference frames, hero plates, and shot reference frames.
 6. `APPROVED`: select still anchors and document why they passed.
 7. `STORYBOARD`: create camera-movement reference panels for Seedance shots; use GPT Image 2 director's-notes boards for complicated camera choreography.
 8. `MOTION`: animate from approved anchors and storyboard references with Seedance 2 or the selected Imagine.Art video model.

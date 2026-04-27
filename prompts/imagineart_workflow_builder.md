@@ -58,10 +58,18 @@ For each still:
 
 Model priority:
 
-1. Nano Banana 2 for fast stillframe iteration, look development, graphic inserts, product/environment plates, and exploratory visual systems.
-2. Nano Banana Pro for final hero stills, product-truth plates, premium fidelity, and any still that will anchor final motion.
-3. GPT Image 2 when references are necessary because NB2/NBP cannot satisfy the needed reference behavior, continuity control, or storyboard/reference panel role.
-4. Other Imagine.Art image models only when the live UI, model availability, or artifact risk makes them better. Document the exception.
+1. ImagineArt 2.0 for original stillframe generation, look development, graphic inserts, product/environment plates, and exploratory visual systems when no reference control is required.
+2. GPT Image 2 when references are necessary: style image, product photo, character/model identity, wardrobe, continuity frame, storyboard/reference panel, or any still that needs visual control from another source.
+3. Nano Banana 2 only when ImagineArt 2.0/GPT Image 2 are not the right fit for the specific asset role or live workflow availability.
+4. Nano Banana Pro only when premium final still fidelity, product-truth precision, or another NBP-specific advantage is required.
+5. Other Imagine.Art image models only when the live UI, model availability, or artifact risk makes them better. Document the exception.
+
+For every image node, include a reference contract:
+
+- `original`: no visual source required; use ImagineArt 2.0 by default
+- `reference-driven`: list each source node, target input, slot, `@Image` token, and role; use GPT Image 2 by default
+
+Any prompt that would otherwise say `same model`, `same person`, `same character`, `same garment`, `matching style`, or `same product` must instead use explicit `@Image1`, `@Image2`, etc. language and matching visible image-reference edges in the canonical spec.
 
 ### Storyboard / Motion Reference Nodes
 

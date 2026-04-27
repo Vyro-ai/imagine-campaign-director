@@ -96,7 +96,11 @@ Default priority:
 
 1. `ImagineArt 2.0` for original stillframes, product/environment plates, hero/style frames, and visual systems when it can satisfy the role directly.
 2. `GPT Image 2` when reference-driven generation, storyboard/reference panels, or continuity control is necessary and ImagineArt 2.0 does not support the needed reference behavior.
-3. Other Imagine.Art image models only when the live UI, model availability, or artifact risk makes them a better fit.
+3. `Nano Banana 2` only when ImagineArt 2.0/GPT Image 2 are not the right fit for the specific asset role or live workflow availability.
+4. `Nano Banana Pro` only when premium final still fidelity, product-truth precision, or another NBP-specific advantage is required.
+5. Other Imagine.Art image models only when the live UI, model availability, or artifact risk makes them a better fit.
+
+If a stillframe is meant to preserve a specific character, model, product, garment, style frame, or supplied reference, it is reference-driven generation. Connect the relevant style/identity/product reference to the image node and use explicit `@Image1`, `@Image2`, etc. language. Do not use ambiguous text such as `same model`, `same person`, `same character`, or `same product`.
 
 Static image generation is a production support layer: reference frames, hero/model plates, product truth frames, and storyboard panels. It is not the final commercial when the user asked for generated motion.
 

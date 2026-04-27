@@ -5,7 +5,7 @@
     "imagineart_2": {
       "display_name": "ImagineArt 2.0",
       "primary_use": [
-        "default original stillframe generation",
+        "default original stillframe generation when no reference control is required",
         "hero/style frames",
         "product and environment plates",
         "visual-system exploration before motion"
@@ -19,7 +19,7 @@
       ],
       "preflight": [
         "confirm visible model label says ImagineArt 2.0",
-        "use for original stillframes and plates when references are not required",
+        "use first for original stillframes and plates when references are not required",
         "if reference-controlled generation is needed and unsupported, switch that asset role to GPT Image 2"
       ]
     },
@@ -131,8 +131,7 @@
   },
   "global_rules": [
     "the visible UI model and settings are authoritative before launch",
-    "use NB2/NBP for stillframe anchors by default",
-    "use GPT Image 2 or another Imagine.Art image model only when references, storyboard panels, continuity control, model availability, or artifact risk require it",
+    "default stillframe model priority is ImagineArt 2.0, then GPT Image 2 when references or continuity control are required, then Nano Banana 2, then Nano Banana Pro when the role specifically requires it",
     "for high-realism commercial footage, use Seedance 2 / Seedance 2.0 as the core production layer unless explicitly overridden",
     "Kling 3.0 is not the default CampaignCraft motion model",
     "do not launch motion from unapproved stills",

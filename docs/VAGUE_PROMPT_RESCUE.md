@@ -63,7 +63,7 @@ For a 30-second generic luxury fashion prompt:
 8. `22.0-26.0s` final approach or reveal: model enters stronger composition, camera settles
 9. `26.0-30.0s` final hold: composed three-quarter portrait or back-view silhouette with clean negative space
 
-Each motion shot or Seedance 2 multi-shot node needs an approved NB2/NBP still anchor or storyboard/reference panel before video generation. Group related beats into the longest useful Seedance 2 node duration available in the live UI, including 15s when that improves continuity, mood, or editorial progression.
+Each motion shot or Seedance 2 multi-shot node needs an approved ImagineArt 2.0 original still anchor, GPT Image 2 reference-driven still anchor, or storyboard/reference panel before video generation. Group related beats into the longest useful Seedance 2 node duration available in the live UI, including 15s when that improves continuity, mood, or editorial progression.
 
 ## Default Still Anchors
 
@@ -79,7 +79,7 @@ Generate 2-4 variants for:
 - final approach
 - final hero hold
 
-Use `Nano Banana 2` for fast exploration and `Nano Banana Pro` for final anchors headed into motion.
+Use `ImagineArt 2.0` for original exploration stills. If the shots need a consistent model/style/product across frames, first generate or select an identity/style/product reference, then use `GPT Image 2` reference-driven image nodes connected to that reference for dependent still anchors. Use explicit `@Image1`, `@Image2`, etc. language. Use Nano Banana models only when the specific asset role or live model availability justifies it.
 
 ## Default Music
 
