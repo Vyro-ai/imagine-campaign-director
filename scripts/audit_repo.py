@@ -17,6 +17,19 @@ CANONICAL_DOCS = [
     "docs/SEEDANCE_WORKFLOW_GUIDE.md",
     "docs/IMAGINEART_MUSIC_STUDIO.md",
 ]
+FORBIDDEN_ROUTING_PATTERNS = [
+    re.compile(r"\bI['’]?ll build this as a HyperFrames composition\b", re.I),
+    re.compile(r"\bcreate a self-contained HyperFrames project\b", re.I),
+    re.compile(r"\bHyperFrames composition:?\s+a short\b", re.I),
+    re.compile(r"\bstart by creating a local HyperFrames\b", re.I),
+]
+ALLOWED_ROUTING_CONTEXT = (
+    "wrong first response",
+    "do not start",
+    "never the first production layer",
+    "only for finishing",
+    "finishing layer",
+)
 
 
 def iter_files(root: Path):
@@ -41,6 +54,19 @@ def main() -> int:
     for path in junk:
         failed = True
         print(f"junk file: {path}")
+
+    for path in iter_files(root):
+        if path.suffix not in TEXT_EXTENSIONS:
+            continue
+        lines = path.read_text(encoding="utf-8").splitlines()
+        for index, line in enumerate(lines, start=1):
+            if not any(pattern.search(line) for pattern in FORBIDDEN_ROUTING_PATTERNS):
+                continue
+            context = " ".join(lines[max(0, index - 4):index + 3]).lower()
+            if any(allowed in context for allowed in ALLOWED_ROUTING_CONTEXT):
+                continue
+            failed = True
+            print(f"forbidden HyperFrames-first routing: {path.relative_to(root)}:{index}")
 
     headings = Counter()
     phrase_counts = Counter()

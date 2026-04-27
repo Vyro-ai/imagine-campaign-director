@@ -26,6 +26,20 @@ Use platform-neutral language only as secondary portability notes. Brand assets,
 
 If the agent has browser access, it should execute the workflow in Imagine.Art. Follow `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`.
 
+## Tool Routing Guard
+
+For campaign-video requests, do not start by creating a local HyperFrames, HTML, canvas, slideshow, or motion-graphics composition.
+
+Default path:
+
+1. Imagine.Art workflow planning or execution
+2. Image-grounded still/reference generation
+3. Imagine.Art video generation such as Seedance
+4. Imagine.Art Music Studio or supplied music
+5. HyperFrames/editor only for assembly, timing, typography, captions, effects, and final render after reviewed motion exists
+
+If Imagine.Art execution is unavailable, return `ready for generation`, `motion pending`, or `blocked`; do not substitute a local video composition as final.
+
 ## Workflow
 
 1. Read `docs/INPUT_ADAPTERS.md`.
@@ -57,7 +71,7 @@ Use this sequence for commercials, social campaigns, TikTok/Reels ads, 30s spots
 4. Generate or select consistent actress/model reference frames when a believable human lead is requested.
 5. Generate Seedance-ready prompts per shot, including shared continuity and negative prompts.
 6. Generate or specify an original Imagine.Art Music Studio bed with edit hit points.
-7. Assemble generated clips in an editor or HyperFrames with beat-synced cuts, type, logo, product lockup, captions, and CTA.
+7. After generated or supplied motion clips exist, assemble them in an editor or HyperFrames with beat-synced cuts, type, logo, product lockup, captions, and CTA.
 8. QC for realism, product continuity, actress/model consistency, hand/contact issues, fake text, social-platform framing, and reference parity.
 9. Deliver the final render plus source prompts, shot-source manifest, edit notes, and revision notes.
 

@@ -7,6 +7,7 @@
 - Removed redundant public usage and manual review docs after folding their content into README and release audit.
 - Updated prompt-pack generation to use `templates/prompt_pack_template.md`.
 - Strengthened config validation and added a repo audit script for cruft and repetition checks.
+- Added a tool-routing guard so campaign-video requests default to Imagine.Art first and reserve HyperFrames/editor work for finishing.
 
 ## 0.1.0
 

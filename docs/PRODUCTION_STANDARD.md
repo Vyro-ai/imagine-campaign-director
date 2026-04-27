@@ -8,6 +8,32 @@ CampaignCraft is Imagine.Art-first. A campaign request means an Imagine.Art work
 
 For social media campaigns, TikTok/Reels ads, 30s spots, commercials, and professionally shot or produced videos, the expected deliverable is a believable generated video ad. A written concept, static storyboard, prompt pack, workflow map, HTML-only animation, still montage, or pan/zoom edit is not a finished campaign.
 
+## Tool Routing Guard
+
+For campaign-video requests, do not start by creating a local HyperFrames, HTML, canvas, slideshow, or motion-graphics composition.
+
+Default path:
+
+1. Imagine.Art workflow planning or execution
+2. Image-grounded still/reference generation
+3. Imagine.Art video generation such as Seedance
+4. Imagine.Art Music Studio or supplied music
+5. HyperFrames/editor assembly, timing, typography, captions, effects, and final render only after reviewed motion exists
+
+HyperFrames is never the first production layer for CampaignCraft campaign video requests. If Imagine.Art execution is unavailable, return `ready for generation`, `motion pending`, or `blocked`; do not substitute a local video composition as final.
+
+Wrong first response:
+
+```text
+I'll build this as a HyperFrames composition.
+```
+
+Right first response:
+
+```text
+I'll build this Imagine.Art-first, then use HyperFrames only for finishing if reviewed motion assets exist.
+```
+
 ## Required Campaign Parts
 
 Every campaign plan should account for:

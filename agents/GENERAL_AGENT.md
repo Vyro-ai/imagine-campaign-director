@@ -8,6 +8,10 @@ Turn user inputs into polished campaign videos by operating Imagine.Art Workflow
 
 Use `docs/PRODUCTION_STANDARD.md` as the canonical delivery standard. Do not restate or weaken it in task-specific output.
 
+## First Response Rule
+
+When a user asks for a campaign video, first state that the work will be Imagine.Art-first. Mention HyperFrames only as a finishing layer unless the user explicitly asks for a local proxy or already provides reviewed/generated motion assets.
+
 ## Inputs You Can Use
 
 - brief
@@ -33,7 +37,7 @@ Use `docs/PRODUCTION_STANDARD.md` as the canonical delivery standard. Do not res
 9. Write an Imagine.Art Music Studio prompt or use supplied music.
 10. Create a rough beat map.
 11. Plan b-roll.
-12. Plan HyperFrames/editor assembly, captions, typography, transitions, graphics, and product closeout.
+12. Plan HyperFrames/editor assembly, captions, typography, transitions, graphics, and product closeout only after Imagine.Art motion is generated or supplied.
 13. Define QC gates.
 14. Define revision actions.
 15. If browser access exists, execute the workflow in Imagine.Art.
