@@ -31,26 +31,29 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 7. Upload/import source assets and verify they appear in the workflow.
 8. Create analysis/direction notes that assign each source asset one clear role.
 9. Create stillframe nodes for every planned shot branch, but do not run motion yet.
-10. Before launching stills, verify each selected node's visible model label and ratio.
-11. Run only the intended stillframe batch.
-12. Monitor Active Runs and record failures.
-13. Inspect completed outputs. Reject moderation placeholders, bad anatomy, fake text, product drift, and incoherent frames.
-14. Move or recreate only approved stills into the approved-anchor stage.
-15. Create storyboard/reference panel nodes for the selected shot branches.
-16. For any long take, multi-shot Seedance 2 node, staged camera move, simultaneous subject/camera move, orbit, tilt, reveal, pullback, rise/fall, vehicle, crowd, glass, mirror, fabric, or beat-synced reveal, create the GPT Image 2 director's-notes board required by `docs/DIRECTORS_NOTES_STORYBOARDS.md`.
-17. Verify visible model and safe ratio before launch. For GPT Image 2 director's-notes and storyboard panels, prefer `1:1` unless the live UI has already proven another ratio works.
-18. Run storyboard/reference panels and director's-notes boards, inspect outputs, and approve only usable panels.
-19. Reject or regenerate any director's-notes board with unreadable labels, ambiguous arrows, fake ad text, unclear phase order, or too many phases for the selected Seedance 2 duration.
-20. Create motion nodes for the selected shot ladder from approved anchors, reference panels, and approved director's-notes boards where required.
-21. For each motion node, compare the live canvas against the reference connection map. If the prompt depends on multiple references, `@Image` tokens, storyboard panels, or director's-notes boards, verify the node exposes `Reference Images` and each required input is visibly connected. A single `Start Frame` edge is not enough for a multi-reference prompt.
-22. Before each motion launch, verify the live node panel shows the intended model, duration, quality, ratio, audio setting, local timing, and connected start/end/reference frames. Correct visible settings when they disagree with the written plan. If a motion node has no visible image/start-frame/end-frame/reference connection, do not launch it.
-23. Run motion nodes in small batches and inspect the clips.
-24. Generate the Imagine.Art Music Studio track from the music prompt. Verify the in-app prompt, instrumental/vocal setting, genre, and duration before generation.
-25. Download selected motion and music outputs into the local workspace.
-26. Assemble or prepare the final edit with selected motion clips, selected music, deterministic typography, captions, crop, and product closeout.
-27. Complete QC.
-28. Delete failed, rejected, duplicate, abandoned, and unused nodes from the live final workflow after documenting them locally.
-29. Report the final status using one of: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, `blocked`.
+10. Before launching stills, verify each selected node's visible model label, ratio, and live `Number of runs`.
+11. If `Number of runs` is greater than `1`, set it back to `1` unless the treatment explicitly authorizes multiple runs for an identity-candidate or look-dev node.
+12. Run only the intended stillframe batch.
+13. Monitor Active Runs and record failures.
+14. Inspect completed outputs. Reject moderation placeholders, bad anatomy, fake text, product drift, and incoherent frames.
+15. Move or recreate only approved stills into the approved-anchor stage.
+16. Create storyboard/reference panel nodes for the selected shot branches.
+17. For recurring models/products/garments, verify the locked reference source is visibly connected into every dependent still or Seedance node before launch. Disconnected recurring-subject stills are invalid.
+18. For any long take, multi-shot Seedance 2 node, staged camera move, simultaneous subject/camera move, orbit, tilt, reveal, pullback, rise/fall, vehicle, crowd, glass, mirror, fabric, or beat-synced reveal, create the GPT Image 2 director's-notes board required by `docs/DIRECTORS_NOTES_STORYBOARDS.md`.
+19. Verify visible model and safe ratio before launch. For GPT Image 2 director's-notes and storyboard panels, prefer `1:1` unless the live UI has already proven another ratio works.
+20. Run storyboard/reference panels and director's-notes boards, inspect outputs, and approve only usable panels.
+21. Reject or regenerate any director's-notes board with unreadable labels, ambiguous arrows, fake ad text, unclear phase order, or too many phases for the selected Seedance 2 duration.
+22. Create motion nodes for the selected shot ladder from approved anchors, reference panels, and approved director's-notes boards where required.
+23. Prefer Seedance reference-image set mode for campaign motion: actor/model identity lock, scene/environment plate, product/garment/material truth, and director's-notes board should be connected as separate `Reference Images` roles whenever the shot depends on more than one control source. Use Start Frame mode only for simple one-anchor clips.
+24. For each motion node, compare the live canvas against the reference connection map. If the prompt depends on multiple references, `@Image` tokens, storyboard panels, or director's-notes boards, verify the node exposes `Reference Images` and each required input is visibly connected. A single `Start Frame` edge is not enough for a multi-reference prompt.
+25. Before each motion launch, verify the live node panel shows the intended model, duration, quality, ratio, audio setting, local timing, run count, and connected start/end/reference frames. Correct visible settings when they disagree with the written plan. If a motion node has no visible image/start-frame/end-frame/reference connection, do not launch it.
+26. Run motion nodes in small batches and inspect the clips.
+27. Generate the Imagine.Art Music Studio track from the music prompt. Verify the in-app prompt, instrumental/vocal setting, genre, and duration before generation.
+28. Download selected motion and music outputs into the local workspace.
+29. Assemble or prepare the final edit with selected motion clips, selected music, deterministic typography, captions, crop, and product closeout.
+30. Complete QC.
+31. Delete failed, rejected, duplicate, abandoned, and unused nodes from the live final workflow after documenting them locally.
+32. Report the final status using one of: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, `blocked`.
 
 ## Non-Negotiables
 
@@ -63,6 +66,7 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 - Do not launch motion from unreviewed stills.
 - Do not launch complex Seedance 2 motion before the required GPT Image 2 director's-notes board is generated, reviewed, and visibly available as a motion reference.
 - Do not launch a multi-reference motion prompt from one start-frame edge. The visible inputs must match the written reference connection map.
+- Do not spend duplicate runs. Live `Number of runs` must be `1` unless an identity-candidate or look-dev exploration is explicitly authorized in the treatment.
 - Do not launch a node whose prompt timing exceeds its selected duration.
 - Do not connect moderation placeholders downstream.
 - Do not preserve unused branches in the final workflow.

@@ -4,7 +4,9 @@ Use this when the Imagine.Art motion model is Seedance or when a campaign clip n
 
 ## Hard Rule
 
-Seedance campaign motion is image-first. Every final Seedance shot must use a visible connected start frame, end frame, reference image, product-truth image, or storyboard panel in the Imagine.Art workflow.
+Seedance campaign motion is image-first. Every final Seedance shot must use visible connected references in the Imagine.Art workflow.
+
+For campaign films, default to reference-image set mode rather than Start Frame mode. Seedance 2 is strongest when the node can see separate references for actor/model identity, scene/environment, product or garment truth, material/texture, final hero hold, and director's-notes camera choreography. Start Frame mode is the fallback for simple one-anchor clips only.
 
 Text-only Seedance is not allowed for campaign motion. If no visual source exists, create one first in Imagine.Art, approve it, then connect it to Seedance.
 
@@ -39,6 +41,7 @@ Use repeatable reference frames for character continuity. Prefer medium/wide sho
 
 When using a stillframe as the first frame:
 
+- use this only for a simple clip whose creative control can come from one approved start image and optional end image
 - let the connection carry identity and composition
 - write the prompt as direct shot language
 - do not waste prompt budget saying “use the connected image”
@@ -51,6 +54,7 @@ Prompt should describe what happens after frame 1.
 When using multiple references:
 
 - assign each reference one dominant job
+- use this as the default Seedance 2 campaign-motion contract
 - product truth
 - character identity
 - material texture

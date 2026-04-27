@@ -20,10 +20,12 @@ The spec must:
 
 - use readable stage-column positions
 - use shot rows or clearly separated branches
+- apply `docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md` for every recurring model/person/product/garment before generating dependent shots
+- include top-level `identityLocks` and lock-source metadata when recurring identities exist
 - include all planned shot branches before generation
 - avoid overlapping node positions
-- set Seedance video nodes to the validated start-frame contract with `inputMode: "start-frame"` when wiring approved stills to motion
-- use the reference-image set contract for multi-shot nodes that need multiple still anchors, product-truth refs, storyboard panels, or director's-notes boards
+- use the reference-image set contract as the default for Seedance campaign motion, with separate scene/actor/product-or-garment/director-note references when those roles exist
+- use the validated start-frame contract with `inputMode: "start-frame"` only for simple one-anchor clips where no actor/product/scene/director-note reference set is needed
 - include `slotCounts.referenceUrl` and explicit `targetSlot` values whenever a video prompt uses `@Image` references
 - use `Seedance 2` / `Seedance 2.0` as the intended campaign motion model, not Kling, unless the user explicitly requested Kling
 
@@ -55,6 +57,8 @@ For each still:
 - prompt
 - variants needed
 - approval gate
+- identity/reference lock sources it consumes
+- run budget, defaulting to one run after locks are selected
 
 Model priority:
 
@@ -68,6 +72,8 @@ For every image node, include a reference contract:
 
 - `original`: no visual source required; use ImagineArt 2.0 by default
 - `reference-driven`: list each source node, target input, slot, `@Image` token, and role; use GPT Image 2 by default
+
+Recurring people/products/garments are never allowed to be a set of disconnected original stills. First create or import the lock reference(s). Then every dependent still must be reference-driven from those lock nodes. If there is one lead model, every shot anchor containing that model must wire the lead lock to `imageUrl` and say `@Image1 controls identity, face, hair, wardrobe, and posture`.
 
 Any prompt that would otherwise say `same model`, `same person`, `same character`, `same garment`, `matching style`, or `same product` must instead use explicit `@Image1`, `@Image2`, etc. language and matching visible image-reference edges in the canonical spec.
 
@@ -107,9 +113,11 @@ For Seedance 2 multi-shot campaign nodes, include:
 - reference role map
 - director's-notes board role if connected
 - explicit input contract: `start/end frame` or `reference-image set`
+- default input contract: `reference-image set` for campaign motion
 - reference connection map with source node, target input key, slot, prompt token, and role
 - node-local timing that does not exceed the selected duration
 - visible model guard: reject if pasted/UI node resolves to Kling 3.0
+- live run guard: set `Number of runs` to `1` before launch unless the treatment has an explicit run-budget reason
 
 For commercial/social/professionally produced video requests, each Seedance shot needs:
 

@@ -14,6 +14,8 @@ Before touching the Imagine.Art workflow canvas, creating workflow nodes, pastin
 
 When creating or pasting workflow nodes, use `docs/IMAGINEART_LIVE_MODEL_STRINGS.md` and `docs/PASTE_FIRST_WORKFLOWS.md`. The current live UI is model-ID driven: `ImagineArt 2.0` is `41601`, `GPT Image 2` is `41701`, and `Seedance 2.0` is `21905`. For GPT Image 2, set `resolution: "2K"` and `quality: "high"`.
 
+For recurring people, products, garments, or other continuity-sensitive subjects, apply `docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md`: lock the required identities first, wire those locked references into every dependent still and Seedance node, and keep live `Number of runs` at `1` unless an explicit identity/look-dev exploration budget is documented.
+
 Completing the treatment is not a stopping point and does not require user confirmation. Once the treatment and workflow payload are ready and Imagine.Art access is confirmed, immediately open or focus the workflow canvas, paste/build the readable workflow, and continue execution unless there is a specific blocker or the user explicitly asked to approve before canvas changes.
 
 For any user request to create a campaign video, ad, fashion film, commercial, TikTok/Reels spot, social campaign, product video, or professionally produced video:

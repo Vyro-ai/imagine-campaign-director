@@ -202,6 +202,8 @@ const TIME_RANGE_PATTERN = /\b(\d+(?:\.\d+)?)\s*(?:-|–|—|to)\s*(\d+(?:\.\d+)
 const IMAGE_TOKEN_PATTERN = /@\s*Image\s*(\d+)/gi;
 const CONTINUITY_SHORTHAND_PATTERN =
   /\b(?:same|matching|consistent)\s+(?:adult\s+)?(?:character|person|model|woman|man|subject|identity|face|hair|wardrobe|outfit|garment|coat|product|style|look)\b/i;
+const HUMAN_SUBJECT_PATTERN =
+  /\b(?:adult\s+)?(?:model|person|woman|man|subject|character|actress|actor|face|identity|portrait|casting)\b/i;
 
 const LIVE_MODEL_REGISTRY = {
   image: {
@@ -808,6 +810,178 @@ function maxImageTokenIndex(prompt) {
   return maxIndex;
 }
 
+function nodeLogicalId(nodeSpec, index) {
+  return nodeSpec.id ?? `node-${index + 1}`;
+}
+
+function isIdentityLockSource(nodeSpec) {
+  const role = String(nodeSpec.identityRole ?? nodeSpec.metadata?.identityRole ?? "").toLowerCase();
+  return Boolean(
+    nodeSpec.identityLockSource ||
+      nodeSpec.metadata?.identityLockSource ||
+      role === "identity-lock" ||
+      role === "identity_source" ||
+      role === "identity-source" ||
+      role === "locked-identity" ||
+      role === "locked_identity"
+  );
+}
+
+function isIdentityLockExempt(nodeSpec) {
+  return Boolean(
+    nodeSpec.identityLockExempt ||
+      nodeSpec.metadata?.identityLockExempt ||
+      nodeSpec.referenceModelException ||
+      nodeSpec.metadata?.referenceModelException
+  );
+}
+
+function isHumanContinuityNode(nodeSpec) {
+  if (!["image", "video"].includes(nodeSpec?.type)) {
+    return false;
+  }
+
+  const prompt = nodeSpec.settings?.prompt ?? "";
+  if (typeof prompt !== "string") {
+    return false;
+  }
+
+  if (STORYBOARD_REFERENCE_PATTERN.test(prompt) && !/@\s*Image\s*\d+/i.test(prompt)) {
+    return false;
+  }
+
+  return HUMAN_SUBJECT_PATTERN.test(prompt);
+}
+
+function collectIdentityLockSourceIds(source) {
+  const ids = new Set();
+
+  (source.identityLocks ?? []).forEach((lock) => {
+    const id = typeof lock === "string" ? lock : lock?.source ?? lock?.node ?? lock?.id;
+    if (id) {
+      ids.add(id);
+    }
+  });
+
+  (source.nodes ?? []).forEach((nodeSpec, index) => {
+    if (isIdentityLockSource(nodeSpec)) {
+      ids.add(nodeLogicalId(nodeSpec, index));
+    }
+  });
+
+  return ids;
+}
+
+function validateCanonicalIdentityLockContracts(source) {
+  const policy = source.identityPolicy ?? {};
+  if (policy.mode === "none") {
+    if (!policy.reason) {
+      throw new Error('identityPolicy.mode is "none" but no reason was provided.');
+    }
+    return;
+  }
+
+  const humanNodes = source.nodes
+    .map((nodeSpec, index) => ({ nodeSpec, logicalId: nodeLogicalId(nodeSpec, index) }))
+    .filter(({ nodeSpec }) => isHumanContinuityNode(nodeSpec) && !isIdentityLockExempt(nodeSpec));
+
+  if (humanNodes.length < 2) {
+    return;
+  }
+
+  const identitySourceIds = collectIdentityLockSourceIds(source);
+  if (identitySourceIds.size === 0) {
+    throw new Error(
+      `Canonical workflow has ${humanNodes.length} human/model nodes but no locked identity source. Generate/select the required identity reference node(s), mark them with metadata.identityRole: "identity-lock" or top-level identityLocks, then wire them into every dependent still/video node.`
+    );
+  }
+
+  const incomingByTarget = collectIncomingReferenceDetails(source);
+  const sourceLabels = [...identitySourceIds].join(", ");
+
+  for (const { nodeSpec, logicalId } of humanNodes) {
+    if (identitySourceIds.has(logicalId)) {
+      continue;
+    }
+
+    const incoming = incomingByTarget.get(logicalId)?.edges ?? [];
+    const identityEdges = incoming.filter((edgeSpec) => identitySourceIds.has(edgeSpec.source));
+    const acceptableKeys =
+      nodeSpec.type === "video" ? new Set(["referenceUrl", "imageUrl", "lastFrame"]) : new Set(["imageUrl"]);
+    const hasIdentityReference = identityEdges.some((edgeSpec) =>
+      acceptableKeys.has(edgeSpec.targetKey ?? edgeSpec.inputKey)
+    );
+
+    if (!hasIdentityReference) {
+      throw new Error(
+        `${nodeSpec.type} node "${nodeSpec.name ?? logicalId}" contains a human/model subject but is not wired to a locked identity source. Connect one of [${sourceLabels}] to ${[...acceptableKeys].join(" or ")} and use explicit @Image reference-role language.`
+      );
+    }
+
+    if (!/@\s*Image\s*\d+/i.test(nodeSpec.settings?.prompt ?? "")) {
+      throw new Error(
+        `${nodeSpec.type} node "${nodeSpec.name ?? logicalId}" is identity-driven but its prompt does not use an explicit @Image token. Write the role directly, e.g. "@Image1 controls identity, face, hair, wardrobe, and posture."`
+      );
+    }
+  }
+}
+
+function validateCanonicalRunBudget(source) {
+  (source.nodes ?? []).forEach((nodeSpec, index) => {
+    if (!nodeSpec || typeof nodeSpec !== "object") {
+      return;
+    }
+
+    const logicalId = nodeLogicalId(nodeSpec, index);
+    const requestedRuns = Number(
+      nodeSpec.runCount ?? nodeSpec.runs ?? nodeSpec.numberOfRuns ?? nodeSpec.metadata?.runCount ?? 1
+    );
+
+    if (!Number.isFinite(requestedRuns) || requestedRuns <= 1) {
+      return;
+    }
+
+    const role = String(nodeSpec.productionRole ?? nodeSpec.metadata?.productionRole ?? "").toLowerCase();
+    const allowedExplorationRole =
+      role.includes("identity-candidate") ||
+      role.includes("look-dev") ||
+      role.includes("lookdev") ||
+      role.includes("variant-exploration");
+    const reason = nodeSpec.runBudgetReason ?? nodeSpec.metadata?.runBudgetReason;
+
+    if (!allowedExplorationRole || !reason) {
+      throw new Error(
+        `Node "${nodeSpec.name ?? logicalId}" requests ${requestedRuns} runs. Default generation budget is one run per node; multiple runs require a productionRole like "identity-candidate" or "look-dev" plus runBudgetReason.`
+      );
+    }
+  });
+}
+
+function validateGeneratedNodeResultBudget(source) {
+  (source.nodes ?? []).forEach((nodeSpec, index) => {
+    const logicalId = nodeLogicalId(nodeSpec, index);
+    const results = Array.isArray(nodeSpec.results) ? nodeSpec.results : nodeSpec.data?.results;
+    if (!Array.isArray(results) || results.length <= 1) {
+      return;
+    }
+
+    const role = String(
+      nodeSpec.productionRole ?? nodeSpec.metadata?.productionRole ?? nodeSpec.data?.metadata?.productionRole ?? ""
+    ).toLowerCase();
+    const isExploration =
+      role.includes("identity-candidate") ||
+      role.includes("look-dev") ||
+      role.includes("lookdev") ||
+      role.includes("variant-exploration");
+
+    if (!isExploration) {
+      throw new Error(
+        `Node "${nodeSpec.name ?? nodeSpec.data?.name ?? logicalId}" contains ${results.length} generated results but is not marked as an exploration node. Do not run production stills twice by default; select a locked reference and generate dependent nodes once.`
+      );
+    }
+  });
+}
+
 function validateCanonicalVideoTiming(source) {
   source.nodes.forEach((nodeSpec, index) => {
     if (nodeSpec?.type !== "video") {
@@ -1043,10 +1217,13 @@ function materializeCanonicalWorkflow(source, options) {
 
   validateCanonicalPromptReferences(source);
   validateCanonicalContinuityPromptLanguage(source);
+  validateCanonicalIdentityLockContracts(source);
+  validateCanonicalRunBudget(source);
   validateCanonicalImageReferenceContracts(source);
   validateCanonicalImageModelReferenceChoices(source);
   validateCanonicalVideoTiming(source);
   validateCanonicalVideoReferenceContracts(source);
+  validateGeneratedNodeResultBudget(source);
 
   const logicalToMaterialized = new Map();
   const nodeRecords = [];

@@ -13,6 +13,7 @@ Do not create, paste, or launch workflow nodes until the active workspace contai
 - dominant campaign grammar
 - visual world
 - casting/model/styling continuity
+- identity lock plan from `docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md`
 - material and production design system
 - color and lighting system
 - music direction and rough beat map
@@ -90,6 +91,8 @@ The treatment must identify which shots or Seedance 2 nodes need these boards an
 
 After the treatment passes, translate it into the workflow:
 
+- locked identity/product/garment references are created or imported before dependent shot anchors
+- every dependent still or motion node that contains the recurring subject has visible edges from the lock reference
 - one row per shot or Seedance clip plan
 - one column per production stage
 - stillframe anchors generated in batches

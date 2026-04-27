@@ -79,6 +79,7 @@ If Computer Use/browser execution is unavailable after an explicit check, return
 7. Build a comprehensive workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
 8. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, and `docs/WORKFLOW_EXECUTION_GUIDE.md`.
 9. For paste-first workflows, apply `docs/PASTE_FIRST_WORKFLOWS.md` and `docs/IMAGINEART_LIVE_MODEL_STRINGS.md`; use `modelKey` values that materialize to the verified live IDs instead of stale numeric IDs.
+10. For recurring people, products, garments, or other continuity-sensitive subjects, apply `docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md`; lock references first, wire them into every dependent node, and keep production nodes to one run unless an exploration budget is explicitly documented.
 9. Import or explicitly account for every source asset before stillframe generation.
 10. Create ImagineArt 2.0 original stillframe prompts or GPT Image 2 reference-driven stillframe prompts with `prompts/imagineart_workflow_builder.md`.
 11. Generate stillframe variants before motion and select approved anchors.

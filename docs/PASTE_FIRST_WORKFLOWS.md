@@ -64,7 +64,7 @@ Use this only when the clip can be controlled by one approved opening image and,
 
 ### Reference-Image Set Contract
 
-Use this for multi-shot Seedance nodes that need several still anchors, product-truth images, style references, director's-notes boards, or storyboard panels:
+Use this as the default for Seedance campaign motion. It is required for multi-shot Seedance nodes that need several still anchors, actor/model identity locks, scene/environment plates, product-truth images, garment/material references, style references, director's-notes boards, or storyboard panels:
 
 - do not set `inputMode: "start-frame"`
 - set `slotCounts.referenceUrl` to the exact number of reference-image inputs needed
@@ -87,9 +87,27 @@ Every canonical motion node must have a written connection map before paste:
 
 If the prompt relies on a source but the map has no edge for it, the workflow is not ready to paste.
 
+## Identity Locks And Run Budgets
+
+Apply `docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md` before generating recurring people, products, garments, or other continuity-sensitive subjects.
+
+For recurring human subjects:
+
+- create/select a locked identity node first
+- mark it with `metadata.identityRole: "identity-lock"`
+- wire that lock into every dependent still through `imageUrl`
+- wire that lock into every dependent Seedance reference-set node through `referenceUrl`
+- use `GPT Image 2` for dependent reference-driven stills
+- write prompts with explicit `@Image1`, `@Image2`, etc. roles
+
+Default run budget is one run per node. Multi-run exploration is allowed only for explicitly marked identity-candidate or look-dev nodes with a written `runBudgetReason`. Before any launch, confirm the live UI `Number of runs` is `1` unless the treatment explicitly authorizes a higher number.
+
 The helper rejects canonical specs when:
 
 - a generation prompt uses ambiguous continuity shorthand such as `same model`, `same person`, `same character`, or `same product`
+- a multi-node human/model workflow has no locked identity source
+- a dependent human/model still or video is not wired to the locked identity source
+- a node requests multiple runs without an exploration role and `runBudgetReason`
 - an image prompt uses `@ImageN` without at least N connected image-reference inputs
 - a reference-driven image node appears to use ImagineArt 2.0 or Nano Banana without a documented exception; use GPT Image 2 for reference-driven style/product/character continuity images
 - a video prompt contains timing beyond the node duration
