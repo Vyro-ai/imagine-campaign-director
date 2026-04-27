@@ -42,14 +42,15 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 18. Run storyboard/reference panels and director's-notes boards, inspect outputs, and approve only usable panels.
 19. Reject or regenerate any director's-notes board with unreadable labels, ambiguous arrows, fake ad text, unclear phase order, or too many phases for the selected Seedance 2 duration.
 20. Create motion nodes for the selected shot ladder from approved anchors, reference panels, and approved director's-notes boards where required.
-21. Before each motion launch, verify the live node panel shows the intended model, duration, quality, ratio, audio setting, and connected start/end/reference frames. Correct visible settings when they disagree with the written plan. If a motion node has no visible image/start-frame/end-frame/reference connection, do not launch it.
-22. Run motion nodes in small batches and inspect the clips.
-23. Generate the Imagine.Art Music Studio track from the music prompt. Verify the in-app prompt, instrumental/vocal setting, genre, and duration before generation.
-24. Download selected motion and music outputs into the local workspace.
-25. Assemble or prepare the final edit with selected motion clips, selected music, deterministic typography, captions, crop, and product closeout.
-26. Complete QC.
-27. Delete failed, rejected, duplicate, abandoned, and unused nodes from the live final workflow after documenting them locally.
-28. Report the final status using one of: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, `blocked`.
+21. For each motion node, compare the live canvas against the reference connection map. If the prompt depends on multiple references, `@Image` tokens, storyboard panels, or director's-notes boards, verify the node exposes `Reference Images` and each required input is visibly connected. A single `Start Frame` edge is not enough for a multi-reference prompt.
+22. Before each motion launch, verify the live node panel shows the intended model, duration, quality, ratio, audio setting, local timing, and connected start/end/reference frames. Correct visible settings when they disagree with the written plan. If a motion node has no visible image/start-frame/end-frame/reference connection, do not launch it.
+23. Run motion nodes in small batches and inspect the clips.
+24. Generate the Imagine.Art Music Studio track from the music prompt. Verify the in-app prompt, instrumental/vocal setting, genre, and duration before generation.
+25. Download selected motion and music outputs into the local workspace.
+26. Assemble or prepare the final edit with selected motion clips, selected music, deterministic typography, captions, crop, and product closeout.
+27. Complete QC.
+28. Delete failed, rejected, duplicate, abandoned, and unused nodes from the live final workflow after documenting them locally.
+29. Report the final status using one of: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, `blocked`.
 
 ## Non-Negotiables
 
@@ -61,6 +62,8 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 - Music Studio page handoffs can alter the prompt. Verify the prompt inside the app before spending credits.
 - Do not launch motion from unreviewed stills.
 - Do not launch complex Seedance 2 motion before the required GPT Image 2 director's-notes board is generated, reviewed, and visibly available as a motion reference.
+- Do not launch a multi-reference motion prompt from one start-frame edge. The visible inputs must match the written reference connection map.
+- Do not launch a node whose prompt timing exceeds its selected duration.
 - Do not connect moderation placeholders downstream.
 - Do not preserve unused branches in the final workflow.
 - Do not leave nodes overlapping. If a node is created on top of another node, move it immediately before creating or launching more nodes.

@@ -85,6 +85,7 @@ Before launch:
 - verify source asset is actually uploaded/imported, not just described in text
 - verify downstream node is connected
 - verify the model/input mode matches the intended reference role
+- verify each motion node has a reference connection map and the visible canvas matches it
 - verify campaign motion nodes visibly use Seedance 2 / Seedance 2.0 unless the user explicitly requested another motion model
 - verify the rendered canvas shows the connection
 - verify downstream motion is connected to an approved/selected still, not a first-pass unreviewed branch
@@ -127,6 +128,8 @@ Plan the full shot system before generation. The operator should create the shot
 - Do not leave all pasted nodes selected before launch.
 - If multiple nodes are selected accidentally, deselect and select only the intended stage.
 - Never launch motion nodes before their start frames, end frames, storyboard panels, or references are approved.
+- Never launch a multi-reference motion prompt from only one connected start frame. If the prompt says `references`, uses `@Image`, or depends on a storyboard/director's-notes board, the visible node must expose and connect those reference inputs.
+- Never use edit-absolute timing inside a shorter motion node. A 5-second node must use 0-5s local timing, not 22-30s campaign timeline timing.
 - Never launch campaign motion as text-only.
 - Never launch a generated text/logo/label requirement inside video when it belongs in deterministic post-production.
 - Never animate from a still that has not been saved locally and documented with its model, purpose, prompt, ratio, and selection reason.

@@ -99,3 +99,12 @@ If a GPT Image 2 director's-notes board exists, use it as the motion-choreograph
 - carry over camera movement, subject/product movement, and final hold
 - keep identity/product continuity anchored by the approved still or product-truth reference
 - do not ask Seedance 2 to reproduce labels, arrows, or typography from the board
+
+## Connection Discipline
+
+Before finalizing a motion prompt, write the connection contract:
+
+- `start/end frame`: one approved start frame wired to `imageUrl`, optional end frame wired to `lastFrame`, no `@Image` tokens
+- `reference-image set`: every required still, product-truth image, storyboard panel, and director's-notes board wired to `referenceUrl` slots, with matching `@Image1`, `@Image2`, etc. in the prompt
+
+Prompt timing must be local to the node. If the final edit uses `22-30s` but the node duration is `5s`, write the prompt as `0-5s` for that node and document the edit placement separately.

@@ -195,6 +195,11 @@ const REFERENCE_LANGUAGE_RULES = [
     reason: "upstream stage reference",
   },
 ];
+const PLURAL_REFERENCE_PATTERN =
+  /\b(?:approved\s+visual\s+references|visual\s+references|reference\s+set|reference\s+images|multiple\s+references|all\s+references)\b/i;
+const STORYBOARD_REFERENCE_PATTERN = /\b(?:director['’]s-notes|storyboard|motion\s+board|camera-movement\s+board)\b/i;
+const TIME_RANGE_PATTERN = /\b(\d+(?:\.\d+)?)\s*(?:-|–|—|to)\s*(\d+(?:\.\d+)?)\s*s\b/gi;
+const IMAGE_TOKEN_PATTERN = /@\s*Image\s*(\d+)/gi;
 
 function parseArgs(argv) {
   const args = {
@@ -589,6 +594,161 @@ function collectIncomingReferenceKeys(source) {
   return incomingByTarget;
 }
 
+function collectIncomingReferenceDetails(source) {
+  const incomingByTarget = new Map();
+
+  for (const edgeSpec of source.edges ?? []) {
+    if (!edgeSpec || typeof edgeSpec !== "object") {
+      continue;
+    }
+
+    const targetId = edgeSpec.target;
+    const targetKey = edgeSpec.targetKey ?? edgeSpec.inputKey;
+
+    if (!targetId || !targetKey) {
+      continue;
+    }
+
+    if (!incomingByTarget.has(targetId)) {
+      incomingByTarget.set(targetId, {
+        byKey: new Map(),
+        edges: [],
+      });
+    }
+
+    const detail = incomingByTarget.get(targetId);
+    detail.edges.push(edgeSpec);
+    detail.byKey.set(targetKey, (detail.byKey.get(targetKey) ?? 0) + 1);
+  }
+
+  return incomingByTarget;
+}
+
+function parseNodeDurationSeconds(nodeSpec) {
+  const rawDuration = nodeSpec?.settings?.duration ?? nodeSpec?.duration ?? null;
+  if (rawDuration == null) {
+    return null;
+  }
+
+  const parsed = Number.parseFloat(String(rawDuration));
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+}
+
+function collectPromptTimeRanges(prompt) {
+  const ranges = [];
+
+  if (typeof prompt !== "string") {
+    return ranges;
+  }
+
+  TIME_RANGE_PATTERN.lastIndex = 0;
+  let match;
+  while ((match = TIME_RANGE_PATTERN.exec(prompt)) !== null) {
+    const start = Number.parseFloat(match[1]);
+    const end = Number.parseFloat(match[2]);
+
+    if (Number.isFinite(start) && Number.isFinite(end) && end > start) {
+      ranges.push({ start, end, raw: match[0] });
+    }
+  }
+
+  return ranges;
+}
+
+function maxImageTokenIndex(prompt) {
+  if (typeof prompt !== "string") {
+    return 0;
+  }
+
+  let maxIndex = 0;
+  IMAGE_TOKEN_PATTERN.lastIndex = 0;
+  let match;
+  while ((match = IMAGE_TOKEN_PATTERN.exec(prompt)) !== null) {
+    const index = Number.parseInt(match[1], 10);
+    if (Number.isFinite(index)) {
+      maxIndex = Math.max(maxIndex, index);
+    }
+  }
+
+  return maxIndex;
+}
+
+function validateCanonicalVideoTiming(source) {
+  source.nodes.forEach((nodeSpec, index) => {
+    if (nodeSpec?.type !== "video") {
+      return;
+    }
+
+    const logicalId = nodeSpec.id ?? `node-${index + 1}`;
+    const duration = parseNodeDurationSeconds(nodeSpec);
+    const prompt = nodeSpec.settings?.prompt;
+    const ranges = collectPromptTimeRanges(prompt);
+
+    if (!duration || ranges.length === 0) {
+      return;
+    }
+
+    const maxEnd = Math.max(...ranges.map((range) => range.end));
+    if (maxEnd > duration + 0.25) {
+      throw new Error(
+        `Video node "${nodeSpec.name ?? logicalId}" has duration ${duration}s but its prompt contains timing up to ${maxEnd}s. Use node-local timing within the selected duration, choose a longer Seedance duration, or split the clip.`
+      );
+    }
+  });
+}
+
+function validateCanonicalVideoReferenceContracts(source) {
+  const incomingByTarget = collectIncomingReferenceDetails(source);
+
+  source.nodes.forEach((nodeSpec, index) => {
+    if (nodeSpec?.type !== "video") {
+      return;
+    }
+
+    const logicalId = nodeSpec.id ?? `node-${index + 1}`;
+    const name = nodeSpec.name ?? logicalId;
+    const prompt = nodeSpec.settings?.prompt ?? "";
+    const incoming = incomingByTarget.get(logicalId);
+    const countFor = (key) => incoming?.byKey.get(key) ?? 0;
+    const startFrameCount = countFor("imageUrl");
+    const endFrameCount = countFor("lastFrame");
+    const referenceImageCount = countFor("referenceUrl");
+    const normalizedMode = normalizeVideoInputMode(nodeSpec);
+    const usesStartFrameMode = START_FRAME_VIDEO_MODES.has(normalizedMode);
+    const requiredImageTokens = maxImageTokenIndex(prompt);
+
+    if (usesStartFrameMode && referenceImageCount > 0) {
+      throw new Error(
+        `Video node "${name}" uses start-frame mode but also has referenceUrl edges. Imagine.Art hides reference images when Start Frame/End Frame mode is active. Use either imageUrl/lastFrame for a simple start/end clip, or referenceUrl slots for a multi-reference Seedance node.`
+      );
+    }
+
+    if (requiredImageTokens > 0 && referenceImageCount < requiredImageTokens) {
+      throw new Error(
+        `Video node "${name}" references @Image${requiredImageTokens} but only has ${referenceImageCount} incoming referenceUrl edge(s). Add the missing referenceUrl slots/edges or remove the @Image tokens.`
+      );
+    }
+
+    if (PLURAL_REFERENCE_PATTERN.test(prompt) && referenceImageCount === 0) {
+      throw new Error(
+        `Video node "${name}" says it uses multiple/approved visual references but has no incoming referenceUrl edges. Do not use plural reference language with only a single start-frame edge; wire the reference set to referenceUrl or rewrite the prompt as a start-frame-only clip.`
+      );
+    }
+
+    if (STORYBOARD_REFERENCE_PATTERN.test(prompt) && referenceImageCount === 0) {
+      throw new Error(
+        `Video node "${name}" depends on a storyboard/director's-notes board but has no incoming referenceUrl edge for that board. Connect the approved board as a reference image or split the shot into a start-frame-only clip.`
+      );
+    }
+
+    if (!usesStartFrameMode && referenceImageCount === 0 && (startFrameCount > 0 || endFrameCount > 0)) {
+      throw new Error(
+        `Video node "${name}" has start/end frame edges but does not declare inputMode: "start-frame". Add the explicit inputMode so the pasted node exposes the intended Start Frame/End Frame handles.`
+      );
+    }
+  });
+}
+
 function validateCanonicalPromptReferences(source) {
   const incomingByTarget = collectIncomingReferenceKeys(source);
 
@@ -666,6 +826,8 @@ function materializeCanonicalWorkflow(source, options) {
   }
 
   validateCanonicalPromptReferences(source);
+  validateCanonicalVideoTiming(source);
+  validateCanonicalVideoReferenceContracts(source);
 
   const logicalToMaterialized = new Map();
   const nodeRecords = [];

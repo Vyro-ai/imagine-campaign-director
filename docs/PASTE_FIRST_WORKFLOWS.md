@@ -47,16 +47,53 @@ Use stage columns:
 
 Use shot rows inside those columns. Leave generous horizontal and vertical gaps. If a pasted block or newly created node lands on top of another node, move it immediately.
 
-## Start-Frame Contract
+## Seedance Reference Contracts
 
-For Seedance image-to-video nodes, use the validated start-frame contract:
+Choose one video input contract per Seedance node before writing the canonical spec.
+
+### Start / End Frame Contract
+
+Use this only when the clip can be controlled by one approved opening image and, optionally, one approved ending image:
 
 - set `inputMode: "start-frame"` in canonical video node specs
 - wire the approved still/import output to `imageUrl`
+- optionally wire the approved ending image to `lastFrame`
 - verify the live node shows `Start Frame` / `End Frame` behavior
-- do not assume generic mixed-reference handles are valid for start-frame motion
+- do not mention plural `references`, `reference set`, storyboard boards, or `@Image` tokens in the prompt
+- keep the prompt timing local to the node duration, such as `0-2s`, `2-5s` for a 5-second node
 
-If the prompt uses `@Image`, `@Video`, or `@Audio` tags, the live canvas must expose and visibly connect the matching reference handles. Otherwise, write direct shot language and let the structural start-frame connection carry the image.
+### Reference-Image Set Contract
+
+Use this for multi-shot Seedance nodes that need several still anchors, product-truth images, style references, director's-notes boards, or storyboard panels:
+
+- do not set `inputMode: "start-frame"`
+- set `slotCounts.referenceUrl` to the exact number of reference-image inputs needed
+- wire every required anchor/board/product-truth source to `referenceUrl` with explicit `targetSlot` values
+- use `@Image1`, `@Image2`, and so on only when the matching visible reference input exists
+- assign one dominant job to each reference: opening composition, identity/wardrobe, product truth, style/lighting, camera choreography, or final hold
+- keep broad prompt timing local to the selected node duration
+
+Do not mix the contracts. In the current live schema, Start Frame / End Frame mode hides `Reference Images`, so a node cannot reliably consume both `imageUrl` and director-board `referenceUrl` inputs. If both are essential, use reference-image set mode or split the idea into separate Seedance nodes.
+
+## Reference Connection Map
+
+Every canonical motion node must have a written connection map before paste:
+
+| Prompt token | Source node | Target input | Slot | Role |
+| --- | --- | --- | ---: | --- |
+| `Start Frame` or `@Image1` | approved still/panel | `imageUrl` or `referenceUrl` | 0 | opening composition |
+| `@Image2` | approved director's-notes board | `referenceUrl` | 1 | camera choreography |
+| `@Image3` | product/style/identity reference | `referenceUrl` | 2 | continuity guard |
+
+If the prompt relies on a source but the map has no edge for it, the workflow is not ready to paste.
+
+The helper rejects canonical specs when:
+
+- a video prompt contains timing beyond the node duration
+- a prompt says it uses multiple approved references but no `referenceUrl` edges exist
+- a prompt uses `@ImageN` without at least N `referenceUrl` inputs
+- a storyboard or director's-notes board is mentioned without a connected reference image
+- `inputMode: "start-frame"` is mixed with `referenceUrl` edges
 
 ## Model Guard
 
@@ -78,6 +115,7 @@ A pasted workflow is not accepted until a human-readable canvas view shows:
 - sections are readable
 - planned shot branches are visible before generation
 - edges are visible where continuity depends on them
+- each motion node's visible references match its connection map
 - motion nodes are not connected to unreviewed first-pass stills
 - model labels and ratios match the plan
 

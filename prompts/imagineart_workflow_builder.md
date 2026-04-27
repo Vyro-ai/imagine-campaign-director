@@ -23,6 +23,8 @@ The spec must:
 - include all planned shot branches before generation
 - avoid overlapping node positions
 - set Seedance video nodes to the validated start-frame contract with `inputMode: "start-frame"` when wiring approved stills to motion
+- use the reference-image set contract for multi-shot nodes that need multiple still anchors, product-truth refs, storyboard panels, or director's-notes boards
+- include `slotCounts.referenceUrl` and explicit `targetSlot` values whenever a video prompt uses `@Image` references
 - use `Seedance 2` / `Seedance 2.0` as the intended campaign motion model, not Kling, unless the user explicitly requested Kling
 
 ### Input Nodes
@@ -96,7 +98,9 @@ For Seedance 2 multi-shot campaign nodes, include:
 - one hero event per block
 - reference role map
 - director's-notes board role if connected
-- start-frame or reference wiring requirement
+- explicit input contract: `start/end frame` or `reference-image set`
+- reference connection map with source node, target input key, slot, prompt token, and role
+- node-local timing that does not exceed the selected duration
 - visible model guard: reject if pasted/UI node resolves to Kling 3.0
 
 For commercial/social/professionally produced video requests, each Seedance shot needs:

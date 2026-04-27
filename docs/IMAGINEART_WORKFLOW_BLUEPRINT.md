@@ -158,6 +158,8 @@ For high-realism commercials, Seedance 2 or the available Imagine.Art video-gene
 
 - approved start frame or image reference
 - GPT Image 2 director's-notes board when camera choreography is complex
+- explicit video input contract: start/end frame or reference-image set
+- reference connection map listing every source node, target input key, slot, prompt token, and role
 - shared continuity rules
 - shot-specific action
 - real production language: lens, camera movement, lighting setup, blocking, environment, practical reflections, restrained performance, and physical product interaction
@@ -168,6 +170,8 @@ When the user asks for a believable actress/model, prioritize consistency across
 Before launch, expand or inspect every motion node and verify the visible model, duration, quality, ratio, audio toggle, and source-frame/reference connections. Clipboard/import payloads are not enough. In testing, Seedance nodes pasted with a vertical payload still opened as `1:1` until corrected in the UI.
 
 If a video node visibly defaults to `Kling 3.0`, it is not a valid CampaignCraft campaign motion node unless the user explicitly requested Kling. Correct it to Seedance 2 / Seedance 2.0 or delete/recreate it before launch.
+
+Do not create a multi-shot Seedance node that references several still anchors or director's-notes boards while only wiring one `Start Frame`. If a node needs multiple visual references, use the reference-image set contract from `docs/PASTE_FIRST_WORKFLOWS.md`: `referenceUrl` slots, explicit target slots, and matching `@Image` references in the prompt. If the live UI cannot show those inputs, split the motion into simpler start/end-frame nodes.
 
 ## Music Section
 
