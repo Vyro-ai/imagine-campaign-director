@@ -2,6 +2,27 @@
   "name": "Imagine.Art model execution matrix",
   "description": "Public-safe operational defaults for CampaignCraft agents. Validate against the live Imagine.Art UI before launch because model options can change.",
   "models": {
+    "imagineart_2": {
+      "display_name": "ImagineArt 2.0",
+      "primary_use": [
+        "default original stillframe generation",
+        "hero/style frames",
+        "product and environment plates",
+        "visual-system exploration before motion"
+      ],
+      "automation_default_ratio": "9:16",
+      "safe_retry_ratios": ["9:16", "16:9", "1:1"],
+      "known_risks": [
+        "may not support the reference behavior needed for some continuity tasks",
+        "must be inspected before use as a Seedance source",
+        "avoid baked-in final typography for campaign text"
+      ],
+      "preflight": [
+        "confirm visible model label says ImagineArt 2.0",
+        "use for original stillframes and plates when references are not required",
+        "if reference-controlled generation is needed and unsupported, switch that asset role to GPT Image 2"
+      ]
+    },
     "gpt_image_2": {
       "display_name": "GPT Image 2",
       "primary_use": [
@@ -103,6 +124,9 @@
   },
   "global_rules": [
     "the visible UI model and settings are authoritative before launch",
+    "for original reference images, try ImagineArt 2.0 first when it can satisfy the role",
+    "use GPT Image 2 when references, storyboard panels, or continuity control are needed and ImagineArt 2.0 cannot satisfy that role",
+    "for high-realism commercial footage, use Seedance 2 or the available Imagine.Art video model as the core production layer",
     "do not launch motion from unapproved stills",
     "delete failed and unused nodes from the final workflow",
     "document failed runs locally before cleanup",

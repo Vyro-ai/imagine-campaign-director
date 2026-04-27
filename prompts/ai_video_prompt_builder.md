@@ -22,6 +22,29 @@ Convert approved stillframes and shot ladder decisions into Imagine.Art video pr
 - negative prompt
 - QC watchouts
 
+For commercial, social media campaign, TikTok/Reels ad, 30s spot, or professionally produced video requests, default to Seedance 2 or the available Imagine.Art video-generation model as the core production layer. Do not replace generated footage with HTML animation, a prompt pack, a storyboard, or a still-image slideshow.
+
+Every commercial shot prompt should include real production language:
+
+- lens or lens feel
+- camera movement
+- lighting setup
+- blocking
+- environment
+- practical reflections or physical texture
+- restrained performance
+- physical product interaction when relevant
+
+If the user requested a believable main actress/model, include a shared continuity block before the per-shot prompts:
+
+- identity description
+- wardrobe
+- hair
+- makeup
+- performance style
+- camera distance limits
+- approved reference frame/start frame strategy
+
 ## 10-Second Rule
 
 Use about four major phases:

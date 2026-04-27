@@ -24,6 +24,12 @@ Always plan generation through Imagine.Art Workflows unless the user explicitly 
 
 Use platform-neutral language only as secondary portability notes. The main path is Imagine.Art.
 
+When the user asks for a `social media campaign`, `30s spot`, `TikTok ad`, `Reels ad`, `commercial`, `professionally shot video`, or `professionally produced video`, interpret the request as a finished real-world video ad workflow by default. The expected deliverable is not just a written concept, static storyboard, prompt pack, or animated HTML/motion-graphics edit.
+
+Brand assets, product photos, mood boards, and style images are creative direction and continuity references. They should guide casting, wardrobe, product truth, environment, lighting, camera grammar, and final lockup, but they do not replace generated motion.
+
+For high-realism ads, Seedance or another Imagine.Art video-generation model is the core production layer. HyperFrames or another editor is the finishing layer for pacing, typography, transitions, music sync, logo lockup, CTA, captions, and final assembly.
+
 Important: a node map is not a finished workflow. Do not treat a pasted graph, prompt pack, canvas sketch, still montage, slideshow, or HyperFrames pan/zoom edit as production-ready until it has source assets, staged run order, approved still anchors, generated music, reviewed motion outputs, a shot-source manifest, and a final edit/export plan.
 
 If the agent has browser access, it should execute the workflow in Imagine.Art, not merely describe it. Follow `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`. If execution is blocked by login, UI, model, moderation, generation, or export failures, report the exact blocker and status instead of presenting a proxy as final.
@@ -52,6 +58,22 @@ Hard taste rule: a technically valid Imagine.Art export is not automatically fin
 16. Score outputs with `docs/QUALITY_CONTROL.md`, including the reference-parity table.
 17. Diagnose revisions with `prompts/revision_diagnoser.md`.
 18. Package final delivery with `prompts/final_delivery_packager.md`.
+
+## Seedance-First Commercial Workflow
+
+Use this sequence when the user asks for a commercial, social media campaign, TikTok/Reels ad, 30s spot, or professionally shot/produced video:
+
+1. Analyze brand assets and extract visual rules.
+2. Define target platform, runtime, pacing, audience, CTA, and aspect ratio.
+3. Create a hero concept and an 8-12 shot structure for a 30s vertical ad.
+4. Generate or select consistent actress/model reference frames when a believable human lead is requested.
+5. Generate Seedance-ready prompts per shot, including shared continuity and negative prompts.
+6. Generate or specify an original Imagine.Art Music Studio bed with edit hit points.
+7. Assemble generated clips in an editor or HyperFrames with beat-synced cuts, type, logo, product lockup, captions, and CTA.
+8. QC for realism, product continuity, actress/model consistency, hand/contact issues, fake text, social-platform framing, and reference parity.
+9. Deliver the final render plus source prompts, shot-source manifest, edit notes, and revision notes.
+
+If the agent cannot operate Seedance directly, it must explicitly say whether it is preparing prompts for the user to run in Seedance or assembling already-generated Seedance outputs. Do not silently substitute HTML animation, still-image slideshows, or generic prompt packs for a requested finished video ad.
 
 When operating the browser, use `config/imagineart_model_matrix.json` and `config/automation_recovery_rules.json` for model defaults, preflight checks, retry limits, and cleanup rules.
 
@@ -102,9 +124,12 @@ Include:
 - Use one dominant campaign grammar.
 - Match the ambition level of the user's references in original form; do not merely satisfy the prompt.
 - For fashion, beauty, fragrance, luxury, lifestyle, and cinematic brand work, include campaign behavior: world, styling, subject or ritual, camera discovery, editorial progression, and an earned product closeout unless the user explicitly requests a pure product loop.
+- For professionally shot/produced ads, prompts should use production language: lens, camera movement, lighting setup, blocking, environment, practical reflections, restrained performance, and physical product interaction.
+- If the user asks for a believable main actress/model, prioritize consistency across Seedance clips: identity description, wardrobe, hair, makeup, performance style, camera distance, and repeatable reference-frame strategy.
 - Make product, wardrobe, material, surface, light, and camera choices concrete.
 - Prefer stillframes/keyframes before motion when consistency matters.
-- Prefer GPT Image 2 inside Imagine.Art Workflows for fast storyboard/reference-frame ladders when available. Feed approved panels into Seedance as start frames, end frames, or reference images with one clear job each.
+- Use ImagineArt 2.0 first for original stillframes, product/environment plates, hero/style frames, and visual systems when it can satisfy the role. Use GPT Image 2 when references, storyboard panels, or continuity control are necessary and ImagineArt 2.0 cannot satisfy that role.
+- Feed approved panels into Seedance as start frames, end frames, or reference images with one clear job each.
 - Do not launch final campaign motion from prompt text alone. Generate or upload the needed image reference first, then connect it visibly to the motion node.
 - Before launching GPT Image 2 storyboard/reference nodes, confirm the visible UI model and use a validated ratio. Start with `1:1` for storyboard panels unless the live workflow has already proven another ratio works.
 - Keep 10-second generated clips realistic: about four major motion phases.

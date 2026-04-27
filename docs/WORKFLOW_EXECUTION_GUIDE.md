@@ -10,11 +10,13 @@ Start from a relevant preset or featured workflow when it matches the job. Use a
 
 Avoid the paste-first trap: a large pasted graph can look complete while being unusable. A production workflow is only valid when the source assets are present, the run order is staged, and the outputs that feed motion have been selected intentionally.
 
-For Seedance campaigns, the strongest path is usually:
+For commercials, social campaigns, TikTok/Reels ads, 30s spots, and professionally shot/produced videos, the default path is Seedance-first video production:
 
-`source inputs -> GPT Image 2 storyboard/reference panels inside Imagine.Art -> approved anchors -> Seedance motion -> Music Studio -> deterministic edit/QC`
+`source inputs -> analysis/user clarification -> ImagineArt 2.0 or GPT Image 2 reference frames -> approved anchors -> Seedance 2 motion -> Music Studio -> HyperFrames/editor finishing -> QC/export`
 
-Use another Imagine.Art image model only when it is better for the specific asset role or when GPT Image 2 is unavailable.
+Use ImagineArt 2.0 first for original stillframes and plates when it can satisfy the role. Use GPT Image 2 when references are necessary because ImagineArt 2.0 does not support the required reference behavior or continuity control. Use another Imagine.Art image model only when it is better for the specific asset role or when the preferred models are unavailable.
+
+HyperFrames is the finishing layer for edit timing, effects, transitions, typography, graphics, logo/product lockup, captions, CTA, and final assembly. It is not the replacement for generated commercial footage when the user asked for a real video ad.
 
 Do not assume the workflow payload is truthful. The visible node model and settings in the Imagine.Art UI are authoritative.
 
@@ -68,15 +70,17 @@ Before launch:
 Run campaigns in stages:
 
 1. `SOURCE`: upload/import product photos, style images, mood boards, references, footage, and brand notes.
-2. `ANALYSIS`: assign asset roles and identify continuity/artifact risks.
-3. `STILLS`: generate look-development variants only.
-4. `APPROVED`: select still anchors and document why they passed.
-5. `STORYBOARD`: create camera-movement reference panels for Seedance shots.
-6. `MOTION`: animate from approved anchors and storyboard references.
-7. `BROLL`: generate inserts only after the main visual world is stable.
-8. `MUSIC`: generate the Music Studio track.
-9. `EDIT`: assemble with deterministic type, captions, crop, timing, and final card.
-10. `QC`: reject, revise, or export.
+2. `CLARIFY`: ask targeted user questions or document assumptions for platform, runtime, CTA, audience, realism, model/casting, and music.
+3. `ANALYSIS`: assign asset roles and identify continuity/artifact risks.
+4. `SHOTLIST`: create the hero concept and shot ladder; use 8-12 shots for a 30s vertical ad unless the brief requires a different structure.
+5. `STILLS`: generate look-development variants, product truth frames, model/actress reference frames, hero plates, and shot reference frames.
+6. `APPROVED`: select still anchors and document why they passed.
+7. `STORYBOARD`: create camera-movement reference panels for Seedance shots.
+8. `MOTION`: animate from approved anchors and storyboard references with Seedance 2 or the selected Imagine.Art video model.
+9. `BROLL`: generate inserts only after the main visual world is stable.
+10. `MUSIC`: generate or import the Music Studio track.
+11. `EDIT`: assemble with deterministic type, captions, transitions, effects, crop, timing, logo/product lockup, and final card.
+12. `QC`: reject, revise, or export.
 
 Do not run stages 3-7 as one bulk launch. The stillframe and storyboard approval gates are the taste-transfer steps.
 
@@ -117,6 +121,8 @@ Do not report a workflow as ready until:
 
 - sections are readable
 - source assets are imported/uploaded
+- clarification questions are answered or assumptions are documented
+- a shot list exists with continuity rules, Seedance prompts, negative prompts, music direction, and final edit plan
 - launch-critical connections are visible
 - approved stills are separated
 - motion outputs are reviewed

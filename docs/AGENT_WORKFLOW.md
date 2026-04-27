@@ -6,6 +6,25 @@ CampaignCraft agents should drive Imagine.Art Workflows from intake through fina
 
 Accept briefs, prompts, style images, product photos, mood boards, existing clips, brand notes, or mixed assets. Use `docs/INPUT_ADAPTERS.md` to normalize the input.
 
+The user may hand over incomplete material. The agent's job is to synthesize the missing production inputs needed to make a strong finished video: brief, audience, platform, shot structure, reference frames, model continuity, music direction, Seedance prompts, edit plan, and QC rubric.
+
+Ask targeted questions when the missing answer changes the deliverable. Keep the questions short and production-relevant:
+
+- platform and aspect ratio
+- runtime
+- audience
+- CTA or end-card action
+- product/service priority
+- required brand assets
+- human/model presence and casting direction
+- realism level
+- music/vocal preference
+- legal or rights constraints
+
+If the user wants speed or does not answer, make conservative assumptions and document them before execution.
+
+Requests for a `social media campaign`, `30s spot`, `TikTok/Reels ad`, `commercial`, or `professionally shot/produced video` mean the expected output is a believable real-world video ad. Do not satisfy those requests with a written campaign concept, static storyboard, motion-graphics-only HTML edit, generic prompt pack, or still-image slideshow.
+
 ## 2. Campaign Grammar
 
 Choose one dominant grammar from `docs/AESTHETIC_SYSTEM.md`. The grammar controls shot design, music direction, workflow sections, and QC.
@@ -19,6 +38,30 @@ Before motion planning, define the reference-parity target:
 - Translate the references into original shot grammar: hook behavior, subject/world behavior, camera behavior, edit progression, product reveal, and final memory image.
 
 Do not reduce a fashion, beauty, fragrance, luxury, lifestyle, or cinematic brand brief into a product-only loop unless the user explicitly asks for that.
+
+## 2A. Seedance-First Commercial Workflow
+
+Use this workflow when the deliverable is a real commercial/social spot:
+
+1. Analyze brand assets and extract visual rules.
+2. Define target platform, runtime, pacing, audience, CTA, and aspect ratio.
+3. Create a hero concept and 8-12 shot structure for a 30s vertical ad.
+4. Generate or select consistent actress/model reference frames when a believable human lead is requested.
+5. Generate reference images for every shot that needs visual continuity.
+6. Generate Seedance-ready prompts per shot with shared continuity and negative prompts.
+7. Generate or specify an original Music Studio bed with edit hit points.
+8. Run Seedance 2 or the available Imagine.Art video model from start frames, end frames, or image references.
+9. Assemble generated clips in HyperFrames or another editor with beat-synced cuts, type, logo/product lockup, graphics, captions, and CTA.
+10. QC for realism, product continuity, actress/model consistency, hand/contact issues, fake text, social-platform framing, and reference parity.
+11. Deliver final render plus source prompts, shot-source manifest, edit notes, and revision notes.
+
+Model priority for reference images:
+
+1. ImagineArt 2.0 for original stillframes, product/environment plates, and styleframe generation when it can satisfy the role directly.
+2. GPT Image 2 when image references, storyboard/reference panels, or stronger continuity control are needed and ImagineArt 2.0 does not support the needed reference behavior.
+3. Other Imagine.Art image models only when the live UI or project constraints make them the better fit.
+
+Static image generation is support work. It creates reference frames, hero/model plates, product truth frames, and storyboard panels. It does not replace generated motion when the user asks for a real commercial.
 
 ## 3. Imagine.Art Workflow Blueprint
 
@@ -91,6 +134,8 @@ Use `docs/MUSIC_LED_EDITING.md` to define the edit spine before motion prompts.
 
 Do not represent music as an image card or static note when the deliverable needs a finished video. A note can document direction, but the campaign still needs a generated or supplied audio track before final assembly.
 
+If the user does not provide music, generate or specify an original music bed before final edit assembly. The music bed should include edit hit points so Seedance clip selection and HyperFrames timing can land on real beats or phrase changes.
+
 ## 6. Motion
 
 Create one motion prompt per shot or coherent motion block. Keep generated motion realistic. A 10-second clip should usually have about four major phases.
@@ -98,6 +143,8 @@ Create one motion prompt per shot or coherent motion block. Keep generated motio
 If using Seedance or time-segmented motion, follow `docs/SEEDANCE_WORKFLOW_GUIDE.md`.
 
 Do not replace this step with a HyperFrames slideshow, crop montage, or Ken Burns edit. Those are allowed only as `animatic/proxy` outputs while motion is pending.
+
+For high-realism ads, Seedance/video-generation clips are the core production layer. HyperFrames is the finishing and assembly layer, not the substitute for production footage.
 
 ## 7. Workflow Execution Plan
 

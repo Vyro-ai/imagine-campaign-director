@@ -8,6 +8,31 @@ Seedance campaign motion is image-first. Every final Seedance shot must use a vi
 
 Text-only Seedance is not allowed for campaign motion. If no visual source exists, create one first in Imagine.Art, approve it, then connect it to Seedance.
 
+For commercial, social media campaign, TikTok/Reels ad, 30s spot, or professionally produced video requests, Seedance 2 or the available Imagine.Art video-generation model is the core production footage layer. HyperFrames/editor work is for finishing, not for replacing generated footage.
+
+The agent must explicitly state one of these execution modes:
+
+- operating Seedance directly in Imagine.Art
+- preparing Seedance prompts and references for the user to run
+- assembling already-generated Seedance outputs
+
+Do not silently substitute HTML animation, prompt packs, static storyboards, or slideshows when the user asks for a finished video ad.
+
+## Model / Actress Consistency
+
+If the user asks for a believable main actress/model, create a continuity strategy before motion:
+
+- identity description
+- wardrobe
+- hair
+- makeup
+- performance style
+- camera distance and shot-size limits
+- approved reference frames/start frames
+- per-shot continuity risks
+
+Use repeatable reference frames for the same character. Prefer medium/wide shots for action and closeups only when the reference frame is strong enough. Do not rely on text alone to preserve identity.
+
 ## Start-Frame Mode
 
 When using a stillframe as the first frame:

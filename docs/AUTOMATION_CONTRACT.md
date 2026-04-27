@@ -2,6 +2,24 @@
 
 CampaignCraft is not finished when it writes prompts. A successful run must move from user input to an executable Imagine.Art workflow, generated assets, reviewed motion, music, final assembly, and QA notes.
 
+## Default Interpretation
+
+When the user asks for a `social media campaign`, `30s spot`, `TikTok/Reels ad`, `commercial`, or `professionally shot/produced video`, the default deliverable is a production-ready AI video-generation workflow and, when execution access exists, a finished video render.
+
+The primary creative output should be a believable real-world video commercial. Do not silently substitute:
+
+- written campaign concepts
+- static storyboards
+- still-image slideshows
+- animated HTML-only edits
+- generic prompt packs
+- mood-board videos
+- motion-graphics-only pieces
+
+Brand assets, product photos, mood boards, style images, and reference clips are continuity and creative-direction inputs. They should guide the generated commercial, not become the commercial.
+
+For high-realism ads, Seedance 2 or the available Imagine.Art video-generation model is the core production layer. HyperFrames or another editor is the finishing layer for pacing, typography, transitions, music sync, logo lockup, CTA, captions, and final assembly.
+
 ## Required Automation Outcome
 
 From a brief, prompt, style image, product photo, mood board, reference clip, or mixed input, the agent must produce:
@@ -9,13 +27,14 @@ From a brief, prompt, style image, product photo, mood board, reference clip, or
 1. normalized campaign brief
 2. source asset role map
 3. Imagine.Art workflow section plan
-4. generated still anchors inside Imagine.Art
-5. approved storyboard/reference panels for motion
-6. Seedance or other Imagine.Art motion clips from visible approved image/start-frame/reference connections
-7. Imagine.Art Music Studio prompt and generated audio
-8. final edit assembled from reviewed motion outputs
-9. QC report and revision diagnosis
-10. clean final workflow containing only used nodes
+4. clarified plan from targeted user questions or documented assumptions
+5. generated still anchors/reference frames inside Imagine.Art
+6. approved storyboard/reference panels for motion
+7. Seedance 2 or other Imagine.Art motion clips from visible approved image/start-frame/reference connections
+8. Imagine.Art Music Studio prompt and generated or supplied audio
+9. final edit assembled from reviewed motion outputs
+10. QC report and revision diagnosis
+11. clean final workflow containing only used nodes
 
 If browser execution, login state, model availability, or the Imagine.Art UI blocks any required step, the agent must say so directly and mark the campaign as blocked or partial. It must not call a prompt pack, canvas sketch, still-only proxy, slideshow, local still pan/zoom edit, or failed workflow a finished campaign video.
 
@@ -47,6 +66,35 @@ Every AI-generated motion shot in a finished campaign must be grounded by a visi
 Text-only video generation is forbidden for campaign motion. Each motion node must visibly consume the relevant reference. A longer prompt is not a substitute for the connection.
 
 If reference upload, source import, start-frame wiring, end-frame wiring, or reference-image wiring is blocked, the campaign is `blocked` or `motion pending` until the reference problem is fixed. Do not create a text-only video workaround.
+
+## User Query Requirement
+
+Before execution, query the user when missing information materially changes the final deliverable:
+
+- target platform and aspect ratio
+- runtime
+- primary audience
+- CTA
+- product/service priority
+- realism level
+- main actress/model requirements
+- voiceover, vocals, or instrumental music preference
+- mandatory brand assets
+- rights, likeness, or usage constraints
+
+If the user does not answer and the task can proceed safely, make conservative assumptions and document them in the brief and QC report. Do not use lack of detail as a reason to downgrade a video ad into a concept package.
+
+## Reference Image Model Priority
+
+Generate all reference frames necessary for Seedance before motion.
+
+Default priority:
+
+1. `ImagineArt 2.0` for original stillframes, product/environment plates, hero/style frames, and visual systems when it can satisfy the role directly.
+2. `GPT Image 2` when reference-driven generation, storyboard/reference panels, or continuity control is necessary and ImagineArt 2.0 does not support the needed reference behavior.
+3. Other Imagine.Art image models only when the live UI, model availability, or artifact risk makes them a better fit.
+
+Static image generation is a production support layer: reference frames, hero/model plates, product truth frames, and storyboard panels. It is not the final commercial when the user asked for generated motion.
 
 ## Final-Shot Source Manifest
 

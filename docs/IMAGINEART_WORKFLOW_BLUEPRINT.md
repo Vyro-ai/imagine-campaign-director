@@ -45,6 +45,22 @@ Every source asset needs a declared role:
 
 Do not ask one source image to do every job. Do not proceed if the product truth asset is only described but not available.
 
+## Clarification / Assumption Nodes
+
+If the user supplies only partial direction, add a clarification or assumption node before production. Capture:
+
+- platform and aspect ratio
+- runtime
+- audience
+- CTA
+- realism level
+- main actress/model requirements
+- music preference
+- required brand assets
+- rights/likeness constraints
+
+The agent should query the user for missing decisions that materially change the output. If speed matters or the user does not answer, document conservative assumptions and continue without downgrading the requested video ad into a concept-only package.
+
 ## Analysis Nodes
 
 Use text, prompt, or AI Copilot-style analysis nodes to summarize:
@@ -67,11 +83,14 @@ Create stillframe branches for:
 - environment plate
 - material macro
 - human/casting frame
+- main actress/model continuity frame
+- wardrobe/hair/makeup reference frame
+- product interaction frame
 - final end-card plate
 
 Generate multiple variants, then isolate approved anchors.
 
-For storyboard/reference panels that primarily describe camera movement, GPT Image 2 is usually the preferred Imagine.Art image model when available. Use a conservative validated ratio such as `1:1` for automation unless the live workflow has already proven the requested ratio works. The visible UI model and ratio must be checked before launch.
+Use ImagineArt 2.0 first for original stillframes, product/environment plates, hero/style frames, and visual systems when it can satisfy the role. Use GPT Image 2 when image references are necessary because ImagineArt 2.0 does not support the required reference behavior, continuity control, or storyboard/reference panel need. The visible UI model and ratio must be checked before launch.
 
 For product campaigns, keep generated stillframes free of final ad typography whenever possible. If the supplied product photo already contains label text, treat it as product truth, but do not ask image or video models to recreate final campaign copy. Add brand name, product name, captions, and CTA in deterministic edit/type layers.
 
@@ -103,6 +122,16 @@ Create one motion node per shot or per coherent motion block. For 10-second clip
 4. final hero hold
 
 Motion nodes should consume approved still anchors or explicit references. If a motion node is connected directly to an unreviewed look-development node, mark the workflow incomplete.
+
+For high-realism commercials, Seedance 2 or the available Imagine.Art video-generation model is the core footage layer. Each shot should have:
+
+- approved start frame or image reference
+- shared continuity rules
+- shot-specific action
+- real production language: lens, camera movement, lighting setup, blocking, environment, practical reflections, restrained performance, and physical product interaction
+- negative prompt and QC watchouts
+
+When the user asks for a believable actress/model, prioritize consistency across clips: identity description, wardrobe, hair, makeup, performance style, camera distance, and repeatable reference-frame strategy.
 
 Before launch, expand or inspect every motion node and verify the visible model, duration, quality, ratio, audio toggle, and source-frame/reference connections. Clipboard/import payloads are not enough. In testing, Seedance nodes pasted with a vertical payload still opened as `1:1` until corrected in the UI.
 

@@ -41,6 +41,12 @@ For each still:
 - variants needed
 - approval gate
 
+Model priority:
+
+1. ImagineArt 2.0 for original stillframes, product/environment plates, hero/style frames, and visual systems when it can satisfy the role.
+2. GPT Image 2 when references are necessary because ImagineArt 2.0 does not support the needed reference behavior, continuity control, or storyboard/reference panel role.
+3. Other Imagine.Art image models only when the live UI or artifact risk makes them better.
+
 ### Storyboard / Motion Reference Nodes
 
 For each Seedance or reference-driven motion shot:
@@ -60,11 +66,20 @@ For each motion clip:
 
 - node name
 - source stillframe
-- model suggestion
+- model suggestion, defaulting to Seedance 2 for high-realism commercial footage when available
 - duration
 - prompt
 - variants needed
 - QC gate
+
+For commercial/social/professionally produced video requests, each Seedance shot needs:
+
+- approved start frame or image reference
+- shared continuity block
+- shot-specific action
+- real production language: lens, camera movement, lighting setup, blocking, environment, practical reflections, restrained performance, and physical product interaction
+- negative prompt
+- actress/model consistency rules when a human lead is requested
 
 ### B-Roll Nodes
 

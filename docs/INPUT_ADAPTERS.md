@@ -19,6 +19,20 @@ For every input, infer or ask for:
 
 If details are missing, make conservative assumptions and label them.
 
+For commercial/social/video-ad requests, query the user for missing production decisions before execution when they matter:
+
+- platform and aspect ratio
+- runtime
+- audience
+- CTA
+- realism level
+- main actress/model requirements
+- music/vocal preference
+- required brand assets
+- rights or likeness constraints
+
+If the user hands over incomplete assets, synthesize the missing production inputs rather than stopping at a concept: shot list, reference-frame plan, model continuity plan, Seedance prompts, music bed, edit plan, and QC gates.
+
 ## Brief Input
 
 Convert a written brief into:
@@ -76,6 +90,8 @@ Default to an image-first workflow: product clean-up or isolation, product hero 
 
 For product campaigns, create separate references for product truth and motion. Product photos should stabilize shape, label, material, and proportions. Storyboard panels should describe camera path and scene evolution. Do not make one product image carry both jobs.
 
+For a commercial/social spot, the product photo is not the final ad. It is product truth and continuity input for generated commercial footage, product interactions, closeups, and final lockup.
+
 ## Mood Board Input
 
 Distill:
@@ -117,3 +133,15 @@ Assign each asset a role:
 - audio pacing reference
 
 One asset should not be asked to do every job.
+
+## Commercial / Social Spot Input
+
+When the user's wording implies a produced ad, default to a real-world video-generation plan:
+
+- brand assets become creative direction and continuity references
+- Seedance 2 or another Imagine.Art video model becomes the core footage generator
+- ImagineArt 2.0 generates original still/reference frames when it can satisfy the role
+- GPT Image 2 generates reference-driven panels when refs or continuity control are needed
+- HyperFrames/editor handles finishing: pacing, transitions, text, logo lockup, CTA, captions, effects, and final assembly
+
+Do not silently substitute a storyboard, prompt pack, static image sequence, or HTML-only animation for the requested commercial.
