@@ -82,6 +82,8 @@ If the best honest comparison is "this is a product loop, but the references are
 - final or review-ready campaign export is mostly still anchors, slideshow frames, local pan/zoom, storyboard panels, or contact-sheet crops
 - planned motion clips failed, timed out, or became non-exportable and were replaced with stills without labeling the result `partial/proxy`
 - approved anchors fail `docs/DIRECTIONAL_DIVERSITY_GATE.md` because they are visually interchangeable
+- approved anchors fail `docs/DIRECTORS_EYE_GATE.md` because blocking, performance, composition, and editorial contrast look like the same shot repeated
+- required adversarial critic report in `docs/ADVERSARIAL_SWARM_PROTOCOL.md` is missing or blocking
 
 ## Revision Rule
 

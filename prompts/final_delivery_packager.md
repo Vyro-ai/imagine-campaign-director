@@ -17,6 +17,7 @@ Include:
 - edit notes
 - caption notes
 - QC report
+- adversarial critic report summary from `qa/critics/`
 - reference-parity table
 - export specs
 - revision history

@@ -7,6 +7,7 @@
       "required_before": "workflow canvas work",
       "checks": [
         "creative direction gate completed",
+        "adversarial treatment critic passed or single-agent fallback report exists",
         "selected creative spine documented",
         "rejected premise notes documented",
         "campaign thesis defined",
@@ -31,6 +32,8 @@
         "first 1-2 second hook defined",
         "product or subject hierarchy defined",
         "final memory image defined",
+        "pre-spend confidence scores pass",
+        "credit budget documented",
         "directional diversity table passes",
         "shot ladder is not repeated same subject/location/pose grammar"
       ]
@@ -41,6 +44,8 @@
       "required_before": "paid motion generation",
       "checks": [
         "approved still anchors exist",
+        "approved anchor contact sheet passed director's-eye review",
+        "motion launch critic passed or single-agent fallback report exists",
         "required GPT Image 2 director's-notes boards exist and passed readability review",
         "music direction exists",
         "motion prompt complexity is realistic",

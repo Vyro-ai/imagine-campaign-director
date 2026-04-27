@@ -32,6 +32,7 @@ Then explicitly answer:
 - Does the first second avoid source-board residue, palette strips, UI, crop borders, and reference text?
 - Is the edit more than repeated packshots?
 - Is the edit more than repeated versions of the same pose, location, lens, and action?
+- Does the contact sheet look like a director selected distinct blocking, performance, composition, and cut reasons?
 - Does the MP4 contain audio when music was planned?
 - Is the product withheld, revealed, and then held with purpose?
 - Does any deterministic overlay duplicate readable generated label text?

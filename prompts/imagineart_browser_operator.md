@@ -23,38 +23,40 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 ## Procedure
 
 1. Verify the active workspace contains a director's treatment from `docs/DIRECTORS_TREATMENT_GATE.md`. If it does not, write it before opening the canvas, then continue. Do not return to the user for confirmation unless they explicitly requested approval before canvas changes.
-2. Open or create the Imagine.Art workflow.
-3. For multi-node campaign builds, create a canonical workflow spec locally and materialize it with `scripts/imagineart_workflow_clipboard.mjs` following `docs/PASTE_FIRST_WORKFLOWS.md`.
-4. Copy the materialized payload through the text-only clipboard path, paste once, then verify the rendered canvas.
-5. Create readable stage columns for source, analysis/strategy, stills, approved anchors, storyboard references, motion, music/edit/QC, and export.
-6. Create shot rows or clearly separated branches for the full planned shot ladder before launching generation.
-7. Upload/import source assets and verify they appear in the workflow.
-8. Create analysis/direction notes that assign each source asset one clear role.
-9. Create stillframe nodes for every planned shot branch, but do not run motion yet.
-10. Before launching stills, verify each selected node's visible model label, ratio, and live `Number of runs`.
-11. If `Number of runs` is greater than `1`, set it back to `1` unless the treatment explicitly authorizes multiple runs for an identity-candidate or look-dev node.
-12. Run only the intended stillframe batch.
-13. Monitor Active Runs and record failures.
-14. Inspect completed outputs. Reject moderation placeholders, bad anatomy, fake text, product drift, and incoherent frames.
-15. Move or recreate only approved stills into the approved-anchor stage.
-16. Create storyboard/reference panel nodes for the selected shot branches.
-17. For recurring models/products/garments, verify the locked reference source is visibly connected into every dependent still or Seedance node before launch. Disconnected recurring-subject stills are invalid.
-18. For any long take, multi-shot Seedance 2 node, staged camera move, simultaneous subject/camera move, orbit, tilt, reveal, pullback, rise/fall, vehicle, crowd, glass, mirror, fabric, or beat-synced reveal, create the GPT Image 2 director's-notes board required by `docs/DIRECTORS_NOTES_STORYBOARDS.md`.
-19. Verify visible model and safe ratio before launch. For GPT Image 2 director's-notes and storyboard panels, prefer `1:1` unless the live UI has already proven another ratio works.
-20. Run storyboard/reference panels and director's-notes boards, inspect outputs, and approve only usable panels.
-21. Reject or regenerate any director's-notes board with unreadable labels, ambiguous arrows, fake ad text, unclear phase order, or too many phases for the selected Seedance 2 duration.
-22. Create motion nodes for the selected shot ladder from approved anchors, reference panels, and approved director's-notes boards where required.
-23. Prefer Seedance reference-image set mode for campaign motion: actor/model identity lock, scene/environment plate, product/garment/material truth, and director's-notes board should be connected as separate `Reference Images` roles whenever the shot depends on more than one control source. Use Start Frame mode only for simple one-anchor clips.
-24. For each motion node, compare the live canvas against the reference connection map. If the prompt depends on multiple references, `@Image` tokens, storyboard panels, or director's-notes boards, verify the node exposes `Reference Images` and each required input is visibly connected. A single `Start Frame` edge is not enough for a multi-reference prompt.
-25. Before each motion launch, verify the live node panel shows the intended model, duration, quality, ratio, audio setting, local timing, run count, and connected start/end/reference frames. Correct visible settings when they disagree with the written plan. If a motion node has no visible image/start-frame/end-frame/reference connection, do not launch it.
-26. Run motion nodes in small batches and inspect the clips.
-27. After each generated video node completes, immediately perform export QC from `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`: play 2-3 seconds, download/capture the direct asset source, save it locally, verify it with `ffprobe`, and record it in the manifest before moving on.
-28. Generate the Imagine.Art Music Studio track from the music prompt. Verify the in-app prompt, instrumental/vocal setting, genre, and duration before generation.
-29. Download selected motion and music outputs into the local workspace.
-30. Assemble or prepare the final edit with selected motion clips, selected music, deterministic typography, captions, crop, and product closeout.
-31. Complete QC, including `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`.
-32. Delete failed, rejected, duplicate, abandoned, and unused nodes from the live final workflow after documenting them locally.
-33. Report the final status using one of: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, `blocked`.
+2. When subagents are available, run the treatment critic and pre-spend critic from `docs/ADVERSARIAL_SWARM_PROTOCOL.md`; resolve blockers before canvas work or paid generation.
+3. Open or create the Imagine.Art workflow.
+4. For multi-node campaign builds, create a canonical workflow spec locally and materialize it with `scripts/imagineart_workflow_clipboard.mjs` following `docs/PASTE_FIRST_WORKFLOWS.md`.
+5. Copy the materialized payload through the text-only clipboard path, paste once, then verify the rendered canvas.
+6. Create readable stage columns for source, analysis/strategy, stills, approved anchors, storyboard references, motion, music/edit/QC, and export.
+7. Create shot rows or clearly separated branches for the full planned shot ladder before launching generation.
+8. Upload/import source assets and verify they appear in the workflow.
+9. Create analysis/direction notes that assign each source asset one clear role.
+10. Create stillframe nodes for every planned shot branch, but do not run motion yet.
+11. Before launching stills, verify each selected node's visible model label, ratio, and live `Number of runs`.
+12. If `Number of runs` is greater than `1`, set it back to `1` unless the treatment explicitly authorizes multiple runs for an identity-candidate or look-dev node.
+13. Run only the intended stillframe batch.
+14. Monitor Active Runs and record failures.
+15. Inspect completed outputs. Reject moderation placeholders, bad anatomy, fake text, product drift, and incoherent frames.
+16. Create or inspect an approved-anchor contact sheet and apply `docs/DIRECTORS_EYE_GATE.md`; resolve director's-eye critic blockers before motion.
+17. Move or recreate only approved stills into the approved-anchor stage.
+18. Create storyboard/reference panel nodes for the selected shot branches.
+19. For recurring models/products/garments, verify the locked reference source is visibly connected into every dependent still or Seedance node before launch. Disconnected recurring-subject stills are invalid.
+20. For any long take, multi-shot Seedance 2 node, staged camera move, simultaneous subject/camera move, orbit, tilt, reveal, pullback, rise/fall, vehicle, crowd, glass, mirror, fabric, or beat-synced reveal, create the GPT Image 2 director's-notes board required by `docs/DIRECTORS_NOTES_STORYBOARDS.md`.
+21. Verify visible model and safe ratio before launch. For GPT Image 2 director's-notes and storyboard panels, prefer `1:1` unless the live UI has already proven another ratio works.
+22. Run storyboard/reference panels and director's-notes boards, inspect outputs, and approve only usable panels.
+23. Reject or regenerate any director's-notes board with unreadable labels, ambiguous arrows, fake ad text, unclear phase order, or too many phases for the selected Seedance 2 duration.
+24. Create motion nodes for the selected shot ladder from approved anchors, reference panels, and approved director's-notes boards where required.
+25. Prefer Seedance reference-image set mode for campaign motion: actor/model identity lock, scene/environment plate, product/garment/material truth, and director's-notes board should be connected as separate `Reference Images` roles whenever the shot depends on more than one control source. Use Start Frame mode only for simple one-anchor clips.
+26. For each motion node, compare the live canvas against the reference connection map. If the prompt depends on multiple references, `@Image` tokens, storyboard panels, or director's-notes boards, verify the node exposes `Reference Images` and each required input is visibly connected. A single `Start Frame` edge is not enough for a multi-reference prompt.
+27. Before each motion launch, verify the live node panel shows the intended model, duration, quality, ratio, audio setting, local timing, run count, and connected start/end/reference frames. Correct visible settings when they disagree with the written plan. If a motion node has no visible image/start-frame/end-frame/reference connection, do not launch it.
+28. Run motion nodes in small batches and inspect the clips.
+29. After each generated video node completes, immediately perform export QC from `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`: play 2-3 seconds, download/capture the direct asset source, save it locally, verify it with `ffprobe`, and record it in the manifest before moving on.
+30. Generate the Imagine.Art Music Studio track from the music prompt. Verify the in-app prompt, instrumental/vocal setting, genre, and duration before generation.
+31. Download selected motion and music outputs into the local workspace.
+32. Assemble or prepare the final edit with selected motion clips, selected music, deterministic typography, captions, crop, and product closeout.
+33. Complete QC, including `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`.
+34. Delete failed, rejected, duplicate, abandoned, and unused nodes from the live final workflow after documenting them locally.
+35. Report the final status using one of: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, `blocked`.
 
 ## Non-Negotiables
 

@@ -1,6 +1,6 @@
 # Directional Diversity Gate
 
-Use this before still generation and again before motion launch. It prevents a mechanically valid workflow from becoming a sequence of interchangeable images.
+Use this before still generation and again before motion launch. It prevents a mechanically valid workflow from becoming a sequence of interchangeable images. After anchors exist, apply `docs/DIRECTORS_EYE_GATE.md` to judge whether the selected frames actually look directed.
 
 ## Core Test
 
@@ -52,5 +52,4 @@ No two adjacent rows may be identical across more than three columns. If they ar
 
 ## Contact Sheet Review
 
-Before motion launch, make or inspect a contact sheet of approved anchors. Status must be `needs revision` if the anchors do not show meaningful variation in scale, angle, environment, action, and editorial purpose.
-
+Before motion launch, make or inspect a contact sheet of approved anchors. Status must be `needs revision` if the anchors do not show meaningful variation in scale, angle, environment, action, and editorial purpose. Then run the director's-eye contact sheet review in `docs/DIRECTORS_EYE_GATE.md`.

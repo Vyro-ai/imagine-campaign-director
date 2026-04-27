@@ -77,7 +77,7 @@ If Computer Use/browser execution is unavailable after an explicit check, return
 5. Apply `docs/CREATIVE_DIRECTION_GATE.md`, then write a director's treatment using `docs/DIRECTORS_TREATMENT_GATE.md`; do not touch the workflow canvas until the selected creative spine, film, edit, shots, directional diversity table, music spine, and Seedance 2 node plan are justified.
 6. Define reference parity: closest references/archetype, hook behavior, subject/world behavior, camera behavior, editorial progression, product reveal, and final memory image.
 7. Build a comprehensive workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
-8. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, `docs/WORKFLOW_EXECUTION_GUIDE.md`, `docs/DIRECTIONAL_DIVERSITY_GATE.md`, and `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`.
+8. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, `docs/WORKFLOW_EXECUTION_GUIDE.md`, `docs/ADVERSARIAL_SWARM_PROTOCOL.md`, `docs/PRE_SPEND_CONFIDENCE_GATE.md`, `docs/DIRECTIONAL_DIVERSITY_GATE.md`, `docs/DIRECTORS_EYE_GATE.md`, and `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`.
 9. For paste-first workflows, apply `docs/PASTE_FIRST_WORKFLOWS.md` and `docs/IMAGINEART_LIVE_MODEL_STRINGS.md`; use `modelKey` values that materialize to the verified live IDs instead of stale numeric IDs.
 10. For recurring people, products, garments, or other continuity-sensitive subjects, apply `docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md`; lock references first, wire them into every dependent node, and keep production nodes to one run unless an exploration budget is explicitly documented.
 9. Import or explicitly account for every source asset before stillframe generation.

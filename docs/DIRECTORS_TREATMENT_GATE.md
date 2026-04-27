@@ -6,6 +6,8 @@ The canvas is not the place to discover the concept. It is the place to execute 
 
 Before this gate, apply `docs/CREATIVE_DIRECTION_GATE.md`. The treatment must execute a selected creative spine, not generic luxury taste language.
 
+For campaign work with subagent support, also apply `docs/ADVERSARIAL_SWARM_PROTOCOL.md`. The treatment critic must pass before canvas work.
+
 ## Hard Gate
 
 Do not create, paste, or launch workflow nodes until the active workspace contains a director's treatment with:
@@ -28,6 +30,7 @@ Do not create, paste, or launch workflow nodes until the active workspace contai
 - QC rejection criteria
 - final memory image
 - directional diversity table from `docs/DIRECTIONAL_DIVERSITY_GATE.md`
+- director's-eye contact sheet review requirement from `docs/DIRECTORS_EYE_GATE.md`
 
 If the user gives a vague prompt, apply `docs/VAGUE_PROMPT_RESCUE.md` first, then write the treatment from that expanded direction.
 
@@ -51,6 +54,8 @@ Every planned shot must justify its place in the edit. For each shot, document:
 Delete or merge any shot that has the same job, same shot size, same movement, and same subject behavior as another shot.
 
 Apply `docs/DIRECTIONAL_DIVERSITY_GATE.md` before still generation. If the shot ladder or approved anchor contact sheet reads as the same subject in the same location with the same pose language, revise the concept before spending motion credits.
+
+After still anchors are generated, apply `docs/DIRECTORS_EYE_GATE.md`. Do not ask Seedance to invent the performance, blocking, and editorial contrast missing from weak anchors.
 
 ## Near-Deterministic Edit Plan
 

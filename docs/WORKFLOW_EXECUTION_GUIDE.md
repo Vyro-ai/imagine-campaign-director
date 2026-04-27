@@ -10,7 +10,7 @@ Start from a relevant preset or featured workflow when it matches the job. Use a
 
 Before opening or touching the canvas, complete the director's treatment in `docs/DIRECTORS_TREATMENT_GATE.md`. The workflow should execute a near-deterministic edit plan with justified shots, cut points, music hits, transition logic, and Seedance 2 node grouping already decided.
 
-Before still generation, apply `docs/DIRECTIONAL_DIVERSITY_GATE.md`. A full shot ladder that varies only crop distance around the same person, outfit, corridor, and slow push is not ready for generation.
+Before still generation, apply `docs/DIRECTIONAL_DIVERSITY_GATE.md`, `docs/PRE_SPEND_CONFIDENCE_GATE.md`, and the pre-spend critic pass from `docs/ADVERSARIAL_SWARM_PROTOCOL.md`. A full shot ladder that varies only crop distance around the same person, outfit, corridor, and slow push is not ready for generation.
 
 After the director's treatment is complete, continue into the canvas. Do not ask for confirmation just because the treatment or workflow payload is ready; ask only when the user requested approval before canvas changes or a specific blocker requires human action.
 
@@ -106,7 +106,7 @@ Run campaigns in stages:
 3. `ANALYSIS`: assign asset roles and identify continuity/artifact risks.
 4. `SHOTLIST`: create the hero concept and shot ladder; use 8-12 shots for a 30s vertical ad unless the brief requires a different structure.
 5. `STILLS`: generate ImagineArt 2.0 original stillframe variants or GPT Image 2 reference-driven product truth frames, model/actress reference frames, hero plates, and shot reference frames.
-6. `APPROVED`: select still anchors and document why they passed.
+6. `APPROVED`: select still anchors, create/inspect a contact sheet, apply `docs/DIRECTORS_EYE_GATE.md`, and document why they passed.
 7. `STORYBOARD`: create camera-movement reference panels for Seedance shots; use GPT Image 2 director's-notes boards for complicated camera choreography.
 8. `MOTION`: animate from approved anchors and storyboard references with Seedance 2 or the selected Imagine.Art video model.
 9. `BROLL`: generate inserts only after the main visual world is stable.

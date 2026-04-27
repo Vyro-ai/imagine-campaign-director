@@ -19,6 +19,26 @@
       "description": "Scenes include concrete materials, environments, actions, and camera intent."
     },
     {
+      "id": "campaign_ambition",
+      "label": "Campaign Ambition",
+      "description": "The campaign has a specific creative spine, status change, and memorable directed event."
+    },
+    {
+      "id": "fashion_authority",
+      "label": "Fashion/Product Authority",
+      "description": "Styling, silhouette, material behavior, posture, product truth, and body language feel intentional."
+    },
+    {
+      "id": "editorial_progression",
+      "label": "Editorial Progression",
+      "description": "The edit escalates through meaningful changes instead of interchangeable coverage."
+    },
+    {
+      "id": "final_memory_image",
+      "label": "Final Memory Image",
+      "description": "The final image feels earned, specific, and memorable."
+    },
+    {
       "id": "motion_design",
       "label": "Motion Design",
       "description": "Camera and subject motion support the idea instead of creating noise."
@@ -52,6 +72,10 @@
   "reject_if_below": {
     "public_safety": 5,
     "product_clarity": 3,
-    "artifact_control": 3
+    "artifact_control": 3,
+    "campaign_ambition": 4,
+    "fashion_authority": 4,
+    "editorial_progression": 4,
+    "final_memory_image": 4
   }
 }

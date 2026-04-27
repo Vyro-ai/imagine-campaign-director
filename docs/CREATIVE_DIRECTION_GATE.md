@@ -55,6 +55,8 @@ Before still generation, answer:
 
 If the answers are vague, rewrite the premise.
 
+Then apply `docs/PRE_SPEND_CONFIDENCE_GATE.md`. Do not spend credits just because a premise sounds plausible.
+
 ## Risk Budget
 
 Every campaign needs at least one creative risk, but not ten. Choose one or two controlled risks:
@@ -84,4 +86,3 @@ Those words may appear as mood support, but they cannot be the operative directi
 ## Treatment Handoff
 
 The director's treatment must begin with the selected creative spine and rejected-premise notes. If the treatment jumps straight to a generic shot ladder, it fails this gate.
-
