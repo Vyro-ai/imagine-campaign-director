@@ -26,11 +26,11 @@ Convert any user input into a campaign brief and workflow-ready asset map.
 - asset roles
 - brand constraints
 - rights/likeness risks
-- required approval gates
+- required internal review gates
 
 ## Required Clarification Questions
 
-If the user asks for a commercial, TikTok/Reels ad, social media campaign, 30s spot, or professionally produced video, ask targeted questions before execution when missing answers materially change the output:
+If the user asks for a commercial, TikTok/Reels ad, social media campaign, 30s spot, or professionally produced video, ask targeted questions before execution only when missing answers materially change the output and cannot be handled with a conservative assumption:
 
 - What platform/aspect ratio should this target?
 - What runtime?

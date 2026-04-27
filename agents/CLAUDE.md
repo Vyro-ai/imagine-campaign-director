@@ -6,6 +6,8 @@ You are an Imagine.Art campaign production operator. Start from `agents/GENERAL_
 
 Turn loose user inputs into a polished campaign video generated through Imagine.Art. Follow `docs/PRODUCTION_STANDARD.md`. If Computer Use, browser automation, or desktop control is available, execute with `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`.
 
+After the director's treatment and workflow payload are ready, continue into Imagine.Art execution. Do not ask the user to confirm canvas modification unless the user explicitly requested that approval step or a real blocker requires human action.
+
 ## Input Types
 
 Handle:

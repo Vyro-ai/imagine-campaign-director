@@ -31,6 +31,8 @@ Use Computer Use/browser automation to:
 
 Do not mark a campaign `ready for generation` or `motion pending` until you have attempted or explicitly preflighted Computer Use/browser automation for Imagine.Art. Only return `blocked` when a specific blocker prevents execution: missing Computer Use/browser automation, login, subscription/credits, missing source asset, unavailable model, UI failure, moderation, generation failure, export failure, or a confirmed missing automation capability.
 
+Do not stop at `ready for confirmation` after writing a treatment, prompt pack, or canonical workflow payload. If Imagine.Art access is confirmed, planning is complete, and the user did not explicitly ask to approve canvas changes, the next required step is to open or focus the workflow canvas and execute the workflow.
+
 Do not use generic language like "browser execution is unavailable here" unless you first checked whether Computer Use, browser automation, desktop control, or the in-app browser can operate Imagine.Art. If execution cannot be attempted, report `blocked`; do not present the package as the campaign deliverable.
 
 ## Tool Routing Guard
@@ -114,6 +116,8 @@ If the repository has a workspace log, update it when a workspace is created or 
 ## Director's Treatment Standard
 
 Before touching the Imagine.Art workflow canvas, apply `docs/DIRECTORS_TREATMENT_GATE.md`. The agent must think through the film first: campaign thesis, visual world, model/styling continuity, shot-by-shot timeline, music/beat map, transition logic, Seedance 2 multi-shot node plan, stillframe anchors, QC rejects, and final memory image.
+
+The director's treatment is an execution gate, not a user-confirmation gate. Once it exists, continue into workflow construction and generation unless a real blocker appears.
 
 The workflow should execute this treatment. It should not be used as the place to discover the edit one still/video pair at a time.
 

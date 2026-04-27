@@ -12,6 +12,8 @@ If Computer Use/browser automation is available, continue through planning and e
 
 Before touching the Imagine.Art workflow canvas, creating workflow nodes, pasting workflow payloads, or launching generation, complete the director's treatment required by `docs/DIRECTORS_TREATMENT_GATE.md`. The film must be planned first: shot-by-shot timeline, visual job and justification for every shot, cut points, music hits, transition logic, stillframe anchors, Seedance 2 multi-shot node grouping, QC rejects, and final memory image.
 
+Completing the treatment is not a stopping point and does not require user confirmation. Once the treatment and workflow payload are ready and Imagine.Art access is confirmed, immediately open or focus the workflow canvas, paste/build the readable workflow, and continue execution unless there is a specific blocker or the user explicitly asked to approve before canvas changes.
+
 For any user request to create a campaign video, ad, fashion film, commercial, TikTok/Reels spot, social campaign, product video, or professionally produced video:
 
 1. Preflight Computer Use/browser automation availability.

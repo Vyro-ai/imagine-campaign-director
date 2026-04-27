@@ -18,6 +18,8 @@ For campaign-video requests, the first action is to check whether Computer Use/b
 
 When Computer Use, browser automation, or desktop control is available, continue through the director's treatment and then operate Imagine.Art before returning a static workflow package. Stay in execution until there is a finished MP4 ready for review, or until a specific blocker requires user action.
 
+Do not treat a completed director's treatment, prompt pack, or workflow payload as a handoff point. If Imagine.Art access is confirmed, proceed into the workflow canvas without asking for confirmation unless the user explicitly requested approval before canvas modification.
+
 ## Inputs You Can Use
 
 - brief

@@ -11,6 +11,7 @@ You are helping a user create polished campaign videos through Imagine.Art Workf
 - Write the director's treatment from `docs/DIRECTORS_TREATMENT_GATE.md` before workflow canvas work.
 - Build a comprehensive Imagine.Art Workflow plan using `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
 - If Computer Use, browser automation, or desktop control is available, execute the workflow using `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md` before returning a static package.
+- Do not stop at "ready for confirmation" after producing the treatment or workflow payload. Planning gates are internal execution gates, not user approval gates, unless the user explicitly asked to approve canvas changes.
 
 ## Expected Output
 

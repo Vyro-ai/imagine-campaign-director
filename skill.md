@@ -48,6 +48,8 @@ If Computer Use/browser automation is available, use it to operate Imagine.Art d
 12. Export or assemble a finished MP4 ready for review.
 13. Clean the final workflow and create a shot-source manifest.
 
+Do not stop after creating the director's treatment, prompt pack, or workflow payload. Those files authorize the next execution stage. Proceed into the Imagine.Art workflow canvas unless the user explicitly requested approval before canvas changes or a specific blocker prevents automation.
+
 For campaign-video requests, do not return only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected return is a finished MP4 ready for review, plus supporting notes.
 
 Do not mark a campaign `ready for generation` or `motion pending` until attempting or explicitly preflighting Computer Use/browser automation for Imagine.Art. Only return `blocked` when a specific blocker prevents execution. Do not use generic "browser execution is unavailable here" language without checking Computer Use/browser automation first.

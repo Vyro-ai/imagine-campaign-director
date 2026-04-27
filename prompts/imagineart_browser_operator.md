@@ -22,7 +22,7 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 
 ## Procedure
 
-1. Verify the active workspace contains a director's treatment from `docs/DIRECTORS_TREATMENT_GATE.md`. If it does not, stop and write it before opening the canvas.
+1. Verify the active workspace contains a director's treatment from `docs/DIRECTORS_TREATMENT_GATE.md`. If it does not, write it before opening the canvas, then continue. Do not return to the user for confirmation unless they explicitly requested approval before canvas changes.
 2. Open or create the Imagine.Art workflow.
 3. For multi-node campaign builds, create a canonical workflow spec locally and materialize it with `scripts/imagineart_workflow_clipboard.mjs` following `docs/PASTE_FIRST_WORKFLOWS.md`.
 4. Copy the materialized payload through the text-only clipboard path, paste once, then verify the rendered canvas.
@@ -66,6 +66,7 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 - Do not leave nodes overlapping. If a node is created on top of another node, move it immediately before creating or launching more nodes.
 - Do not build the campaign as one still node plus one video node at a time. The full shot ladder must be visible as branches before generation starts, except for a clearly labeled preflight test.
 - Do not use the workflow canvas to discover the film. The director's treatment must define the shots, cut points, music hits, transitions, and Seedance 2 node grouping before canvas work starts.
+- Do not stop at `ready for confirmation` after the treatment or workflow payload is prepared. If access is confirmed, open/focus the canvas and execute the staged workflow.
 - Do not call the job finished without reviewed Imagine.Art motion and generated/supplied audio.
 - Do not return only markdown files, prompt packs, workflow maps, or `ready for generation` for a campaign-video request unless a specific blocker prevents generation.
 

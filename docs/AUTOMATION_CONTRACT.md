@@ -149,7 +149,9 @@ The user should not need to understand workflow plumbing. The agent owns:
 - documenting every failure locally
 - preparing final edit and delivery assets
 
-The user should only be asked for approval when a creative decision materially changes the campaign, rights clearance is unclear, or the platform requires a human action that cannot be automated.
+The user should only be asked for approval when a creative decision materially changes the campaign, rights clearance is unclear, the user explicitly requested approval before canvas changes, or the platform requires a human action that cannot be automated.
+
+A completed director's treatment, prompt pack, or workflow payload is not a reason to pause for confirmation. If access is available and no blocker exists, continue into the workflow canvas and execute the staged production plan.
 
 ## Execution Preflight
 
@@ -188,7 +190,7 @@ Run stages in this order:
 9. `QC`: review artifacts and revise.
 10. `CLEAN`: delete all nodes that are not part of the final used workflow.
 
-Do not bulk-run stills, storyboard references, and motion together. The taste transfer happens at the approval boundaries.
+Do not bulk-run stills, storyboard references, and motion together. The taste transfer happens at internal review boundaries: the agent inspects, rejects, selects, and documents outputs unless the user explicitly asked to approve each stage.
 
 ## Known UI Failure Classes
 

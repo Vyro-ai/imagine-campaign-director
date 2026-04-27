@@ -10,6 +10,8 @@ Start from a relevant preset or featured workflow when it matches the job. Use a
 
 Before opening or touching the canvas, complete the director's treatment in `docs/DIRECTORS_TREATMENT_GATE.md`. The workflow should execute a near-deterministic edit plan with justified shots, cut points, music hits, transition logic, and Seedance 2 node grouping already decided.
 
+After the director's treatment is complete, continue into the canvas. Do not ask for confirmation just because the treatment or workflow payload is ready; ask only when the user requested approval before canvas changes or a specific blocker requires human action.
+
 For multi-node campaign workflows, use the paste-first construction path in `docs/PASTE_FIRST_WORKFLOWS.md` by default. Generate a canonical workflow spec locally, materialize it with `scripts/imagineart_workflow_clipboard.mjs`, copy it through the text-only clipboard path, paste once, and verify the rendered canvas. Manual node creation is fallback when the node schema is unknown or paste validation fails.
 
 Avoid the paste-first trap: a large pasted graph can look complete while being unusable. A production workflow is only valid when the source assets are present, the run order is staged, and the outputs that feed motion have been selected intentionally.
@@ -107,7 +109,7 @@ Run campaigns in stages:
 11. `EDIT`: assemble with deterministic type, captions, transitions, effects, crop, timing, logo/product lockup, and final card.
 12. `QC`: reject, revise, or export.
 
-Do not run stages 3-7 as one bulk launch. The stillframe and storyboard approval gates are the taste-transfer steps.
+Do not run stages 3-7 as one bulk launch. The stillframe and storyboard review gates are internal taste-transfer steps: inspect the generated outputs, isolate rejects, select usable anchors, and continue unless the user explicitly requested manual approval.
 
 Plan the full shot system before generation. The operator should create the shot-list/strategy notes and the empty or configured stillframe branches for all planned shots before launching the first still batch. After stills are reviewed, create or wire the approved-anchor/storyboard/motion branches for all selected shots before launching the first motion batch.
 
