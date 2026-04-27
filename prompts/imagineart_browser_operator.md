@@ -23,7 +23,7 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 ## Procedure
 
 1. Verify the active workspace contains a director's treatment from `docs/DIRECTORS_TREATMENT_GATE.md`. If it does not, write it before opening the canvas, then continue. Do not return to the user for confirmation unless they explicitly requested approval before canvas changes.
-2. When subagents are available, run the treatment critic and pre-spend critic from `docs/ADVERSARIAL_SWARM_PROTOCOL.md`; resolve blockers before canvas work or paid generation.
+2. When subagents are available, run the ideation swarm, treatment critic, and pre-spend critic from `docs/ADVERSARIAL_SWARM_PROTOCOL.md`; resolve blockers before canvas work or paid generation.
 3. Open or create the Imagine.Art workflow.
 4. For multi-node campaign builds, create a canonical workflow spec locally and materialize it with `scripts/imagineart_workflow_clipboard.mjs` following `docs/PASTE_FIRST_WORKFLOWS.md`.
 5. Copy the materialized payload through the text-only clipboard path, paste once, then verify the rendered canvas.

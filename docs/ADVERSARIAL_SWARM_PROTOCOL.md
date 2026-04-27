@@ -1,14 +1,61 @@
 # Adversarial Swarm Protocol
 
-Use this for campaign work when subagents or parallel critics are available. CampaignCraft should not rely on the same agent that wrote the plan to be the only judge of whether the plan is worth spending credits on.
+Use this for campaign work when subagents or parallel critics are available. CampaignCraft should not rely on the same agent that filled in a sparse brief to be the only source of ideas or the only judge of whether the plan is worth spending credits on.
 
 ## Operating Model
 
 One main operator owns the workflow canvas, local files, manifests, and final status. Critics are short-lived adversarial reviewers. They do not mutate the canvas unless explicitly assigned a worker role.
 
-Critics return blocking reports. The main operator must apply or resolve those reports before moving to the next spend or delivery stage.
+The swarm has two modes:
+
+- `ideation swarm`: divergent invention before the creative spine is chosen
+- `critic swarm`: adversarial review at spend and delivery gates
+
+The main operator synthesizes ideas and owns execution. Critics return blocking reports. The main operator must apply or resolve those reports before moving to the next spend or delivery stage.
 
 If subagents are not available, run the same critic checklists locally and write the same reports with `critic_mode: single-agent fallback`.
+
+## Required Ideation Swarm
+
+Run this before `docs/CREATIVE_DIRECTION_GATE.md` when subagents are available, especially for sparse or taste-led briefs.
+
+### Ideation Roles
+
+- `Concept Divergence`: generate 5-10 genuinely different premises across different worlds, status changes, subject roles, and visual events.
+- `Category Taste`: attack whether each premise has real fashion/product/category authority, not generic mood.
+- `Director`: attack hook, blocking, camera grammar, status change, and final memory image.
+- `Production Feasibility`: flag AI motion risk, reference needs, likely credit cost, and simplifications.
+- `Synthesis`: the main operator selects or hybridizes the strongest idea and writes the creative spine.
+
+### Ideation Rules
+
+- Do not let all concepts share the same default world, wardrobe, location, time of day, or camera shape.
+- Each concept must include a concrete first-two-second event and final memory image.
+- Each concept must name what would be visibly different in the middle of the film.
+- Critics must kill bland premises, not politely preserve them.
+- Hybridize only when the hybrid is sharper than either source idea.
+
+### Ideation Artifact
+
+Save:
+
+`qa/critics/ideation-swarm.md`
+
+Use this format:
+
+```md
+status: pass | revise | block
+gate: ideation
+critic_mode: subagent | single-agent fallback
+premises_considered:
+premises_rejected:
+selected_premise:
+hybrid_notes:
+why_this_is_not_the_default:
+required_operator_actions:
+```
+
+Block the creative direction gate if the ideation artifact does not show meaningful divergence.
 
 ## Required Critic Passes
 
@@ -92,6 +139,7 @@ Save critic reports under `qa/critics/`.
 Suggested filenames:
 
 - `treatment-critic.md`
+- `ideation-swarm.md`
 - `pre-spend-critic.md`
 - `directors-eye-critic.md`
 - `motion-launch-critic.md`
@@ -99,4 +147,3 @@ Suggested filenames:
 - `delivery-critic.md`
 
 The final delivery package must mention the critic reports and whether any blockers were resolved.
-

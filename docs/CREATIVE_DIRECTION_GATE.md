@@ -2,13 +2,15 @@
 
 Use this before the director's treatment. This gate exists because a workflow can be technically correct, diverse, and still boring.
 
+When subagents are available, run the ideation swarm from `docs/ADVERSARIAL_SWARM_PROTOCOL.md` before this gate. Use the swarm to produce divergent ideas, not to validate a default.
+
 ## Core Rule
 
 Do not start the shot list from generic taste words like `luxury`, `cinematic`, `modern`, `mystique`, `Gen Z`, `premium`, or `editorial`. Translate them into a specific campaign idea with tension, behavior, and a visual reason to keep watching.
 
 ## Required Creative Pass
 
-Before choosing the treatment, generate three distinct campaign premises:
+Before choosing the treatment, generate at least three distinct campaign premises. If an ideation swarm ran, synthesize from its premise set instead of inventing alone:
 
 1. `Elegant Control`: restrained, architectural, precise, quiet power.
 2. `Disruptive Spark`: a specific visual interruption, reveal, or status-shift that creates energy.

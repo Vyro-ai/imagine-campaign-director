@@ -8,26 +8,28 @@ Turn the user's input into a comprehensive Imagine.Art Workflow package. The inp
 
 1. Input Analysis
 2. Assumptions
-3. Creative Direction Gate: three premises, selected spine, rejected-premise notes
-4. Campaign Grammar
-5. Director's Treatment
-6. Aesthetic Preflight Gate
-7. Imagine.Art Workflow Section Map
-8. Node-by-Node Workflow Plan
-9. Stillframe Prompt Set
-10. Imagine.Art Music Studio Prompt + Rough Beat Map
-11. Motion Prompt Set
-12. B-Roll Plan
-13. Edit Assembly Plan
-14. Captions / Typography / Product Closeout Plan
-15. QC Gates
-16. Revision Plan
-17. Final Delivery Package
+3. Ideation Swarm: divergent premise set, critic notes, selected/hybrid premise
+4. Creative Direction Gate: three premises, selected spine, rejected-premise notes
+5. Campaign Grammar
+6. Director's Treatment
+7. Aesthetic Preflight Gate
+8. Imagine.Art Workflow Section Map
+9. Node-by-Node Workflow Plan
+10. Stillframe Prompt Set
+11. Imagine.Art Music Studio Prompt + Rough Beat Map
+12. Motion Prompt Set
+13. B-Roll Plan
+14. Edit Assembly Plan
+15. Captions / Typography / Product Closeout Plan
+16. QC Gates
+17. Revision Plan
+18. Final Delivery Package
 
 ## Rules
 
 - Use Imagine.Art Workflows as the default production environment.
 - If the prompt is vague or mostly taste language, apply `docs/VAGUE_PROMPT_RESCUE.md` before workflow planning.
+- When subagents are available, run the ideation swarm in `docs/ADVERSARIAL_SWARM_PROTOCOL.md` before choosing the creative spine.
 - Apply `docs/CREATIVE_DIRECTION_GATE.md` before the director's treatment. Do not build a workflow from generic luxury vocabulary.
 - Apply `docs/DIRECTORS_TREATMENT_GATE.md` before touching the workflow canvas. Every shot must have a timeline range, visual job, justification, camera plan, transition logic, music relationship, and artifact-risk note.
 - Use Music Studio for original music direction.

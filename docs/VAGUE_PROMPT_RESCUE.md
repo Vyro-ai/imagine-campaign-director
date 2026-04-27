@@ -32,7 +32,7 @@ Do not automatically choose:
 
 Those can be selected only if the creative-direction pass chooses them for a reason.
 
-Before generation, apply `docs/CREATIVE_DIRECTION_GATE.md` and produce three distinct campaign premises. Each premise should make different choices for:
+Before generation, run the ideation swarm in `docs/ADVERSARIAL_SWARM_PROTOCOL.md` when subagents are available, then apply `docs/CREATIVE_DIRECTION_GATE.md` and produce distinct campaign premises. Each premise should make different choices for:
 
 - subject or product role
 - world/location

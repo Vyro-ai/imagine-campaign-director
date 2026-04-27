@@ -18,7 +18,7 @@ For recurring people, products, garments, or other continuity-sensitive subjects
 
 For campaign motion, apply `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`: every planned generated motion segment must be exported/downloaded locally, verified with `ffprobe`, and listed in the manifest before any `ready` or `finished` claim. A completed canvas node or browser preview is not enough. If a planned Seedance clip cannot be exported, return `blocked: export failure`; do not replace it with still anchors, slideshow assembly, HyperFrames, or local rendering.
 
-When subagents are available, apply `docs/ADVERSARIAL_SWARM_PROTOCOL.md`: spawn short-lived critics at treatment, pre-spend, director's-eye/anchor, motion launch, clip, and delivery gates. The main operator remains accountable for the canvas, but critic reports can block spend and delivery.
+When subagents are available, apply `docs/ADVERSARIAL_SWARM_PROTOCOL.md`: spawn an ideation swarm before the creative spine, then short-lived critics at treatment, pre-spend, director's-eye/anchor, motion launch, clip, and delivery gates. The main operator remains accountable for the canvas, but swarm outputs can block weak ideas, spend, and delivery.
 
 Completing the treatment is not a stopping point and does not require user confirmation. Once the treatment and workflow payload are ready and Imagine.Art access is confirmed, immediately open or focus the workflow canvas, paste/build the readable workflow, and continue execution unless there is a specific blocker or the user explicitly asked to approve before canvas changes.
 

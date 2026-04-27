@@ -7,6 +7,7 @@
       "required_before": "workflow canvas work",
       "checks": [
         "creative direction gate completed",
+        "ideation swarm passed or single-agent fallback artifact exists",
         "adversarial treatment critic passed or single-agent fallback report exists",
         "selected creative spine documented",
         "rejected premise notes documented",
