@@ -51,6 +51,7 @@ Be specific. Replace vague “premium cinematic” language with physical choice
 ## Automation Rules
 
 - Verify visible Imagine.Art model labels, ratios, and input connections before launch.
+- Every motion node must visibly consume an approved start frame, end frame, reference image, product-truth image, or storyboard panel. Text-only video is not allowed for campaign motion.
 - Use `config/imagineart_model_matrix.json` for model defaults and retry ratios.
 - Use `config/automation_recovery_rules.json` for known failure recovery.
 - Treat moderation placeholders as failed outputs.

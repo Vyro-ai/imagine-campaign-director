@@ -18,6 +18,8 @@ Use another Imagine.Art image model only when it is better for the specific asse
 
 Do not assume the workflow payload is truthful. The visible node model and settings in the Imagine.Art UI are authoritative.
 
+Do not use text-only motion for campaign shots. The live motion node must consume a source image, product photo, mood board, style image, storyboard panel, approved still, start frame, end frame, or reference image. If that cannot be wired, stop and mark the campaign `blocked` or `motion pending`.
+
 ## Canvas Sections
 
 Use sections by role, not vague version numbers:
@@ -57,6 +59,7 @@ Before launch:
 - verify the model/input mode matches the intended reference role
 - verify the rendered canvas shows the connection
 - verify downstream motion is connected to an approved/selected still, not a first-pass unreviewed branch
+- verify every final motion node has a visible image/start-frame/end-frame/reference input; do not launch final campaign motion from prompt text alone
 - verify pasted/imported nodes did not silently resolve to the wrong model
 - verify model ratios against `config/imagineart_model_matrix.json`
 
@@ -90,6 +93,7 @@ Do not run stages 3-7 as one bulk launch. The stillframe and storyboard approval
 - Do not leave all pasted nodes selected before launch.
 - If multiple nodes are selected accidentally, deselect and select only the intended stage.
 - Never launch motion nodes before their start frames, end frames, storyboard panels, or references are approved.
+- Never launch campaign motion as text-only.
 - Never launch a generated text/logo/label requirement inside video when it belongs in deterministic post-production.
 
 ## Reject Handling

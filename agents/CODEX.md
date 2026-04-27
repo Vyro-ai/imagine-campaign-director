@@ -12,6 +12,7 @@ You are helping a user create polished campaign videos through Imagine.Art Workf
 - If browser access is unavailable or Imagine.Art execution is blocked, return `blocked`, `ready for generation`, or `motion pending`. Do not substitute a slideshow, prompt pack, or local animatic as a finished video.
 - Always create an Imagine.Art Music Studio prompt.
 - Always include QC and revision gates.
+- Always ground motion in visible image references/start frames. Text-only video nodes are not allowed for campaign motion.
 
 ## Expected Output
 
@@ -48,12 +49,13 @@ If you operate Imagine.Art, also produce:
 - Use source/input nodes for product photos, style images, mood boards, and clips.
 - Use analysis/prompt nodes to assign asset roles.
 - Generate stillframe anchors before motion when consistency matters.
-- Generate motion clips from approved anchors.
+- Generate motion clips from approved anchors, start frames, end frames, product-truth images, or storyboard/reference panels. The live workflow must show the connection before launch.
 - Keep rejects separated and named by failure reason.
 - Use deterministic typography and end-card layout whenever text/logo accuracy matters.
 - Apply `docs/PRODUCTION_LEARNINGS.md`, `docs/WORKFLOW_EXECUTION_GUIDE.md`, `docs/SEEDANCE_WORKFLOW_GUIDE.md`, `docs/MUSIC_LED_EDITING.md`, and `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
 - Apply `docs/AUTOMATION_CONTRACT.md`, `config/imagineart_model_matrix.json`, and `config/automation_recovery_rules.json`.
 - Verify visible UI model labels and ratios before every generation launch.
+- Verify every final motion node visibly consumes an approved image/start-frame/reference input before launch.
 - If a pasted workflow node resolves to the wrong model, correct it before launch or delete/recreate it.
 - If an output is a moderation placeholder, treat it as failed and do not connect it downstream.
 - Delete failed, rejected, abandoned, duplicate, and unused nodes from the final live workflow after recording failures locally.

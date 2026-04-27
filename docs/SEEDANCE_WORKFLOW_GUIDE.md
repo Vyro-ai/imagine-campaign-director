@@ -2,6 +2,12 @@
 
 Use this when the Imagine.Art motion model is Seedance or when a campaign clip needs time-segmented motion.
 
+## Hard Rule
+
+Seedance campaign motion is image-first. Every final Seedance shot must use a visible connected start frame, end frame, reference image, product-truth image, or storyboard panel in the Imagine.Art workflow.
+
+Text-only Seedance is not allowed for campaign motion. If no visual source exists, create one first in Imagine.Art, approve it, then connect it to Seedance.
+
 ## Start-Frame Mode
 
 When using a stillframe as the first frame:

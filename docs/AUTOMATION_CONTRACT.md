@@ -11,13 +11,28 @@ From a brief, prompt, style image, product photo, mood board, reference clip, or
 3. Imagine.Art workflow section plan
 4. generated still anchors inside Imagine.Art
 5. approved storyboard/reference panels for motion
-6. Seedance or other Imagine.Art motion clips from approved references
+6. Seedance or other Imagine.Art motion clips from visible approved image/start-frame/reference connections
 7. Imagine.Art Music Studio prompt and generated audio
 8. final edit assembled from reviewed motion outputs
 9. QC report and revision diagnosis
 10. clean final workflow containing only used nodes
 
 If browser execution, login state, model availability, or the Imagine.Art UI blocks any required step, the agent must say so directly and mark the campaign as blocked or partial. It must not call a prompt pack, canvas sketch, still-only proxy, slideshow, local still pan/zoom edit, or failed workflow a finished campaign video.
+
+## Non-Negotiable Motion Grounding
+
+Every AI-generated motion shot in a finished campaign must be grounded by a visible source visual in the Imagine.Art workflow:
+
+- approved start frame
+- approved end frame
+- reference image
+- product-truth image
+- storyboard/camera-movement panel
+- uploaded style, mood, or subject reference assigned to one clear role
+
+Text-only video generation is forbidden for campaign motion. Each motion node must visibly consume the relevant reference. A longer prompt is not a substitute for the connection.
+
+If reference upload, source import, start-frame wiring, end-frame wiring, or reference-image wiring is blocked, the campaign is `blocked` or `motion pending` until the reference problem is fixed. Do not create a text-only video workaround.
 
 ## Final-Shot Source Manifest
 
@@ -81,6 +96,7 @@ Before launching any generation node, verify:
 - each node uses a validated aspect ratio for that model
 - image nodes are separated from motion nodes
 - motion nodes consume approved anchors, not first-pass branches
+- motion nodes have visible image/start-frame/reference connections; text-only motion nodes are invalid for campaign motion
 - music direction exists before final edit planning
 - no stale failed nodes are being treated as usable material
 

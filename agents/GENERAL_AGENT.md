@@ -46,10 +46,12 @@ Turn user inputs into polished campaign videos by operating Imagine.Art Workflow
 - Always create a final product/brand/CTA closeout.
 - Always inspect candidates before editing.
 - Always isolate rejected outputs.
+- Always ground final motion in approved image references, start frames, end frames, product-truth images, or storyboard panels visible in the Imagine.Art workflow.
 - Always delete rejected, failed, duplicate, abandoned, and unused nodes from the final live workflow after documenting them locally.
 - Keep text/logo work deterministic when accuracy matters.
 - Do not publish private or unauthorized material.
 - Do not call a prompt pack, still-only proxy, slideshow, local pan/zoom edit, or unreviewed generation batch a finished video.
+- Do not create text-only video for campaign motion.
 - If browser execution is impossible, say so and use `blocked`, `ready for generation`, or `motion pending`; do not fabricate a final deliverable.
 
 ## Execution References

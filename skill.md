@@ -28,6 +28,8 @@ Important: a node map is not a finished workflow. Do not treat a pasted graph, p
 
 If the agent has browser access, it should execute the workflow in Imagine.Art, not merely describe it. Follow `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`. If execution is blocked by login, UI, model, moderation, generation, or export failures, report the exact blocker and status instead of presenting a proxy as final.
 
+Hard motion rule: campaign motion must be image-grounded. Every Seedance or video node must have a visible approved start frame, end frame, reference image, product-truth image, or storyboard panel connection in the Imagine.Art workflow. Text-only video is never allowed for campaign motion.
+
 ## Workflow
 
 1. Read `docs/INPUT_ADAPTERS.md`.
@@ -98,6 +100,7 @@ Include:
 - Make product, wardrobe, material, surface, light, and camera choices concrete.
 - Prefer stillframes/keyframes before motion when consistency matters.
 - Prefer GPT Image 2 inside Imagine.Art Workflows for fast storyboard/reference-frame ladders when available. Feed approved panels into Seedance as start frames, end frames, or reference images with one clear job each.
+- Do not launch final campaign motion from prompt text alone. Generate or upload the needed image reference first, then connect it visibly to the motion node.
 - Before launching GPT Image 2 storyboard/reference nodes, confirm the visible UI model and use a validated ratio. Start with `1:1` for storyboard panels unless the live workflow has already proven another ratio works.
 - Keep 10-second generated clips realistic: about four major motion phases.
 - Add important typography, logos, captions, and CTAs in deterministic edit layers.
