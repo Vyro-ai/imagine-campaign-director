@@ -2,9 +2,7 @@
 
 An agent-ready Imagine.Art operator system for generating polished campaign videos in Imagine.Art Workflows.
 
-CampaignCraft helps Codex, Claude Code, Cursor, and other agents turn loose creative inputs into real Imagine.Art production runs: input analysis, workflow creation, stillframe generation, motion generation, Music Studio audio, QC, revision, and final delivery.
-
-The system is Imagine.Art-first. Other platforms can adapt the method, but the default execution target is Imagine.Art Workflows plus Imagine.Art Music Studio.
+CampaignCraft helps Codex, Claude Code, Cursor, and other agents turn loose creative inputs into real Imagine.Art production runs: input analysis, workflow creation, stillframe generation, motion generation, Music Studio audio, QC, revision, and final delivery. The canonical delivery rules live in `docs/PRODUCTION_STANDARD.md`.
 
 ## What This Is
 
@@ -22,7 +20,7 @@ It is designed to work from many input types:
 - brand guidelines supplied by the user
 - mixed assets plus notes
 
-The agent should normalize those inputs into an executable Imagine.Art workflow, operate the workflow when browser access is available, generate the motion and music assets, inspect the outputs, revise failures, and assemble a finished campaign. A prompt pack or workflow map is only an intermediate artifact.
+The agent should normalize those inputs into an executable Imagine.Art workflow, operate the workflow when browser access is available, generate the motion and music assets, inspect the outputs, revise failures, and assemble a finished campaign.
 
 ## Who It Is For
 
@@ -52,7 +50,7 @@ The agent should normalize those inputs into an executable Imagine.Art workflow,
 Input -> Intake Adapter -> Campaign Grammar -> Imagine.Art Workflow Execution -> Music Studio Generation -> Motion Generation -> QC Review -> Revision -> Final Delivery
 ```
 
-If an agent has browser access, it must execute the workflow in Imagine.Art. A prompt pack is not a finished campaign. A still slideshow is not a finished campaign. See `docs/AUTOMATION_CONTRACT.md` for the completion standard, failure recovery rules, and final workflow cleanup policy.
+See `docs/PRODUCTION_STANDARD.md` for completion labels and the campaign-grade standard. See `docs/AUTOMATION_CONTRACT.md` for browser execution, failure recovery, and final workflow cleanup.
 
 ## Imagine.Art-First Defaults
 
@@ -80,6 +78,17 @@ If an agent has browser access, it must execute the workflow in Imagine.Art. A p
 10. The agent packages final delivery only after the motion/audio requirements are satisfied.
 ```
 
+## Canonical Docs
+
+- `docs/PRODUCTION_STANDARD.md`: required campaign parts, final status labels, motion/music/QC standards, public safety
+- `docs/AUTOMATION_CONTRACT.md`: browser execution contract, failure handling, cleanup, completion language
+- `docs/WORKFLOW_EXECUTION_GUIDE.md`: staged Imagine.Art run order
+- `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`: workflow section and node plan
+- `docs/QUALITY_CONTROL.md`: QC scoring and reference-parity checks
+- `docs/SEEDANCE_WORKFLOW_GUIDE.md`: image-grounded Seedance workflow
+- `docs/IMAGINEART_MUSIC_STUDIO.md`: text-based music prompt workflow
+- `docs/INPUT_ADAPTERS.md`: converting briefs, prompts, images, video, and mixed assets into campaign inputs
+
 ## Example Agent Command
 
 ```text
@@ -89,25 +98,20 @@ Using this CampaignCraft skill, operate Imagine.Art to create a 15-second campai
 ## Philosophy
 
 - Imagine.Art Workflows are the production spine.
-- Music is planned at the start, not pasted on at the end.
+- Music is planned at the start.
 - Input assets need interpretation before prompting.
 - Generated candidates are selected like footage, not accepted by default.
-- B-roll needs an editorial job.
-- Product closeouts are designed, not improvised.
 - One dominant visual idea beats prompt clutter.
 - Stillframes anchor taste and continuity.
-- Motion should have a physical event.
-- Product closeouts need deterministic control.
 - Every generated clip must pass artifact review.
 
 ## Limitations
 
 - Outputs still depend on model capability and available Imagine.Art features.
 - Generated video usually needs iteration.
-- The skill requires browser/tool access for fully automated generation. Without execution access, it can prepare a workflow package but must not claim a finished video.
+- The skill requires browser/tool access for fully automated generation.
 - Text/logos can fail in generated media.
 - Identity and product consistency can fail.
-- Imagine.Art Music Studio currently works from text/lyrics/genre-style direction, not direct image-to-music generation, so agents should translate visual inputs into a music brief.
 - Users must respect copyright, trademark, publicity, and likeness rights.
 - Users must plug in their own brand guidelines.
 - This is a creative direction and workflow system, not legal advice or a one-click guarantee.

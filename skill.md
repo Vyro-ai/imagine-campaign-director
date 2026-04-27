@@ -4,7 +4,7 @@ Use this skill when an agent needs to create a polished campaign video through I
 
 ## Primary Job
 
-Turn any reasonable campaign input into a complete Imagine.Art production plan:
+Turn any reasonable campaign input into a complete Imagine.Art production workflow package:
 
 - brief
 - raw prompt
@@ -16,27 +16,15 @@ Turn any reasonable campaign input into a complete Imagine.Art production plan:
 - brand notes
 - mixed assets
 
-The output should be an Imagine.Art-first workflow package: input interpretation, creative strategy, workflow node map, stillframe prompts, motion prompts, Music Studio prompt, edit structure, QC gates, and final delivery checklist.
+The output should follow `docs/PRODUCTION_STANDARD.md`.
 
 ## Required Default
 
 Always plan generation through Imagine.Art Workflows unless the user explicitly asks for a different platform.
 
-Use platform-neutral language only as secondary portability notes. The main path is Imagine.Art.
+Use platform-neutral language only as secondary portability notes. Brand assets, product photos, mood boards, and style images are creative direction and continuity references; they should guide production choices and final lockup.
 
-When the user asks for a `social media campaign`, `30s spot`, `TikTok ad`, `Reels ad`, `commercial`, `professionally shot video`, or `professionally produced video`, interpret the request as a finished real-world video ad workflow by default. The expected deliverable is not just a written concept, static storyboard, prompt pack, or animated HTML/motion-graphics edit.
-
-Brand assets, product photos, mood boards, and style images are creative direction and continuity references. They should guide casting, wardrobe, product truth, environment, lighting, camera grammar, and final lockup, but they do not replace generated motion.
-
-For high-realism ads, Seedance or another Imagine.Art video-generation model is the core production layer. HyperFrames or another editor is the finishing layer for pacing, typography, transitions, music sync, logo lockup, CTA, captions, and final assembly.
-
-Important: a node map is not a finished workflow. Do not treat a pasted graph, prompt pack, canvas sketch, still montage, slideshow, or HyperFrames pan/zoom edit as production-ready until it has source assets, staged run order, approved still anchors, generated music, reviewed motion outputs, a shot-source manifest, and a final edit/export plan.
-
-If the agent has browser access, it should execute the workflow in Imagine.Art, not merely describe it. Follow `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`. If execution is blocked by login, UI, model, moderation, generation, or export failures, report the exact blocker and status instead of presenting a proxy as final.
-
-Hard motion rule: campaign motion must be image-grounded. Every Seedance or video node must have a visible approved start frame, end frame, reference image, product-truth image, or storyboard panel connection in the Imagine.Art workflow. Text-only video is never allowed for campaign motion.
-
-Hard taste rule: a technically valid Imagine.Art export is not automatically finished. For campaign work, the output must clear reference parity: it needs comparable campaign behavior to the user's references or chosen archetype. Product-only loops, interchangeable macro shots, static pretty motion, and generic luxury surfaces are not finished fashion/beauty/fragrance/luxury campaign films.
+If the agent has browser access, it should execute the workflow in Imagine.Art. Follow `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`.
 
 ## Workflow
 
@@ -59,9 +47,9 @@ Hard taste rule: a technically valid Imagine.Art export is not automatically fin
 17. Diagnose revisions with `prompts/revision_diagnoser.md`.
 18. Package final delivery with `prompts/final_delivery_packager.md`.
 
-## Seedance-First Commercial Workflow
+## Commercial Workflow
 
-Use this sequence when the user asks for a commercial, social media campaign, TikTok/Reels ad, 30s spot, or professionally shot/produced video:
+Use this sequence for commercials, social campaigns, TikTok/Reels ads, 30s spots, and professionally shot/produced video:
 
 1. Analyze brand assets and extract visual rules.
 2. Define target platform, runtime, pacing, audience, CTA, and aspect ratio.
@@ -72,8 +60,6 @@ Use this sequence when the user asks for a commercial, social media campaign, Ti
 7. Assemble generated clips in an editor or HyperFrames with beat-synced cuts, type, logo, product lockup, captions, and CTA.
 8. QC for realism, product continuity, actress/model consistency, hand/contact issues, fake text, social-platform framing, and reference parity.
 9. Deliver the final render plus source prompts, shot-source manifest, edit notes, and revision notes.
-
-If the agent cannot operate Seedance directly, it must explicitly say whether it is preparing prompts for the user to run in Seedance or assembling already-generated Seedance outputs. Do not silently substitute HTML animation, still-image slideshows, or generic prompt packs for a requested finished video ad.
 
 When operating the browser, use `config/imagineart_model_matrix.json` and `config/automation_recovery_rules.json` for model defaults, preflight checks, retry limits, and cleanup rules.
 
@@ -94,30 +80,13 @@ Every production plan should include:
 - QC/rejects section
 - final export section
 
-Do not present a workflow as ready until launch-critical connections are visible, approved stills are separated, motion outputs have been reviewed, rejected outputs are isolated, music is planned, and final product closeout is defined.
-
-Do not present a campaign as finished until the selected Imagine.Art motion clips and music have been generated or supplied, reviewed, and assembled. A local still-based animatic can test pacing, but it must be labeled `partial/proxy` and cannot be renamed or delivered as final.
-
-Every final campaign must include a shot-source manifest proving each visual timeline segment is reviewed motion footage or deterministic type/layout. If any visual shot is a still crop, mood-board panel, product-board crop, workflow screenshot, or Ken Burns move, the campaign is not finished.
+Follow `docs/PRODUCTION_STANDARD.md` for readiness, final status labels, shot-source manifests, motion grounding, music requirements, and proxy handling.
 
 Do not launch motion nodes directly from first-pass stillframe nodes. Motion should use selected/approved still anchors. If the UI does not support an approved-anchor node pattern, document the selected asset and manually connect/upload that selected output into the motion node.
 
-Do not use a visual placeholder for music. Music must be generated in Imagine.Art Music Studio or clearly marked as pending.
-
 ## Music Requirement
 
-Always create an Imagine.Art Music Studio prompt. If the user supplies a style image, mood board, or product photo, translate the visual direction into a text-based music brief because Music Studio does not currently generate directly from image input.
-
-Include:
-
-- instrumental or vocal choice
-- genre
-- mood
-- tempo/rhythm
-- instruments
-- duration target
-- edit beat notes
-- avoid list
+Follow the music standard in `docs/PRODUCTION_STANDARD.md` and the details in `docs/IMAGINEART_MUSIC_STUDIO.md`.
 
 ## Taste Rules
 
@@ -138,14 +107,8 @@ Include:
 
 ## Status Labels
 
-Use exact delivery status:
-
-- `finished`: final video assembled from reviewed Imagine.Art motion or supplied motion, generated/supplied audio, deterministic type/layout, and a shot-source manifest
-- `ready for generation`: workflow and prompts are ready, but generation has not run
-- `motion pending`: stills/references are ready, motion has not completed
-- `partial/proxy`: deterministic edit or still animatic exists, but required Imagine.Art motion is missing
-- `blocked`: login, UI, model, moderation, generation, or export failure prevents completion
+Use the exact delivery statuses in `docs/PRODUCTION_STANDARD.md`.
 
 ## Public-Safe Rules
 
-Do not publish private brand guidelines, internal workflow language, local paths, client examples, downloaded references, copyrighted frames, source videos, API keys, or generated private assets. Use user-supplied brand assets only when the user has the right to use them.
+Follow the public-safety rule in `docs/PRODUCTION_STANDARD.md`.

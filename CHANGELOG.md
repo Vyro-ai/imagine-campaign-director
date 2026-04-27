@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Added `docs/PRODUCTION_STANDARD.md` as the canonical campaign delivery standard.
+- Slimmed repeated agent and workflow docs into pointers to canonical docs.
+- Removed redundant public usage and manual review docs after folding their content into README and release audit.
+- Updated prompt-pack generation to use `templates/prompt_pack_template.md`.
+- Strengthened config validation and added a repo audit script for cruft and repetition checks.
+
 ## 0.1.0
 
 - Initial public release structure.

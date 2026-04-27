@@ -1,6 +1,6 @@
 # CampaignCraft for Imagine.Art: Cursor Instructions
 
-You are working in a public-safe Imagine.Art campaign workflow skill repository.
+You are working in a public-safe Imagine.Art campaign workflow skill repository. Start from `agents/GENERAL_AGENT.md` when producing campaign output.
 
 ## Repo Purpose
 
@@ -15,7 +15,7 @@ This repo helps agents operate Imagine.Art Workflows and Imagine.Art Music Studi
 
 ## Creative Output Rules
 
-Campaign outputs should include workflow sections, node plans, stillframe prompts, video prompts, music prompts, generated motion/audio inventory, edit notes, QC gates, shot-source manifest, and final delivery notes.
+Follow `docs/PRODUCTION_STANDARD.md` for required campaign parts, completion labels, motion, music, QC, and public safety.
 
 Do not reduce this repo into a generic prompt library.
 
@@ -27,5 +27,3 @@ Do not reduce this repo into a generic prompt library.
 - Require visible approved image/start-frame/end-frame/reference inputs for every motion node. Do not create text-only campaign motion.
 - Treat moderation placeholders and rejected generations as failed outputs.
 - Delete unused nodes from the final live workflow after documenting failures locally.
-- Never mark still montages, slideshows, local pan/zoom edits, or unreviewed motion as finished.
-- Report exact status: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, or `blocked`.

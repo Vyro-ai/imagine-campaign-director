@@ -37,3 +37,24 @@ Reusable taste principles were rewritten from scratch using neutral platform lan
 ## Manual Review Required
 
 Before publishing, review all files for private leakage, local paths, copyrighted materials, generated media, API keys, brand guideline leakage, example quality, and whether the system still depends too much on one person's taste.
+
+Checklist:
+
+- repo name
+- license
+- public/private file separation
+- references to private projects
+- generated media
+- copyrighted materials
+- API keys
+- local paths
+- private brand guideline leakage
+- private palette leakage
+- logo or typography leakage
+- internal workflow leakage
+- client/project leakage
+- README clarity
+- example quality
+- agent instructions
+- config JSON validation
+- `.gitignore` coverage for generated media and secrets
