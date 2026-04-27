@@ -8,6 +8,12 @@
       "cleanup": "Delete the incorrect node if it cannot be corrected cleanly."
     },
     {
+      "failure": "video_node_defaulted_to_kling",
+      "detect": "A campaign motion node visibly defaults to Kling 3.0 when the plan calls for Seedance 2 / Seedance 2.0.",
+      "action": "Do not launch. Correct the visible model to Seedance 2 / Seedance 2.0 or recreate the node from the approved Seedance template.",
+      "cleanup": "Delete the Kling-defaulted node if it cannot be corrected cleanly."
+    },
+    {
       "failure": "aspect_ratio_rejected",
       "detect": "Generation error says the selected ratio is not acceptable.",
       "action": "Retry once with the model automation default ratio from imagineart_model_matrix.json.",

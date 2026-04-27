@@ -19,6 +19,8 @@ For every input, infer or ask for:
 
 If details are missing, make conservative assumptions and label them.
 
+If the input is mostly broad taste language, apply `docs/VAGUE_PROMPT_RESCUE.md` before generation. The agent should expand vague terms into a concrete platform, runtime, campaign grammar, visual world, model/styling continuity, shot ladder, stillframe anchor list, motion constraints, music direction, and QC rejects.
+
 For commercial/social/video-ad requests, query the user for missing production decisions before execution when they matter:
 
 - platform and aspect ratio
@@ -57,6 +59,8 @@ Extract:
 - missing constraints
 
 Then rewrite it into a full Imagine.Art workflow package. Do not simply expand the prompt with adjectives.
+
+For vague luxury/fashion prompts with no assets, default to the `editorial nocturne` rescue pattern: 10-second 9:16 vertical, no text unless requested, one adult model in sharply tailored black outerwear, rain-wet concrete/glass/chrome night environment, cool shadows with warm practical light, NB2/NBP still anchors, image-grounded Seedance motion, sparse instrumental music, and QC against generic AI luxury.
 
 ## Style Image Input
 
@@ -140,8 +144,8 @@ When the user's wording implies a produced ad, default to a real-world video-gen
 
 - brand assets become creative direction and continuity references
 - Seedance 2 or another Imagine.Art video model becomes the core footage generator
-- ImagineArt 2.0 generates original still/reference frames when it can satisfy the role
-- GPT Image 2 generates reference-driven panels when refs or continuity control are needed
+- NB2/NBP generates original still/reference anchors by default
+- GPT Image 2 or another Imagine.Art image model generates reference-driven panels when refs, continuity control, model availability, or artifact risk require it
 - HyperFrames/editor handles finishing: pacing, transitions, text, logo lockup, CTA, captions, effects, and final assembly
 
 Do not silently substitute a storyboard, prompt pack, static image sequence, or HTML-only animation for the requested commercial.

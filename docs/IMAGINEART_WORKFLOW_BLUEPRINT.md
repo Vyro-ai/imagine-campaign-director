@@ -4,6 +4,8 @@ CampaignCraft assumes the final production process happens through Imagine.Art W
 
 If browser access is available, the agent should execute the workflow, not stop at a plan. See `docs/AUTOMATION_CONTRACT.md` for the required execution, recovery, and cleanup standard.
 
+Before building the workflow, complete `docs/DIRECTORS_TREATMENT_GATE.md`. The workflow graph should be a translation of a justified edit plan, not a place to improvise the film.
+
 ## Workflow Sections
 
 Build comprehensive workflows with these sections:
@@ -20,6 +22,28 @@ Build comprehensive workflows with these sections:
 10. `TYPE / Captions + End Card`
 11. `QC / Review Notes`
 12. `EXPORT / Finals`
+
+For multi-node builds, generate the workflow locally first and paste it into the canvas using `docs/PASTE_FIRST_WORKFLOWS.md` and `scripts/imagineart_workflow_clipboard.mjs`. Hand-building every node in the browser is fallback, not the default, when the graph can be specified structurally.
+
+## Readable Canvas Layout
+
+Workflow readability is part of the deliverable. A future human or agent should be able to open the workflow and understand the production plan visually.
+
+Use a stage-column layout:
+
+| Column | Section | Contents |
+| --- | --- | --- |
+| 1 | `SOURCE / Inputs` | uploaded assets, assumptions |
+| 2 | `ANALYSIS / STRATEGY` | brief, asset roles, campaign grammar, risk, music direction |
+| 3 | `STILLS / Look Development` | NB2/NBP variants for each planned shot |
+| 4 | `STILLS / Approved Anchors` | selected stills only |
+| 5 | `STORYBOARD / Motion References` | camera/movement panels and reference boards |
+| 6 | `MOTION / Shot Ladder` | Seedance/video nodes and selected outputs |
+| 7 | `MUSIC / EDIT / QC / EXPORT` | music, edit notes, manifests, final status |
+
+Use shot rows inside those columns. For example, row 01 is the hook, row 02 is the world reveal, row 03 is the detail accent, and so on. Keep nodes spaced so edges are legible. If the UI creates a node over another node, reposition it immediately. Do not leave overlapped nodes in a production workflow.
+
+For campaign-video requests, the workflow should show multiple planned shot branches before generation starts. A single still node connected to a single video node is only acceptable for an explicitly single-shot brief or a narrow preflight test, and it must be labeled as preflight rather than the campaign plan.
 
 ## Source Inputs
 
@@ -90,6 +114,8 @@ Create stillframe branches for:
 
 Generate multiple variants, then isolate approved anchors.
 
+Create the full stillframe batch for the shot ladder before launching the first still run. For a 10-second campaign, this usually means 4-5 still anchor roles. For 15-30 seconds, plan the full 8-12 shot ladder. Each still branch should name its shot number and visual job, not just the model name.
+
 Use `Nano Banana 2` first for fast original stillframe iteration, look development, graphic inserts, and plates. Use `Nano Banana Pro` for final hero stills, product-truth plates, premium fidelity, and stills that will feed motion. Use GPT Image 2 or another Imagine.Art image model only when references, storyboard panels, continuity control, model availability, or artifact risk make it better for the specific asset role. Document any exception. The visible UI model and ratio must be checked before launch.
 
 For product campaigns, keep generated stillframes free of final ad typography whenever possible. If the supplied product photo already contains label text, treat it as product truth, but do not ask image or video models to recreate final campaign copy. Add brand name, product name, captions, and CTA in deterministic edit/type layers.
@@ -123,6 +149,8 @@ Create one motion node per shot or per coherent motion block. For 10-second clip
 
 Motion nodes should consume approved still anchors or explicit references. If a motion node is connected directly to an unreviewed look-development node, mark the workflow incomplete.
 
+Create motion nodes as a shot system, not as an isolated still/video pair. Once approved anchors exist, wire all intended motion branches for the selected shot ladder, verify their inputs, then launch in controlled batches. This makes the edit plan visible and prevents the workflow from collapsing into one-off experiments.
+
 For high-realism commercials, Seedance 2 or the available Imagine.Art video-generation model is the core footage layer. Each shot should have:
 
 - approved start frame or image reference
@@ -134,6 +162,8 @@ For high-realism commercials, Seedance 2 or the available Imagine.Art video-gene
 When the user asks for a believable actress/model, prioritize consistency across clips: identity description, wardrobe, hair, makeup, performance style, camera distance, and repeatable reference-frame strategy.
 
 Before launch, expand or inspect every motion node and verify the visible model, duration, quality, ratio, audio toggle, and source-frame/reference connections. Clipboard/import payloads are not enough. In testing, Seedance nodes pasted with a vertical payload still opened as `1:1` until corrected in the UI.
+
+If a video node visibly defaults to `Kling 3.0`, it is not a valid CampaignCraft campaign motion node unless the user explicitly requested Kling. Correct it to Seedance 2 / Seedance 2.0 or delete/recreate it before launch.
 
 ## Music Section
 

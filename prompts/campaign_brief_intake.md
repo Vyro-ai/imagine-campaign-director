@@ -43,6 +43,25 @@ If the user asks for a commercial, TikTok/Reels ad, social media campaign, 30s s
 
 If the user wants speed or does not answer, make conservative assumptions and label them clearly.
 
+## Vague Prompt Rescue
+
+If the user input is mostly broad taste language, such as `generic luxury fashion campaign`, `modern brand`, `mystique`, `elegance`, `Gen Z`, `premium`, or `cinematic`, apply `docs/VAGUE_PROMPT_RESCUE.md` before workflow planning.
+
+For a generic luxury fashion request with no assets, default to:
+
+- `9:16`, `10s`, no text unless requested
+- campaign grammar: `editorial nocturne`
+- one adult model in sharply tailored black outerwear
+- rain-wet concrete/glass/chrome night environment
+- cool shadows, warm practical light, restrained contrast
+- five-beat shot ladder: silhouette hook, world reveal, material detail, controlled turn/step, final hero hold
+- NB2/NBP still anchors before motion
+- image-grounded Seedance/video only
+- sparse instrumental modern electronic music
+- QC rejects for fake text/logos, static portrait loops, repeated slow push-ins, broken walking/hands/faces, and generic AI luxury
+
+Document these as assumptions, then continue into Imagine.Art execution when automation is available.
+
 ## Output
 
 Return:

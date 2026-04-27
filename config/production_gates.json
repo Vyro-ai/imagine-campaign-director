@@ -2,6 +2,22 @@
   "version": "1.0.0",
   "gates": [
     {
+      "id": "directors_treatment",
+      "name": "Director's Treatment",
+      "required_before": "workflow canvas work",
+      "checks": [
+        "campaign thesis defined",
+        "visual world and production design system defined",
+        "model/styling continuity defined",
+        "shot-by-shot timeline exists",
+        "every shot has a visual job and justification",
+        "cut points, transitions, music hits, and final hold are planned",
+        "Seedance 2 multi-shot node grouping is defined",
+        "stillframe anchor plan exists",
+        "QC rejection criteria are written"
+      ]
+    },
+    {
       "id": "aesthetic_preflight",
       "name": "Aesthetic Preflight",
       "required_before": "stillframe generation",

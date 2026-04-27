@@ -9,22 +9,25 @@ Turn the user's input into a comprehensive Imagine.Art Workflow package. The inp
 1. Input Analysis
 2. Assumptions
 3. Campaign Grammar
-4. Aesthetic Preflight Gate
-5. Imagine.Art Workflow Section Map
-6. Node-by-Node Workflow Plan
-7. Stillframe Prompt Set
-8. Imagine.Art Music Studio Prompt + Rough Beat Map
-9. Motion Prompt Set
-10. B-Roll Plan
-11. Edit Assembly Plan
-12. Captions / Typography / Product Closeout Plan
-13. QC Gates
-14. Revision Plan
-15. Final Delivery Package
+4. Director's Treatment
+5. Aesthetic Preflight Gate
+6. Imagine.Art Workflow Section Map
+7. Node-by-Node Workflow Plan
+8. Stillframe Prompt Set
+9. Imagine.Art Music Studio Prompt + Rough Beat Map
+10. Motion Prompt Set
+11. B-Roll Plan
+12. Edit Assembly Plan
+13. Captions / Typography / Product Closeout Plan
+14. QC Gates
+15. Revision Plan
+16. Final Delivery Package
 
 ## Rules
 
 - Use Imagine.Art Workflows as the default production environment.
+- If the prompt is vague or mostly taste language, apply `docs/VAGUE_PROMPT_RESCUE.md` before workflow planning.
+- Apply `docs/DIRECTORS_TREATMENT_GATE.md` before touching the workflow canvas. Every shot must have a timeline range, visual job, justification, camera plan, transition logic, music relationship, and artifact-risk note.
 - Use Music Studio for original music direction.
 - Prefer stillframes/keyframes before motion when consistency matters.
 - Generate multiple variants for important hero frames and motion clips.

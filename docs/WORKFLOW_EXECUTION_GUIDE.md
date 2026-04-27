@@ -8,6 +8,10 @@ For hands-on browser execution, this guide is subordinate to `docs/AUTOMATION_CO
 
 Start from a relevant preset or featured workflow when it matches the job. Use a blank canvas for custom campaign systems. For complex repeatable graphs, create a structured workflow plan before opening the canvas.
 
+Before opening or touching the canvas, complete the director's treatment in `docs/DIRECTORS_TREATMENT_GATE.md`. The workflow should execute a near-deterministic edit plan with justified shots, cut points, music hits, transition logic, and Seedance 2 node grouping already decided.
+
+For multi-node campaign workflows, use the paste-first construction path in `docs/PASTE_FIRST_WORKFLOWS.md` by default. Generate a canonical workflow spec locally, materialize it with `scripts/imagineart_workflow_clipboard.mjs`, copy it through the text-only clipboard path, paste once, and verify the rendered canvas. Manual node creation is fallback when the node schema is unknown or paste validation fails.
+
 Avoid the paste-first trap: a large pasted graph can look complete while being unusable. A production workflow is only valid when the source assets are present, the run order is staged, and the outputs that feed motion have been selected intentionally.
 
 For commercials, social campaigns, TikTok/Reels ads, 30s spots, and professionally shot/produced videos, the default path is image-first, Seedance-led video production:
@@ -42,6 +46,24 @@ Use sections by role, not vague version numbers:
 - `QC / Review Notes`
 - `EXPORT / Finals`
 
+## Canvas Layout
+
+The live workflow must be human readable. Do not create new nodes directly on top of existing nodes, and do not build a campaign as a single vertical pile of still/video pairs.
+
+Lay out the canvas left-to-right by production stage and top-to-bottom by shot branch:
+
+- column 1: source inputs and assumptions
+- column 2: analysis, asset roles, campaign grammar, music direction
+- column 3: stillframe look-development nodes
+- column 4: approved still anchors
+- column 5: storyboard/reference panels
+- column 6: motion nodes
+- column 7: music, edit, QC, and export notes
+
+Within each stage column, each planned shot gets its own row or clearly separated branch. Leave enough space between branches that a human can trace a shot from source to still anchor to storyboard/reference panel to motion output without guessing. If the UI creates a node on top of another node, move it immediately before creating or launching more nodes.
+
+For a 10-second campaign, plan at least 4-5 shot branches before generating unless the brief explicitly asks for a single-shot film. For 15-30 second campaigns, plan the full 8-12 shot ladder first. Do not generate one still, create one video node, and repeat without the full shot map visible on the canvas.
+
 ## Node Naming
 
 Name nodes by decision and role:
@@ -61,6 +83,7 @@ Before launch:
 - verify source asset is actually uploaded/imported, not just described in text
 - verify downstream node is connected
 - verify the model/input mode matches the intended reference role
+- verify campaign motion nodes visibly use Seedance 2 / Seedance 2.0 unless the user explicitly requested another motion model
 - verify the rendered canvas shows the connection
 - verify downstream motion is connected to an approved/selected still, not a first-pass unreviewed branch
 - verify every final motion node has a visible image/start-frame/end-frame/reference input; do not launch final campaign motion from prompt text alone
@@ -86,6 +109,8 @@ Run campaigns in stages:
 
 Do not run stages 3-7 as one bulk launch. The stillframe and storyboard approval gates are the taste-transfer steps.
 
+Plan the full shot system before generation. The operator should create the shot-list/strategy notes and the empty or configured stillframe branches for all planned shots before launching the first still batch. After stills are reviewed, create or wire the approved-anchor/storyboard/motion branches for all selected shots before launching the first motion batch.
+
 ## Launch Discipline
 
 - Run selected nodes once per intended batch.
@@ -96,6 +121,7 @@ Do not run stages 3-7 as one bulk launch. The stillframe and storyboard approval
 - If a model rejects a ratio, retry with that model's automation default ratio before redesigning the shot.
 - If a completed output is a moderation placeholder, treat it as failed and do not connect it downstream.
 - If a pasted node displays the wrong model, correct it before launch or delete/recreate it.
+- If a video node defaults to `Kling 3.0`, do not launch it for campaign motion. Correct it to Seedance 2 / Seedance 2.0 or recreate it from the approved template.
 - Do not leave all pasted nodes selected before launch.
 - If multiple nodes are selected accidentally, deselect and select only the intended stage.
 - Never launch motion nodes before their start frames, end frames, storyboard panels, or references are approved.

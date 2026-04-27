@@ -24,6 +24,8 @@ Convert approved stillframes and shot ladder decisions into Imagine.Art video pr
 
 For commercial, social media campaign, TikTok/Reels ad, 30s spot, or professionally produced video requests, default to Seedance 2 or the available Imagine.Art video-generation model as the core production layer. Do not replace generated footage with HTML animation, a prompt pack, a storyboard, or a still-image slideshow.
 
+Use the advanced Seedance 2 prompting standard from `docs/SEEDANCE_WORKFLOW_GUIDE.md`. For campaign films, prefer disciplined multi-shot Seedance 2 prompts over a repetitive one-still/one-video-node pattern.
+
 Every commercial shot prompt should include real production language:
 
 - lens or lens feel
@@ -45,14 +47,18 @@ If the user requested a believable main actress/model, include a shared continui
 - camera distance limits
 - approved reference frame/start frame strategy
 
-## 10-Second Rule
+## 10-Second Multi-Shot Rule
 
-Use about four major phases:
+Use about four major shots or phases inside one strong Seedance 2 campaign node:
 
 1. hook
 2. reveal
 3. detail/action accent
 4. final hero hold
+
+Prefer broad blocks such as `0-3s`, `3-5s`, `5-8s`, and `8-10s`. Each block should have one dominant visual job, one hero event, and one camera idea.
+
+For a 10-second fashion/luxury campaign, generate one or two multi-shot Seedance 2 campaign prompts plus any necessary dedicated b-roll/detail prompts. Do not create five independent tiny video prompts unless the edit strategy specifically needs separate inserts.
 
 ## Avoid
 
@@ -65,6 +71,15 @@ Use about four major phases:
 ## Seedance / Time-Segmented Rule
 
 If using Seedance or another time-aware model, include broad time blocks and one hero event per block. If a reference or beat guide is used, state its role. Do not use `same as reference` language unless the workflow plan includes the actual connected input.
+
+Prompt structure:
+
+1. `Subject`: subject, wardrobe/product, environment, campaign grammar.
+2. `Reference roles`: one dominant role per connected source when visible in the UI or documented in workflow notes.
+3. `Timing ladder`: broad time blocks with concrete action and camera behavior.
+4. `Camera`: shot size, lens feel, movement, angle, and transition logic.
+5. `Continuity`: stable identity, wardrobe, product, environment, and grade.
+6. `Constraints`: positive visual constraints plus a short avoid list.
 
 If storyboard panels exist, translate them into the prompt as camera grammar:
 

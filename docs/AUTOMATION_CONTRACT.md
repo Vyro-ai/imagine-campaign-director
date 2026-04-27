@@ -171,6 +171,8 @@ Do not rely on pasted JSON alone. If a pasted node resolves to a different model
 
 Known example: pasted Seedance 2.0 workflow nodes may resolve visually to `1:1` even when the payload requests `9:16`. The agent must inspect the node panel, correct the visible ratio to the delivery ratio, and only then launch.
 
+For campaign motion, a video node that defaults to `Kling 3.0` is a wrong-model failure unless the user explicitly requested Kling. Do not launch it. Correct the visible model to Seedance 2 / Seedance 2.0 or delete/recreate the node from the approved Seedance workflow template.
+
 ## Staged Run Order
 
 Run stages in this order:
@@ -198,6 +200,8 @@ If an imported or pasted node displays the wrong model:
 - correct the model through the UI, or recreate the node manually
 - document the schema mismatch in QA
 - do not trust the underlying payload until the visible UI confirms the model
+
+If the wrong model is `Kling 3.0` on a campaign motion node, treat it as a hard stop. CampaignCraft's default campaign motion model is Seedance 2 / Seedance 2.0, not Kling.
 
 ### Aspect Ratio Rejected
 

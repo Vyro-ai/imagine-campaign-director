@@ -5,18 +5,20 @@ This file is a routing guide. The delivery standard is `docs/PRODUCTION_STANDARD
 ## Run Order
 
 1. Normalize input with `docs/INPUT_ADAPTERS.md`.
-2. Choose one campaign grammar from `docs/AESTHETIC_SYSTEM.md`.
-3. Build the workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
-4. Apply the production standard from `docs/PRODUCTION_STANDARD.md`.
-5. Create or update the active context workspace and local deliverables.
-6. Generate NB2/NBP stillframe anchors before motion unless a documented exception applies.
-7. Execute with `docs/WORKFLOW_EXECUTION_GUIDE.md` and `prompts/imagineart_browser_operator.md` when browser access exists.
-8. Use `docs/SEEDANCE_WORKFLOW_GUIDE.md` for image-grounded motion.
-9. Use `docs/IMAGINEART_MUSIC_STUDIO.md` and `prompts/music_studio_prompt_builder.md` for music.
-10. Plan b-roll and product closeout with `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
-11. Score with `docs/QUALITY_CONTROL.md`.
-12. Diagnose revisions with `prompts/revision_diagnoser.md`.
-13. Package delivery with `prompts/final_delivery_packager.md`.
+2. If the input is vague or mostly taste language, apply `docs/VAGUE_PROMPT_RESCUE.md`.
+3. Choose one campaign grammar from `docs/AESTHETIC_SYSTEM.md`.
+4. Write the director's treatment from `docs/DIRECTORS_TREATMENT_GATE.md`.
+5. Build the workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
+6. Apply the production standard from `docs/PRODUCTION_STANDARD.md`.
+7. Create or update the active context workspace and local deliverables.
+8. Generate NB2/NBP stillframe anchors before motion unless a documented exception applies.
+9. Execute with `docs/WORKFLOW_EXECUTION_GUIDE.md` and `prompts/imagineart_browser_operator.md` when browser access exists.
+10. Use `docs/SEEDANCE_WORKFLOW_GUIDE.md` for image-grounded motion.
+11. Use `docs/IMAGINEART_MUSIC_STUDIO.md` and `prompts/music_studio_prompt_builder.md` for music.
+12. Plan b-roll and product closeout with `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
+13. Score with `docs/QUALITY_CONTROL.md`.
+14. Diagnose revisions with `prompts/revision_diagnoser.md`.
+15. Package delivery with `prompts/final_delivery_packager.md`.
 
 ## Prompt Builders
 

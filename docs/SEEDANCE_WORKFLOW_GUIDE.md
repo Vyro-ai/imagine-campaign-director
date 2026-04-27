@@ -1,6 +1,6 @@
 # Seedance Workflow Guide
 
-Use this when the Imagine.Art motion model is Seedance or when a campaign clip needs time-segmented motion.
+Use this when the Imagine.Art motion model is Seedance or when a campaign clip needs time-segmented motion. This guide is the advanced Seedance 2 prompting standard for CampaignCraft.
 
 ## Hard Rule
 
@@ -9,6 +9,8 @@ Seedance campaign motion is image-first. Every final Seedance shot must use a vi
 Text-only Seedance is not allowed for campaign motion. If no visual source exists, create one first in Imagine.Art, approve it, then connect it to Seedance.
 
 For commercial, social media campaign, TikTok/Reels ad, 30s spot, or professionally produced video requests, Seedance 2 or the available Imagine.Art video-generation model is the core production footage layer. HyperFrames/editor work is for finishing, not for replacing generated footage.
+
+Seedance 2 should be used as a multi-shot campaign generator when the brief calls for a campaign film. Do not reduce it to a repetitive pattern of one stillframe plus one tiny video node unless the shot is a dedicated insert, b-roll moment, or preflight test. A strong 10-second Seedance 2 campaign node can cover a short shot ladder with broad timed blocks, one hero event per block, and a final hold.
 
 The agent must explicitly state one of these execution modes:
 
@@ -58,6 +60,17 @@ When using multiple references:
 
 Do not ask one reference to control everything.
 
+For multi-shot Seedance 2 campaign prompts, assign each connected reference one dominant job:
+
+- start frame or opening composition
+- character identity or wardrobe continuity
+- environment and architecture
+- material texture or product truth
+- lighting and grade
+- final hero hold or end-frame logic
+
+State those roles in the local workflow notes and only use literal reference tags in the prompt when the live UI exposes those tags.
+
 ## Storyboard References
 
 Seedance works better when the agent provides motion evidence, not just visual aspiration.
@@ -83,9 +96,9 @@ If using a music or beat-guide video:
 - use actual beat timestamps for major cuts, reveals, flashes, and holds
 - do not demand frame-accurate decimal editing unless the model has proven it in the current workflow
 
-## 10-Second Campaign Limit
+## Multi-Shot Campaign Prompting
 
-A 10-second Seedance campaign clip should usually contain about four major phases:
+A 10-second Seedance 2 campaign clip should usually contain about four major shots or phases:
 
 1. hook
 2. first impact or reveal
@@ -93,6 +106,31 @@ A 10-second Seedance campaign clip should usually contain about four major phase
 4. final hero hold
 
 More phases usually create chaos.
+
+Use broad blocks such as `0-3s`, `3-5s`, `5-8s`, and `8-10s`. Do not demand frame-accurate decimal choreography unless a previous run in the same workflow proves Seedance can follow it.
+
+Each block should have:
+
+- one dominant visual job
+- one hero event
+- one camera idea
+- clear subject/product/environment hierarchy
+- continuity constraints that are visual and concrete
+
+For a 10-second fashion/luxury campaign, prefer one or two strong Seedance 2 multi-shot nodes plus a small number of dedicated b-roll/detail nodes over five disconnected one-shot animations. This gives Seedance room to create editorial progression while keeping the workflow readable.
+
+## Prompt Structure
+
+Use this structure for advanced Seedance 2 campaign prompts:
+
+1. `Subject`: precise subject, wardrobe/product, environment, and campaign grammar.
+2. `Reference roles`: what each connected source controls, only if the UI exposes references or the workflow notes need it.
+3. `Timing ladder`: broad time blocks with concrete shot behavior.
+4. `Camera`: shot size, lens feel, movement, angle, and transition logic.
+5. `Continuity`: what must stay stable across shots.
+6. `Constraints`: visual positive constraints and a short avoid list.
+
+Do not waste prompt budget on workflow mechanics such as `use the connected image` when the image is structurally connected. Write what happens after frame 1 in direct shot language.
 
 ## Simplify Risk
 
@@ -109,3 +147,18 @@ More phases usually create chaos.
 ## Better Prompt Pattern
 
 `Subject: full-body editorial portrait of a model in a black technical coat on a wet rooftop. 0-2s hard flash reveal. 2-5s slow push as wind lifts the coat hem. 5-8s macro cut to reflective piping catching light. 8-10s locked back-view silhouette with clean sky for end-card typography.`
+
+## Better Multi-Shot Campaign Pattern
+
+```text
+Subject: modern luxury fashion campaign, one adult model in a sharply tailored black coat, rain-wet concrete and glass walkway at night, cool shadows with warm practical light, restrained editorial nocturne.
+
+0-3s: low-angle silhouette hook. The model crosses a narrow strip of warm light, coat hem moving in light wind, wet concrete reflecting the figure.
+3-5s: cut to lateral tracking world reveal through glass and chrome architecture, reflections sliding across the frame, model seen three-quarter from behind.
+5-8s: close material accent on black wool sleeve, collar, rain beads, and chrome reflection; the model turns one shoulder, no hand gesture.
+8-10s: locked final three-quarter hero hold with clean negative space, composed posture, warm rim light on cheek and coat edge.
+
+Camera: controlled low-angle opening, smooth lateral track, brief macro insert, locked final hold. No fast orbit, no runway montage.
+Continuity: same black coat silhouette, same adult model, same wet city night world, no visible logos or text.
+Constraints: elegant modern fashion film, natural walk with hidden feet, clean face and hands, no fake signage, no generated typography, no crowd, no chaotic fabric.
+```

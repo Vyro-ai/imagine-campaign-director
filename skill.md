@@ -66,22 +66,24 @@ If Computer Use/browser execution is unavailable after an explicit check, return
 
 1. Read `docs/INPUT_ADAPTERS.md`.
 2. Normalize the user's input into a campaign brief.
-3. Choose a campaign grammar from `docs/AESTHETIC_SYSTEM.md`.
-4. Define reference parity: closest references/archetype, hook behavior, subject/world behavior, camera behavior, editorial progression, product reveal, and final memory image.
-5. Build a comprehensive workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
-6. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, and `docs/WORKFLOW_EXECUTION_GUIDE.md`.
-7. Import or explicitly account for every source asset before stillframe generation.
-8. Create NB2/NBP stillframe prompts with `prompts/imagineart_workflow_builder.md`.
-9. Generate stillframe variants before motion and select approved anchors.
-10. Build storyboard/reference panels for motion, especially when using Seedance.
-11. Create music direction with `prompts/music_studio_prompt_builder.md` and generate the track in Imagine.Art Music Studio.
-12. Create motion prompts with `prompts/ai_video_prompt_builder.md`.
-13. If using Seedance, follow `docs/SEEDANCE_WORKFLOW_GUIDE.md`.
-14. Plan b-roll and product closeout with `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
-15. Define sections, node names, variants, approval gates, and failure notes.
-16. Score outputs with `docs/QUALITY_CONTROL.md`, including the reference-parity table.
-17. Diagnose revisions with `prompts/revision_diagnoser.md`.
-18. Package final delivery with `prompts/final_delivery_packager.md`.
+3. If the input is vague or mostly taste language, apply `docs/VAGUE_PROMPT_RESCUE.md`.
+4. Choose a campaign grammar from `docs/AESTHETIC_SYSTEM.md`.
+5. Write a director's treatment using `docs/DIRECTORS_TREATMENT_GATE.md`; do not touch the workflow canvas until the film, edit, shots, music spine, and Seedance 2 node plan are justified.
+6. Define reference parity: closest references/archetype, hook behavior, subject/world behavior, camera behavior, editorial progression, product reveal, and final memory image.
+7. Build a comprehensive workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
+8. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, and `docs/WORKFLOW_EXECUTION_GUIDE.md`.
+9. Import or explicitly account for every source asset before stillframe generation.
+10. Create NB2/NBP stillframe prompts with `prompts/imagineart_workflow_builder.md`.
+11. Generate stillframe variants before motion and select approved anchors.
+12. Build storyboard/reference panels for motion, especially when using Seedance.
+13. Create music direction with `prompts/music_studio_prompt_builder.md` and generate the track in Imagine.Art Music Studio.
+14. Create motion prompts with `prompts/ai_video_prompt_builder.md`.
+15. If using Seedance, follow `docs/SEEDANCE_WORKFLOW_GUIDE.md`.
+16. Plan b-roll and product closeout with `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
+17. Define sections, node names, variants, approval gates, and failure notes.
+18. Score outputs with `docs/QUALITY_CONTROL.md`, including the reference-parity table.
+19. Diagnose revisions with `prompts/revision_diagnoser.md`.
+20. Package final delivery with `prompts/final_delivery_packager.md`.
 
 ## Commercial Workflow
 
@@ -104,6 +106,7 @@ When operating the browser, use `config/imagineart_model_matrix.json` and `confi
 Every production plan should include:
 
 - active context workspace and local deliverables
+- director's treatment with every shot justified
 - source input section
 - input analysis / AI Copilot brief section
 - campaign strategy section

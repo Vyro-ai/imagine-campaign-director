@@ -12,6 +12,19 @@ List sections in order.
 
 Must include source inputs, analysis, strategy, still look-dev, approved stills, storyboard/motion references, motion, b-roll, music, edit assembly, type/end card, QC notes, and export.
 
+### Paste-First Canonical Spec
+
+For multi-node campaign workflows, output or save a canonical workflow spec suitable for `scripts/imagineart_workflow_clipboard.mjs`. Follow `docs/PASTE_FIRST_WORKFLOWS.md`.
+
+The spec must:
+
+- use readable stage-column positions
+- use shot rows or clearly separated branches
+- include all planned shot branches before generation
+- avoid overlapping node positions
+- set Seedance video nodes to the validated start-frame contract with `inputMode: "start-frame"` when wiring approved stills to motion
+- use `Seedance 2` / `Seedance 2.0` as the intended campaign motion model, not Kling, unless the user explicitly requested Kling
+
 ### Input Nodes
 
 For each user asset:
@@ -72,6 +85,14 @@ For each motion clip:
 - prompt
 - variants needed
 - QC gate
+
+For Seedance 2 multi-shot campaign nodes, include:
+
+- broad timing ladder
+- one hero event per block
+- reference role map
+- start-frame or reference wiring requirement
+- visible model guard: reject if pasted/UI node resolves to Kling 3.0
 
 For commercial/social/professionally produced video requests, each Seedance shot needs:
 

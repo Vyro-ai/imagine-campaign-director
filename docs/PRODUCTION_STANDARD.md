@@ -72,6 +72,7 @@ The user does not need to say "Imagine.Art" for this default to apply. In Campai
 Every campaign plan should account for:
 
 - active context workspace and local documentation files
+- director's treatment and near-deterministic edit plan
 - input analysis and assumptions
 - one campaign grammar
 - workflow section map
@@ -94,6 +95,7 @@ Create or update the workspace before execution work spreads across the repo. Th
 - `workspace.md` with purpose, initiating context, current status, primary deliverable, key tools/models, and important paths
 - `brief.md`
 - `script.md` when narration, on-screen text, spoken lines, or beat-by-beat copy are part of the deliverable
+- `directors-treatment.md` before workflow construction
 - `production-plan.md`
 - `prompts/imagineart.md`
 - `prompts/hyperframes.md` when deterministic finishing is planned or used
@@ -102,6 +104,12 @@ Create or update the workspace before execution work spreads across the repo. Th
 - `assets/`, `assets/generated/`, `exports/`, `references/`, and `hyperframes/` as needed
 
 If the repository has a workspace log, update it when a workspace is created or its status materially changes. Keep generated images, uploads, exports, notes, and review frames inside the active workspace instead of loose at the repo root.
+
+## Director's Treatment Standard
+
+Before touching the Imagine.Art workflow canvas, apply `docs/DIRECTORS_TREATMENT_GATE.md`. The agent must think through the film first: campaign thesis, visual world, model/styling continuity, shot-by-shot timeline, music/beat map, transition logic, Seedance 2 multi-shot node plan, stillframe anchors, QC rejects, and final memory image.
+
+The workflow should execute this treatment. It should not be used as the place to discover the edit one still/video pair at a time.
 
 ## Final Status Labels
 

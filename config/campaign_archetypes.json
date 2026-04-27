@@ -16,6 +16,13 @@
       "tone": "cinematic, restrained, image-led"
     },
     {
+      "id": "editorial_nocturne",
+      "name": "Editorial Nocturne",
+      "best_for": ["generic luxury fashion", "modern fashion brand", "gen-z fashion", "mystique", "elegance"],
+      "structure": ["silhouette hook", "nocturnal world reveal", "material detail", "controlled model movement", "final elegant hold"],
+      "tone": "mysterious, restrained, modern, image-led"
+    },
+    {
       "id": "fragrance_nocturne",
       "name": "Fragrance Nocturne",
       "best_for": ["fragrance", "beauty", "sensory products"],

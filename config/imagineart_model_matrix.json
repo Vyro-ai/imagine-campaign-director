@@ -83,9 +83,10 @@
       ]
     },
     "seedance": {
-      "display_name": "Seedance",
+      "display_name": "Seedance 2 / Seedance 2.0",
       "primary_use": [
         "reference-guided motion",
+        "multi-shot campaign motion",
         "10-second campaign clips",
         "controlled shot ladders"
       ],
@@ -94,12 +95,15 @@
       "known_risks": [
         "too many actions in one prompt causes chaotic motion",
         "hands, reflections, glass, logos, and product rotation need simplified direction",
-        "one reference image should have one dominant job"
+        "one reference image should have one dominant job",
+        "pasted or UI-created video nodes may default to Kling 3.0 and must be corrected before launch"
       ],
       "preflight": [
+        "confirm visible model label says Seedance 2 or Seedance 2.0",
         "connect approved start/end/reference images",
         "keep 10-second clips to about four major phases",
-        "make beat timing broad rather than frame-exact unless proven"
+        "make beat timing broad rather than frame-exact unless proven",
+        "do not launch if the visible model label says Kling 3.0 unless the user explicitly requested Kling"
       ]
     },
     "music_studio": {
@@ -124,9 +128,10 @@
   },
   "global_rules": [
     "the visible UI model and settings are authoritative before launch",
-    "for original reference images, try ImagineArt 2.0 first when it can satisfy the role",
-    "use GPT Image 2 when references, storyboard panels, or continuity control are needed and ImagineArt 2.0 cannot satisfy that role",
-    "for high-realism commercial footage, use Seedance 2 or the available Imagine.Art video model as the core production layer",
+    "use NB2/NBP for stillframe anchors by default",
+    "use GPT Image 2 or another Imagine.Art image model only when references, storyboard panels, continuity control, model availability, or artifact risk require it",
+    "for high-realism commercial footage, use Seedance 2 / Seedance 2.0 as the core production layer unless explicitly overridden",
+    "Kling 3.0 is not the default CampaignCraft motion model",
     "do not launch motion from unapproved stills",
     "delete failed and unused nodes from the final workflow",
     "document failed runs locally before cleanup",
