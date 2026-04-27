@@ -34,6 +34,14 @@ Right first response:
 I'll build this Imagine.Art-first, then use HyperFrames only for finishing if reviewed motion assets exist.
 ```
 
+Also wrong:
+
+```text
+I'll use the HyperFrames workflow for this since the request is for an HTML-based campaign video composition.
+```
+
+The user does not need to say "Imagine.Art" for this default to apply. In CampaignCraft, ordinary language such as "campaign video," "fashion film," "commercial," "social ad," or "professionally shot video" is enough to trigger the Imagine.Art-first path.
+
 ## Required Campaign Parts
 
 Every campaign plan should account for:

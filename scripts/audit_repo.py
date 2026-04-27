@@ -7,6 +7,7 @@ import re
 TEXT_EXTENSIONS = {".md", ".py", ".json", ".txt"}
 IGNORED_DIRS = {".git", "__pycache__", "node_modules", ".cache"}
 CANONICAL_DOCS = [
+    "AGENTS.md",
     "README.md",
     "skill.md",
     "docs/PRODUCTION_STANDARD.md",
@@ -18,17 +19,27 @@ CANONICAL_DOCS = [
     "docs/IMAGINEART_MUSIC_STUDIO.md",
 ]
 FORBIDDEN_ROUTING_PATTERNS = [
-    re.compile(r"\bI['’]?ll build this as a HyperFrames composition\b", re.I),
+    re.compile(r"\bI['’]?ll\s+(use|build|create|make|start)\b.*\bHyperFrames\b", re.I),
+    re.compile(r"\bI['’]?m\s+(using|building|creating|making|starting)\b.*\bHyperFrames\b", re.I),
+    re.compile(r"\buse the HyperFrames workflow\b", re.I),
+    re.compile(r"\bHTML-based campaign video composition\b", re.I),
     re.compile(r"\bcreate a self-contained HyperFrames project\b", re.I),
     re.compile(r"\bHyperFrames composition:?\s+a short\b", re.I),
     re.compile(r"\bstart by creating a local HyperFrames\b", re.I),
+    re.compile(r"\blocal video composition\b", re.I),
 ]
 ALLOWED_ROUTING_CONTEXT = (
     "wrong first response",
+    "also wrong",
+    "do not begin",
     "do not start",
+    "do not substitute",
     "never the first production layer",
     "only for finishing",
     "finishing layer",
+    "correct first response pattern",
+    "after reviewed/generated motion exists",
+    "after imagine.art motion exists",
 )
 
 
