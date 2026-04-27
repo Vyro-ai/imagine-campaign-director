@@ -6,6 +6,7 @@ Return:
 
 - overall status: pass, pass with minor fixes, needs revision, reject and regenerate
 - highest priority fixes
+- reference-parity table
 - shot-level notes
 - caption/text review
 - delivery risk
@@ -31,6 +32,24 @@ Then explicitly answer:
 - Is the product withheld, revealed, and then held with purpose?
 - Does any deterministic overlay duplicate readable generated label text?
 - Does the final memory image feel earned?
+
+## Required Reference-Parity Review
+
+Do not pass a render only because it has valid Imagine.Art motion. Compare it against the user's reference pack or the closest campaign archetype.
+
+Return this table:
+
+| Dimension | Reference behavior | Output behavior | Pass/Revise |
+| --- | --- | --- | --- |
+| opening behavior |  |  |  |
+| subject/world presence |  |  |  |
+| camera grammar |  |  |  |
+| editorial progression |  |  |  |
+| production design density |  |  |  |
+| product reveal logic |  |  |  |
+| final memory image |  |  |  |
+
+If the output is a clean product loop but the references are fashion, beauty, fragrance, lifestyle, luxury, or cinematic campaign films, status must be `needs revision` or `reject and regenerate`.
 
 ## Workflow Review
 

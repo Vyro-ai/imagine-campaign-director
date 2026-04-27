@@ -54,6 +54,26 @@ Use this ladder unless the brief gives a better one:
 
 If the product appears fully in the first frame, the rest of the edit must justify why. Otherwise, hold the product back until the viewer understands the world it belongs to.
 
+## Campaign Behavior
+
+Good campaign footage behaves. It does not just display.
+
+Use at least some of these behaviors when the brief asks for fashion, beauty, fragrance, luxury, lifestyle, or cinematic brand work:
+
+- a subject enters, turns, pauses, approaches, retreats, looks away, looks into lens, touches a surface, opens a door, lifts a product, crosses light, or reacts to weather
+- fabric, hair, rain, smoke, water, glass, reflection, vehicle light, elevator light, curtains, crowds, doors, stairs, or architecture creates a physical event
+- the camera discovers something: it approaches, tracks, tilts, reveals, or holds with intent
+- product appears as consequence or payoff, not as the whole film from second zero
+
+Bad campaign footage only presents:
+
+- centered product, slow push, centered product, slow push
+- unrelated beautiful macros with no reveal order
+- a subject standing like a still image while the camera drifts
+- generic dark luxury surfaces with no casting, styling, place, event, or memory
+
+When reference films have human presence, fashion styling, architectural space, weather, performance, or editorial escalation, the output must carry comparable ambition in original form. A technically clean product loop is a miss for that assignment.
+
 ## Generation vs Editing
 
 Generate stillframes, styleframes, product plates, environment plates, and motion clips. Edit typography, logos, captions, legal lines, end cards, timing, transitions, and final grade deterministically.

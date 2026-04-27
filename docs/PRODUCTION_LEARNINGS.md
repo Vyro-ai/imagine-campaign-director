@@ -9,6 +9,7 @@ This is the practical operating doctrine behind CampaignCraft. It exists because
 - Do not call a single generation batch finished unless the footage truly clears the bar.
 - When a cut feels like AI, fix source selection and shot grammar before adding filters.
 - Keep older approved footage if it is stronger than a newer run.
+- A workflow-valid product loop is not a campaign film. If the brief or references imply fashion, beauty, fragrance, lifestyle, luxury, or cinematic brand language, the output needs campaign behavior: world, styling, movement, reveal logic, and an earned product closeout.
 
 ## The Four Gates
 
@@ -17,6 +18,8 @@ This is the practical operating doctrine behind CampaignCraft. It exists because
 Before generating motion:
 
 - What is the dominant campaign grammar?
+- Which 2-4 references or archetype examples define the ambition level?
+- What does each reference do structurally that the output must also do in original form?
 - What is the first 1-2 second hook?
 - Which stillframes prove the visual system?
 - What physical event makes each motion shot worth generating?
@@ -49,6 +52,8 @@ Before editing:
 
 Before final delivery:
 
+- reference-parity table is complete
+- output belongs in the same campaign category as the reference set
 - final product/card is clear
 - music supports edit rhythm
 - typography is deterministic and readable
@@ -59,3 +64,5 @@ Before final delivery:
 ## Hard Lesson
 
 A local still-based proxy edit is not a finished Imagine.Art campaign when the task requires motion. It can test pacing, but final delivery must be built from reviewed motion outputs.
+
+A technically valid Imagine.Art export can still be a failed campaign. Do not call product-only macro footage finished when the assignment calls for a fashion/luxury/cinematic reference bar. Mark it `needs revision` and keep generating stronger world, subject, action, and reveal shots.

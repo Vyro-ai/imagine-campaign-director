@@ -30,25 +30,28 @@ If the agent has browser access, it should execute the workflow in Imagine.Art, 
 
 Hard motion rule: campaign motion must be image-grounded. Every Seedance or video node must have a visible approved start frame, end frame, reference image, product-truth image, or storyboard panel connection in the Imagine.Art workflow. Text-only video is never allowed for campaign motion.
 
+Hard taste rule: a technically valid Imagine.Art export is not automatically finished. For campaign work, the output must clear reference parity: it needs comparable campaign behavior to the user's references or chosen archetype. Product-only loops, interchangeable macro shots, static pretty motion, and generic luxury surfaces are not finished fashion/beauty/fragrance/luxury campaign films.
+
 ## Workflow
 
 1. Read `docs/INPUT_ADAPTERS.md`.
 2. Normalize the user's input into a campaign brief.
 3. Choose a campaign grammar from `docs/AESTHETIC_SYSTEM.md`.
-4. Build a comprehensive workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
-5. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, and `docs/WORKFLOW_EXECUTION_GUIDE.md`.
-6. Import or explicitly account for every source asset before stillframe generation.
-7. Create stillframe prompts with `prompts/imagineart_workflow_builder.md`.
-8. Generate stillframe variants before motion and select approved anchors.
-9. Build storyboard/reference panels for motion, especially when using Seedance.
-10. Create music direction with `prompts/music_studio_prompt_builder.md` and generate the track in Imagine.Art Music Studio.
-11. Create motion prompts with `prompts/ai_video_prompt_builder.md`.
-12. If using Seedance, follow `docs/SEEDANCE_WORKFLOW_GUIDE.md`.
-13. Plan b-roll and product closeout with `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
-14. Define sections, node names, variants, approval gates, and failure notes.
-15. Score outputs with `docs/QUALITY_CONTROL.md`.
-16. Diagnose revisions with `prompts/revision_diagnoser.md`.
-17. Package final delivery with `prompts/final_delivery_packager.md`.
+4. Define reference parity: closest references/archetype, hook behavior, subject/world behavior, camera behavior, editorial progression, product reveal, and final memory image.
+5. Build a comprehensive workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
+6. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, and `docs/WORKFLOW_EXECUTION_GUIDE.md`.
+7. Import or explicitly account for every source asset before stillframe generation.
+8. Create stillframe prompts with `prompts/imagineart_workflow_builder.md`.
+9. Generate stillframe variants before motion and select approved anchors.
+10. Build storyboard/reference panels for motion, especially when using Seedance.
+11. Create music direction with `prompts/music_studio_prompt_builder.md` and generate the track in Imagine.Art Music Studio.
+12. Create motion prompts with `prompts/ai_video_prompt_builder.md`.
+13. If using Seedance, follow `docs/SEEDANCE_WORKFLOW_GUIDE.md`.
+14. Plan b-roll and product closeout with `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
+15. Define sections, node names, variants, approval gates, and failure notes.
+16. Score outputs with `docs/QUALITY_CONTROL.md`, including the reference-parity table.
+17. Diagnose revisions with `prompts/revision_diagnoser.md`.
+18. Package final delivery with `prompts/final_delivery_packager.md`.
 
 When operating the browser, use `config/imagineart_model_matrix.json` and `config/automation_recovery_rules.json` for model defaults, preflight checks, retry limits, and cleanup rules.
 
@@ -97,6 +100,8 @@ Include:
 ## Taste Rules
 
 - Use one dominant campaign grammar.
+- Match the ambition level of the user's references in original form; do not merely satisfy the prompt.
+- For fashion, beauty, fragrance, luxury, lifestyle, and cinematic brand work, include campaign behavior: world, styling, subject or ritual, camera discovery, editorial progression, and an earned product closeout unless the user explicitly requests a pure product loop.
 - Make product, wardrobe, material, surface, light, and camera choices concrete.
 - Prefer stillframes/keyframes before motion when consistency matters.
 - Prefer GPT Image 2 inside Imagine.Art Workflows for fast storyboard/reference-frame ladders when available. Feed approved panels into Seedance as start frames, end frames, or reference images with one clear job each.

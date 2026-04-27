@@ -12,6 +12,14 @@ Choose one dominant grammar from `docs/AESTHETIC_SYSTEM.md`. The grammar control
 
 Read `docs/PRODUCTION_LEARNINGS.md` before finalizing the workflow plan.
 
+Before motion planning, define the reference-parity target:
+
+- If the user supplied references, choose the closest 2-4 and summarize their structural behavior.
+- If the user supplied no references, choose the closest campaign archetype and state the expected behavior.
+- Translate the references into original shot grammar: hook behavior, subject/world behavior, camera behavior, edit progression, product reveal, and final memory image.
+
+Do not reduce a fashion, beauty, fragrance, luxury, lifestyle, or cinematic brand brief into a product-only loop unless the user explicitly asks for that.
+
 ## 3. Imagine.Art Workflow Blueprint
 
 Build a comprehensive node/section plan using `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
@@ -124,6 +132,8 @@ Use `docs/BROLL_AND_PRODUCT_CLOSEOUT.md` before final assembly so the spot has b
 Render QC is mandatory. After exporting, extract a frame sheet with `scripts/extract_review_frames.py` and inspect the first frame, first second, first product reveal, any hand/face/product contact, and final memory image. A technically successful export is not finished if the artifact review fails.
 
 Also create a final shot-source manifest. If any visual timeline segment is sourced from `still_pan_zoom`, `slideshow`, `mood_board_crop`, `brand_board_crop`, `palette_board`, `prompt_card`, `workflow_screenshot`, or `unreviewed_motion`, the status must be `partial/proxy`, not `finished`.
+
+Also create a reference-parity table. If the output lacks the reference pack's category-level behavior, such as subject/world presence, styling intent, location specificity, camera behavior, editorial progression, production design density, or earned product reveal, the status must be `needs revision` or `reject`, even when every shot is valid Imagine.Art motion.
 
 ## 9. Revision
 

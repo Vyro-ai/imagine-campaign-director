@@ -12,6 +12,8 @@ Use this before calling any generated campaign finished.
 ## Score Each Area 1-5
 
 - hook strength
+- reference parity
+- campaign ambition
 - product clarity
 - Imagine.Art workflow completeness
 - Music Studio fit
@@ -26,6 +28,34 @@ Use this before calling any generated campaign finished.
 - b-roll purpose
 - product closeout strength
 
+## Reference-Parity Review
+
+Before a final pass, compare the render against the user's reference pack or the closest relevant examples in the project. This is not a copyright imitation exercise. It is a taste and direction check.
+
+Create a short parity table:
+
+| Dimension | Reference behavior | Output behavior | Pass/Revise |
+| --- | --- | --- | --- |
+| opening behavior |  |  |  |
+| subject/world presence |  |  |  |
+| camera grammar |  |  |  |
+| editorial progression |  |  |  |
+| production design density |  |  |  |
+| product/brand reveal logic |  |  |  |
+| final memory image |  |  |  |
+
+The output fails reference parity when it only satisfies workflow mechanics. A valid Imagine.Art graph, visible image references, successful Seedance runs, and clean export specs do not make a campaign good.
+
+For fashion, beauty, fragrance, luxury, and cinematic brand campaigns, the render must show campaign behavior:
+
+- a world before the product fully explains itself
+- subject, wardrobe, posture, location, weather, architecture, material, or ritual when the brief implies lifestyle/editorial language
+- camera movement with a reason: approach, reveal, follow, orbit, retreat, tilt, drift, snap, or hold
+- editorial escalation instead of a sequence of interchangeable beautiful clips
+- a product closeout that feels earned by the preceding world
+
+If the best honest comparison is "this is a product loop, but the references are campaign films," mark the status `needs revision` or `reject`.
+
 ## Hard Fails
 
 - no Imagine.Art workflow plan
@@ -33,6 +63,8 @@ Use this before calling any generated campaign finished.
 - source boards, brand boards, palettes, typography specimens, prompt screenshots, or contact sheets appear as final footage
 - the opening frame exposes test-case residue, crop borders, UI, palette chips, or reference-board text
 - the edit is mostly repeated product packshots when the brief asks for a campaign world, subject, or story
+- the edit is mostly valid product or texture motion while the brief/reference set calls for fashion, beauty, lifestyle, cinematic brand, or luxury campaign behavior
+- the final output would not sit in the same category as the reference pack because it lacks casting, styling, location, movement, reveal logic, or editorial progression
 - generated label text is duplicated by deterministic overlay text in the same frame
 - motion nodes connected directly to unreviewed first-pass stills
 - Seedance motion launched without approved storyboard/reference panels when the move depends on camera choreography

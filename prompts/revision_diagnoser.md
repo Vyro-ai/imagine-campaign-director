@@ -3,6 +3,7 @@
 Separate problems into:
 
 - strategy issue
+- reference-parity failure
 - workflow connection issue
 - music spine issue
 - script issue
@@ -14,6 +15,8 @@ Separate problems into:
 - delivery/export issue
 
 Return feedback summary, root cause, revision type, specific changes, updated prompt snippets, risks, and acceptance criteria.
+
+If the failure is reference parity, do not suggest polish-only fixes. Rewrite the shot ladder and generation plan so the next pass adds missing campaign behavior: world, subject/casting, wardrobe/posture, location specificity, physical action, camera discovery, editorial escalation, or earned product reveal.
 
 ## Regeneration Discipline
 

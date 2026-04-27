@@ -19,6 +19,20 @@ From a brief, prompt, style image, product photo, mood board, reference clip, or
 
 If browser execution, login state, model availability, or the Imagine.Art UI blocks any required step, the agent must say so directly and mark the campaign as blocked or partial. It must not call a prompt pack, canvas sketch, still-only proxy, slideshow, local still pan/zoom edit, or failed workflow a finished campaign video.
 
+## Finished Means Campaign-Grade, Not Merely Executed
+
+A campaign is not `finished` just because the workflow ran, the shots are image-grounded, and the export exists. Those are lineage requirements. The creative requirement is reference parity.
+
+Before using `finished`, the agent must prove the output belongs in the same category as the intended reference set:
+
+- If the user supplied reference videos, compare against the closest 2-4 references.
+- If the user supplied only a brief, choose the closest campaign archetype and compare against the archetype's expected behavior.
+- If the campaign is fashion, beauty, fragrance, luxury, lifestyle, or cinematic brand work, do not accept a product-only loop unless the user explicitly asked for one.
+
+Reference parity does not mean copying. It means the output has comparable campaign grammar: subject/world presence, styling intent, location specificity, camera behavior, edit progression, production design density, and an earned final product memory image.
+
+If the result is technically valid but visually small, static, repetitive, packshot-heavy, or far below the reference ambition, status is `needs revision`, `motion pending`, or `blocked`, not `finished`.
+
 ## Non-Negotiable Motion Grounding
 
 Every AI-generated motion shot in a finished campaign must be grounded by a visible source visual in the Imagine.Art workflow:
@@ -44,6 +58,7 @@ Before a campaign can be `finished`, create a shot-source manifest in the QC rep
 - source type
 - Imagine.Art workflow node or Music Studio item
 - review status
+- reference-parity role: hook, world, subject, movement, ritual/detail, reveal, product closeout, or deterministic type
 
 Allowed `source_type` values for finished campaign footage:
 
