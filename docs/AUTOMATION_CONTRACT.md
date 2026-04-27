@@ -13,11 +13,43 @@ From a brief, prompt, style image, product photo, mood board, reference clip, or
 5. approved storyboard/reference panels for motion
 6. Seedance or other Imagine.Art motion clips from approved references
 7. Imagine.Art Music Studio prompt and generated audio
-8. final edit plan or assembled deliverable
+8. final edit assembled from reviewed motion outputs
 9. QC report and revision diagnosis
 10. clean final workflow containing only used nodes
 
-If browser execution, login state, model availability, or the Imagine.Art UI blocks any required step, the agent must say so directly and mark the campaign as blocked or partial. It must not call a prompt pack, canvas sketch, still-only proxy, or failed workflow a finished campaign video.
+If browser execution, login state, model availability, or the Imagine.Art UI blocks any required step, the agent must say so directly and mark the campaign as blocked or partial. It must not call a prompt pack, canvas sketch, still-only proxy, slideshow, local still pan/zoom edit, or failed workflow a finished campaign video.
+
+## Final-Shot Source Manifest
+
+Before a campaign can be `finished`, create a shot-source manifest in the QC report. Every shot in the final timeline must list:
+
+- time range
+- visual job
+- source file
+- source type
+- Imagine.Art workflow node or Music Studio item
+- review status
+
+Allowed `source_type` values for finished campaign footage:
+
+- `imagineart_motion`: reviewed video generated in Imagine.Art Workflows
+- `supplied_motion`: user-supplied real video or licensed/generated motion
+- `deterministic_type`: typography, captions, end cards, masks, grades, and layout generated in the edit
+- `music_studio_audio`: generated Imagine.Art Music Studio audio
+- `supplied_audio`: user-supplied audio
+
+Disallowed `source_type` values for final campaign footage unless explicitly labeled `partial/proxy`:
+
+- `still_pan_zoom`
+- `slideshow`
+- `mood_board_crop`
+- `brand_board_crop`
+- `palette_board`
+- `prompt_card`
+- `workflow_screenshot`
+- `unreviewed_motion`
+
+If any visual shot uses a disallowed source type, the deliverable is not finished. It is an animatic or proxy, even if it has music, transitions, and a clean render.
 
 ## Seamless User Standard
 
@@ -156,10 +188,10 @@ If a run changes direction, old nodes must be removed from the live final workfl
 
 Use precise status labels:
 
-- `finished`: final video assembled from reviewed Imagine.Art motion and audio
+- `finished`: final video assembled from reviewed Imagine.Art motion or supplied motion, with generated/supplied audio and a shot-source manifest proving every visual shot is valid final footage
 - `ready for generation`: workflow and prompts are ready, but generation has not run
 - `motion pending`: stills/references are ready, motion has not completed
 - `partial/proxy`: deterministic edit or still animatic exists, but required Imagine.Art motion is missing
 - `blocked`: login, UI, model, moderation, generation, or export failure prevents completion
 
-Never use `finished` for a proxy.
+Never use `finished` for a proxy, slideshow, or still pan/zoom edit.

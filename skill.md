@@ -24,7 +24,7 @@ Always plan generation through Imagine.Art Workflows unless the user explicitly 
 
 Use platform-neutral language only as secondary portability notes. The main path is Imagine.Art.
 
-Important: a node map is not a finished workflow. Do not treat a pasted graph, prompt pack, or canvas sketch as production-ready until it has source assets, staged run order, approved still anchors, generated music, reviewed motion outputs, and a final edit/export plan.
+Important: a node map is not a finished workflow. Do not treat a pasted graph, prompt pack, canvas sketch, still montage, slideshow, or HyperFrames pan/zoom edit as production-ready until it has source assets, staged run order, approved still anchors, generated music, reviewed motion outputs, a shot-source manifest, and a final edit/export plan.
 
 If the agent has browser access, it should execute the workflow in Imagine.Art, not merely describe it. Follow `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`. If execution is blocked by login, UI, model, moderation, generation, or export failures, report the exact blocker and status instead of presenting a proxy as final.
 
@@ -69,7 +69,9 @@ Every production plan should include:
 
 Do not present a workflow as ready until launch-critical connections are visible, approved stills are separated, motion outputs have been reviewed, rejected outputs are isolated, music is planned, and final product closeout is defined.
 
-Do not present a campaign as finished until the selected Imagine.Art motion clips and music have been generated or supplied, reviewed, and assembled.
+Do not present a campaign as finished until the selected Imagine.Art motion clips and music have been generated or supplied, reviewed, and assembled. A local still-based animatic can test pacing, but it must be labeled `partial/proxy` and cannot be renamed or delivered as final.
+
+Every final campaign must include a shot-source manifest proving each visual timeline segment is reviewed motion footage or deterministic type/layout. If any visual shot is a still crop, mood-board panel, product-board crop, workflow screenshot, or Ken Burns move, the campaign is not finished.
 
 Do not launch motion nodes directly from first-pass stillframe nodes. Motion should use selected/approved still anchors. If the UI does not support an approved-anchor node pattern, document the selected asset and manually connect/upload that selected output into the motion node.
 
@@ -105,7 +107,7 @@ Include:
 
 Use exact delivery status:
 
-- `finished`: final video assembled from reviewed Imagine.Art motion and audio
+- `finished`: final video assembled from reviewed Imagine.Art motion or supplied motion, generated/supplied audio, deterministic type/layout, and a shot-source manifest
 - `ready for generation`: workflow and prompts are ready, but generation has not run
 - `motion pending`: stills/references are ready, motion has not completed
 - `partial/proxy`: deterministic edit or still animatic exists, but required Imagine.Art motion is missing

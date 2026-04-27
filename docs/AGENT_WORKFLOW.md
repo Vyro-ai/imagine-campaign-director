@@ -22,7 +22,8 @@ The plan is not enough. The agent must distinguish:
 
 - `workflow map`: a proposed graph/section structure
 - `operational workflow`: a live Imagine.Art setup with source assets imported and launch order defined
-- `finished campaign`: generated stills, reviewed motion, generated music, deterministic type, QC, and final export
+- `animatic/proxy`: stills, crops, prompt cards, workflow screenshots, or pan/zoom timing edits used only to test structure
+- `finished campaign`: reviewed Imagine.Art motion or supplied motion, generated/supplied music, deterministic type, QC, shot-source manifest, and final export
 
 Never call a workflow operational just because nodes were pasted onto a canvas.
 
@@ -88,6 +89,8 @@ Create one motion prompt per shot or coherent motion block. Keep generated motio
 
 If using Seedance or time-segmented motion, follow `docs/SEEDANCE_WORKFLOW_GUIDE.md`.
 
+Do not replace this step with a HyperFrames slideshow, crop montage, or Ken Burns edit. Those are allowed only as `animatic/proxy` outputs while motion is pending.
+
 ## 7. Workflow Execution Plan
 
 Tell the user how to build or duplicate the Imagine.Art Workflow:
@@ -119,6 +122,8 @@ Score stillframes, motion clips, music fit, typography, and final edit using `do
 Use `docs/BROLL_AND_PRODUCT_CLOSEOUT.md` before final assembly so the spot has breath and a product-first ending.
 
 Render QC is mandatory. After exporting, extract a frame sheet with `scripts/extract_review_frames.py` and inspect the first frame, first second, first product reveal, any hand/face/product contact, and final memory image. A technically successful export is not finished if the artifact review fails.
+
+Also create a final shot-source manifest. If any visual timeline segment is sourced from `still_pan_zoom`, `slideshow`, `mood_board_crop`, `brand_board_crop`, `palette_board`, `prompt_card`, `workflow_screenshot`, or `unreviewed_motion`, the status must be `partial/proxy`, not `finished`.
 
 ## 9. Revision
 

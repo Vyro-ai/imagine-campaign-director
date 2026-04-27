@@ -27,6 +27,14 @@ Choose: pass, pass with minor fixes, needs revision, reject.
 - overlay typography does not duplicate readable product-label text:
 - final memory image feels earned:
 
+## Shot-Source Manifest
+
+Every final visual shot must be reviewed motion footage or deterministic type/layout. Use `partial/proxy` status if any visual shot is a still crop, slideshow, mood-board panel, brand-board crop, workflow screenshot, or unreviewed motion.
+
+| Time Range | Visual Job | Source File | Source Type | Imagine.Art Node / Source | Review Status |
+| --- | --- | --- | --- | --- | --- |
+| 0.0- |  |  |  |  |  |
+
 ## Scores
 
 | Criterion | Score | Notes |
