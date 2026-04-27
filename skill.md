@@ -71,7 +71,7 @@ If Computer Use/browser execution is unavailable after an explicit check, return
 5. Build a comprehensive workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
 6. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, and `docs/WORKFLOW_EXECUTION_GUIDE.md`.
 7. Import or explicitly account for every source asset before stillframe generation.
-8. Create stillframe prompts with `prompts/imagineart_workflow_builder.md`.
+8. Create NB2/NBP stillframe prompts with `prompts/imagineart_workflow_builder.md`.
 9. Generate stillframe variants before motion and select approved anchors.
 10. Build storyboard/reference panels for motion, especially when using Seedance.
 11. Create music direction with `prompts/music_studio_prompt_builder.md` and generate the track in Imagine.Art Music Studio.
@@ -103,6 +103,7 @@ When operating the browser, use `config/imagineart_model_matrix.json` and `confi
 
 Every production plan should include:
 
+- active context workspace and local deliverables
 - source input section
 - input analysis / AI Copilot brief section
 - campaign strategy section
@@ -133,12 +134,14 @@ Follow the music standard in `docs/PRODUCTION_STANDARD.md` and the details in `d
 - If the user asks for a believable main actress/model, prioritize consistency across Seedance clips: identity description, wardrobe, hair, makeup, performance style, camera distance, and repeatable reference-frame strategy.
 - Make product, wardrobe, material, surface, light, and camera choices concrete.
 - Prefer stillframes/keyframes before motion when consistency matters.
-- Use ImagineArt 2.0 first for original stillframes, product/environment plates, hero/style frames, and visual systems when it can satisfy the role. Use GPT Image 2 when references, storyboard panels, or continuity control are necessary and ImagineArt 2.0 cannot satisfy that role.
+- Use `Nano Banana 2` or `Nano Banana Pro` inside Imagine.Art for stillframes, styleframes, first/last frames, background plates, graphic inserts, title cards, product hero frames, product closeout plates, and key art. Use NB2 for fast iteration and NBP for premium final anchors. Use GPT Image 2 or another Imagine.Art image model only when the asset role requires it, and document the exception.
 - Feed approved panels into Seedance as start frames, end frames, or reference images with one clear job each.
 - Do not launch final campaign motion from prompt text alone. Generate or upload the needed image reference first, then connect it visibly to the motion node.
 - Before launching GPT Image 2 storyboard/reference nodes, confirm the visible UI model and use a validated ratio. Start with `1:1` for storyboard panels unless the live workflow has already proven another ratio works.
 - Keep 10-second generated clips realistic: about four major motion phases.
 - Add important typography, logos, captions, and CTAs in deterministic edit layers.
+- If live footage is needed, create `human-shoot.md` with exact lines, pickups, framing, camera angle, lens feel, performance, environment, wardrobe, and b-roll/overlay notes.
+- When using HyperFrames, use it for deterministic finishing only after reviewed motion exists; specify duration, ratio, mood, key elements, beat timing, type, captions, and export, and avoid unnecessary React-component or 4K/60fps requests.
 - Cut generic filler. Every frame needs a job.
 
 ## Status Labels

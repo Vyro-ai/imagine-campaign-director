@@ -43,9 +43,10 @@ For each still:
 
 Model priority:
 
-1. ImagineArt 2.0 for original stillframes, product/environment plates, hero/style frames, and visual systems when it can satisfy the role.
-2. GPT Image 2 when references are necessary because ImagineArt 2.0 does not support the needed reference behavior, continuity control, or storyboard/reference panel role.
-3. Other Imagine.Art image models only when the live UI or artifact risk makes them better.
+1. Nano Banana 2 for fast stillframe iteration, look development, graphic inserts, product/environment plates, and exploratory visual systems.
+2. Nano Banana Pro for final hero stills, product-truth plates, premium fidelity, and any still that will anchor final motion.
+3. GPT Image 2 when references are necessary because NB2/NBP cannot satisfy the needed reference behavior, continuity control, or storyboard/reference panel role.
+4. Other Imagine.Art image models only when the live UI, model availability, or artifact risk makes them better. Document the exception.
 
 ### Storyboard / Motion Reference Nodes
 

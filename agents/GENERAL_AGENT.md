@@ -38,7 +38,7 @@ When Computer Use, browser automation, or desktop control is available, use it t
 4. Create an Imagine.Art Workflow section map.
 5. Assign input assets to roles.
 6. Create a hero concept and shot list.
-7. Generate necessary reference images, using ImagineArt 2.0 first and GPT Image 2 when references/continuity require it.
+7. Generate necessary NB2/NBP stillframe anchors, using GPT Image 2 or another Imagine.Art image model only when references, storyboard panels, continuity control, model availability, or artifact risk require it.
 8. Write Seedance 2 / video-generation prompts with continuity and negative prompts.
 9. Write an Imagine.Art Music Studio prompt or use supplied music.
 10. Create a rough beat map.

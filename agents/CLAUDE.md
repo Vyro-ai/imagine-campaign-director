@@ -46,7 +46,7 @@ Follow the music standard in `docs/PRODUCTION_STANDARD.md` and the detailed guid
 
 Be specific. Replace vague “premium cinematic” language with physical choices: product angle, material, light behavior, blocking, lens feel, camera movement, and final frame purpose.
 
-Generate all reference images needed for motion. Default priority: ImagineArt 2.0 for original stillframes and plates; GPT Image 2 when references, storyboard panels, or continuity control are needed and ImagineArt 2.0 cannot satisfy the role.
+Generate all reference images needed for motion. Default priority: Nano Banana 2 for fast stillframe iteration and Nano Banana Pro for final hero/product-truth anchors. Use GPT Image 2 or another Imagine.Art image model only when references, storyboard panels, continuity control, model availability, or artifact risk make it better for the role.
 
 If the user asks for a believable actress/model, build a consistency plan: identity description, wardrobe, hair, makeup, performance style, camera distance, and repeatable reference-frame strategy.
 

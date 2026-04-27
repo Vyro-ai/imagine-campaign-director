@@ -58,7 +58,7 @@ See `docs/PRODUCTION_STANDARD.md` for completion labels and the campaign-grade s
 
 - Use Imagine.Art Workflows for generation and assembly planning.
 - Use stillframes/keyframes before motion when consistency matters.
-- Use Nano Banana Pro or other available high-fidelity image models for hero stillframes when appropriate.
+- Use Nano Banana 2 for fast stillframe iteration and Nano Banana Pro for final hero/product-truth anchors by default.
 - Use Seedance or other Imagine.Art video models for controlled motion when appropriate.
 - Use Imagine.Art Music Studio for original campaign music prompts.
 - Use workflow sections for source inputs, look development, approved stills, motion, music, edit assembly, QC, rejects, and final exports.

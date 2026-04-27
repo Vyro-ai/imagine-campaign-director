@@ -90,7 +90,7 @@ Create stillframe branches for:
 
 Generate multiple variants, then isolate approved anchors.
 
-Use ImagineArt 2.0 first for original stillframes, product/environment plates, hero/style frames, and visual systems when it can satisfy the role. Use GPT Image 2 when image references are necessary because ImagineArt 2.0 does not support the required reference behavior, continuity control, or storyboard/reference panel need. The visible UI model and ratio must be checked before launch.
+Use `Nano Banana 2` first for fast original stillframe iteration, look development, graphic inserts, and plates. Use `Nano Banana Pro` for final hero stills, product-truth plates, premium fidelity, and stills that will feed motion. Use GPT Image 2 or another Imagine.Art image model only when references, storyboard panels, continuity control, model availability, or artifact risk make it better for the specific asset role. Document any exception. The visible UI model and ratio must be checked before launch.
 
 For product campaigns, keep generated stillframes free of final ad typography whenever possible. If the supplied product photo already contains label text, treat it as product truth, but do not ask image or video models to recreate final campaign copy. Add brand name, product name, captions, and CTA in deterministic edit/type layers.
 

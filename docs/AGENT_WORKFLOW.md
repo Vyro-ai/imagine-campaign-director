@@ -8,13 +8,15 @@ This file is a routing guide. The delivery standard is `docs/PRODUCTION_STANDARD
 2. Choose one campaign grammar from `docs/AESTHETIC_SYSTEM.md`.
 3. Build the workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
 4. Apply the production standard from `docs/PRODUCTION_STANDARD.md`.
-5. Execute with `docs/WORKFLOW_EXECUTION_GUIDE.md` and `prompts/imagineart_browser_operator.md` when browser access exists.
-6. Use `docs/SEEDANCE_WORKFLOW_GUIDE.md` for image-grounded motion.
-7. Use `docs/IMAGINEART_MUSIC_STUDIO.md` and `prompts/music_studio_prompt_builder.md` for music.
-8. Plan b-roll and product closeout with `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
-9. Score with `docs/QUALITY_CONTROL.md`.
-10. Diagnose revisions with `prompts/revision_diagnoser.md`.
-11. Package delivery with `prompts/final_delivery_packager.md`.
+5. Create or update the active context workspace and local deliverables.
+6. Generate NB2/NBP stillframe anchors before motion unless a documented exception applies.
+7. Execute with `docs/WORKFLOW_EXECUTION_GUIDE.md` and `prompts/imagineart_browser_operator.md` when browser access exists.
+8. Use `docs/SEEDANCE_WORKFLOW_GUIDE.md` for image-grounded motion.
+9. Use `docs/IMAGINEART_MUSIC_STUDIO.md` and `prompts/music_studio_prompt_builder.md` for music.
+10. Plan b-roll and product closeout with `docs/BROLL_AND_PRODUCT_CLOSEOUT.md`.
+11. Score with `docs/QUALITY_CONTROL.md`.
+12. Diagnose revisions with `prompts/revision_diagnoser.md`.
+13. Package delivery with `prompts/final_delivery_packager.md`.
 
 ## Prompt Builders
 

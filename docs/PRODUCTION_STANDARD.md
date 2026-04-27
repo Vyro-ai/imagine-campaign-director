@@ -71,6 +71,7 @@ The user does not need to say "Imagine.Art" for this default to apply. In Campai
 
 Every campaign plan should account for:
 
+- active context workspace and local documentation files
 - input analysis and assumptions
 - one campaign grammar
 - workflow section map
@@ -81,6 +82,26 @@ Every campaign plan should account for:
 - edit structure, typography, captions, CTA, and product closeout
 - QC gates and revision path
 - shot-source manifest for final delivery
+
+## Context Workspace Standard
+
+Each distinct campaign context should have its own local workspace under:
+
+`workspaces/<YYYY-MM-DD>-<slug>/`
+
+Create or update the workspace before execution work spreads across the repo. The workspace should include:
+
+- `workspace.md` with purpose, initiating context, current status, primary deliverable, key tools/models, and important paths
+- `brief.md`
+- `script.md` when narration, on-screen text, spoken lines, or beat-by-beat copy are part of the deliverable
+- `production-plan.md`
+- `prompts/imagineart.md`
+- `prompts/hyperframes.md` when deterministic finishing is planned or used
+- `human-shoot.md` when live footage is needed
+- `qa.md`
+- `assets/`, `assets/generated/`, `exports/`, `references/`, and `hyperframes/` as needed
+
+If the repository has a workspace log, update it when a workspace is created or its status materially changes. Keep generated images, uploads, exports, notes, and review frames inside the active workspace instead of loose at the repo root.
 
 ## Final Status Labels
 
@@ -111,6 +132,14 @@ Text-only video generation is not allowed for campaign motion. If source import,
 
 For high-realism ads, Seedance 2 or the available Imagine.Art video model is the core footage layer. HyperFrames or another editor is for finishing: pacing, typography, transitions, music sync, logo/product lockup, captions, graphics, CTA, and final assembly.
 
+## Stillframe Model Standard
+
+Generate stillframes, styleframes, first/last frames, background plates, graphic inserts, title cards, product hero frames, product closeout plates, and key art inside Imagine.Art with `Nano Banana 2` or `Nano Banana Pro` by default.
+
+Use `Nano Banana 2` for fast look development, exploratory variants, graphic inserts, and speed-sensitive preflight. Use `Nano Banana Pro` for final selects, premium hero stills, product-truth plates, and anything that will anchor final motion.
+
+Do not substitute local image generation, generic one-off prompting, or another image model for these stillframe roles unless the model is unavailable or the asset has a specific documented requirement that NB2/NBP cannot meet. Save approved stills into the active workspace and document the model, purpose, prompt, ratio, and selected output before animating from them.
+
 ## Music Standard
 
 Every campaign needs music planning. Create an Imagine.Art Music Studio prompt unless the user supplied final music.
@@ -127,6 +156,14 @@ If the source input is visual, translate it into music language:
 - avoid list
 
 Do not use a visual placeholder as music. A campaign is not `finished` until music is generated, supplied, or explicitly pending under a non-finished status.
+
+When using Music Studio through a public-page or landing-page handoff, verify the prompt, instrumental/vocal state, duration, genre, mood, and avoid list inside the app before generation. The handoff may append default wording or reset the duration. If Music Studio generates a longer usable track than requested, trim it intentionally in the edit and document the source duration and final trim in QA.
+
+## Human Footage Standard
+
+Use human footage only when it adds credibility or authenticity that generated footage should not fake: founder/team talking-head moments, real product walkthroughs, UI actions that must be exact, or scenes where lived credibility matters more than polish.
+
+When live footage is needed, create `human-shoot.md` with exact spoken lines, pickup lines, framing, camera angle, lens feel, performance note, environment note, wardrobe note when relevant, and b-roll or overlay instructions. Keep human footage short and high-leverage.
 
 ## Quality Standard
 

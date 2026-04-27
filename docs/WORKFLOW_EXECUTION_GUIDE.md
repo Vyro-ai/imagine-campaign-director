@@ -10,13 +10,15 @@ Start from a relevant preset or featured workflow when it matches the job. Use a
 
 Avoid the paste-first trap: a large pasted graph can look complete while being unusable. A production workflow is only valid when the source assets are present, the run order is staged, and the outputs that feed motion have been selected intentionally.
 
-For commercials, social campaigns, TikTok/Reels ads, 30s spots, and professionally shot/produced videos, the default path is Seedance-first video production:
+For commercials, social campaigns, TikTok/Reels ads, 30s spots, and professionally shot/produced videos, the default path is image-first, Seedance-led video production:
 
-`source inputs -> analysis/user clarification -> ImagineArt 2.0 or GPT Image 2 reference frames -> approved anchors -> Seedance 2 motion -> Music Studio -> HyperFrames/editor finishing -> QC/export`
+`source inputs -> analysis/user clarification -> NB2/NBP stillframes and reference frames -> approved anchors -> storyboard/reference panels -> Seedance 2 motion -> Music Studio -> HyperFrames/editor finishing -> QC/export`
 
-Use ImagineArt 2.0 first for original stillframes and plates when it can satisfy the role. Use GPT Image 2 when references are necessary because ImagineArt 2.0 does not support the required reference behavior or continuity control. Use another Imagine.Art image model only when it is better for the specific asset role or when the preferred models are unavailable.
+Use `Nano Banana 2` first for fast original stillframe iteration, look development, graphic inserts, and plates. Use `Nano Banana Pro` for final hero stills, product-truth plates, premium fidelity, and stills that will feed motion. Use GPT Image 2 or another Imagine.Art image model only when references, storyboard panels, continuity control, model availability, or artifact risk make it better for the specific asset role. Document any exception.
 
 HyperFrames is the finishing layer for edit timing, effects, transitions, typography, graphics, logo/product lockup, captions, CTA, and final assembly. It is not the replacement for generated commercial footage when the user asked for a real video ad.
+
+When HyperFrames is used, keep it in the deterministic finishing lane: explicit duration, ratio, mood, key elements, beat timing, captions, typography, transitions, and export. Do not ask for React components or unnecessary 4K/60fps output unless the user explicitly requires them. Prefer short targeted revision prompts over rewriting the entire brief.
 
 Do not assume the workflow payload is truthful. The visible node model and settings in the Imagine.Art UI are authoritative.
 
@@ -73,7 +75,7 @@ Run campaigns in stages:
 2. `CLARIFY`: ask targeted user questions or document assumptions for platform, runtime, CTA, audience, realism, model/casting, and music.
 3. `ANALYSIS`: assign asset roles and identify continuity/artifact risks.
 4. `SHOTLIST`: create the hero concept and shot ladder; use 8-12 shots for a 30s vertical ad unless the brief requires a different structure.
-5. `STILLS`: generate look-development variants, product truth frames, model/actress reference frames, hero plates, and shot reference frames.
+5. `STILLS`: generate NB2/NBP look-development variants, product truth frames, model/actress reference frames, hero plates, and shot reference frames.
 6. `APPROVED`: select still anchors and document why they passed.
 7. `STORYBOARD`: create camera-movement reference panels for Seedance shots.
 8. `MOTION`: animate from approved anchors and storyboard references with Seedance 2 or the selected Imagine.Art video model.
@@ -99,6 +101,7 @@ Do not run stages 3-7 as one bulk launch. The stillframe and storyboard approval
 - Never launch motion nodes before their start frames, end frames, storyboard panels, or references are approved.
 - Never launch campaign motion as text-only.
 - Never launch a generated text/logo/label requirement inside video when it belongs in deterministic post-production.
+- Never animate from a still that has not been saved locally and documented with its model, purpose, prompt, ratio, and selection reason.
 
 ## Reject Handling
 
@@ -130,3 +133,9 @@ Do not report a workflow as ready until:
 - final assembly plan exists
 - QC notes exist
 - failed, rejected, duplicate, abandoned, and unused nodes have been removed from the final live workflow
+
+## HyperFrames Render Notes
+
+If generated motion clips are nested inside another HTML/video composition, re-encode selected clips with regular keyframes before render. Sparse keyframes can cause frame-accurate capture freezes in downstream assembly tools.
+
+If a HyperFrames lint warning conflicts with verified nested-video playback, document the warning, the attempted fix, and the playback/export verification instead of blindly changing the composition. Known example: adding a root `data-start="0"` to satisfy `root_composition_missing_data_start` can break nested timed-video structures in some projects.

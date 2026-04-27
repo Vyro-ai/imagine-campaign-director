@@ -19,6 +19,10 @@ If the user supplies a style image, product photo, or mood board, translate the 
 - pacing -> tempo
 - campaign grammar -> arrangement style
 
+When using a public-page or landing-page handoff into the app, verify the in-app prompt before generation. Remove any appended default wording that changes the brief, confirm instrumental/vocal state, confirm genre and mood fields where available, and confirm duration. Handoff flows can reset a short campaign request to a longer default duration.
+
+If Music Studio produces a longer usable track than the edit target, keep it only when it can be trimmed intentionally. Copy the downloaded source into the active workspace, trim the final bed in the editor or HyperFrames, and document the source duration, final duration, and trim point in QA.
+
 ## Music Prompt Fields
 
 - campaign title
