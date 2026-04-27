@@ -9,6 +9,8 @@
 - Strengthened config validation and added a repo audit script for cruft and repetition checks.
 - Added a tool-routing guard so campaign-video requests default to Imagine.Art first and reserve HyperFrames/editor work for finishing.
 - Added root agent guard files and broader audit checks for HyperFrames-first routing language.
+- Made Computer Use/browser automation the default path for operating Imagine.Art before static package delivery.
+- Tightened campaign-video completion rules so static packages are supporting artifacts, not acceptable final returns.
 
 ## 0.1.0
 

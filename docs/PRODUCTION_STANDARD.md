@@ -4,9 +4,31 @@ This is the canonical CampaignCraft standard for campaign delivery. Other docs a
 
 ## Default Product
 
-CampaignCraft is Imagine.Art-first. A campaign request means an Imagine.Art workflow plan and, when browser access exists, real workflow execution through Imagine.Art Workflows and Imagine.Art Music Studio.
+CampaignCraft is Imagine.Art-first. A campaign request means real workflow execution through Imagine.Art Workflows and Imagine.Art Music Studio whenever Computer Use, browser automation, or desktop control is available.
 
 For social media campaigns, TikTok/Reels ads, 30s spots, commercials, and professionally shot or produced videos, the expected deliverable is a believable generated video ad. A written concept, static storyboard, prompt pack, workflow map, HTML-only animation, still montage, or pan/zoom edit is not a finished campaign.
+
+## Computer Use Execution Rule
+
+Computer Use/browser automation is the default execution path. If it is available, use it to operate Imagine.Art directly before returning a static package.
+
+For campaign-video requests, the agent should not return to the user with only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected result is a generated video ready for review, with supporting files as secondary artifacts.
+
+Use Computer Use/browser automation to:
+
+- open or operate Imagine.Art
+- create or open the workflow
+- build workflow sections and source/input nodes
+- upload/import assets when supplied
+- generate still anchors and storyboard/reference panels
+- run Seedance or the selected Imagine.Art video model
+- generate Music Studio audio
+- review, download, and inventory outputs
+- clean the final workflow and create a shot-source manifest
+
+Do not mark a campaign `ready for generation` or `motion pending` until you have attempted or explicitly preflighted Computer Use/browser automation for Imagine.Art. Only return `blocked` when a specific blocker prevents execution: login, subscription/credits, missing source asset, unavailable model, UI failure, moderation, generation failure, export failure, or a confirmed missing automation capability.
+
+Do not use generic language like "browser execution is unavailable here" unless you first checked whether Computer Use, browser automation, desktop control, or the in-app browser can operate Imagine.Art. If execution cannot be attempted, report `blocked`; do not present the package as the campaign deliverable.
 
 ## Tool Routing Guard
 
@@ -20,7 +42,7 @@ Default path:
 4. Imagine.Art Music Studio or supplied music
 5. HyperFrames/editor assembly, timing, typography, captions, effects, and final render only after reviewed motion exists
 
-HyperFrames is never the first production layer for CampaignCraft campaign video requests. If Imagine.Art execution is unavailable, return `ready for generation`, `motion pending`, or `blocked`; do not substitute a local video composition as final.
+HyperFrames is never the first production layer for CampaignCraft campaign video requests. If Computer Use/browser execution is unavailable, return `ready for generation`, `motion pending`, or `blocked`; do not substitute a local video composition as final.
 
 Wrong first response:
 
@@ -68,6 +90,8 @@ Use these exact labels:
 - `blocked`: login, UI, model, moderation, generation, export, or source-asset failure prevents completion
 
 Never use `finished` for a proxy, slideshow, still pan/zoom edit, unrun workflow, unreviewed generation batch, or prompt pack.
+
+For campaign-video requests, `ready for generation` and `motion pending` are blocker statuses, not acceptable completion states. Use them only after Computer Use/browser execution has been attempted or explicitly preflighted and cannot complete generation.
 
 ## Motion Standard
 

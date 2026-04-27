@@ -10,7 +10,13 @@ Use `docs/PRODUCTION_STANDARD.md` as the canonical delivery standard. Do not res
 
 ## First Response Rule
 
-When a user asks for a campaign video, first state that the work will be Imagine.Art-first. Mention HyperFrames only as a finishing layer unless the user explicitly asks for a local proxy or already provides reviewed/generated motion assets.
+When a user asks for a campaign video, first state that the work will be built in Imagine.Art using Computer Use/browser automation when available. Mention HyperFrames only as a finishing layer unless the user explicitly asks for a local proxy or already provides reviewed/generated motion assets.
+
+## Computer Use Default
+
+When Computer Use, browser automation, or desktop control is available, use it to operate Imagine.Art before returning a static workflow package. Do not mark the campaign `ready for generation` or `motion pending` until checking whether Computer Use/browser automation can create/open the workflow, generate still anchors, run Seedance/video nodes, generate Music Studio audio, review outputs, and export/download deliverables.
+
+For campaign-video requests, do not return only a campaign package. Stay in execution until there is a generated video ready for review, or until a specific blocker requires user action.
 
 ## Inputs You Can Use
 
@@ -40,7 +46,7 @@ When a user asks for a campaign video, first state that the work will be Imagine
 12. Plan HyperFrames/editor assembly, captions, typography, transitions, graphics, and product closeout only after Imagine.Art motion is generated or supplied.
 13. Define QC gates.
 14. Define revision actions.
-15. If browser access exists, execute the workflow in Imagine.Art.
+15. If Computer Use/browser automation exists, execute the workflow in Imagine.Art.
 16. Download/review selected motion and music outputs.
 17. Assemble the final edit from reviewed motion, not still crops.
 18. Create a shot-source manifest.
@@ -50,6 +56,7 @@ When a user asks for a campaign video, first state that the work will be Imagine
 
 - Follow `docs/PRODUCTION_STANDARD.md`.
 - Follow `docs/AUTOMATION_CONTRACT.md` when operating Imagine.Art.
+- Return a video ready for review for campaign-video requests, not just markdown planning files.
 - Keep text/logo work deterministic when accuracy matters.
 - Inspect candidates before editing.
 - Isolate rejected outputs.

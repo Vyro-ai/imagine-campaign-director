@@ -4,7 +4,7 @@ CampaignCraft is not finished when it writes prompts. A successful run must move
 
 ## Default Interpretation
 
-When the user asks for a `social media campaign`, `30s spot`, `TikTok/Reels ad`, `commercial`, or `professionally shot/produced video`, the default deliverable is a production-ready AI video-generation workflow and, when execution access exists, a finished video render.
+When the user asks for a `social media campaign`, `30s spot`, `TikTok/Reels ad`, `commercial`, or `professionally shot/produced video`, the default deliverable is a generated video ready for user review. Computer Use, browser automation, or desktop control should be used to operate Imagine.Art whenever available.
 
 The primary creative output should be a believable real-world video commercial. Do not silently substitute:
 
@@ -36,7 +36,11 @@ From a brief, prompt, style image, product photo, mood board, reference clip, or
 10. QC report and revision diagnosis
 11. clean final workflow containing only used nodes
 
-If browser execution, login state, model availability, or the Imagine.Art UI blocks any required step, the agent must say so directly and mark the campaign as blocked or partial. It must not call a prompt pack, canvas sketch, still-only proxy, slideshow, local still pan/zoom edit, or failed workflow a finished campaign video.
+Do not return only markdown files, prompt packs, workflow maps, or `ready for generation` status for a campaign-video request. Those are supporting artifacts, not the deliverable.
+
+If Computer Use/browser execution, login state, model availability, or the Imagine.Art UI blocks any required step, the agent must say so directly and mark the campaign as blocked or partial. It must not call a prompt pack, canvas sketch, still-only proxy, slideshow, local still pan/zoom edit, or failed workflow a finished campaign video.
+
+Do not claim "browser execution is unavailable here" without first checking whether Computer Use, browser automation, desktop control, or the in-app browser can operate Imagine.Art. If no execution tool is available, status is `blocked`, not `ready for generation`.
 
 ## Finished Means Campaign-Grade, Not Merely Executed
 
@@ -274,3 +278,5 @@ Use precise status labels:
 - `blocked`: login, UI, model, moderation, generation, or export failure prevents completion
 
 Never use `finished` for a proxy, slideshow, or still pan/zoom edit.
+
+For campaign-video requests, `ready for generation` and `motion pending` are blocker statuses, not acceptable completion states. Use them only after Computer Use/browser execution has been attempted or explicitly preflighted and cannot complete generation.

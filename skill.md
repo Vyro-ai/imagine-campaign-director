@@ -24,7 +24,24 @@ Always plan generation through Imagine.Art Workflows unless the user explicitly 
 
 Use platform-neutral language only as secondary portability notes. Brand assets, product photos, mood boards, and style images are creative direction and continuity references; they should guide production choices and final lockup.
 
-If the agent has browser access, it should execute the workflow in Imagine.Art. Follow `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`.
+If Computer Use, browser automation, or desktop control is available, the agent should execute the workflow in Imagine.Art by default. Follow `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`.
+
+## Computer Use Execution Rule
+
+Use Computer Use/browser automation to operate Imagine.Art directly before returning a static package:
+
+1. Open or operate Imagine.Art.
+2. Create or open the workflow.
+3. Build sections and source/input nodes.
+4. Generate still anchors and storyboard/reference panels.
+5. Run Seedance or the selected Imagine.Art video model.
+6. Generate Music Studio audio.
+7. Review/download outputs.
+8. Clean the final workflow and create a shot-source manifest.
+
+For campaign-video requests, do not return only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected return is a generated video ready for review, plus supporting notes.
+
+Do not mark a campaign `ready for generation` or `motion pending` until attempting or explicitly preflighting Computer Use/browser automation for Imagine.Art. Only return `blocked` when a specific blocker prevents execution. Do not use generic "browser execution is unavailable here" language without checking Computer Use/browser automation first.
 
 ## Tool Routing Guard
 
@@ -38,7 +55,7 @@ Default path:
 4. Imagine.Art Music Studio or supplied music
 5. HyperFrames/editor only for assembly, timing, typography, captions, effects, and final render after reviewed motion exists
 
-If Imagine.Art execution is unavailable, return `ready for generation`, `motion pending`, or `blocked`; do not substitute a local video composition as final.
+If Computer Use/browser execution is unavailable after an explicit check, return `blocked` or the narrow blocker status that applies; do not substitute a local video composition as final.
 
 ## Workflow
 

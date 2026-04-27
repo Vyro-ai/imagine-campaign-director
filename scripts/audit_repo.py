@@ -18,6 +18,11 @@ CANONICAL_DOCS = [
     "docs/SEEDANCE_WORKFLOW_GUIDE.md",
     "docs/IMAGINEART_MUSIC_STUDIO.md",
 ]
+REQUIRED_TEXT = {
+    "AGENTS.md": ("Computer Use is the default execution tool", "generated video ready for user review"),
+    "docs/PRODUCTION_STANDARD.md": ("Computer Use/browser automation is the default execution path", "generated video ready for review"),
+    "docs/AUTOMATION_CONTRACT.md": ("generated video ready for user review", "Computer Use/browser execution"),
+}
 FORBIDDEN_ROUTING_PATTERNS = [
     re.compile(r"\bI['’]?ll\s+(use|build|create|make|start)\b.*\bHyperFrames\b", re.I),
     re.compile(r"\bI['’]?m\s+(using|building|creating|making|starting)\b.*\bHyperFrames\b", re.I),
@@ -27,11 +32,17 @@ FORBIDDEN_ROUTING_PATTERNS = [
     re.compile(r"\bHyperFrames composition:?\s+a short\b", re.I),
     re.compile(r"\bstart by creating a local HyperFrames\b", re.I),
     re.compile(r"\blocal video composition\b", re.I),
+    re.compile(r"\bPrepared the Imagine\.Art-first campaign package\b", re.I),
+    re.compile(r"\bready for generation\b.*\bmotion remains\b.*\bmotion pending\b", re.I),
+    re.compile(r"\bbrowser execution is unavailable here\b", re.I),
+    re.compile(r"\bI don['’]?t have an Imagine\.Art browser session\b", re.I),
+    re.compile(r"\bcreate a self-contained campaign folder\b", re.I),
 ]
 ALLOWED_ROUTING_CONTEXT = (
     "wrong first response",
     "also wrong",
     "do not begin",
+    "do not claim",
     "do not start",
     "do not substitute",
     "never the first production layer",
@@ -40,6 +51,8 @@ ALLOWED_ROUTING_CONTEXT = (
     "correct first response pattern",
     "after reviewed/generated motion exists",
     "after imagine.art motion exists",
+    "generic language",
+    "do not return only",
 )
 
 
@@ -60,6 +73,16 @@ def main() -> int:
         if not (root / relative).exists():
             failed = True
             print(f"missing canonical doc: {relative}")
+
+    for relative, snippets in REQUIRED_TEXT.items():
+        path = root / relative
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        for snippet in snippets:
+            if snippet not in text:
+                failed = True
+                print(f"missing required routing text in {relative}: {snippet}")
 
     junk = [path.relative_to(root) for path in iter_files(root) if path.name in {".DS_Store"}]
     for path in junk:

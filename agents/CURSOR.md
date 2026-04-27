@@ -21,7 +21,7 @@ Do not reduce this repo into a generic prompt library.
 
 ## Execution Rules
 
-- If browser access is available, execute the workflow with `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`. Execution is the purpose of the repo, not an optional add-on.
+- If Computer Use, browser automation, or desktop control is available, execute the workflow with `docs/AUTOMATION_CONTRACT.md` and `prompts/imagineart_browser_operator.md`. Execution is the purpose of the repo, not an optional add-on.
 - Use `config/imagineart_model_matrix.json` and `config/automation_recovery_rules.json`.
 - Verify visible Imagine.Art model labels, ratios, and input connections before launch.
 - Require visible approved image/start-frame/end-frame/reference inputs for every motion node. Do not create text-only campaign motion.
