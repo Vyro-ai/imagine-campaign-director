@@ -18,13 +18,23 @@ Name the affected node, model, attempted recovery steps, and last known UI state
 
 ## Per-Node Export QC
 
-After each generated video node completes, immediately perform export QC before moving on:
+Because the Imagine.Art canvas can lag behind Active Runs, a visible node state is not enough to prove completion. After each generated video node appears to complete, first perform completion freshness QC:
+
+- refresh or reopen the workflow before trusting the node card
+- check Active Runs for a matching queued/running/in-progress job by node name, prompt snippet, model, or launch time
+- inspect the node card after refresh and confirm it exposes a new finished result, not only a stale thumbnail
+- compare against `qa/run-ledger.md`; if the node was launched and has no finished asset id/URL, treat it as pending or ambiguous
+- never launch the node again while Active Runs or the ledger suggests an in-flight job may exist
+
+Only after completion freshness QC passes, immediately perform export QC before moving on:
 
 - open and play 2-3 seconds of the result preview
 - download or capture the direct asset source
 - save it under the campaign source directory
 - verify duration, resolution, codec, and audio/video streams with `ffprobe`
 - record the local path, node id, model, duration, and QC result in the manifest
+
+If completion cannot be confirmed after two refresh/reopen checks and an Active Runs check, return `blocked: node status unknown` instead of launching a duplicate run.
 
 Only after all required motion files pass export QC may local finishing assemble, trim, caption, grade, add audio, or export the final review MP4.
 
@@ -57,4 +67,3 @@ Forbidden when this gate fails:
 - `complete`
 - `review MP4 is ready`
 - `delivered`
-

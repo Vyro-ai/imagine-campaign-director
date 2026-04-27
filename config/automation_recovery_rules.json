@@ -2,6 +2,18 @@
   "name": "CampaignCraft automation recovery rules",
   "failure_rules": [
     {
+      "failure": "stale_canvas_status",
+      "detect": "A node appears idle, unchanged, or empty after launch while Active Runs, recent launch history, or qa/run-ledger.md suggests the job may still be queued or processing.",
+      "action": "Do not run the node again. Refresh or reopen the workflow, check Active Runs, inspect the node card after refresh, and wait through one more polling interval before deciding status.",
+      "cleanup": "If status remains ambiguous after two refresh cycles, record blocked: node status unknown with node name/id and last observed UI state."
+    },
+    {
+      "failure": "duplicate_in_flight_run_risk",
+      "detect": "The selected node has a matching queued/running Active Runs entry, spinner/progress state, or run-ledger launch without a finished asset id/URL.",
+      "action": "Deselect it and wait. Do not click run. Refresh/reopen before any later status decision.",
+      "cleanup": "Record the in-flight run in qa/run-ledger.md and continue only with independent nodes that are not waiting on it."
+    },
+    {
       "failure": "pasted_node_wrong_model",
       "detect": "Visible Imagine.Art node model label does not match intended model.",
       "action": "Stop before launch, correct the model in the UI or recreate the node manually, then re-check settings.",
@@ -48,7 +60,9 @@
     "same_prompt_same_model": 1,
     "simplified_prompt_same_model": 1,
     "alternate_model": 1,
-    "motion_regeneration_before_human_review": 2
+    "motion_regeneration_before_human_review": 2,
+    "status_refresh_cycles_before_blocked": 2,
+    "duplicate_run_without_confirmed_failure": 0
   },
   "completion_statuses": ["finished", "ready for generation", "motion pending", "partial/proxy", "blocked"]
 }

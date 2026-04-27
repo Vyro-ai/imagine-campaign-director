@@ -155,5 +155,7 @@ Include:
 - approved still anchors
 - music prompt/beat map
 - motion complexity approval
-- Active Runs check after launch
+- `qa/run-ledger.md` path and per-node launch ledger fields
+- Active Runs check before launch and after launch
+- refresh/reopen check before declaring a node complete, failed, or safe to relaunch
 - QA note path for failures/rejections

@@ -121,8 +121,12 @@ Plan the full shot system before generation. The operator should create the shot
 ## Launch Discipline
 
 - Run selected nodes once per intended batch.
-- Check Active Runs after launch.
-- Do not click again because the UI is slow.
+- Before launch, write the intended node id/name, model, prompt snippet, visible run count, and timestamp to `qa/run-ledger.md`.
+- Check Active Runs before launch and after launch.
+- Do not click again because the UI is slow or because the canvas has not updated.
+- If a launched node looks idle, unchanged, or empty, refresh/reopen the workflow before deciding it failed or needs another run.
+- A node is complete only after a refreshed canvas shows a finished result and Active Runs has no matching queued/running/in-progress job.
+- If status is ambiguous after two refresh/reopen checks, return `blocked: node status unknown` instead of launching a duplicate run.
 - If duplicate runs appear, treat it as operator error and stop scaling until the workflow is controlled.
 - If a node fails, document the failure and continue with other branches.
 - If a model rejects a ratio, retry with that model's automation default ratio before redesigning the shot.
@@ -164,7 +168,8 @@ Do not report a workflow as ready until:
 - a shot list exists with continuity rules, Seedance prompts, negative prompts, music direction, and final edit plan
 - launch-critical connections are visible
 - approved stills are separated
-- motion outputs are reviewed
+- generated nodes have completion entries in `qa/run-ledger.md`
+- motion outputs are reviewed after refreshed completion checks
 - each planned generated motion segment is exported/downloaded locally and verified with `ffprobe`
 - Music Studio prompt/track is generated, downloaded, and present in the edit when music was planned
 - final assembly plan exists

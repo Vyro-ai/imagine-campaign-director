@@ -119,6 +119,8 @@ Before touching the Imagine.Art workflow canvas, apply `docs/DIRECTORS_TREATMENT
 
 Before calling a review MP4 ready, apply `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`. Completed canvas nodes and browser previews are not deliverable sources until the motion files are exported/downloaded locally and verified with `ffprobe`.
 
+Before launching or relaunching a workflow node, apply the completion freshness rules in `docs/AUTOMATION_CONTRACT.md`: check Active Runs, update `qa/run-ledger.md`, and refresh/reopen the workflow before deciding a stale-looking node is failed or incomplete. Duplicate runs caused by stale canvas state are operator error. If status cannot be proven after two refresh/reopen checks, use `blocked: node status unknown`.
+
 The director's treatment is an execution gate, not a user-confirmation gate. Once it exists, continue into workflow construction and generation unless a real blocker appears.
 
 The workflow should execute this treatment. It should not be used as the place to discover the edit one still/video pair at a time.

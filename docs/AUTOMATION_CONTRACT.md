@@ -163,6 +163,7 @@ Before launching any generation node, verify:
 
 - the browser is logged in to Imagine.Art
 - the correct workflow is open
+- the canvas state is fresh: if the page has been open through a long run, after any network stall, or whenever a node appears unchanged after a launch, refresh/reopen the workflow before deciding the node is idle, failed, or incomplete
 - source assets are visible on the canvas or imported into the intended node
 - selected nodes are only the intended batch
 - each node displays the intended model name in the UI
@@ -172,6 +173,7 @@ Before launching any generation node, verify:
 - motion nodes have visible image/start-frame/reference connections; text-only motion nodes are invalid for campaign motion
 - music direction exists before final edit planning
 - no stale failed nodes are being treated as usable material
+- no selected node already has an in-flight run visible in Active Runs, a spinner/progress state, a queued/running badge, or a recent launch with no refreshed status check
 
 Do not rely on pasted JSON alone. If a pasted node resolves to a different model in the UI, the UI value wins and the node must be corrected before launch.
 
@@ -196,7 +198,39 @@ Run stages in this order:
 
 Do not bulk-run stills, storyboard references, and motion together. The taste transfer happens at internal review boundaries: the agent inspects, rejects, selects, and documents outputs unless the user explicitly asked to approve each stage.
 
+## Node Completion And Duplicate-Run Guard
+
+Imagine.Art workflow canvases can show stale node states. A node that looks unchanged may still be running, queued, or complete but not yet reflected on the canvas. Treat the live canvas as eventually consistent.
+
+Before launching or relaunching any node:
+
+- check Active Runs for the node name, node id, prompt snippet, model, or recent timestamp
+- inspect the node card for spinner/progress/queued/running states and existing results
+- if the node was launched in the current session, record the launch in `qa/run-ledger.md` before leaving it
+- if there is any ambiguity, refresh/reopen the workflow and re-check the node and Active Runs before clicking run
+
+A node is complete only when all of these are true:
+
+- Active Runs has no queued/running/in-progress entry for the node
+- the canvas has been refreshed or reopened after the expected run window
+- the node card shows a finished result, not just an old thumbnail or stale status
+- the result opens in preview or exposes a downloadable/generated asset URL
+- the local run ledger records the node id/name, model, launch time, observed finish time, selected output, and asset id or URL
+
+Do not launch a duplicate run to "wake up" a stale node. Refresh/reopen first. If the refreshed page still cannot prove completion and Active Runs is unclear, wait and re-check. If it remains ambiguous after two refresh cycles, return `blocked: node status unknown` with the node name and last observed UI state rather than spending another run.
+
 ## Known UI Failure Classes
+
+### Stale Canvas Status
+
+If a node appears idle, unchanged, or empty after launch but Active Runs or the run ledger suggests it may still be processing:
+
+- do not run it again
+- refresh/reopen the workflow
+- check Active Runs and the node card again
+- wait through one more polling interval if the status is still ambiguous
+- record the ambiguity in `qa/run-ledger.md`
+- only relaunch if the refreshed UI clearly shows a failed/error state and Active Runs has no matching in-flight job
 
 ### Wrong Model After Paste
 

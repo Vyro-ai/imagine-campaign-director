@@ -149,6 +149,7 @@ Follow the music standard in `docs/PRODUCTION_STANDARD.md` and the details in `d
 - If a stillframe should preserve identity, product, wardrobe, or style from another source, connect that source as an image reference and refer to it with explicit `@Image1`, `@Image2`, etc. language. Do not write `same model`, `same person`, or `same product` in generation prompts.
 - Feed approved panels into Seedance as start frames, end frames, or reference images with one clear job each.
 - Do not launch final campaign motion from prompt text alone. Generate or upload the needed image reference first, then connect it visibly to the motion node.
+- Before launching or relaunching any Imagine.Art node, check Active Runs, update `qa/run-ledger.md`, and refresh/reopen the workflow if the node appears stale or unchanged. Never duplicate-run a node to force a status update; if completion cannot be proven after two refresh cycles, return `blocked: node status unknown`.
 - A generated video node is not a usable source until it has been exported or downloaded as a local file, verified with `ffprobe`, and listed in the manifest.
 - Do not call a silent export ready when music was planned. Missing audio is `blocked`, `music pending`, or explicitly approved `silent review only`.
 - Before launching GPT Image 2 storyboard/reference/director's-notes nodes, confirm the visible UI model and use a validated ratio. Start with `1:1` for storyboard panels unless the live workflow has already proven another ratio works.
