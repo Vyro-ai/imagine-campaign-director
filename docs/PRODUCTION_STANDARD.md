@@ -84,6 +84,12 @@ Every campaign plan should account for:
 - QC gates and revision path
 - shot-source manifest for final delivery
 
+## Default Duration
+
+If the user does not specify a runtime, default to a `30s` campaign video. Use shorter durations only when the user asks for a cutdown, platform constraint, bumper, teaser, or single-shot test.
+
+A 30-second default should usually be planned as an 8-12 shot edit assembled from reviewed Imagine.Art motion clips, not as one overstuffed 30-second generation. Individual Seedance 2 nodes should use the longest useful available duration for the creative job, including 15s when that improves continuity, while shorter b-roll/detail inserts remain valid when they produce better control.
+
 ## Context Workspace Standard
 
 Each distinct campaign context should have its own local workspace under:

@@ -144,7 +144,7 @@ Follow the music standard in `docs/PRODUCTION_STANDARD.md` and the details in `d
 - Feed approved panels into Seedance as start frames, end frames, or reference images with one clear job each.
 - Do not launch final campaign motion from prompt text alone. Generate or upload the needed image reference first, then connect it visibly to the motion node.
 - Before launching GPT Image 2 storyboard/reference nodes, confirm the visible UI model and use a validated ratio. Start with `1:1` for storyboard panels unless the live workflow has already proven another ratio works.
-- Keep 10-second generated clips realistic: about four major motion phases.
+- Choose the Seedance 2 node duration by creative need, using the longest useful live duration available, including 15s when it improves continuity, mood, or editorial progression.
 - Add important typography, logos, captions, and CTAs in deterministic edit layers.
 - If live footage is needed, create `human-shoot.md` with exact lines, pickups, framing, camera angle, lens feel, performance, environment, wardrobe, and b-roll/overlay notes.
 - When using HyperFrames, use it for deterministic finishing only after reviewed motion exists; specify duration, ratio, mood, key elements, beat timing, type, captions, and export, and avoid unnecessary React-component or 4K/60fps requests.

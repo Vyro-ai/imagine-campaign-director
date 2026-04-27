@@ -10,7 +10,7 @@ Text-only Seedance is not allowed for campaign motion. If no visual source exist
 
 For commercial, social media campaign, TikTok/Reels ad, 30s spot, or professionally produced video requests, Seedance 2 or the available Imagine.Art video-generation model is the core production footage layer. HyperFrames/editor work is for finishing, not for replacing generated footage.
 
-Seedance 2 should be used as a multi-shot campaign generator when the brief calls for a campaign film. Do not reduce it to a repetitive pattern of one stillframe plus one tiny video node unless the shot is a dedicated insert, b-roll moment, or preflight test. A strong 10-second Seedance 2 campaign node can cover a short shot ladder with broad timed blocks, one hero event per block, and a final hold.
+Seedance 2 should be used as a multi-shot campaign generator when the brief calls for a campaign film. Do not reduce it to a repetitive pattern of one stillframe plus one tiny video node unless the shot is a dedicated insert, b-roll moment, or preflight test. Use the longest useful available duration for the creative job, including 15s when the live UI supports it and a longer multi-shot phrase improves continuity, mood, or editorial progression.
 
 The agent must explicitly state one of these execution modes:
 
@@ -98,16 +98,15 @@ If using a music or beat-guide video:
 
 ## Multi-Shot Campaign Prompting
 
-A 10-second Seedance 2 campaign clip should usually contain about four major shots or phases:
+A Seedance 2 campaign clip should contain only as many major shots or phases as the chosen duration can support clearly. As a rule of thumb:
 
-1. hook
-2. first impact or reveal
-3. detail/action accent
-4. final hero hold
+- 5s: 2-3 phases
+- 10s: about 4 phases
+- 15s: about 5-6 phases
 
-More phases usually create chaos.
+More phases usually create chaos. Use the live model maximum when it helps, but do not fill time with redundant shot shapes.
 
-Use broad blocks such as `0-3s`, `3-5s`, `5-8s`, and `8-10s`. Do not demand frame-accurate decimal choreography unless a previous run in the same workflow proves Seedance can follow it.
+Use broad blocks such as `0-3s`, `3-6s`, `6-10s`, `10-13s`, and `13-15s`. Do not demand frame-accurate decimal choreography unless a previous run in the same workflow proves Seedance can follow it.
 
 Each block should have:
 
@@ -117,7 +116,7 @@ Each block should have:
 - clear subject/product/environment hierarchy
 - continuity constraints that are visual and concrete
 
-For a 10-second fashion/luxury campaign, prefer one or two strong Seedance 2 multi-shot nodes plus a small number of dedicated b-roll/detail nodes over five disconnected one-shot animations. This gives Seedance room to create editorial progression while keeping the workflow readable.
+For a 30-second fashion/luxury campaign, prefer 2-4 strong Seedance 2 multi-shot nodes, using 15s nodes where they improve continuity or editorial flow, plus a small number of dedicated b-roll/detail nodes where justified. This gives Seedance room to create editorial progression while keeping the workflow readable.
 
 ## Prompt Structure
 

@@ -19,6 +19,8 @@ For every input, infer or ask for:
 
 If details are missing, make conservative assumptions and label them.
 
+If runtime is missing, default to a `30s` campaign video.
+
 If the input is mostly broad taste language, apply `docs/VAGUE_PROMPT_RESCUE.md` before generation. The agent should expand vague terms into a concrete platform, runtime, campaign grammar, visual world, model/styling continuity, shot ladder, stillframe anchor list, motion constraints, music direction, and QC rejects.
 
 For commercial/social/video-ad requests, query the user for missing production decisions before execution when they matter:
@@ -60,7 +62,7 @@ Extract:
 
 Then rewrite it into a full Imagine.Art workflow package. Do not simply expand the prompt with adjectives.
 
-For vague luxury/fashion prompts with no assets, default to the `editorial nocturne` rescue pattern: 10-second 9:16 vertical, no text unless requested, one adult model in sharply tailored black outerwear, rain-wet concrete/glass/chrome night environment, cool shadows with warm practical light, NB2/NBP still anchors, image-grounded Seedance motion, sparse instrumental music, and QC against generic AI luxury.
+For vague luxury/fashion prompts with no assets, default to the `editorial nocturne` rescue pattern: 30-second 9:16 vertical, no text unless requested, one adult model in sharply tailored black outerwear, rain-wet concrete/glass/chrome night environment, cool shadows with warm practical light, NB2/NBP still anchors, image-grounded Seedance 2 motion, sparse instrumental music, and QC against generic AI luxury.
 
 ## Style Image Input
 

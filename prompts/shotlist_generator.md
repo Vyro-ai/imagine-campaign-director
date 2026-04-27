@@ -37,13 +37,19 @@ For a 30-second vertical ad, default to 8-12 shots unless the brief requires a d
 - product/brand lockup
 - CTA
 
-For a vague generic luxury fashion prompt with no assets, use the `editorial_nocturne` 10-second ladder unless the user contradicts it:
+If runtime is missing, default to a 30-second campaign and use the 8-12 shot structure.
 
-1. 0.0-1.5s silhouette hook
-2. 1.5-3.5s nocturnal world reveal
-3. 3.5-5.5s material/detail accent
-4. 5.5-8.0s controlled model turn or single step
-5. 8.0-10.0s final elegant hero hold
+For a vague generic luxury fashion prompt with no assets, use the `editorial_nocturne` 30-second ladder unless the user contradicts it:
+
+1. 0.0-2.0s silhouette hook
+2. 2.0-5.0s nocturnal world reveal
+3. 5.0-8.0s styling portrait
+4. 8.0-11.0s material/detail accent
+5. 11.0-15.0s controlled model turn or single step
+6. 15.0-18.5s environmental breath
+7. 18.5-22.0s attitude close/medium
+8. 22.0-26.0s final approach or reveal
+9. 26.0-30.0s final elegant hero hold
 
 Keep it text-free when requested. Require NB2/NBP still anchors for each motion source and reject repeated slow push-ins, static portraits, fake text/logos, broken walking, and generic AI luxury.
 

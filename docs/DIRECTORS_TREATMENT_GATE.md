@@ -57,13 +57,21 @@ Before generation, define the edit enough that the final assembly is mostly mech
 - b-roll/detail insert locations
 - final hold duration
 
+If the user did not specify duration, set the target duration to `30s` and plan an 8-12 shot edit.
+
 Generation can change selects, but it should not change the whole edit shape unless QC proves the treatment failed.
 
 ## Seedance Planning
 
 Plan Seedance 2 at the clip level before building nodes.
 
-For a 10-second fashion/luxury campaign, prefer:
+For a 30-second fashion/luxury campaign, prefer:
+
+- 2-4 Seedance 2 multi-shot campaign nodes covering the full edit in planned blocks, plus short dedicated b-roll/detail nodes only when editorially justified
+- each Seedance 2 node should use the longest useful available duration for the creative job, up to the live model maximum; 15s nodes are appropriate when one continuous multi-shot phrase improves continuity, mood, or editorial progression
+- each Seedance 2 node needs broad internal phases, one hero event per phase, and clear reference roles
+
+For an explicitly 10-second fashion/luxury cutdown, prefer:
 
 - one primary 10-second multi-shot Seedance 2 campaign node with about four broad phases, or
 - two 5-second multi-shot Seedance 2 nodes when continuity or risk control needs separation, plus short dedicated b-roll/detail nodes only when editorially justified

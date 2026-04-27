@@ -1,6 +1,20 @@
 # Editing Structures
 
-## 10-Second Campaign
+## Default 30-Second Campaign
+
+Use when the user does not specify runtime. Plan 8-12 shots, then group related beats into the longest useful Seedance 2 nodes available in the live UI.
+
+1. 0-2s: hook
+2. 2-5s: world reveal
+3. 5-8s: subject/product/styling introduction
+4. 8-11s: material or detail accent
+5. 11-15s: movement or use moment
+6. 15-19s: environmental breath or b-roll
+7. 19-23s: emotional/attitude beat
+8. 23-27s: final approach, reveal, or escalation
+9. 27-30s: final hero hold
+
+## 10-Second Cutdown
 
 Use about four major phases:
 

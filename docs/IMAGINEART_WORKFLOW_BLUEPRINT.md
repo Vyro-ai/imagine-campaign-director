@@ -140,12 +140,11 @@ This is the bridge between visual taste and usable motion. Do not rely on adject
 
 ## Motion Nodes
 
-Create one motion node per shot or per coherent motion block. For 10-second clips, keep to about four major phases:
+Create one motion node per coherent Seedance 2 motion block, not necessarily one per final edit shot. Choose the longest useful available live duration for the creative job, including 15s when that improves continuity or editorial flow. Keep phase count realistic for the selected duration:
 
-1. hook
-2. reveal
-3. detail/action accent
-4. final hero hold
+- 5s: 2-3 phases
+- 10s: about 4 phases
+- 15s: about 5-6 phases
 
 Motion nodes should consume approved still anchors or explicit references. If a motion node is connected directly to an unreviewed look-development node, mark the workflow incomplete.
 

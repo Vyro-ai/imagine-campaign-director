@@ -47,18 +47,19 @@ If the user requested a believable main actress/model, include a shared continui
 - camera distance limits
 - approved reference frame/start frame strategy
 
-## 10-Second Multi-Shot Rule
+## Seedance 2 Duration Rule
 
-Use about four major shots or phases inside one strong Seedance 2 campaign node:
+Choose the Seedance 2 node duration by creative need, using the longest useful available duration in the live UI, including 15s when a longer phrase improves continuity, mood, or editorial progression.
 
-1. hook
-2. reveal
-3. detail/action accent
-4. final hero hold
+Phase guidance:
 
-Prefer broad blocks such as `0-3s`, `3-5s`, `5-8s`, and `8-10s`. Each block should have one dominant visual job, one hero event, and one camera idea.
+- 5s: 2-3 phases
+- 10s: about 4 phases
+- 15s: about 5-6 phases
 
-For a 10-second fashion/luxury campaign, generate one or two multi-shot Seedance 2 campaign prompts plus any necessary dedicated b-roll/detail prompts. Do not create five independent tiny video prompts unless the edit strategy specifically needs separate inserts.
+Prefer broad blocks such as `0-3s`, `3-6s`, `6-10s`, `10-13s`, and `13-15s`. Each block should have one dominant visual job, one hero event, and one camera idea.
+
+For a 30-second fashion/luxury campaign, generate 2-4 multi-shot Seedance 2 campaign prompts plus any necessary dedicated b-roll/detail prompts. Do not create many independent tiny video prompts unless the edit strategy specifically needs separate inserts.
 
 ## Avoid
 

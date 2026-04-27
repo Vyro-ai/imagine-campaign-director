@@ -43,18 +43,20 @@ If the user asks for a commercial, TikTok/Reels ad, social media campaign, 30s s
 
 If the user wants speed or does not answer, make conservative assumptions and label them clearly.
 
+If runtime is missing, default to a `30s` campaign video.
+
 ## Vague Prompt Rescue
 
 If the user input is mostly broad taste language, such as `generic luxury fashion campaign`, `modern brand`, `mystique`, `elegance`, `Gen Z`, `premium`, or `cinematic`, apply `docs/VAGUE_PROMPT_RESCUE.md` before workflow planning.
 
 For a generic luxury fashion request with no assets, default to:
 
-- `9:16`, `10s`, no text unless requested
+- `9:16`, `30s`, no text unless requested
 - campaign grammar: `editorial nocturne`
 - one adult model in sharply tailored black outerwear
 - rain-wet concrete/glass/chrome night environment
 - cool shadows, warm practical light, restrained contrast
-- five-beat shot ladder: silhouette hook, world reveal, material detail, controlled turn/step, final hero hold
+- 8-12 shot ladder with silhouette hook, world reveal, styling portrait, material detail, controlled movement, environmental breath, attitude close/medium, final approach, and final hero hold
 - NB2/NBP still anchors before motion
 - image-grounded Seedance/video only
 - sparse instrumental modern electronic music

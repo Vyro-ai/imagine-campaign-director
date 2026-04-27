@@ -87,7 +87,7 @@
       "primary_use": [
         "reference-guided motion",
         "multi-shot campaign motion",
-        "10-second campaign clips",
+        "5-15 second campaign clips when supported by the live UI",
         "controlled shot ladders"
       ],
       "automation_default_ratio": "9:16",
@@ -101,7 +101,8 @@
       "preflight": [
         "confirm visible model label says Seedance 2 or Seedance 2.0",
         "connect approved start/end/reference images",
-        "keep 10-second clips to about four major phases",
+        "choose the longest useful live duration for the creative job, including 15s when available",
+        "keep phase count realistic for the selected duration",
         "make beat timing broad rather than frame-exact unless proven",
         "do not launch if the visible model label says Kling 3.0 unless the user explicitly requested Kling"
       ]

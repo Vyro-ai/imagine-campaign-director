@@ -1,9 +1,20 @@
 {
   "version": "1.0.0",
+  "clip_duration": {
+    "selection_rule": "Use the longest useful live Seedance 2 duration for the creative job, including 15s when available and helpful.",
+    "phase_guidance": {
+      "5s": "2-3 phases",
+      "10s": "about 4 phases",
+      "15s": "about 5-6 phases"
+    },
+    "timing_style": "broad time blocks",
+    "avoid": "Do not fill longer clips with redundant shot shapes or excessive exact choreography."
+  },
   "ten_second_clip": {
     "max_major_phases": 4,
     "recommended_phases": ["hook", "first impact or reveal", "detail or action accent", "final hero hold"],
-    "timing_style": "broad time blocks"
+    "timing_style": "broad time blocks",
+    "note": "Backward-compatible key. Do not treat 10s as the default campaign duration or maximum Seedance 2 duration; use clip_duration for current planning."
   },
   "reference_roles": [
     "product truth",

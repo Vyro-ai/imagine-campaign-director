@@ -2,8 +2,14 @@
   "version": "1.0.0",
   "structures": [
     {
-      "id": "ten_second_campaign",
-      "name": "Ten Second Campaign",
+      "id": "default_thirty_second_campaign",
+      "name": "Default Thirty Second Campaign",
+      "duration": "30s",
+      "beats": ["hook", "world reveal", "subject or product introduction", "material detail", "movement or use moment", "environmental breath", "emotional or attitude beat", "final approach or reveal", "final hero hold"]
+    },
+    {
+      "id": "ten_second_cutdown",
+      "name": "Ten Second Cutdown",
       "duration": "10s",
       "beats": ["hook", "first reveal", "detail or action accent", "final hero hold"]
     },
