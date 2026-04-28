@@ -1,128 +1,223 @@
-# CampaignCraft for Imagine.Art
+# imagine-campaign-director
 
-An agent-ready Imagine.Art operator system for generating polished campaign videos in Imagine.Art Workflows.
+A practical guide for using a coding agent with Imagine.Art to make campaign videos from your idea, product photos, brand kit, mood board, and references.
 
-CampaignCraft helps Codex, Claude Code, Cursor, and other agents turn loose creative inputs into real Imagine.Art production runs: input analysis, workflow creation, stillframe generation, motion generation, Music Studio audio, QC, revision, and final delivery. The canonical delivery rules live in `docs/PRODUCTION_STANDARD.md`.
+Repo: <https://github.com/theovercomer8/imagine-campaign-director>
 
-For agents: read `AGENTS.md` first. Campaign-video requests must start with a Computer Use/browser automation capability preflight. If unavailable, say the request cannot be completed in this environment. If available, write the director's treatment and shot plan before touching the workflow canvas, then route to Imagine.Art and return a finished MP4 ready for review unless a specific blocker prevents generation. Do not stop for confirmation after planning unless the user explicitly requested approval before canvas changes.
+`imagine-campaign-director` helps an agent behave less like a random prompt generator and more like a small production team: strategist, creative director, workflow builder, prompt engineer, assistant editor, and QC reviewer.
 
-## What This Is
+It is for creators, founders, marketers, filmmakers, and community members who want to turn real source material into an Imagine.Art campaign workflow with a plan, reusable visual references, motion, music when needed, and honest review notes.
 
-CampaignCraft is a public-safe agent skill/workspace for premium fashion, editorial, luxury, beauty, fragrance, streetwear, product, and cinematic brand videos made through Imagine.Art.
+![How imagine-campaign-director works](docs/community-how-to/assets/01-simple-flow.png)
 
-It is designed to work from many input types:
+## The Short Version
 
-- a brief
-- a raw prompt
-- a style image
-- a product photo
-- a mood board
-- reference images
-- existing video clips
-- brand guidelines supplied by the user
-- mixed assets plus notes
+1. Give your agent this repo.
+2. Give it your idea and source files.
+3. Tell it what kind of campaign you want.
+4. The agent plans the campaign before spending credits.
+5. It builds the Imagine.Art workflow, makes the assets, checks the result, and packages a review video.
 
-The agent should normalize those inputs into an executable Imagine.Art workflow, operate the workflow with Computer Use/browser automation when available, generate the motion and music assets, inspect the outputs, revise failures, and assemble a finished campaign.
+## Who This Is For
 
-## Who It Is For
+Use it when you want an agent to help make:
 
-- Imagine.Art users
-- AI filmmakers
-- prompt engineers
-- creative directors
-- fashion and beauty creators
-- brand-content creators
-- Codex / Claude Code / Cursor users
-- people who want agents to drive better AI video workflows
+- Product launch videos
+- Fashion, beauty, fragrance, and lifestyle campaigns
+- Brand mood films
+- App feature promos
+- Social ads for TikTok, Reels, YouTube Shorts, or paid media
+- Music-led visual spots
+- Reference-driven campaign tests from a product photo or brand kit
+- Existing workflow audits before spending more credits
 
-## What It Helps Create
+## What To Give The Agent
 
-- fashion films
-- luxury fragrance campaigns
-- streetwear drops
-- beauty editorials
-- cinematic brand ads
-- product mood films
-- music-led campaign spots
-- polished ad concepts built from product photos or mood boards
+You do not need all of this, but the more context you provide, the less the agent has to guess.
 
-## How It Works
+![What to give the agent](docs/community-how-to/assets/02-what-to-give.png)
 
-```text
-Input -> Intake Adapter -> Campaign Grammar -> Imagine.Art Workflow Execution -> Music Studio Generation -> Motion Generation -> QC Review -> Revision -> Final Delivery
-```
+Helpful inputs:
 
-See `docs/PRODUCTION_STANDARD.md` for completion labels and the campaign-grade standard. See `docs/AUTOMATION_CONTRACT.md` for browser execution, failure recovery, and final workflow cleanup.
+- Your idea: what you want to make, even if it is rough.
+- Product photos: packshots, details, labels, materials, or screenshots.
+- Brand kit: logo, colors, type, product rules, sample posts, tone.
+- Mood board: lighting, locations, textures, fashion references, visual atmosphere.
+- Reference videos: examples for pacing, camera style, edits, or taste level.
+- Audience: who it is for and what they should feel.
+- What to avoid: cliches, styles you hate, wrong audience cues, legal or brand limits.
 
-## Imagine.Art-First Defaults
+## Starter Prompt
 
-- Use Imagine.Art Workflows for generation and assembly planning.
-- Use stillframes/keyframes before motion when consistency matters.
-- Use ImagineArt 2.0 for original stillframes by default. Use GPT Image 2 when style, product, character, storyboard, or continuity references are required. Use Nano Banana 2/Pro only when the specific asset role justifies them.
-- Use Seedance or other Imagine.Art video models for controlled motion when appropriate.
-- Use Imagine.Art Music Studio for original campaign music prompts.
-- Use workflow sections for source inputs, look development, approved stills, motion, music, edit assembly, QC, rejects, and final exports.
-- Add important typography, logos, captions, legal lines, and product names deterministically where possible.
-- Keep the final live workflow clean: only used source, approved stills, storyboard references, selected motion, selected music, edit, QC, and export nodes remain.
-
-## Quick Start
+Copy this into Codex, Claude Code, Cursor, or another coding agent with browser/computer-use access:
 
 ```text
-1. Clone or copy this repo into your campaign project.
-2. Open it with Codex / Claude Code / Cursor.
-3. Give your agent agents/CODEX.md or agents/GENERAL_AGENT.md.
-4. Provide any input: brief, prompt, style image, product photo, mood board, or mixed assets.
-5. Ask the agent to operate Imagine.Art and generate the campaign.
-6. The agent creates or opens the workflow, uploads/imports source assets, and runs staged generation.
-7. The agent generates stillframes, motion clips, and Music Studio audio inside Imagine.Art.
-8. The agent downloads/reviews outputs, assembles the final edit, and creates a shot-source manifest.
-9. The agent scores the result with docs/QUALITY_CONTROL.md and revises failures.
-10. The agent packages final delivery only after the motion/audio requirements are satisfied.
+Use this repo: https://github.com/theovercomer8/imagine-campaign-director
+
+I want to make a [duration] [format] campaign video for [product / brand / idea].
+
+Here are my source materials: [product photo, brand kit, mood board, references].
+
+The vibe should be [visual direction].
+The audience is [audience].
+The CTA is [CTA, if any].
+Avoid [things to avoid].
+
+Plan the campaign first, then build the Imagine.Art workflow, generate the needed assets, create motion and music if needed, check the result, and package a review video with notes.
 ```
 
-## Canonical Docs
+## What The Agent Should Do
 
-- `docs/PRODUCTION_STANDARD.md`: required campaign parts, final status labels, motion/music/QC standards, public safety
-- `docs/AUTOMATION_CONTRACT.md`: browser execution contract, failure handling, cleanup, completion language
+A strong run should follow this order:
+
+1. Understand the brief. What is the product, audience, format, runtime, and goal?
+2. Use your real files. Product photos, brand kits, and references should guide the result.
+3. Plan before spending. The agent should define the concept, shot list, and music/edit direction first.
+4. Create reusable references. The product, brand look, people, wardrobe, and style should stay consistent.
+5. Build the Imagine.Art workflow. The workflow should be readable and organized.
+6. Generate stills before motion. Still images and keyframes help keep the video consistent.
+7. Make motion and music. Animate the approved visuals and generate or import music when the brief needs it.
+8. Review honestly. The agent should reject broken outputs and document blockers.
+9. Package the result. Final review video, notes, and source manifest.
+
+![How the agent uses your files](docs/community-how-to/assets/03-use-your-files.png)
+
+## Examples
+
+### Product Launch Video
+
+```text
+Use imagine-campaign-director to create a 15-second vertical launch ad for this canned drink.
+Use the product photo and brand kit as the visual source.
+The vibe is moody late-night convenience-store cinema, made for creators and gamers.
+Avoid sports drink cliches, smiling-at-camera acting, and fake labels.
+Deliver a review video plus notes.
+```
+
+### Fashion Campaign
+
+```text
+Use imagine-campaign-director to make a 30-second luxury fashion film.
+The mood is rain, black glass, chrome, restrained performance, and a strong final hero image.
+Keep the model and wardrobe consistent across shots.
+Plan the campaign before creating the workflow.
+```
+
+### App Feature Promo
+
+```text
+Use imagine-campaign-director to make a 20-second promo for this app feature.
+Mix clean UI moments with cinematic context shots.
+Use captions and deterministic type in the edit.
+Make it clear, fast, and premium.
+```
+
+### Brand Kit Stress Test
+
+```text
+Use imagine-campaign-director to test this brand kit as a campaign system.
+Create three possible campaign directions.
+Pick the strongest direction, then make a short workflow plan and example visuals.
+Do not invent new logos, colors, or product details.
+```
+
+### Existing Workflow Audit
+
+```text
+Use imagine-campaign-director to inspect this existing Imagine.Art workflow.
+Do not launch anything yet.
+Tell me what is missing, what might waste credits, what assets are not connected, and what needs to be fixed before generation continues.
+```
+
+## Credit Safety
+
+The repo includes rules to help agents avoid accidental duplicate runs. In plain English:
+
+- Pick the right thing before clicking run.
+- Check the cost before spending.
+- Click once.
+- Wait for results.
+- If anything is unclear, stop and ask instead of guessing.
+
+![Before spending credits](docs/community-how-to/assets/04-before-credits.png)
+
+## Do I Need HyperFrames?
+
+Not always. Imagine.Art is the generation layer. HyperFrames is an optional finishing layer for precise edits: captions, typography, transitions, logo/product lockups, music timing, and final export.
+
+If your agent already has HyperFrames installed, it can use it after the Imagine.Art motion clips are generated and reviewed.
+
+If HyperFrames is not installed, the agent should say so and either:
+
+- Use another available editor/export path.
+- Mark final assembly as blocked until HyperFrames or another editor is available.
+
+HyperFrames should not be used to fake missing Imagine.Art motion.
+
+## What Finished Should Mean
+
+A campaign is not finished just because something appeared on the canvas. A serious review-ready result should have:
+
+- Source assets accounted for
+- A written campaign direction
+- A shot plan
+- Generated stills or references where needed
+- Motion clips made from approved visuals
+- Music included if the brief called for music
+- Exported or downloaded video files
+- A final review video
+- Notes about what worked, what failed, and what changed
+
+If motion failed, music is missing, or the export is only a slideshow/proxy, the agent should say that clearly.
+
+## Good Agent Behavior
+
+Look for these signs:
+
+- It asks for or uses your real assets.
+- It plans the video before generating.
+- It keeps the product and brand consistent.
+- It creates a readable workflow.
+- It avoids repeated accidental runs.
+- It tells you when something is blocked.
+- It does not call a weak proxy "finished."
+
+Watch for these red flags:
+
+- It ignores your brand kit or product photo.
+- It invents a fake replacement for your brand assets.
+- It makes every shot feel the same.
+- It creates a silent video when you expected music.
+- It launches the same thing multiple times by accident.
+- It calls a canvas preview a final export.
+- It returns a slideshow when you asked for motion.
+
+## For Agent Authors
+
+This repo also contains stricter production docs for agents that need to operate Imagine.Art directly:
+
+- `AGENTS.md`: primary agent instructions
+- `docs/PRODUCTION_STANDARD.md`: completion labels, campaign quality bar, and finished-output rules
+- `docs/AUTOMATION_CONTRACT.md`: browser execution, failure handling, and cleanup expectations
 - `docs/WORKFLOW_EXECUTION_GUIDE.md`: staged Imagine.Art run order
 - `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`: workflow section and node plan
 - `docs/QUALITY_CONTROL.md`: QC scoring and reference-parity checks
-- `docs/SEEDANCE_WORKFLOW_GUIDE.md`: image-grounded Seedance workflow
-- `docs/IMAGINEART_MUSIC_STUDIO.md`: text-based music prompt workflow
-- `docs/INPUT_ADAPTERS.md`: converting briefs, prompts, images, video, and mixed assets into campaign inputs
+- `docs/PRE_SPEND_CONFIDENCE_GATE.md`: launch-safety rules before spending credits
+- `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`: export requirements and motion-completion rules
+- `docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md`: still-frame prompting system
+- `docs/ADVERSARIAL_SWARM_PROTOCOL.md`: ideation and critique swarm protocol
 
-## Example Agent Command
-
-```text
-Using this CampaignCraft skill, operate Imagine.Art to create a 15-second campaign for this product photo and mood board. Create/open the workflow, import the source assets, generate approved still anchors, generate motion clips in Imagine.Art, generate Music Studio audio, assemble the final edit, run QC, and return the finished video plus a shot-source manifest. If you cannot operate Imagine.Art, mark the job blocked instead of returning a proxy.
-```
-
-## Philosophy
-
-- Imagine.Art Workflows are the production spine.
-- Music is planned at the start.
-- Input assets need interpretation before prompting.
-- Generated candidates are selected like footage, not accepted by default.
-- One dominant visual idea beats prompt clutter.
-- Stillframes anchor taste and continuity.
-- Every generated clip must pass artifact review.
+Agents should read `AGENTS.md` first, then follow the docs relevant to the job.
 
 ## Limitations
 
 - Outputs still depend on model capability and available Imagine.Art features.
 - Generated video usually needs iteration.
-- The skill requires browser/tool access for fully automated generation.
-- Text/logos can fail in generated media.
-- Identity and product consistency can fail.
-- Users must respect copyright, trademark, publicity, and likeness rights.
-- Users must plug in their own brand guidelines.
-- This is a creative direction and workflow system, not legal advice or a one-click guarantee.
+- The repo needs browser or computer-use access for fully automated Imagine.Art operation.
+- Text and logos can fail in generated media, so final typography should be deterministic when possible.
+- Identity and product consistency can drift and must be checked.
+- Users are responsible for copyright, trademark, publicity, likeness, and brand-rights clearance.
 
-## Public Sources Checked
+## One-Line Summary
 
-This repo references public Imagine.Art product behavior documented on:
-
-- [Imagine.Art Workflows](https://www.imagine.art/workflow)
-- [Run Your First Workflow](https://help.imagine.art/workflows/run-your-first-workflow)
-- [ImagineArt Music Studio](https://www.imagine.art/music-studio)
-- [AI Models in Workflows](https://docs.imagine.art/workflows/ai-models)
+`imagine-campaign-director` gives your agent a serious production process for turning your idea and files into an Imagine.Art campaign workflow, instead of a random pile of prompts.
