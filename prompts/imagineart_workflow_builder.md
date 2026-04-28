@@ -21,6 +21,8 @@ The spec must:
 - use readable stage-column positions
 - use shot rows or clearly separated branches
 - apply `docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md` for every recurring model/person/product/garment before generating dependent shots
+- declare supplied brand kits/brand boards as source assets and include uploaded/imported brand-kit nodes before any derived product/logo/style locks
+- if a brand kit contains the only product shot, logo, palette, typography, or material truth, generate the missing atomic lock assets from that kit before campaign shot stills
 - include top-level `identityLocks` and lock-source metadata when recurring identities exist
 - include all planned shot branches before generation
 - avoid overlapping node positions
@@ -37,6 +39,15 @@ For each user asset:
 - asset role
 - connected analysis node
 - downstream use
+
+For supplied brand kits or brand boards:
+
+- create an uploaded/imported source node, not a generated replacement
+- mark it with `metadata.assetRole: "brand-kit"` or declare it in top-level `brandKit.source`
+- list the atomic assets it contains: product, logo/wordmark, palette, typography, graphic elements, material/texture, photography style
+- if separate product/logo/style assets are missing, plan derived lock nodes that consume the brand kit through `imageUrl`
+- if a local image-generation/editing tool is available, use it to create the missing atomic lock files before workflow paste, then upload/import those files into the workflow
+- if no local image tool is available, create the missing atomic lock assets as the first Imagine.Art workflow generation stage before any campaign shot stills or motion nodes
 
 ### Analysis / Strategy Nodes
 
@@ -93,6 +104,14 @@ AVOID:
 Minimum required blocks are `SHOT`, `SUBJECT`, `ENVIRONMENT`, `LIGHTING`, `CAMERA`, `COLOR GRADE`, `COMPOSITION`, and `AVOID`. Include a concrete camera body/look, lens or focal length, lighting direction, color grade, composition rule, and the universal avoid list. If an image node is a non-visual utility note and cannot use the still grammar, mark it with `metadata.stillPromptExempt: true` and a concrete `metadata.stillPromptExemptReason`.
 
 Recurring people/products/garments are never allowed to be a set of disconnected original stills. First create or import the lock reference(s). Then every dependent still must be reference-driven from those lock nodes. If there is one lead model, every shot anchor containing that model must wire the lead lock to `imageUrl` and say `@Image1 controls identity, face, hair, wardrobe, and posture`.
+
+For supplied brand kits, the product/brand lock must be reference-driven from the brand kit or from separate uploaded product/logo assets. If the user did not supply separate product or logo files, create clean derived locks first:
+
+- product/package truth lock
+- logo/wordmark/type lock
+- palette/material/style lock or analysis node
+
+Every dependent product still must wire one of those locks to `imageUrl` and use explicit `@Image` role language such as `@Image1 controls NOCTRA can geometry, logo placement, matte-black material, condensation behavior, palette, and label hierarchy.`
 
 Any prompt that would otherwise say `same model`, `same person`, `same character`, `same garment`, `matching style`, or `same product` must instead use explicit `@Image1`, `@Image2`, etc. language and matching visible image-reference edges in the canonical spec.
 

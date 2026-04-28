@@ -55,10 +55,14 @@ Use import/input nodes for:
 - existing clips
 - logo files supplied by the user
 - brand guide excerpts supplied by the user
+- brand-kit boards or screenshots supplied by the user
 
 Every source asset needs a declared role:
 
 - product truth
+- brand kit / brand system
+- logo or wordmark truth
+- palette / typography truth
 - style reference
 - mood/lighting reference
 - environment reference
@@ -68,6 +72,19 @@ Every source asset needs a declared role:
 - audio pacing reference
 
 Do not ask one source image to do every job. Do not proceed if the product truth asset is only described but not available.
+
+If the user supplies a brand kit, brand board, or style guide, it is a production source, not just prompt inspiration. Add it as an uploaded/imported node in `SOURCE / Inputs`, mark it with `metadata.assetRole: "brand-kit"`, and wire it into the derived lock nodes that need it.
+
+When the brand kit contains the product, logo, palette, typography, or material system but separate atomic assets are missing, create those atomic locks before stillframe production:
+
+- `LOCK / Brand Kit Source`: uploaded/imported brand kit image or PDF-derived image page
+- `LOCK / Product Truth`: reference-driven still using the brand kit to isolate the real product/package geometry, label hierarchy, material, and hero angle
+- `LOCK / Logo + Type`: reference-driven still or source node that preserves the logo/wordmark/type system for deterministic edit layers
+- `LOCK / Palette + Materials`: analysis or visual reference node for colors, surfaces, condensation, packaging finish, and graphic motifs
+
+Every derived lock prompt must name the brand kit with an explicit `@Image` role, for example: `@Image1 controls NOCTRA logo, palette, typography, can geometry, label hierarchy, and material finish.` The lock outputs then become the references for dependent stills and Seedance nodes. Do not ask downstream prompts to recreate the brand from text alone.
+
+Atomic lock creation can happen before the workflow if the runtime has a suitable local image generation/editing tool. In that case, generate the clean product/logo/style lock files locally, save them into the active campaign workspace, then upload/import them as source nodes. If no local image tool is available, build the atomic lock generation nodes inside Imagine.Art first and do not proceed to campaign stills or motion until those lock outputs are approved.
 
 ## Clarification / Assumption Nodes
 
@@ -123,6 +140,8 @@ Every generated still prompt must follow `docs/CINEMATIC_STILL_PROMPTING_PLAYBOO
 For character-led campaigns, generate or upload one approved identity/style reference before producing shot stills that should show that person. Every dependent stillframe node must connect that identity/style reference through its reference-image input and refer to it as `@Image1`, `@Image2`, etc. Text like `same adult model` is invalid.
 
 For product campaigns, keep generated stillframes free of final ad typography whenever possible. If the supplied product photo already contains label text, treat it as product truth, but do not ask image or video models to recreate final campaign copy. Add brand name, product name, captions, and CTA in deterministic edit/type layers.
+
+For product campaigns with a supplied brand kit, product-lock stills must consume the brand kit or a separate product/logo source. If no separate product shot or logo file exists, first generate the missing clean product/logo lock assets from the brand kit, then use those generated locks as references. Do not create disconnected product hero stills from descriptive prompts while ignoring the source kit.
 
 Stillframe nodes are not automatically motion sources. First-pass still outputs must be reviewed. Approved anchors should be copied, imported, or clearly selected into an `APPROVED` section before motion.
 

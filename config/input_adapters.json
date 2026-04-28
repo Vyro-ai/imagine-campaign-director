@@ -20,6 +20,28 @@
       "workflow_role": "product truth source"
     },
     {
+      "id": "brand_kit",
+      "name": "Brand Kit / Brand Board",
+      "extract": [
+        "logo",
+        "wordmark",
+        "product/package truth",
+        "palette",
+        "typography",
+        "graphic elements",
+        "materials",
+        "photography style",
+        "required derived lock assets"
+      ],
+      "workflow_role": "brand system source"
+    },
+    {
+      "id": "logo_file",
+      "name": "Logo / Wordmark File",
+      "extract": ["mark", "wordmark", "clear space", "color treatment", "type risk", "lockup needs"],
+      "workflow_role": "logo/type truth source"
+    },
+    {
       "id": "style_image",
       "name": "Style Image",
       "extract": ["color", "lighting", "composition", "surface language", "camera angle"],

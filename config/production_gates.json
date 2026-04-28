@@ -12,6 +12,9 @@
         "selected creative spine documented",
         "rejected premise notes documented",
         "campaign thesis defined",
+        "supplied brand kit or brand board is declared as a source asset when present",
+        "missing atomic product/logo/type assets are identified for generation from the brand kit when needed",
+        "atomic asset generation path is chosen: local image tool when available, otherwise first-stage Imagine.Art workflow nodes",
         "visual world and production design system defined",
         "model/styling continuity defined",
         "shot-by-shot timeline exists",
@@ -45,6 +48,8 @@
       "required_before": "paid motion generation",
       "checks": [
         "approved still anchors exist",
+        "supplied brand kit is uploaded/imported and visibly connected to product/logo/style lock nodes when present",
+        "product/logo/style locks are generated or imported before dependent brand/product stills when the campaign relies on brand assets",
         "approved anchor contact sheet passed director's-eye review",
         "motion launch critic passed with critic_mode: subagent and subagent_ids",
         "required GPT Image 2 director's-notes boards exist and passed readability review",

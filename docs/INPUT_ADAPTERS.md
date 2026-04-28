@@ -131,6 +131,9 @@ Plan whether Imagine.Art should extend, reframe, restyle, or generate new compan
 Assign each asset a role:
 
 - product truth
+- brand kit / brand system
+- logo / wordmark truth
+- typography / palette truth
 - style reference
 - environment reference
 - character/casting reference
@@ -140,11 +143,25 @@ Assign each asset a role:
 
 One asset should not be asked to do every job.
 
+If a supplied brand kit, brand board, deck screenshot, or style guide contains the only product/logo/type/palette information, treat that board as source truth and derive missing atomic assets before campaign stills or motion:
+
+- upload/import the brand kit as a visible source node
+- generate or isolate a clean product-lock still from it
+- generate or isolate a logo/wordmark/type reference when deterministic end-card or product lockup will need it
+- extract palette/type/material rules into analysis notes
+- wire the brand kit into those derived lock nodes with explicit `@Image` role language
+- wire the derived product/logo/style locks into every dependent still and Seedance reference set
+
+Do not replace a supplied brand kit with a text description. Do not build a product-lock prompt from memory when the kit already shows packaging, logo, colors, typography, or material language.
+
+Use the fastest available controlled asset-prep path for these atomic locks. If a local image-generation or image-editing tool is available and appropriate for source atomization, use it to create the clean product/logo/style lock files first, save them in the campaign workspace, then upload/import those files into the Imagine.Art workflow. If no local image tool is available, create the atomic product/logo/style lock nodes inside the Imagine.Art workflow before the rest of the campaign workflow. In both cases, the downstream campaign stills and motion must reference the atomic locks, not the text description alone.
+
 ## Commercial / Social Spot Input
 
 When the user's wording implies a produced ad, default to a real-world video-generation plan:
 
-- brand assets become creative direction and continuity references
+- brand assets become uploaded/imported source nodes, creative direction, and continuity references
+- if specific required assets are missing but inferable from a brand kit, generate the missing product/logo/style lock assets first, then reference those generated locks downstream
 - Seedance 2 or another Imagine.Art video model becomes the core footage generator
 - ImagineArt 2.0 generates original still/reference anchors by default when no reference control is required
 - GPT Image 2 generates reference-driven panels when refs, style/product/character continuity, storyboard control, or artifact risk require it

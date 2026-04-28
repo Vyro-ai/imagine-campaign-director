@@ -89,6 +89,25 @@ Every canonical motion node must have a written connection map before paste:
 
 If the prompt relies on a source but the map has no edge for it, the workflow is not ready to paste.
 
+## Brand-Kit And Product-Lock Contracts
+
+When the user supplies a brand kit, brand board, style guide, or brand-system screenshot, the canonical spec must declare that source and wire it visibly. A text-only product prompt is not enough.
+
+Required canonical pattern:
+
+- add a source/import node for the supplied brand kit, marked `metadata.assetRole: "brand-kit"` or top-level `brandKit.source`
+- if separate product shot/logo files are missing, generate derived lock nodes from the brand kit before campaign stills:
+  - product truth lock
+  - logo/wordmark/type lock when deterministic type or end card needs it
+  - palette/material analysis or visual reference
+- mark the product lock with `metadata.identityRole: "product-lock"` or `metadata.productionRole: "product-lock"`
+- connect the brand kit to the product/logo lock through `imageUrl`
+- every product/brand-dependent still connects the product lock or brand kit through `imageUrl`
+- every Seedance product/brand-dependent motion node connects the product lock or brand kit through `referenceUrl`
+- prompts use explicit `@Image1`, `@Image2`, etc. role language for brand kit, product truth, logo/type, and palette/material control
+
+The helper rejects canonical specs that declare a brand kit but do not include a visible uploaded/imported brand-kit source, a product/brand lock, or downstream product/brand references.
+
 ## Identity Locks And Run Budgets
 
 Apply `docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md` before generating recurring people, products, garments, or other continuity-sensitive subjects.

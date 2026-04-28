@@ -203,7 +203,13 @@ const IMAGE_TOKEN_PATTERN = /@\s*Image\s*(\d+)/gi;
 const CONTINUITY_SHORTHAND_PATTERN =
   /\b(?:same|matching|consistent)\s+(?:adult\s+)?(?:character|person|model|woman|man|subject|identity|face|hair|wardrobe|outfit|garment|coat|product|style|look)\b/i;
 const HUMAN_SUBJECT_PATTERN =
-  /\b(?:adult\s+)?(?:model|person|woman|man|subject|character|actress|actor|face|identity|portrait|casting)\b/i;
+  /\b(?:adult\s+)?(?:model|person|woman|man|character|actress|actor|face|identity|portrait|casting)\b/i;
+const BRAND_KIT_ROLE_PATTERN =
+  /\b(?:brand[\s_-]?kit|brand[\s_-]?guide|brand[\s_-]?board|brand[\s_-]?system|logo[\s_-]?system|palette|typography)\b/i;
+const PRODUCT_LOCK_ROLE_PATTERN =
+  /\b(?:product[\s_-]?lock|product[\s_-]?truth|hero[\s_-]?product|brand[\s_-]?lock|logo[\s_-]?lock|type[\s_-]?lock)\b/i;
+const PRODUCT_BRAND_SUBJECT_PATTERN =
+  /\b(?:brand|logo|wordmark|type|typography|palette|product|packaging|label|can|bottle|box|carton|jar|tube|flacon|lockup|tagline|flavor|sku)\b/i;
 const STILL_PROMPT_REQUIRED_BLOCKS = [
   "SHOT",
   "SUBJECT",
@@ -849,6 +855,230 @@ function isIdentityLockExempt(nodeSpec) {
   );
 }
 
+function nodeRoleText(nodeSpec) {
+  return [
+    nodeSpec?.assetRole,
+    nodeSpec?.sourceRole,
+    nodeSpec?.workflowRole,
+    nodeSpec?.productionRole,
+    nodeSpec?.identityRole,
+    nodeSpec?.metadata?.assetRole,
+    nodeSpec?.metadata?.sourceRole,
+    nodeSpec?.metadata?.workflowRole,
+    nodeSpec?.metadata?.productionRole,
+    nodeSpec?.metadata?.identityRole,
+    nodeSpec?.name,
+  ]
+    .filter(Boolean)
+    .map(String)
+    .join(" ");
+}
+
+function isBrandKitSource(nodeSpec) {
+  return Boolean(
+    nodeSpec?.brandKitSource ||
+      nodeSpec?.metadata?.brandKitSource ||
+      BRAND_KIT_ROLE_PATTERN.test(nodeRoleText(nodeSpec))
+  );
+}
+
+function isProductLockSource(nodeSpec) {
+  return Boolean(
+    nodeSpec?.productLockSource ||
+      nodeSpec?.metadata?.productLockSource ||
+      PRODUCT_LOCK_ROLE_PATTERN.test(nodeRoleText(nodeSpec))
+  );
+}
+
+function sourceAssetDeclaresBrandKit(asset) {
+  if (typeof asset === "string") {
+    return BRAND_KIT_ROLE_PATTERN.test(asset);
+  }
+
+  return BRAND_KIT_ROLE_PATTERN.test(
+    [
+      asset?.id,
+      asset?.name,
+      asset?.type,
+      asset?.role,
+      asset?.assetRole,
+      asset?.sourceRole,
+      asset?.workflowRole,
+      asset?.path,
+    ]
+      .filter(Boolean)
+      .map(String)
+      .join(" ")
+  );
+}
+
+function workflowDeclaresBrandKit(source) {
+  return Boolean(
+    source.brandKitRequired ||
+      source.metadata?.brandKitRequired ||
+      source.brandKit?.required ||
+      source.brandSystem?.required ||
+      source.brandAssetsRequired ||
+      (Array.isArray(source.sourceAssets) && source.sourceAssets.some(sourceAssetDeclaresBrandKit)) ||
+      (Array.isArray(source.assets) && source.assets.some(sourceAssetDeclaresBrandKit)) ||
+      (Array.isArray(source.brandAssets) && source.brandAssets.some(sourceAssetDeclaresBrandKit)) ||
+      (source.nodes ?? []).some((nodeSpec) => isBrandKitSource(nodeSpec))
+  );
+}
+
+function collectBrandKitSourceIds(source) {
+  const ids = new Set();
+
+  const explicitSources = [
+    source.brandKit?.source,
+    source.brandKit?.node,
+    source.brandKit?.id,
+    source.brandSystem?.source,
+    source.brandSystem?.node,
+    source.brandSystem?.id,
+    ...(source.brandKitSources ?? []),
+    ...(source.brandAssetSources ?? []),
+  ];
+
+  explicitSources.forEach((entry) => {
+    const id = typeof entry === "string" ? entry : entry?.source ?? entry?.node ?? entry?.id;
+    if (id) {
+      ids.add(id);
+    }
+  });
+
+  (source.nodes ?? []).forEach((nodeSpec, index) => {
+    if (isBrandKitSource(nodeSpec)) {
+      ids.add(nodeLogicalId(nodeSpec, index));
+    }
+  });
+
+  return ids;
+}
+
+function isBrandKitImportLike(nodeSpec) {
+  return Boolean(
+    nodeSpec?.type === "import" ||
+      nodeSpec?.metadata?.uploadedAsset ||
+      nodeSpec?.metadata?.suppliedAsset ||
+      nodeSpec?.metadata?.importedAsset ||
+      nodeSpec?.uploadedAsset ||
+      nodeSpec?.suppliedAsset ||
+      nodeSpec?.importedAsset
+  );
+}
+
+function isBrandOrProductContinuityNode(nodeSpec) {
+  if (!["image", "video"].includes(nodeSpec?.type)) {
+    return false;
+  }
+
+  if (isBrandKitSource(nodeSpec)) {
+    return false;
+  }
+
+  const prompt = nodeSpec.settings?.prompt ?? "";
+  return (
+    PRODUCT_LOCK_ROLE_PATTERN.test(nodeRoleText(nodeSpec)) ||
+    (typeof prompt === "string" && PRODUCT_BRAND_SUBJECT_PATTERN.test(prompt))
+  );
+}
+
+function validateCanonicalBrandKitContracts(source) {
+  if (!workflowDeclaresBrandKit(source)) {
+    return;
+  }
+
+  const brandKitSourceIds = collectBrandKitSourceIds(source);
+  if (brandKitSourceIds.size === 0) {
+    throw new Error(
+      "Workflow declares a supplied brand kit/brand system but has no brand-kit source node. Add an uploaded/imported source node marked metadata.assetRole: \"brand-kit\" (or top-level brandKit.source) before product or still generation."
+    );
+  }
+
+  const nodesById = new Map((source.nodes ?? []).map((nodeSpec, index) => [nodeLogicalId(nodeSpec, index), nodeSpec]));
+  for (const sourceId of brandKitSourceIds) {
+    const nodeSpec = nodesById.get(sourceId);
+    if (!nodeSpec) {
+      continue;
+    }
+
+    if (!isBrandKitImportLike(nodeSpec)) {
+      throw new Error(
+        `Brand-kit source "${nodeSpec.name ?? sourceId}" must be an uploaded/imported supplied asset, not a generated image prompt. Use an import/source node so the actual brand kit is visible in the workflow.`
+      );
+    }
+  }
+
+  const productLockNodes = (source.nodes ?? [])
+    .map((nodeSpec, index) => ({ nodeSpec, logicalId: nodeLogicalId(nodeSpec, index) }))
+    .filter(({ nodeSpec }) => isProductLockSource(nodeSpec) && !isBrandKitSource(nodeSpec));
+
+  if (productLockNodes.length === 0) {
+    throw new Error(
+      "Workflow declares a brand kit but has no product/brand lock node. Create a product-lock still that consumes the uploaded brand kit and stabilizes logo, product geometry, palette, typography, and packaging rules."
+    );
+  }
+
+  const incomingByTarget = collectIncomingReferenceDetails(source);
+  const brandKitLabels = [...brandKitSourceIds].join(", ");
+
+  for (const { nodeSpec, logicalId } of productLockNodes) {
+    const incoming = incomingByTarget.get(logicalId)?.edges ?? [];
+    const brandKitEdges = incoming.filter((edgeSpec) => brandKitSourceIds.has(edgeSpec.source));
+    const hasBrandKitImageReference = brandKitEdges.some((edgeSpec) => {
+      const targetKey = edgeSpec.targetKey ?? edgeSpec.inputKey;
+      return targetKey === "imageUrl" || targetKey === "referenceUrl";
+    });
+
+    if (!hasBrandKitImageReference) {
+      throw new Error(
+        `Product/brand lock node "${nodeSpec.name ?? logicalId}" is not wired to the supplied brand kit. Connect one of [${brandKitLabels}] to imageUrl/referenceUrl and write an explicit @Image role for logo, palette, typography, product geometry, and label hierarchy.`
+      );
+    }
+
+    if (!/@\s*Image\s*\d+/i.test(nodeSpec.settings?.prompt ?? "")) {
+      throw new Error(
+        `Product/brand lock node "${nodeSpec.name ?? logicalId}" consumes a brand kit but its prompt lacks an explicit @Image token. Use language like "@Image1 controls the NOCTRA logo, palette, typography, can geometry, and label hierarchy."`
+      );
+    }
+  }
+
+  const productLockIds = new Set(productLockNodes.map(({ logicalId }) => logicalId));
+  const brandContinuityNodes = (source.nodes ?? [])
+    .map((nodeSpec, index) => ({ nodeSpec, logicalId: nodeLogicalId(nodeSpec, index) }))
+    .filter(
+      ({ nodeSpec, logicalId }) =>
+        isBrandOrProductContinuityNode(nodeSpec) &&
+        !brandKitSourceIds.has(logicalId) &&
+        !productLockIds.has(logicalId) &&
+        !isIdentityLockExempt(nodeSpec)
+    );
+
+  for (const { nodeSpec, logicalId } of brandContinuityNodes) {
+    const incoming = incomingByTarget.get(logicalId)?.edges ?? [];
+    const hasProductOrBrandReference = incoming.some((edgeSpec) => {
+      const sourceId = edgeSpec.source;
+      const targetKey = edgeSpec.targetKey ?? edgeSpec.inputKey;
+      const acceptableKey = nodeSpec.type === "video" ? targetKey === "referenceUrl" : targetKey === "imageUrl";
+      return acceptableKey && (productLockIds.has(sourceId) || brandKitSourceIds.has(sourceId));
+    });
+
+    if (!hasProductOrBrandReference) {
+      const expectedInput = nodeSpec.type === "video" ? "referenceUrl" : "imageUrl";
+      throw new Error(
+        `${nodeSpec.type} node "${nodeSpec.name ?? logicalId}" contains brand/product continuity language but is not wired to the product lock or brand kit. Connect a product-lock or brand-kit source to ${expectedInput} and use explicit @Image role language.`
+      );
+    }
+
+    if (!/@\s*Image\s*\d+/i.test(nodeSpec.settings?.prompt ?? "")) {
+      throw new Error(
+        `${nodeSpec.type} node "${nodeSpec.name ?? logicalId}" is brand/product-reference-driven but its prompt lacks an explicit @Image token. Write the product/brand role directly and match it to the visible input slot.`
+      );
+    }
+  }
+}
+
 function isHumanContinuityNode(nodeSpec) {
   if (!["image", "video"].includes(nodeSpec?.type)) {
     return false;
@@ -1471,6 +1701,7 @@ function materializeCanonicalWorkflow(source, options) {
   validateCanonicalPromptReferences(source);
   validateCanonicalContinuityPromptLanguage(source);
   validateCanonicalSwarmArtifacts(source, options);
+  validateCanonicalBrandKitContracts(source);
   validateCanonicalIdentityLockContracts(source);
   validateCanonicalRunBudget(source);
   validateCanonicalImageReferenceContracts(source);

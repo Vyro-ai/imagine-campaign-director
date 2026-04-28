@@ -97,7 +97,7 @@ If Computer Use/browser execution is unavailable after an explicit check, return
 
 Use this sequence for commercials, social campaigns, TikTok/Reels ads, 30s spots, and professionally shot/produced video:
 
-1. Analyze brand assets and extract visual rules.
+1. Analyze brand assets and extract visual rules. If a brand kit/brand board is supplied, upload/import it as source truth and derive missing product/logo/type/style locks from it before campaign stills. Use a local image generation/editing tool for those atomic locks when available; otherwise create the atomic lock nodes inside Imagine.Art before the rest of the workflow.
 2. Define target platform, runtime, pacing, audience, CTA, and aspect ratio.
 3. Create a hero concept and an 8-12 shot structure for a 30s vertical ad.
 4. Generate or select consistent actress/model reference frames when a believable human lead is requested.
@@ -148,6 +148,7 @@ Follow the music standard in `docs/PRODUCTION_STANDARD.md` and the details in `d
 - Use `ImagineArt 2.0` inside Imagine.Art for original stillframes, styleframes, first/last frames, background plates, graphic inserts, title cards, product hero frames, product closeout plates, and key art when no reference control is required. Use `GPT Image 2` when style, product, character, storyboard, or continuity references are required. Use Nano Banana 2/Pro only when the specific asset role or live model availability justifies it, and document the exception.
 - Apply `docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md` to every still image prompt, regardless of model. Use labeled blocks for shot, subject, environment, lighting, camera, color grade, composition, and avoid list; include film stock/format, mood, aspect ratio, and texture for hero or motion-feeding frames.
 - If a stillframe should preserve identity, product, wardrobe, or style from another source, connect that source as an image reference and refer to it with explicit `@Image1`, `@Image2`, etc. language. Do not write `same model`, `same person`, or `same product` in generation prompts.
+- If a brand kit is supplied, do not ignore it or reduce it to text. Upload/import it as a source node, generate missing atomic product/logo/type/style locks from it when separate assets are not supplied, and wire those locks into every dependent still and Seedance reference set. If local image tooling is unavailable, perform the atomic lock generation as the first stage of the Imagine.Art workflow.
 - Feed approved panels into Seedance as start frames, end frames, or reference images with one clear job each.
 - Do not launch final campaign motion from prompt text alone. Generate or upload the needed image reference first, then connect it visibly to the motion node.
 - Before launching or relaunching any Imagine.Art node, check Active Runs, update `qa/run-ledger.md`, and refresh/reopen the workflow if the node appears stale or unchanged. Never duplicate-run a node to force a status update; if completion cannot be proven after two refresh cycles, return `blocked: node status unknown`.
