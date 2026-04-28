@@ -34,29 +34,31 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 10. Create stillframe nodes for every planned shot branch, but do not run motion yet.
 11. Before launching stills, verify each selected node's visible model label, ratio, and live `Number of runs`.
 12. If `Number of runs` is greater than `1`, set it back to `1` unless the treatment explicitly authorizes multiple runs for an identity-candidate or look-dev node.
-13. Before clicking run, create or update `qa/run-ledger.md` with the intended stillframe node ids/names, model, prompt hash or short prompt snippet, visible run count, and current timestamp. Run only the intended stillframe batch.
-14. Monitor Active Runs and record queued/running/finished/error states in `qa/run-ledger.md`. If a node appears unchanged or idle after launch, do not run it again; refresh/reopen the workflow, re-check Active Runs, and inspect the node card before deciding whether it failed or completed.
-15. Inspect outputs only after a fresh canvas state confirms completion. Reject moderation placeholders, bad anatomy, fake text, product drift, and incoherent frames.
-16. Create or inspect an approved-anchor contact sheet and apply `docs/DIRECTORS_EYE_GATE.md`; resolve director's-eye critic blockers before motion.
-17. Move or recreate only approved stills into the approved-anchor stage.
-18. Create storyboard/reference panel nodes for the selected shot branches.
-19. For recurring models/products/garments, verify the locked reference source is visibly connected into every dependent still or Seedance node before launch. Disconnected recurring-subject stills are invalid.
-20. For any long take, multi-shot Seedance 2 node, staged camera move, simultaneous subject/camera move, orbit, tilt, reveal, pullback, rise/fall, vehicle, crowd, glass, mirror, fabric, or beat-synced reveal, create the GPT Image 2 director's-notes board required by `docs/DIRECTORS_NOTES_STORYBOARDS.md`.
-21. Verify visible model and safe ratio before launch. For GPT Image 2 director's-notes and storyboard panels, prefer `1:1` unless the live UI has already proven another ratio works.
-22. Before launching storyboard/reference panels or director's-notes boards, update `qa/run-ledger.md`, check Active Runs for matching in-flight jobs, then run the intended batch. Inspect outputs only after a refresh/reopen confirms completion, and approve only usable panels.
-23. Reject or regenerate any director's-notes board with unreadable labels, ambiguous arrows, fake ad text, unclear phase order, or too many phases for the selected Seedance 2 duration.
-24. Create motion nodes for the selected shot ladder from approved anchors, reference panels, and approved director's-notes boards where required.
-25. Prefer Seedance reference-image set mode for campaign motion: actor/model identity lock, scene/environment plate, product/garment/material truth, and director's-notes board should be connected as separate `Reference Images` roles whenever the shot depends on more than one control source. Use Start Frame mode only for simple one-anchor clips.
-26. For each motion node, compare the live canvas against the reference connection map. If the prompt depends on multiple references, `@Image` tokens, storyboard panels, or director's-notes boards, verify the node exposes `Reference Images` and each required input is visibly connected. A single `Start Frame` edge is not enough for a multi-reference prompt.
-27. Before each motion launch, verify the live node panel shows the intended model, duration, quality, ratio, audio setting, local timing, run count, and connected start/end/reference frames. Correct visible settings when they disagree with the written plan. If a motion node has no visible image/start-frame/end-frame/reference connection, do not launch it.
-28. Run motion nodes in small batches only after `qa/run-ledger.md` and Active Runs confirm those exact nodes are not already queued or processing. Never click run again on a motion node because the canvas looks stale; refresh/reopen and re-check first.
-29. After each generated video node completes, immediately perform export QC from `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`: refresh/reopen the workflow, confirm Active Runs has no matching in-flight job, open and play 2-3 seconds, download/capture the direct asset source, save it locally, verify it with `ffprobe`, and record it in the manifest before moving on.
-30. Generate the Imagine.Art Music Studio track from the music prompt. Verify the in-app prompt, instrumental/vocal setting, genre, and duration before generation.
-31. Download selected motion and music outputs into the local workspace.
-32. Assemble or prepare the final edit with selected motion clips, selected music, deterministic typography, captions, crop, and product closeout.
-33. Complete QC, including `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`.
-34. Delete failed, rejected, duplicate, abandoned, and unused nodes from the live final workflow after documenting them locally.
-35. Report the final status using one of: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, `blocked`.
+13. Before clicking run, create or update `qa/run-ledger.md` with a unique `launch_id`, intended stillframe node ids/names, selected-node count, model, prompt hash or short prompt snippet, visible run count, current timestamp, and status `armed`. Run only the intended stillframe batch.
+14. Use exactly one click on `Run Selected`; never double-click, never press Enter/Space as a fallback, and never click again because feedback is delayed. Immediately update the ledger status to `clicked_once`, move focus away from the Run button, and wait for Active Runs acknowledgement.
+15. Monitor Active Runs and record queued/running/finished/error states in `qa/run-ledger.md`. If a node appears unchanged or idle after launch, do not run it again; refresh/reopen the workflow, re-check Active Runs, and inspect the node card before deciding whether it failed or completed.
+16. Inspect outputs only after a fresh canvas state confirms completion. Reject moderation placeholders, bad anatomy, fake text, product drift, and incoherent frames.
+17. Create or inspect an approved-anchor contact sheet and apply `docs/DIRECTORS_EYE_GATE.md`; resolve director's-eye critic blockers before motion.
+18. Move or recreate only approved stills into the approved-anchor stage.
+19. Create storyboard/reference panel nodes for the selected shot branches.
+20. For recurring models/products/garments, verify the locked reference source is visibly connected into every dependent still or Seedance node before launch. Disconnected recurring-subject stills are invalid.
+21. For any long take, multi-shot Seedance 2 node, staged camera move, simultaneous subject/camera move, orbit, tilt, reveal, pullback, rise/fall, vehicle, crowd, glass, mirror, fabric, or beat-synced reveal, create the GPT Image 2 director's-notes board required by `docs/DIRECTORS_NOTES_STORYBOARDS.md`.
+22. Verify visible model and safe ratio before launch. For GPT Image 2 director's-notes and storyboard panels, prefer `1:1` unless the live UI has already proven another ratio works.
+23. Before launching storyboard/reference panels or director's-notes boards, update `qa/run-ledger.md`, check Active Runs for matching in-flight jobs, then run the intended batch using the same single-click protocol. Inspect outputs only after a refresh/reopen confirms completion, and approve only usable panels.
+24. Reject or regenerate any director's-notes board with unreadable labels, ambiguous arrows, fake ad text, unclear phase order, or too many phases for the selected Seedance 2 duration.
+25. Create motion nodes for the selected shot ladder from approved anchors, reference panels, and approved director's-notes boards where required.
+26. Prefer Seedance reference-image set mode for campaign motion: actor/model identity lock, scene/environment plate, product/garment/material truth, and director's-notes board should be connected as separate `Reference Images` roles whenever the shot depends on more than one control source. Use Start Frame mode only for simple one-anchor clips.
+27. For each motion node, compare the live canvas against the reference connection map. If the prompt depends on multiple references, `@Image` tokens, storyboard panels, or director's-notes boards, verify the node exposes `Reference Images` and each required input is visibly connected. A single `Start Frame` edge is not enough for a multi-reference prompt.
+28. Before each motion launch, verify the live node panel shows the intended model, duration, quality, ratio, audio setting, local timing, run count, and connected start/end/reference frames. Correct visible settings when they disagree with the written plan. If a motion node has no visible image/start-frame/end-frame/reference connection, do not launch it.
+29. Run motion nodes in small batches only after `qa/run-ledger.md` and Active Runs confirm those exact nodes are not already queued or processing. For motion, prefer one-node launches when Computer Use has shown delayed feedback. Never click run again on a motion node because the canvas looks stale; refresh/reopen and re-check first.
+30. If Active Runs shows more jobs than the intended selected-node count, stop launching, mark `duplicate_run_operator_error`, let current jobs finish, and select only one approved output per role.
+31. After each generated video node completes, immediately perform export QC from `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`: refresh/reopen the workflow, confirm Active Runs has no matching in-flight job, open and play 2-3 seconds, download/capture the direct asset source, save it locally, verify it with `ffprobe`, and record it in the manifest before moving on.
+32. Generate the Imagine.Art Music Studio track from the music prompt. Verify the in-app prompt, instrumental/vocal setting, genre, and duration before generation.
+33. Download selected motion and music outputs into the local workspace.
+34. Assemble or prepare the final edit with selected motion clips, selected music, deterministic typography, captions, crop, and product closeout.
+35. Complete QC, including `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`.
+36. Delete failed, rejected, duplicate, abandoned, and unused nodes from the live final workflow after documenting them locally.
+37. Report the final status using one of: `finished`, `ready for generation`, `motion pending`, `partial/proxy`, `blocked`.
 
 ## Non-Negotiables
 

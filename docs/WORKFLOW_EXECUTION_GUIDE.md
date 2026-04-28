@@ -68,6 +68,8 @@ Lay out the canvas left-to-right by production stage and top-to-bottom by shot b
 
 Within each stage column, each planned shot gets its own row or clearly separated branch. Leave enough space between branches that a human can trace a shot from source to still anchor to storyboard/reference panel to motion output without guessing. If the UI creates a node on top of another node, move it immediately before creating or launching more nodes.
 
+Do not spread nodes across several screen-widths or a huge vertical scroll. Use compact production spacing: roughly `650-800px` between stage columns and `700-900px` between shot rows. Keep connected nodes close enough that a human can trace each edge at ordinary zoom. If the graph starts exceeding a readable stage grid, reduce the number of visible one-off nodes, group shots into stronger motion blocks, and move rejects/diagnostics into a separate archive workflow instead of pushing them far away.
+
 For a 10-second campaign, plan at least 4-5 shot branches before generating unless the brief explicitly asks for a single-shot film. For 15-30 second campaigns, plan the full 8-12 shot ladder first. Do not generate one still, create one video node, and repeat without the full shot map visible on the canvas.
 
 ## Node Naming
@@ -121,13 +123,15 @@ Plan the full shot system before generation. The operator should create the shot
 ## Launch Discipline
 
 - Run selected nodes once per intended batch.
-- Before launch, write the intended node id/name, model, prompt snippet, visible run count, and timestamp to `qa/run-ledger.md`.
+- Before launch, write the intended node id/name, model, prompt snippet, visible run count, selected-node count, launch id, and timestamp to `qa/run-ledger.md` with status `armed`.
 - Check Active Runs before launch and after launch.
-- Do not click again because the UI is slow or because the canvas has not updated.
+- Use the single-click launch protocol from `docs/AUTOMATION_CONTRACT.md`: one physical click or DOM click on `Run Selected`, then mark the ledger `clicked_once` and stop sending input to the run button.
+- Do not double-click, press Enter/Space as a fallback, or click again because the UI is slow or because the canvas has not updated.
+- For lock nodes, product locks, final hero stills, and motion nodes, prefer one-node launches unless a written batch reason exists.
 - If a launched node looks idle, unchanged, or empty, refresh/reopen the workflow before deciding it failed or needs another run.
 - A node is complete only after a refreshed canvas shows a finished result and Active Runs has no matching queued/running/in-progress job.
 - If status is ambiguous after two refresh/reopen checks, return `blocked: node status unknown` instead of launching a duplicate run.
-- If duplicate runs appear, treat it as operator error and stop scaling until the workflow is controlled.
+- If duplicate runs appear, treat it as operator error, mark `duplicate_run_operator_error` in `qa/run-ledger.md`, stop launching more nodes, and select exactly one approved output per role after the duplicates finish.
 - If a node fails, document the failure and continue with other branches.
 - If a model rejects a ratio, retry with that model's automation default ratio before redesigning the shot.
 - If a completed output is a moderation placeholder, treat it as failed and do not connect it downstream.

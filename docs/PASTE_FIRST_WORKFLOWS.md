@@ -49,6 +49,16 @@ Use stage columns:
 
 Use shot rows inside those columns. Leave generous horizontal and vertical gaps. If a pasted block or newly created node lands on top of another node, move it immediately.
 
+Use compact numeric spacing in canonical specs:
+
+- stage columns: about `650-800px` apart
+- shot rows: about `700-900px` apart
+- connected nodes should usually be in adjacent columns, not several screens away
+- keep the normal campaign graph within a readable bounding box instead of using the infinite canvas as storage
+- move rejects, diagnostics, and unused explorations out of the final production graph
+
+The materializer rejects canonical specs with extreme coordinates, oversized bounding boxes, or connected nodes placed too far apart unless `layoutPolicy.required: false` includes a concrete reason.
+
 ## Seedance Reference Contracts
 
 Choose one video input contract per Seedance node before writing the canonical spec.

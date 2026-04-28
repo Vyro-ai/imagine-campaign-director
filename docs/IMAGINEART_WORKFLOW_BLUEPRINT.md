@@ -43,6 +43,8 @@ Use a stage-column layout:
 
 Use shot rows inside those columns. For example, row 01 is the hook, row 02 is the world reveal, row 03 is the detail accent, and so on. Keep nodes spaced so edges are legible. If the UI creates a node over another node, reposition it immediately. Do not leave overlapped nodes in a production workflow.
 
+Keep the graph compact enough to read without hunting across the infinite canvas. Use column spacing around `650-800px` and row spacing around `700-900px`, with related source -> lock -> still -> board -> motion nodes in adjacent columns on the same row. Avoid placing connected nodes thousands of pixels apart. A normal campaign workflow should fit in roughly one readable stage grid, not a long scroll-wall; if it exceeds that, group shots into fewer Seedance blocks, collapse notes, or split diagnostics/rejects into a separate workflow.
+
 For campaign-video requests, the workflow should show multiple planned shot branches before generation starts. A single still node connected to a single video node is only acceptable for an explicitly single-shot brief or a narrow preflight test, and it must be labeled as preflight rather than the campaign plan.
 
 ## Source Inputs

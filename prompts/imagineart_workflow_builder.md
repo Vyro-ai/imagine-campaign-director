@@ -20,6 +20,8 @@ The spec must:
 
 - use readable stage-column positions
 - use shot rows or clearly separated branches
+- keep positions compact: stage columns about 650-800px apart and shot rows about 700-900px apart
+- keep connected nodes visually traceable in adjacent stage columns; do not place connected nodes several screens apart
 - apply `docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md` for every recurring model/person/product/garment before generating dependent shots
 - declare supplied brand kits/brand boards as source assets and include uploaded/imported brand-kit nodes before any derived product/logo/style locks
 - if a brand kit contains the only product shot, logo, palette, typography, or material truth, generate the missing atomic lock assets from that kit before campaign shot stills

@@ -224,6 +224,14 @@ const STILL_PROMPT_REQUIRED_BLOCKS = [
 const STILL_PROMPT_NOISE_PATTERN = /\b(?:please|create an image of|make an image of|generate an image of)\b/i;
 const STILL_PROMPT_AVOID_PATTERN =
   /\b(?:plastic skin|smoothed faces|oversharpening|hdr look|extra fingers|distorted hands|garbled text|cartoon|illustration)\b/i;
+const DEFAULT_LAYOUT_LIMITS = {
+  maxWidth: 5600,
+  maxHeight: 9500,
+  maxAbsX: 7000,
+  maxAbsY: 11000,
+  maxConnectedXDistance: 1300,
+  maxConnectedYDistance: 2600,
+};
 
 const LIVE_MODEL_REGISTRY = {
   image: {
@@ -1289,6 +1297,70 @@ function validateGeneratedNodeResultBudget(source) {
   });
 }
 
+function validateCanonicalCanvasLayout(source) {
+  const policy = source.layoutPolicy ?? source.metadata?.layoutPolicy ?? {};
+  if (policy.required === false || policy.mode === "off") {
+    if (!policy.reason) {
+      throw new Error("layoutPolicy disables canvas layout validation but no reason was provided.");
+    }
+    return;
+  }
+
+  const nodes = (source.nodes ?? [])
+    .map((nodeSpec, index) => ({
+      nodeSpec,
+      logicalId: nodeLogicalId(nodeSpec, index),
+      x: Number(nodeSpec?.position?.x ?? 0),
+      y: Number(nodeSpec?.position?.y ?? 0),
+    }))
+    .filter(({ x, y }) => Number.isFinite(x) && Number.isFinite(y));
+
+  if (nodes.length <= 1) {
+    return;
+  }
+
+  const limits = { ...DEFAULT_LAYOUT_LIMITS, ...(policy.limits ?? {}) };
+  const minX = Math.min(...nodes.map((node) => node.x));
+  const maxX = Math.max(...nodes.map((node) => node.x));
+  const minY = Math.min(...nodes.map((node) => node.y));
+  const maxY = Math.max(...nodes.map((node) => node.y));
+  const width = maxX - minX;
+  const height = maxY - minY;
+  const offendingCoordinate = nodes.find(
+    (node) => Math.abs(node.x) > limits.maxAbsX || Math.abs(node.y) > limits.maxAbsY
+  );
+
+  if (offendingCoordinate) {
+    throw new Error(
+      `Canvas layout places node "${offendingCoordinate.nodeSpec.name ?? offendingCoordinate.logicalId}" at (${offendingCoordinate.x}, ${offendingCoordinate.y}), outside the readable coordinate limit (${limits.maxAbsX}, ${limits.maxAbsY}). Keep CampaignCraft workflows in compact stage columns and shot rows, or provide layoutPolicy.required=false with a reason.`
+    );
+  }
+
+  if (width > limits.maxWidth || height > limits.maxHeight) {
+    throw new Error(
+      `Canvas layout is too spread out: bounding box is ${width}x${height}, limit is ${limits.maxWidth}x${limits.maxHeight}. Use compact stage columns (about 650-800px apart) and shot rows (about 700-900px apart), or split/restructure the workflow.`
+    );
+  }
+
+  const byId = new Map(nodes.map((node) => [node.logicalId, node]));
+  for (const [index, edgeSpec] of (source.edges ?? []).entries()) {
+    const sourceNode = byId.get(edgeSpec?.source);
+    const targetNode = byId.get(edgeSpec?.target);
+    if (!sourceNode || !targetNode) {
+      continue;
+    }
+
+    const xDistance = Math.abs(targetNode.x - sourceNode.x);
+    const yDistance = Math.abs(targetNode.y - sourceNode.y);
+
+    if (xDistance > limits.maxConnectedXDistance || yDistance > limits.maxConnectedYDistance) {
+      throw new Error(
+        `Canvas layout edge ${index} connects "${sourceNode.nodeSpec.name ?? sourceNode.logicalId}" to "${targetNode.nodeSpec.name ?? targetNode.logicalId}" across ${xDistance}px horizontal and ${yDistance}px vertical distance. Connected production nodes should stay visually traceable; move related nodes into adjacent stage columns/shot rows.`
+      );
+    }
+  }
+}
+
 function validateCanonicalVideoTiming(source) {
   source.nodes.forEach((nodeSpec, index) => {
     if (nodeSpec?.type !== "video") {
@@ -1774,6 +1846,7 @@ function materializeCanonicalWorkflow(source, options) {
   validateCanonicalVideoTiming(source);
   validateCanonicalVideoReferenceContracts(source);
   validateGeneratedNodeResultBudget(source);
+  validateCanonicalCanvasLayout(source);
 
   const logicalToMaterialized = new Map();
   const nodeRecords = [];

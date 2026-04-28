@@ -202,6 +202,21 @@ Do not bulk-run stills, storyboard references, and motion together. The taste tr
 
 Imagine.Art workflow canvases can show stale node states. A node that looks unchanged may still be running, queued, or complete but not yet reflected on the canvas. Treat the live canvas as eventually consistent.
 
+### Single-Click Launch Protocol
+
+`Run Selected` is not idempotent. Delayed feedback can accept multiple presses and create duplicate paid runs. Treat every launch as a one-shot transaction:
+
+1. Write a launch record to `qa/run-ledger.md` before clicking: `launch_id`, node ids/names, selected count, model, run count, prompt hash/snippet, timestamp, and status `armed`.
+2. Check Active Runs and the node cards. If any matching node is queued/running/in-progress, do not click.
+3. Verify the selected-node count matches the intended batch. For lock nodes, product locks, and expensive motion nodes, launch one node at a time unless there is a written batch reason.
+4. Perform exactly one physical click or DOM click on `Run Selected`. Do not double-click, do not press Enter/Space as a fallback, and do not click again because the button still looks enabled.
+5. Immediately mark the ledger status `clicked_once` and stop sending input to the Run button. Move focus/cursor away from the button if using Computer Use.
+6. Wait for UI/Active Runs acknowledgement. The minimum cooldown before any same-node relaunch is the expected run window plus two refresh/reopen checks.
+7. If acknowledgement is delayed, refresh/reopen and inspect Active Runs. Never use a second Run Selected click as a status probe.
+8. If Active Runs shows more jobs than the intended selected count, stop launches, mark `duplicate_run_operator_error`, and continue only after selecting one approved output per role.
+
+When Computer Use is the control path, prefer a single explicit click action over repeated key presses or repeated "press Run Selected" attempts. If the tool accidentally sends multiple clicks/presses, stop using that interaction pattern for launches and switch to single-node launches with a stricter ledger/Active Runs check, or mark the workflow blocked if the UI cannot be operated without duplicate spending.
+
 Before launching or relaunching any node:
 
 - check Active Runs for the node name, node id, prompt snippet, model, or recent timestamp
