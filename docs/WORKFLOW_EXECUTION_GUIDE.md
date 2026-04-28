@@ -125,9 +125,15 @@ Plan the full shot system before generation. The operator should create the shot
 - Run selected nodes once per intended batch.
 - Before launch, write the intended node id/name, model, prompt snippet, visible run count, selected-node count, launch id, and timestamp to `qa/run-ledger.md` with status `armed`.
 - Check Active Runs before launch and after launch.
+- Node focus is not node selection. A clicked card, focused accessibility element, or open properties row does not prove only that node will run, and browser refresh/reopen can preserve stale multi-selection.
+- Before any `Run Selected`, prove the selected-node set with at least two signals: visual selected-node outline/count, properties selected-node list, copied workflow JSON `selected: true` flags, or visible credit estimate.
+- The visible credit estimate must match the intended selected-node count. If it is higher than expected, stop immediately, deselect/reselect, and do not launch to test.
+- `Number of runs: 1` only limits variants per selected node; it does not protect against multiple selected nodes spending credits.
 - Use the single-click launch protocol from `docs/AUTOMATION_CONTRACT.md`: one physical click or DOM click on `Run Selected`, then mark the ledger `clicked_once` and stop sending input to the run button.
 - Do not double-click, press Enter/Space as a fallback, or click again because the UI is slow or because the canvas has not updated.
 - For lock nodes, product locks, final hero stills, and motion nodes, prefer one-node launches unless a written batch reason exists.
+- For single-node retries, do not use `Run Selected` unless exactly one selected node is proven. If stale canvas selection cannot be cleared, create/paste an isolated retry node.
+- If selection cannot be proven, return `blocked: selection ambiguous` instead of spending credits.
 - If a launched node looks idle, unchanged, or empty, refresh/reopen the workflow before deciding it failed or needs another run.
 - A node is complete only after a refreshed canvas shows a finished result and Active Runs has no matching queued/running/in-progress job.
 - If status is ambiguous after two refresh/reopen checks, return `blocked: node status unknown` instead of launching a duplicate run.

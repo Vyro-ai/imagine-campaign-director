@@ -137,6 +137,8 @@ For recurring human subjects:
 
 Default run budget is one run per node. Multi-run exploration is allowed only for explicitly marked identity-candidate or look-dev nodes with a written `runBudgetReason`. Before any launch, confirm the live UI `Number of runs` is `1` unless the treatment explicitly authorizes a higher number.
 
+`Number of runs: 1` only limits variants per selected node; it does not prevent spending across multiple selected nodes. Node focus is not node selection, and browser refresh/reopen can preserve stale multi-selection. Before any `Run Selected`, prove the selected-node set with at least two signals: visual selected-node outline/count, properties selected-node list, copied workflow JSON `selected: true` flags, or visible credit estimate. The visible credit estimate must match the intended node count. If it is higher than expected, stop immediately and deselect/reselect. For single-node retries, use `Run Selected` only when exactly one selected node is proven; otherwise create/paste an isolated retry node or return `blocked: selection ambiguous`.
+
 The helper rejects canonical specs when:
 
 - campaign-video workflows are missing passing subagent swarm artifacts under `qa/critics/`
