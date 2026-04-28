@@ -1,0 +1,66 @@
+{
+  "version": "1.0.0",
+  "required_blocks": [
+    "SHOT",
+    "SUBJECT",
+    "ENVIRONMENT",
+    "LIGHTING",
+    "CAMERA",
+    "COLOR GRADE",
+    "COMPOSITION",
+    "AVOID"
+  ],
+  "recommended_blocks": [
+    "FILM STOCK / FORMAT",
+    "MOOD",
+    "TEXTURE",
+    "ASPECT RATIO"
+  ],
+  "universal_avoid": [
+    "plastic skin",
+    "smoothed faces",
+    "oversharpening",
+    "HDR look",
+    "extra fingers",
+    "distorted hands",
+    "garbled text",
+    "cartoon style",
+    "illustration"
+  ],
+  "lenses": [
+    "14-24mm wide-angle",
+    "35mm",
+    "50mm",
+    "85mm",
+    "100-200mm telephoto",
+    "anamorphic"
+  ],
+  "camera_bodies": [
+    "ARRI Alexa 35",
+    "ARRI Alexa Mini LF",
+    "RED Raptor V",
+    "Sony Venice 2",
+    "Panavision Millennium DXL2",
+    "IMAX 65mm",
+    "ARRIFLEX 16SR"
+  ],
+  "film_stocks": [
+    "Kodak Portra 400",
+    "Kodak Portra 800",
+    "Kodak Vision3 500T",
+    "Kodak Gold 200",
+    "Fuji 400H",
+    "CineStill 800T",
+    "Ilford HP5",
+    "Tri-X"
+  ],
+  "grades": [
+    "teal and orange",
+    "desaturated muted with slight cyan shadows",
+    "warm golden with lifted blacks",
+    "cyan and magenta neon",
+    "bleach bypass high contrast low saturation",
+    "pastel film palette with faded blacks",
+    "monochrome deep silver tones"
+  ]
+}

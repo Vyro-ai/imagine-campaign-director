@@ -1,21 +1,33 @@
 # Prompting Guide
 
-## Stillframe Prompt
+## Still Image Prompting
 
-Include:
+All generated still images must follow `docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md`. This applies to ImagineArt 2.0, GPT Image 2, Nano Banana 2, Nano Banana Pro, product plates, styleframes, first/last frames, environment plates, storyboard boards, director's-notes images, and any still that will feed motion.
 
-- subject
-- product
-- wardrobe or styling
-- environment
-- materials
-- lighting
-- composition
-- lens feel
-- color mood
-- implied motion
-- intended use
-- negative constraints
+Use labeled lines:
+
+```text
+SHOT:
+SUBJECT:
+ENVIRONMENT:
+LIGHTING:
+CAMERA:
+FILM STOCK / FORMAT:
+COLOR GRADE:
+MOOD:
+COMPOSITION:
+ASPECT RATIO:
+TEXTURE:
+AVOID:
+```
+
+Minimum required blocks for image-generation nodes are `SHOT`, `SUBJECT`, `ENVIRONMENT`, `LIGHTING`, `CAMERA`, `COLOR GRADE`, `COMPOSITION`, and `AVOID`. The workflow materializer enforces these blocks unless a node has a documented `stillPromptExemptReason`.
+
+The `AVOID` block must include the universal AI-look constraints:
+
+`plastic skin, smoothed faces, oversharpening, HDR look, extra fingers, distorted hands, garbled text, cartoon style, illustration`
+
+Do not write `please`, `create an image of`, `make an image of`, or `generate an image of`. Describe the still directly as a film frame.
 
 Model priority for reference frames:
 
@@ -37,6 +49,7 @@ Each panel prompt should lock:
 - lighting direction
 - stable identity/product details
 - what changes from the previous panel
+- the shared aesthetic block: camera family, lens family, film stock/sensor look, grade, texture, and aspect ratio
 
 ## Video Prompt
 
@@ -57,7 +70,18 @@ Include:
 
 Weak: `luxury cinematic fashion video`
 
-Stronger: `Low-angle 35mm tracking shot across wet stone steps. A model in a structured black wool coat turns once as a narrow strip of warm light catches the coat edge. The camera stops on a clean silhouette with negative space for end-card typography.`
+Stronger still prompt:
+
+```text
+SHOT: Low-angle medium-wide fashion film still, model crossing wet stone steps.
+SUBJECT: Adult model in a structured black wool coat, one restrained turn, coat edge catching light.
+ENVIRONMENT: After-hours museum entry, rain-wet stone, black glass doors, sparse chrome rail, faint haze.
+LIGHTING: Narrow warm practical strip from camera-right, cool blue ambient fill, hard rim along coat edge.
+CAMERA: ARRI Alexa 35 look, 35mm anamorphic lens, f/2.8, low camera height.
+COLOR GRADE: Cool cyan shadows, warm amber highlights, low saturation, realistic highlight roll-off.
+COMPOSITION: Leading stair lines, subject lower third, negative space above for final memory hold.
+AVOID: plastic skin, smoothed faces, oversharpening, HDR look, extra fingers, distorted hands, garbled text, cartoon style, illustration, logos, readable signage.
+```
 
 ## Simplify Risk
 

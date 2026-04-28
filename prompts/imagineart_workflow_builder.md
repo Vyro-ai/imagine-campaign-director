@@ -73,6 +73,25 @@ For every image node, include a reference contract:
 - `original`: no visual source required; use ImagineArt 2.0 by default
 - `reference-driven`: list each source node, target input, slot, `@Image` token, and role; use GPT Image 2 by default
 
+For every image node prompt, apply `docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md`. Use labeled lines in this order where possible:
+
+```text
+SHOT:
+SUBJECT:
+ENVIRONMENT:
+LIGHTING:
+CAMERA:
+FILM STOCK / FORMAT:
+COLOR GRADE:
+MOOD:
+COMPOSITION:
+ASPECT RATIO:
+TEXTURE:
+AVOID:
+```
+
+Minimum required blocks are `SHOT`, `SUBJECT`, `ENVIRONMENT`, `LIGHTING`, `CAMERA`, `COLOR GRADE`, `COMPOSITION`, and `AVOID`. Include a concrete camera body/look, lens or focal length, lighting direction, color grade, composition rule, and the universal avoid list. If an image node is a non-visual utility note and cannot use the still grammar, mark it with `metadata.stillPromptExempt: true` and a concrete `metadata.stillPromptExemptReason`.
+
 Recurring people/products/garments are never allowed to be a set of disconnected original stills. First create or import the lock reference(s). Then every dependent still must be reference-driven from those lock nodes. If there is one lead model, every shot anchor containing that model must wire the lead lock to `imageUrl` and say `@Image1 controls identity, face, hair, wardrobe, and posture`.
 
 Any prompt that would otherwise say `same model`, `same person`, `same character`, `same garment`, `matching style`, or `same product` must instead use explicit `@Image1`, `@Image2`, etc. language and matching visible image-reference edges in the canonical spec.

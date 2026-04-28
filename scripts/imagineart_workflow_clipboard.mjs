@@ -204,6 +204,19 @@ const CONTINUITY_SHORTHAND_PATTERN =
   /\b(?:same|matching|consistent)\s+(?:adult\s+)?(?:character|person|model|woman|man|subject|identity|face|hair|wardrobe|outfit|garment|coat|product|style|look)\b/i;
 const HUMAN_SUBJECT_PATTERN =
   /\b(?:adult\s+)?(?:model|person|woman|man|subject|character|actress|actor|face|identity|portrait|casting)\b/i;
+const STILL_PROMPT_REQUIRED_BLOCKS = [
+  "SHOT",
+  "SUBJECT",
+  "ENVIRONMENT",
+  "LIGHTING",
+  "CAMERA",
+  "COLOR GRADE",
+  "COMPOSITION",
+  "AVOID",
+];
+const STILL_PROMPT_NOISE_PATTERN = /\b(?:please|create an image of|make an image of|generate an image of)\b/i;
+const STILL_PROMPT_AVOID_PATTERN =
+  /\b(?:plastic skin|smoothed faces|oversharpening|hdr look|extra fingers|distorted hands|garbled text|cartoon|illustration)\b/i;
 
 const LIVE_MODEL_REGISTRY = {
   image: {
@@ -1139,6 +1152,64 @@ function validateCanonicalImageModelReferenceChoices(source) {
   });
 }
 
+function hasPromptBlock(prompt, block) {
+  return new RegExp(`^\\s*${block.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*:`, "im").test(prompt);
+}
+
+function validateCanonicalStillPromptArchitecture(source) {
+  const policy = source.stillPromptPolicy ?? source.metadata?.stillPromptPolicy ?? {};
+  if (policy.required === false || policy.mode === "off") {
+    if (!policy.reason) {
+      throw new Error("stillPromptPolicy disables cinematic still prompt validation but no reason was provided.");
+    }
+    return;
+  }
+
+  source.nodes.forEach((nodeSpec, index) => {
+    if (nodeSpec?.type !== "image") {
+      return;
+    }
+
+    const logicalId = nodeSpec.id ?? `node-${index + 1}`;
+    const name = nodeSpec.name ?? logicalId;
+    const prompt = nodeSpec.settings?.prompt ?? "";
+    const exemptionReason =
+      nodeSpec.stillPromptExemptReason ??
+      nodeSpec.metadata?.stillPromptExemptReason ??
+      nodeSpec.settings?.stillPromptExemptReason;
+
+    if (nodeSpec.stillPromptExempt || nodeSpec.metadata?.stillPromptExempt || nodeSpec.settings?.stillPromptExempt) {
+      if (!exemptionReason) {
+        throw new Error(`Image node "${name}" is exempt from cinematic still prompt architecture but has no stillPromptExemptReason.`);
+      }
+      return;
+    }
+
+    if (typeof prompt !== "string" || prompt.trim() === "") {
+      throw new Error(`Image node "${name}" is missing a prompt.`);
+    }
+
+    const missing = STILL_PROMPT_REQUIRED_BLOCKS.filter((block) => !hasPromptBlock(prompt, block));
+    if (missing.length > 0) {
+      throw new Error(
+        `Image node "${name}" is missing cinematic still prompt block(s): ${missing.join(", ")}. Use docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md labeled-line grammar or add a documented stillPromptExemptReason.`
+      );
+    }
+
+    if (STILL_PROMPT_NOISE_PATTERN.test(prompt)) {
+      throw new Error(
+        `Image node "${name}" uses noisy request phrasing. Remove "please/create/generate an image of" and describe the still directly.`
+      );
+    }
+
+    if (!STILL_PROMPT_AVOID_PATTERN.test(prompt)) {
+      throw new Error(
+        `Image node "${name}" AVOID block must include the universal AI-look constraints from docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md.`
+      );
+    }
+  });
+}
+
 function validateCanonicalPromptReferences(source) {
   const incomingByTarget = collectIncomingReferenceKeys(source);
 
@@ -1404,6 +1475,7 @@ function materializeCanonicalWorkflow(source, options) {
   validateCanonicalRunBudget(source);
   validateCanonicalImageReferenceContracts(source);
   validateCanonicalImageModelReferenceChoices(source);
+  validateCanonicalStillPromptArchitecture(source);
   validateCanonicalVideoTiming(source);
   validateCanonicalVideoReferenceContracts(source);
   validateGeneratedNodeResultBudget(source);

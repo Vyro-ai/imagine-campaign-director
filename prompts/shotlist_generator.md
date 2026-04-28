@@ -45,6 +45,8 @@ Before the workflow canvas is touched, the shot list must read like a near-deter
 
 If the user requests a believable main actress/model, every relevant shot must repeat the continuity strategy: identity description, wardrobe, hair, makeup, performance style, camera distance, and which connected reference frame/start frame controls the shot. Image prompts must use explicit `@Image1`, `@Image2`, etc. references instead of phrases like `same model` or `same person`.
 
+For every planned still anchor, include a cinematic still prompt object or labeled prompt following `docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md`: shot, subject, environment, lighting, camera, film stock/format, color grade, mood, composition, aspect ratio, texture, and avoid list. Only mutate the shot-specific delta between frames; keep locked subject, location, and aesthetic blocks verbatim when continuity matters.
+
 Default 20-second structure:
 
 1. Hook

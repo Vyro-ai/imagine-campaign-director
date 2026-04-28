@@ -146,6 +146,7 @@ Follow the music standard in `docs/PRODUCTION_STANDARD.md` and the details in `d
 - Make product, wardrobe, material, surface, light, and camera choices concrete.
 - Prefer stillframes/keyframes before motion when consistency matters.
 - Use `ImagineArt 2.0` inside Imagine.Art for original stillframes, styleframes, first/last frames, background plates, graphic inserts, title cards, product hero frames, product closeout plates, and key art when no reference control is required. Use `GPT Image 2` when style, product, character, storyboard, or continuity references are required. Use Nano Banana 2/Pro only when the specific asset role or live model availability justifies it, and document the exception.
+- Apply `docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md` to every still image prompt, regardless of model. Use labeled blocks for shot, subject, environment, lighting, camera, color grade, composition, and avoid list; include film stock/format, mood, aspect ratio, and texture for hero or motion-feeding frames.
 - If a stillframe should preserve identity, product, wardrobe, or style from another source, connect that source as an image reference and refer to it with explicit `@Image1`, `@Image2`, etc. language. Do not write `same model`, `same person`, or `same product` in generation prompts.
 - Feed approved panels into Seedance as start frames, end frames, or reference images with one clear job each.
 - Do not launch final campaign motion from prompt text alone. Generate or upload the needed image reference first, then connect it visibly to the motion node.

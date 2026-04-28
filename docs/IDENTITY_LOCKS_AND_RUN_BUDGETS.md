@@ -11,7 +11,7 @@ Required sequence:
 1. Determine how many recurring identities are needed.
 2. Generate or import one approved lock reference for each identity.
 3. Mark each lock source in the canonical spec with `metadata.identityRole: "identity-lock"`.
-4. Every dependent still uses `GPT Image 2`, connects the lock source to `imageUrl`, and names the role with `@Image1`.
+4. Every dependent still uses `GPT Image 2`, connects the lock source to `imageUrl`, names the role with `@Image1`, and follows `docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md`.
 5. Every Seedance reference-set node connects the lock source to `referenceUrl` and names the role with `@Image1`.
 6. Environment, garment, product-truth, and director's-notes boards get their own reference roles. Do not ask one image to control everything.
 
@@ -45,7 +45,7 @@ For one recurring model, use this pattern:
         "aspectRatio": "9:16",
         "resolution": "2K",
         "quality": "high",
-        "prompt": "@Image1 controls identity, face, hair, wardrobe, and posture. Create the walkway shot..."
+        "prompt": "SHOT: Medium-wide fashion film still, lateral walkway reveal.\\nSUBJECT: @Image1 controls identity, face, hair, wardrobe, and posture. The lead model takes one controlled step in the locked garment.\\nENVIRONMENT: Rain-wet glass and chrome walkway at night, practical lights reflected on concrete.\\nLIGHTING: Warm rim from camera-right practicals, cool ambient fill, motivated reflections on wet floor.\\nCAMERA: ARRI Alexa 35 look, 35mm anamorphic lens, f/2.8, camera at waist height.\\nCOLOR GRADE: Cool cyan shadows, warm amber highlights, low saturation, realistic highlight roll-off.\\nCOMPOSITION: Leading lines down the corridor, subject on left third, negative space ahead.\\nAVOID: plastic skin, smoothed faces, oversharpening, HDR look, extra fingers, distorted hands, garbled text, cartoon style, illustration, logos, readable signage."
       }
     }
   ],

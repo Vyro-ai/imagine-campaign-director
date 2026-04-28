@@ -117,6 +117,8 @@ If the repository has a workspace log, update it when a workspace is created or 
 
 Before touching the Imagine.Art workflow canvas, apply `docs/DIRECTORS_TREATMENT_GATE.md`. The agent must think through the film first: campaign thesis, visual world, model/styling continuity, shot-by-shot timeline, directional diversity, music/beat map, transition logic, Seedance 2 multi-shot node plan, stillframe anchors, QC rejects, and final memory image.
 
+Before generating stillframes, apply `docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md`. Every still prompt should use the labeled cinematography block grammar and a concrete lens/camera/light/grade/texture/avoid list, regardless of whether the selected image model is ImagineArt 2.0, GPT Image 2, Nano Banana 2, Nano Banana Pro, or another Imagine.Art image model.
+
 Before calling a review MP4 ready, apply `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`. Completed canvas nodes and browser previews are not deliverable sources until the motion files are exported/downloaded locally and verified with `ffprobe`.
 
 Before launching or relaunching a workflow node, apply the completion freshness rules in `docs/AUTOMATION_CONTRACT.md`: check Active Runs, update `qa/run-ledger.md`, and refresh/reopen the workflow before deciding a stale-looking node is failed or incomplete. Duplicate runs caused by stale canvas state are operator error. If status cannot be proven after two refresh/reopen checks, use `blocked: node status unknown`.

@@ -14,6 +14,8 @@ Before touching the Imagine.Art workflow canvas, creating workflow nodes, pastin
 
 When creating or pasting workflow nodes, use `docs/IMAGINEART_LIVE_MODEL_STRINGS.md` and `docs/PASTE_FIRST_WORKFLOWS.md`. The current live UI is model-ID driven: `ImagineArt 2.0` is `41601`, `GPT Image 2` is `41701`, and `Seedance 2.0` is `21905`. For GPT Image 2, set `resolution: "2K"` and `quality: "high"`.
 
+For all still image generation, apply `docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md`: use labeled cinematography blocks for shot, subject, environment, lighting, camera, color grade, composition, and avoid list. This applies across ImagineArt 2.0, GPT Image 2, Nano Banana 2, Nano Banana Pro, storyboard panels, styleframes, anchors, first/last frames, and product/environment plates.
+
 For recurring people, products, garments, or other continuity-sensitive subjects, apply `docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md`: lock the required identities first, wire those locked references into every dependent still and Seedance node, and keep live `Number of runs` at `1` unless an explicit identity/look-dev exploration budget is documented.
 
 For campaign motion, apply `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`: every planned generated motion segment must be exported/downloaded locally, verified with `ffprobe`, and listed in the manifest before any `ready` or `finished` claim. A completed canvas node or browser preview is not enough. If a planned Seedance clip cannot be exported, return `blocked: export failure`; do not replace it with still anchors, slideshow assembly, HyperFrames, or local rendering.
