@@ -156,6 +156,10 @@ Do not replace a supplied brand kit with a text description. Do not build a prod
 
 Use the fastest available controlled asset-prep path for these atomic locks. If a local image-generation or image-editing tool is available and appropriate for source atomization, use it to create the clean product/logo/style lock files first, save them in the campaign workspace, then upload/import those files into the Imagine.Art workflow. If no local image tool is available, create the atomic product/logo/style lock nodes inside the Imagine.Art workflow before the rest of the campaign workflow. In both cases, the downstream campaign stills and motion must reference the atomic locks, not the text description alone.
 
+For supplied brand-kit images/screenshots, never recreate the brand kit as SVG, HTML, drawn vector, or text-derived surrogate unless the user explicitly asks for editable vector artwork. Treat the pasted/uploaded bitmap image as the source of truth. If the brand-kit image is visible in thread context, use an imagegen/image-edit workflow to derive bitmap production assets from that exact source: product lock, logo/type lock, palette/material reference, and cleaned packshot. Save those bitmap outputs locally and wire them into Imagine.Art.
+
+If the pasted image cannot be accessed as a file by the active toolchain, stop before creating workflow source assets and ask the user to provide the brand kit as a downloadable/local image file. Do not fabricate a replacement brand board. A validator-required brand-kit source node must point to the real supplied image or an explicitly imagegen/image-edit-derived bitmap from it.
+
 ## Commercial / Social Spot Input
 
 When the user's wording implies a produced ad, default to a real-world video-generation plan:

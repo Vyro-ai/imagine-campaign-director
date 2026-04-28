@@ -13,6 +13,7 @@
         "rejected premise notes documented",
         "campaign thesis defined",
         "supplied brand kit or brand board is declared as a source asset when present",
+        "brand-kit source provenance is real supplied bitmap image or imagegen/image-edit-derived bitmap, not SVG/vector/HTML surrogate",
         "missing atomic product/logo/type assets are identified for generation from the brand kit when needed",
         "atomic asset generation path is chosen: local image tool when available, otherwise first-stage Imagine.Art workflow nodes",
         "visual world and production design system defined",

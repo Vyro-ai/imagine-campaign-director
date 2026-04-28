@@ -44,6 +44,10 @@ For supplied brand kits or brand boards:
 
 - create an uploaded/imported source node, not a generated replacement
 - mark it with `metadata.assetRole: "brand-kit"` or declare it in top-level `brandKit.source`
+- the source node must point to the real supplied bitmap image/screenshot or an explicitly imagegen/image-edit-derived bitmap from that exact source
+- never create an SVG, HTML, drawn vector, canvas, or text-derived brand-board surrogate for campaign production unless the user explicitly asks for editable vector artwork
+- if the pasted image is not accessible as a local/downloadable image file to the active toolchain, stop and ask the user to provide the brand kit as a local/downloadable image before creating workflow source assets
+- use `metadata.sourceProvenance: "supplied-image"` or `metadata.suppliedAsset: true` for real supplied images; use `metadata.imagegenDerivedFromBrandKit: true` or `metadata.imageEditDerivedFromBrandKit: true` for bitmap assets derived from that source
 - list the atomic assets it contains: product, logo/wordmark, palette, typography, graphic elements, material/texture, photography style
 - if separate product/logo/style assets are missing, plan derived lock nodes that consume the brand kit through `imageUrl`
 - if a local image-generation/editing tool is available, use it to create the missing atomic lock files before workflow paste, then upload/import those files into the workflow

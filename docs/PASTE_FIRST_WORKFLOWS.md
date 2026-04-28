@@ -96,6 +96,10 @@ When the user supplies a brand kit, brand board, style guide, or brand-system sc
 Required canonical pattern:
 
 - add a source/import node for the supplied brand kit, marked `metadata.assetRole: "brand-kit"` or top-level `brandKit.source`
+- the brand-kit source must be the real supplied image/screenshot or an explicitly imagegen/image-edit-derived bitmap from it
+- mark real sources with `metadata.sourceProvenance: "supplied-image"` or `metadata.suppliedAsset: true`
+- mark derived bitmap sources with `metadata.imagegenDerivedFromBrandKit: true` or `metadata.imageEditDerivedFromBrandKit: true`
+- never use SVG, HTML, canvas, drawn vector, or text-derived surrogate sources for a supplied brand kit unless the user explicitly requested editable vector artwork
 - if separate product shot/logo files are missing, generate derived lock nodes from the brand kit before campaign stills:
   - product truth lock
   - logo/wordmark/type lock when deterministic type or end card needs it
@@ -106,7 +110,7 @@ Required canonical pattern:
 - every Seedance product/brand-dependent motion node connects the product lock or brand kit through `referenceUrl`
 - prompts use explicit `@Image1`, `@Image2`, etc. role language for brand kit, product truth, logo/type, and palette/material control
 
-The helper rejects canonical specs that declare a brand kit but do not include a visible uploaded/imported brand-kit source, a product/brand lock, or downstream product/brand references.
+The helper rejects canonical specs that declare a brand kit but do not include a visible uploaded/imported brand-kit source, valid source provenance, a product/brand lock, or downstream product/brand references. It also rejects SVG/vector/HTML surrogate brand-kit source nodes.
 
 ## Identity Locks And Run Budgets
 

@@ -210,6 +210,7 @@ const PRODUCT_LOCK_ROLE_PATTERN =
   /\b(?:product[\s_-]?lock|product[\s_-]?truth|hero[\s_-]?product|brand[\s_-]?lock|logo[\s_-]?lock|type[\s_-]?lock)\b/i;
 const PRODUCT_BRAND_SUBJECT_PATTERN =
   /\b(?:brand|logo|wordmark|type|typography|palette|product|packaging|label|can|bottle|box|carton|jar|tube|flacon|lockup|tagline|flavor|sku)\b/i;
+const VECTOR_SURROGATE_PATTERN = /\b(?:svg|vector|html|css|canvas|drawn|redraw|recreated|reconstructed|surrogate)\b/i;
 const STILL_PROMPT_REQUIRED_BLOCKS = [
   "SHOT",
   "SUBJECT",
@@ -968,6 +969,57 @@ function isBrandKitImportLike(nodeSpec) {
   );
 }
 
+function brandKitSourcePathText(nodeSpec) {
+  return [
+    nodeSpec?.path,
+    nodeSpec?.file,
+    nodeSpec?.filePath,
+    nodeSpec?.sourcePath,
+    nodeSpec?.settings?.path,
+    nodeSpec?.settings?.file,
+    nodeSpec?.settings?.filePath,
+    nodeSpec?.settings?.sourcePath,
+    nodeSpec?.settings?.fileType,
+    nodeSpec?.metadata?.path,
+    nodeSpec?.metadata?.file,
+    nodeSpec?.metadata?.filePath,
+    nodeSpec?.metadata?.sourcePath,
+    nodeSpec?.metadata?.sourceProvenance,
+    nodeSpec?.metadata?.createdWith,
+    nodeSpec?.metadata?.createdAs,
+    nodeSpec?.metadata?.derivationMethod,
+  ]
+    .filter(Boolean)
+    .map(String)
+    .join(" ");
+}
+
+function hasBrandKitSourceProvenance(nodeSpec) {
+  return Boolean(
+    nodeSpec?.metadata?.suppliedAsset ||
+      nodeSpec?.metadata?.uploadedAsset ||
+      nodeSpec?.metadata?.realSuppliedImage ||
+      nodeSpec?.metadata?.sourceProvenance === "supplied-image" ||
+      nodeSpec?.metadata?.sourceProvenance === "supplied-screenshot" ||
+      nodeSpec?.metadata?.imagegenDerivedFromBrandKit ||
+      nodeSpec?.metadata?.imageEditDerivedFromBrandKit ||
+      nodeSpec?.metadata?.derivedFromSuppliedBrandKit ||
+      nodeSpec?.imagegenDerivedFromBrandKit ||
+      nodeSpec?.imageEditDerivedFromBrandKit ||
+      nodeSpec?.derivedFromSuppliedBrandKit
+  );
+}
+
+function isForbiddenBrandKitSurrogate(nodeSpec) {
+  const text = brandKitSourcePathText(nodeSpec);
+  const fileType = String(nodeSpec?.settings?.fileType ?? nodeSpec?.metadata?.fileType ?? "").toLowerCase();
+  return (
+    fileType === "image/svg+xml" ||
+    /\.svg\b/i.test(text) ||
+    VECTOR_SURROGATE_PATTERN.test(text)
+  );
+}
+
 function isBrandOrProductContinuityNode(nodeSpec) {
   if (!["image", "video"].includes(nodeSpec?.type)) {
     return false;
@@ -1006,6 +1058,18 @@ function validateCanonicalBrandKitContracts(source) {
     if (!isBrandKitImportLike(nodeSpec)) {
       throw new Error(
         `Brand-kit source "${nodeSpec.name ?? sourceId}" must be an uploaded/imported supplied asset, not a generated image prompt. Use an import/source node so the actual brand kit is visible in the workflow.`
+      );
+    }
+
+    if (!hasBrandKitSourceProvenance(nodeSpec)) {
+      throw new Error(
+        `Brand-kit source "${nodeSpec.name ?? sourceId}" is missing source provenance. Mark real pasted/uploaded brand-kit images with metadata.sourceProvenance: "supplied-image" or metadata.suppliedAsset: true. Mark bitmap assets derived from that exact source with metadata.imagegenDerivedFromBrandKit: true or metadata.imageEditDerivedFromBrandKit: true.`
+      );
+    }
+
+    if (isForbiddenBrandKitSurrogate(nodeSpec)) {
+      throw new Error(
+        `Brand-kit source "${nodeSpec.name ?? sourceId}" appears to be an SVG/vector/HTML/drawn surrogate. Campaign brand-kit sources must point to the real supplied image or an explicitly imagegen/image-edit-derived bitmap from it. Do not fabricate a replacement brand board.`
       );
     }
   }

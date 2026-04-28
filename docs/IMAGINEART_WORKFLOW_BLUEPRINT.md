@@ -75,6 +75,8 @@ Do not ask one source image to do every job. Do not proceed if the product truth
 
 If the user supplies a brand kit, brand board, or style guide, it is a production source, not just prompt inspiration. Add it as an uploaded/imported node in `SOURCE / Inputs`, mark it with `metadata.assetRole: "brand-kit"`, and wire it into the derived lock nodes that need it.
 
+The brand-kit source must be the real supplied bitmap image/screenshot or a bitmap explicitly derived from that exact source through imagegen/image-edit. Do not create an SVG, HTML, canvas, drawn vector, or text-derived surrogate to satisfy the source-node requirement. If the active toolchain cannot access the pasted image as a file, stop before creating workflow source assets and ask for a downloadable/local image file.
+
 When the brand kit contains the product, logo, palette, typography, or material system but separate atomic assets are missing, create those atomic locks before stillframe production:
 
 - `LOCK / Brand Kit Source`: uploaded/imported brand kit image or PDF-derived image page
