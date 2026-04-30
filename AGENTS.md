@@ -8,6 +8,8 @@ For campaign-video requests, the first action is a Computer Use/browser automati
 
 If Computer Use/browser automation is not available, immediately tell the user the request cannot be completed in this environment because CampaignCraft requires Computer Use/browser automation to generate the video in Imagine.Art. Return `blocked` and stop.
 
+If Computer Use/browser automation can reach Imagine.Art but the controlled browser is not already logged in, return `blocked: Imagine.Art login required`, instruct the user to log in to Imagine.Art in that same browser/session, and stop until the user confirms login. Do not proceed to planning, canvas work, workflow nodes, generation, or delivery claims while the login screen blocks access.
+
 If Computer Use/browser automation is available, continue through planning and execution until there is a finished MP4 ready for user review, or until a specific blocker requiring user action stops generation. Supporting markdown files are secondary artifacts, but the director's treatment is a required execution artifact.
 
 Before touching the Imagine.Art workflow canvas, creating workflow nodes, pasting workflow payloads, or launching generation, complete the creative direction gate in `docs/CREATIVE_DIRECTION_GATE.md` and the director's treatment required by `docs/DIRECTORS_TREATMENT_GATE.md`. The film must be planned first: selected creative spine, rejected premise notes, shot-by-shot timeline, visual job and justification for every shot, directional diversity table, cut points, music hits, transition logic, stillframe anchors, Seedance 2 multi-shot node grouping, QC rejects, and final memory image.

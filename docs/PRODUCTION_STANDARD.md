@@ -14,6 +14,8 @@ Computer Use/browser automation is the default execution path. The first action 
 
 If Computer Use/browser automation is unavailable, immediately tell the user the request cannot be completed in this environment because CampaignCraft requires Computer Use/browser automation to generate the video in Imagine.Art. Return `blocked` and stop.
 
+If Computer Use/browser automation can open Imagine.Art but the browser is not already logged in, return `blocked: Imagine.Art login required`, instruct the user to log in to Imagine.Art in that same controlled browser/session, and stop. Login is a user-action blocker, not a reason to produce a static package, prompt pack, local proxy, or `ready for generation` result.
+
 If Computer Use/browser automation is available, use it to operate Imagine.Art directly. Do not return to the user with only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected result is a finished MP4 ready for review, with supporting files as secondary artifacts. A finished MP4 requires locally exported/generated motion files and audio when music was planned.
 
 Use Computer Use/browser automation to:

@@ -48,6 +48,8 @@ Helpful inputs:
 
 ## Starter Prompt
 
+Before you run this, make sure you are already logged in to Imagine.Art in the same browser or desktop session the agent will control. If the agent opens Imagine.Art and sees a login screen, it should stop, report `blocked: Imagine.Art login required`, and ask you to log in before it continues.
+
 Copy this into Codex, Claude Code, Cursor, or another coding agent with browser/computer-use access:
 
 ```text
@@ -213,6 +215,7 @@ Agents should read `AGENTS.md` first, then follow the docs relevant to the job.
 - Outputs still depend on model capability and available Imagine.Art features.
 - Generated video usually needs iteration.
 - The repo needs browser or computer-use access for fully automated Imagine.Art operation.
+- The controlled browser must already be logged in to Imagine.Art. If it is not, the agent should treat login as a blocker and instruct the user to log in.
 - Text and logos can fail in generated media, so final typography should be deterministic when possible.
 - Identity and product consistency can drift and must be checked.
 - Users are responsible for copyright, trademark, publicity, likeness, and brand-rights clearance.

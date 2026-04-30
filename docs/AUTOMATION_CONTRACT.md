@@ -161,7 +161,7 @@ A completed director's treatment, prompt pack, or workflow payload is not a reas
 
 Before launching any generation node, verify:
 
-- the browser is logged in to Imagine.Art
+- the browser controlled by Computer Use/browser automation is already logged in to Imagine.Art; if it is not, return `blocked: Imagine.Art login required`, instruct the user to log in in that same browser/session, and stop before canvas work or generation
 - the correct workflow is open
 - the canvas state is fresh: if the page has been open through a long run, after any network stall, or whenever a node appears unchanged after a launch, refresh/reopen the workflow before deciding the node is idle, failed, or incomplete
 - source assets are visible on the canvas or imported into the intended node

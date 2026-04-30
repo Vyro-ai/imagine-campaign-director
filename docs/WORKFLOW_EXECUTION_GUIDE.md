@@ -4,6 +4,8 @@ Use this when turning a CampaignCraft plan into an Imagine.Art Workflow.
 
 For hands-on browser execution, this guide is subordinate to `docs/AUTOMATION_CONTRACT.md`: the agent must preflight visible UI settings, run stages in order, recover from known failures, and clean the final workflow.
 
+If the controlled browser reaches Imagine.Art but is not already logged in, stop with `blocked: Imagine.Art login required` and instruct the user to log in in that same browser/session. Do not open the workflow canvas, paste nodes, launch generation, or substitute a local/static package until login is resolved.
+
 ## Build Strategy
 
 Start from a relevant preset or featured workflow when it matches the job. Use a blank canvas for custom campaign systems. For complex repeatable graphs, create a structured workflow plan before opening the canvas.
