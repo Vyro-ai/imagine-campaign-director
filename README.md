@@ -6,7 +6,6 @@ Use it when you want a real Imagine.Art campaign workflow and review video, not 
 
 Codex is the AI coding agent that reads this repo and runs the job. Computer Use is the tool that lets Codex click, type, paste, and download inside Google Chrome. We recommend Codex because Imagine.Art workflow canvases need reliable browser, canvas, clipboard, download, and file-verification control; Claude and other agents' computer-use tools can struggle with those workflow interactions.
 
-Need to turn on Computer Use? Follow OpenAI's Codex app guide: [Enable Computer Use](https://developers.openai.com/codex/app/computer-use).
 
 ![How imagine-campaign-director works](docs/community-how-to/assets/01-simple-flow.png)
 
@@ -18,7 +17,7 @@ Do this before you ask for a campaign video.
    Codex works best because it can read this repo, follow `AGENTS.md`, use tools, spawn required subagents, and operate a browser when Computer Use is available. Subagents are helper agents Codex uses to brainstorm, critique, and catch weak campaign ideas before credits are spent.
 
 2. **Enable Computer Use or browser control**
-   Use a Codex workspace or thread where Computer Use, Browser Use, browser automation, or desktop control is available. If Codex asks to enable or allow Computer Use, allow it. If your Codex UI has a tools or plugins area, enable Computer Use and browser control there.
+   Use a Codex workspace or thread where Computer Use, Browser Use, browser automation, or desktop control is available. Follow OpenAI's Codex app guide to enable: [Enable Computer Use](https://developers.openai.com/codex/app/computer-use).
 
 3. **Use Google Chrome**
    Keep Chrome open. Codex needs to operate the same browser session where Imagine.Art is open.
