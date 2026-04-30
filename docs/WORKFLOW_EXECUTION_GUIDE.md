@@ -1,6 +1,6 @@
 # Workflow Execution Guide
 
-Use this when turning a CampaignCraft plan into an Imagine.Art Workflow.
+Use this when turning a campaign plan into an Imagine.Art Workflow.
 
 For hands-on browser execution, this guide is subordinate to `docs/AUTOMATION_CONTRACT.md`: the agent must preflight visible UI settings, run stages in order, recover from known failures, and clean the final workflow.
 

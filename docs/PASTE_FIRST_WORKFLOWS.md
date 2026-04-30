@@ -4,7 +4,7 @@ Use this when building multi-node Imagine.Art campaign workflows. Manual node cr
 
 ## Helper
 
-CampaignCraft includes a local clipboard helper:
+This repo includes a local clipboard helper:
 
 ```bash
 node scripts/imagineart_workflow_clipboard.mjs \
@@ -166,7 +166,7 @@ Use the live labels and copied JSON IDs in `docs/IMAGINEART_LIVE_MODEL_STRINGS.m
 
 For GPT Image 2, set `resolution: "2K"` and `quality: "high"`.
 
-Campaign motion nodes must use Seedance 2 or the specifically approved Imagine.Art campaign motion model. If a pasted or UI-created video node defaults to `Kling 3.0`, it is invalid for CampaignCraft campaign motion unless the user explicitly requested Kling.
+Campaign motion nodes must use Seedance 2 or the specifically approved Imagine.Art campaign motion model. If a pasted or UI-created video node defaults to `Kling 3.0`, it is invalid for campaign motion unless the user explicitly requested Kling.
 
 Before launch:
 

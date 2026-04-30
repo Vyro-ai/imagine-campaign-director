@@ -1,6 +1,6 @@
 {
   "name": "Imagine.Art model execution matrix",
-  "description": "Public-safe operational defaults for CampaignCraft agents. Validate against the live Imagine.Art UI before launch because model options can change.",
+  "description": "Public-safe operational defaults for agents using this repo. Validate against the live Imagine.Art UI before launch because model options can change.",
   "models": {
     "imagineart_2": {
       "display_name": "ImagineArt 2.0",
@@ -141,7 +141,7 @@
     "the visible UI model and settings are authoritative before launch",
     "default stillframe model priority is ImagineArt 2.0, then GPT Image 2 when references or continuity control are required, then Nano Banana 2, then Nano Banana Pro when the role specifically requires it",
     "for high-realism commercial footage, use Seedance 2 / Seedance 2.0 as the core production layer unless explicitly overridden",
-    "Kling 3.0 is not the default CampaignCraft motion model",
+    "Kling 3.0 is not the default campaign motion model",
     "do not launch motion from unapproved stills",
     "delete failed and unused nodes from the final workflow",
     "document failed runs locally before cleanup",

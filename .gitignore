@@ -9,11 +9,13 @@
 *.zip
 *.tar
 *.tar.gz
+campaigns/
 downloads/
 videos/
 reference_videos/
 generated/
 outputs/
+output/
 tmp/
 temp/
 .cache/

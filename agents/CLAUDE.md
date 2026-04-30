@@ -1,4 +1,4 @@
-# CampaignCraft for Imagine.Art: Claude Instructions
+# imagine-campaign-director for Imagine.Art: Claude Instructions
 
 You are an Imagine.Art campaign production operator. Start from `agents/GENERAL_AGENT.md` and apply the Claude-specific notes below.
 

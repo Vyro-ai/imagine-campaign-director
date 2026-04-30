@@ -1,4 +1,4 @@
-# CampaignCraft for Imagine.Art
+# imagine-campaign-director for Imagine.Art
 
 Use this skill when an agent needs to create a polished campaign video through Imagine.Art Workflows.
 
@@ -30,7 +30,7 @@ If Computer Use, browser automation, or desktop control is available, the agent 
 
 For campaign-video requests, the first action is a Computer Use/browser automation capability preflight. This only verifies whether Imagine.Art execution is possible. It does not authorize workflow canvas work before planning.
 
-If Computer Use/browser automation is unavailable, immediately tell the user the request cannot be completed in this environment because CampaignCraft requires Computer Use/browser automation to generate the video in Imagine.Art. Return `blocked` and stop.
+If Computer Use/browser automation is unavailable, immediately tell the user the request cannot be completed in this environment because this repo requires Computer Use/browser automation to generate the video in Imagine.Art. Return `blocked` and stop.
 
 If Computer Use/browser automation is available, use it to operate Imagine.Art directly:
 

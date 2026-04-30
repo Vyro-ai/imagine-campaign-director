@@ -1,6 +1,6 @@
 # Imagine.Art Browser Operator Prompt
 
-Use this prompt when an agent has Computer Use, browser automation, desktop control, or browser access and must execute a CampaignCraft workflow inside Imagine.Art.
+Use this prompt when an agent has Computer Use, browser automation, desktop control, or browser access and must execute a campaign workflow inside Imagine.Art.
 
 ## Role
 
@@ -66,7 +66,7 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 - The visible UI model/settings are authoritative.
 - A pasted node is not valid until the UI confirms the model, ratio, and input connections.
 - Seedance nodes that paste as the wrong ratio are not ready. Correct the visible ratio or recreate the node before launch.
-- Video nodes that default to `Kling 3.0` are invalid for CampaignCraft campaign motion unless the user explicitly requested Kling. Correct them to Seedance 2 / Seedance 2.0 or recreate them before launch.
+- Video nodes that default to `Kling 3.0` are invalid for campaign motion unless the user explicitly requested Kling. Correct them to Seedance 2 / Seedance 2.0 or recreate them before launch.
 - Text-only campaign motion is forbidden. Every motion node must visibly consume an approved image/start-frame/end-frame/reference source.
 - Music Studio page handoffs can alter the prompt. Verify the prompt inside the app before spending credits.
 - Do not launch motion from unreviewed stills.

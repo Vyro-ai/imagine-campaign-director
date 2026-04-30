@@ -1332,7 +1332,7 @@ function validateCanonicalCanvasLayout(source) {
 
   if (offendingCoordinate) {
     throw new Error(
-      `Canvas layout places node "${offendingCoordinate.nodeSpec.name ?? offendingCoordinate.logicalId}" at (${offendingCoordinate.x}, ${offendingCoordinate.y}), outside the readable coordinate limit (${limits.maxAbsX}, ${limits.maxAbsY}). Keep CampaignCraft workflows in compact stage columns and shot rows, or provide layoutPolicy.required=false with a reason.`
+      `Canvas layout places node "${offendingCoordinate.nodeSpec.name ?? offendingCoordinate.logicalId}" at (${offendingCoordinate.x}, ${offendingCoordinate.y}), outside the readable coordinate limit (${limits.maxAbsX}, ${limits.maxAbsY}). Keep workflows in compact stage columns and shot rows, or provide layoutPolicy.required=false with a reason.`
     );
   }
 

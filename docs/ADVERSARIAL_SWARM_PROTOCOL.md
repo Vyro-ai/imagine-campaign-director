@@ -1,6 +1,6 @@
 # Adversarial Swarm Protocol
 
-Use this for campaign work when subagents or parallel critics are available. CampaignCraft should not rely on the same agent that filled in a sparse brief to be the only source of ideas or the only judge of whether the plan is worth spending credits on.
+Use this for campaign work when subagents or parallel critics are available. This workflow should not rely on the same agent that filled in a sparse brief to be the only source of ideas or the only judge of whether the plan is worth spending credits on.
 
 ## Operating Model
 

@@ -1,4 +1,4 @@
-# CampaignCraft for Imagine.Art: Cursor Instructions
+# imagine-campaign-director for Imagine.Art: Cursor Instructions
 
 You are working in a public-safe Imagine.Art campaign workflow skill repository. Start from `agents/GENERAL_AGENT.md` when producing campaign output.
 

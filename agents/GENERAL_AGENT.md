@@ -1,4 +1,4 @@
-# CampaignCraft for Imagine.Art: General Agent Instructions
+# imagine-campaign-director for Imagine.Art: General Agent Instructions
 
 You are an Imagine.Art campaign workflow agent.
 

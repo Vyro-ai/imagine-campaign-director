@@ -1,14 +1,18 @@
-# CampaignCraft Agent Guard
+# imagine-campaign-director Agent Guard
 
 This repository is Imagine.Art-first.
+
+Users may give only a short onboarding prompt such as "Use this repo to make a campaign video." Treat that as sufficient to activate all production rules in this file and `docs/`. Do not require the user to restate Computer Use, browser preflight, login handling, clipboard permission handling, subagent swarms, treatment gates, motion export gates, or HyperFrames finishing guidance in their prompt.
 
 Computer Use is the default execution tool when available. If the Computer Use plugin, browser automation, or any desktop-control tool is available, use it to operate Imagine.Art directly before returning a static package.
 
 For campaign-video requests, the first action is a Computer Use/browser automation preflight: check whether Computer Use/browser automation can operate Imagine.Art. This preflight only verifies execution capability. It does not authorize opening the workflow canvas or creating generation nodes before planning.
 
-If Computer Use/browser automation is not available, immediately tell the user the request cannot be completed in this environment because CampaignCraft requires Computer Use/browser automation to generate the video in Imagine.Art. Return `blocked` and stop.
+If Computer Use/browser automation is not available, immediately tell the user the request cannot be completed in this environment because this repo requires Computer Use/browser automation to generate the video in Imagine.Art. Return `blocked` and stop.
 
 If Computer Use/browser automation can reach Imagine.Art but the controlled browser is not already logged in, return `blocked: Imagine.Art login required`, instruct the user to log in to Imagine.Art in that same browser/session, and stop until the user confirms login. Do not proceed to planning, canvas work, workflow nodes, generation, or delivery claims while the login screen blocks access.
+
+If Chrome or the controlled browser asks whether `www.imagine.art` can see text and images copied to the clipboard, tell the user this permission is expected and needed for pasting structured workflow data into Imagine.Art. Ask the user to click Allow. Do not treat this permission prompt as suspicious by itself.
 
 If Computer Use/browser automation is available, continue through planning and execution until there is a finished MP4 ready for user review, or until a specific blocker requiring user action stops generation. Supporting markdown files are secondary artifacts, but the director's treatment is a required execution artifact.
 
@@ -21,6 +25,8 @@ For all still image generation, apply `docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.m
 For recurring people, products, garments, or other continuity-sensitive subjects, apply `docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md`: lock the required identities first, wire those locked references into every dependent still and Seedance node, and keep live `Number of runs` at `1` unless an explicit identity/look-dev exploration budget is documented.
 
 For campaign motion, apply `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`: every planned generated motion segment must be exported/downloaded locally, verified with `ffprobe`, and listed in the manifest before any `ready` or `finished` claim. A completed canvas node or browser preview is not enough. If a planned Seedance clip cannot be exported, return `blocked: export failure`; do not replace it with still anchors, slideshow assembly, HyperFrames, or local rendering.
+
+HyperFrames is the recommended finishing tool after reviewed Imagine.Art motion exists. If HyperFrames is not available and the environment can install or enable it, get any required user approval for installation and set it up before final assembly. If it cannot be installed or enabled, use another available editor only for finishing reviewed motion, or report the final-assembly blocker. Never use HyperFrames or any local renderer to replace missing Imagine.Art campaign motion.
 
 For campaign work, apply `docs/ADVERSARIAL_SWARM_PROTOCOL.md`: spawn an ideation swarm before the creative spine, then short-lived critics at treatment, pre-spend, director's-eye/anchor, motion launch, clip, and delivery gates. The main operator remains accountable for the canvas, but swarm outputs can block weak ideas, spend, and delivery. If subagents cannot be spawned, return `blocked: subagents unavailable` before canvas work, paid generation, or delivery; do not use single-agent fallback reports for campaign materialization or signoff.
 
@@ -41,7 +47,7 @@ For any user request to create a campaign video, ad, fashion film, commercial, T
 11. Export or assemble a finished MP4 ready for review only after motion export, audio, and QC gates pass.
 12. Use HyperFrames, HTML, canvas, or local rendering only after reviewed/generated motion exists, and only for finishing, assembly, timing, captions, typography, effects, and export.
 
-Do not begin by saying you will use a HyperFrames workflow, HyperFrames composition, HTML-based composition, local video composition, canvas animation, slideshow, or motion-graphics piece for the campaign. Those are proxy/finishing paths, not the CampaignCraft production default.
+Do not begin by saying you will use a HyperFrames workflow, HyperFrames composition, HTML-based composition, local video composition, canvas animation, slideshow, or motion-graphics piece for the campaign. Those are proxy/finishing paths, not this repo's production default.
 
 Do not mark a campaign `ready for generation` or `motion pending` until you have attempted or explicitly preflighted Computer Use/browser automation for Imagine.Art. If Computer Use/browser execution is blocked, report the exact blocker: missing Computer Use/browser automation, login, subscription/credits, missing source asset, unavailable model, UI failure, moderation, generation failure, or export failure. Do not substitute a local render as final.
 

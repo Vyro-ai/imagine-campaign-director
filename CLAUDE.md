@@ -1,6 +1,6 @@
-# CampaignCraft Claude Guard
+# imagine-campaign-director Claude Guard
 
-Follow `AGENTS.md`. CampaignCraft is Imagine.Art-first.
+Follow `AGENTS.md`. This repo is Imagine.Art-first.
 
 When Computer Use, browser automation, or desktop control is available, use it to operate Imagine.Art by default before returning a static workflow package.
 

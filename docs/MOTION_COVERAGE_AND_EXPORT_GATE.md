@@ -4,7 +4,7 @@ Use this before calling any campaign export `ready`, `finished`, or `delivered`.
 
 ## Finished MP4 Definition
 
-A CampaignCraft review MP4 is complete only when every planned generated motion segment has been exported or downloaded as a local video file, verified with `ffprobe`, and listed in the shot-source manifest.
+A review MP4 is complete only when every planned generated motion segment has been exported or downloaded as a local video file, verified with `ffprobe`, and listed in the shot-source manifest.
 
 Canvas thumbnails, visible completed nodes, browser previews, still anchors, storyboards, contact sheets, or locally animated stills do not count as exported motion.
 

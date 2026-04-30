@@ -1,6 +1,6 @@
 # Imagine.Art Workflow Blueprint
 
-CampaignCraft assumes the final production process happens through Imagine.Art Workflows.
+This repo assumes the final production process happens through Imagine.Art Workflows.
 
 If browser access is available, the agent should execute the workflow, not stop at a plan. See `docs/AUTOMATION_CONTRACT.md` for the required execution, recovery, and cleanup standard.
 
@@ -196,7 +196,7 @@ When the user asks for a believable actress/model, prioritize consistency across
 
 Before launch, expand or inspect every motion node and verify the visible model, duration, quality, ratio, audio toggle, and source-frame/reference connections. Clipboard/import payloads are not enough. In testing, Seedance nodes pasted with a vertical payload still opened as `1:1` until corrected in the UI.
 
-If a video node visibly defaults to `Kling 3.0`, it is not a valid CampaignCraft campaign motion node unless the user explicitly requested Kling. Correct it to Seedance 2 / Seedance 2.0 or delete/recreate it before launch.
+If a video node visibly defaults to `Kling 3.0`, it is not a valid campaign motion node unless the user explicitly requested Kling. Correct it to Seedance 2 / Seedance 2.0 or delete/recreate it before launch.
 
 Do not create a multi-shot Seedance node that references several still anchors or director's-notes boards while only wiring one `Start Frame`. If a node needs multiple visual references, use the reference-image set contract from `docs/PASTE_FIRST_WORKFLOWS.md`: `referenceUrl` slots, explicit target slots, and matching `@Image` references in the prompt. If the live UI cannot show those inputs, split the motion into simpler start/end-frame nodes.
 

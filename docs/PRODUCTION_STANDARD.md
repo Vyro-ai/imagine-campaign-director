@@ -1,20 +1,24 @@
 # Production Standard
 
-This is the canonical CampaignCraft standard for campaign delivery. Other docs and agent files should link here instead of restating these rules.
+This is the canonical standard for campaign delivery. Other docs and agent files should link here instead of restating these rules.
 
 ## Default Product
 
-CampaignCraft is Imagine.Art-first. A campaign request means real workflow execution through Imagine.Art Workflows and Imagine.Art Music Studio whenever Computer Use, browser automation, or desktop control is available.
+This repo is Imagine.Art-first. A campaign request means real workflow execution through Imagine.Art Workflows and Imagine.Art Music Studio whenever Computer Use, browser automation, or desktop control is available.
 
 For social media campaigns, TikTok/Reels ads, 30s spots, commercials, and professionally shot or produced videos, the expected deliverable is a believable generated video ad. A written concept, static storyboard, prompt pack, workflow map, HTML-only animation, still montage, or pan/zoom edit is not a finished campaign.
+
+The user does not need to paste the full operational checklist. A short prompt that points to this repo and describes the campaign is enough. The agent must infer and apply the Computer Use preflight, login blocker, clipboard permission handling, required subagent swarms, director's treatment, motion export gates, and HyperFrames finishing guidance from this repository.
 
 ## Computer Use Execution Rule
 
 Computer Use/browser automation is the default execution path. The first action after receiving a campaign-video request is to preflight whether Computer Use/browser automation can operate Imagine.Art.
 
-If Computer Use/browser automation is unavailable, immediately tell the user the request cannot be completed in this environment because CampaignCraft requires Computer Use/browser automation to generate the video in Imagine.Art. Return `blocked` and stop.
+If Computer Use/browser automation is unavailable, immediately tell the user the request cannot be completed in this environment because this repo requires Computer Use/browser automation to generate the video in Imagine.Art. Return `blocked` and stop.
 
 If Computer Use/browser automation can open Imagine.Art but the browser is not already logged in, return `blocked: Imagine.Art login required`, instruct the user to log in to Imagine.Art in that same controlled browser/session, and stop. Login is a user-action blocker, not a reason to produce a static package, prompt pack, local proxy, or `ready for generation` result.
+
+If Chrome asks whether Imagine.Art can see text and images copied to the clipboard, explain that this is expected and necessary for pasting structured workflow data into Imagine.Art, then ask the user to click Allow. This permission prompt is not a blocker unless the user declines it or the workflow cannot be pasted without it.
 
 If Computer Use/browser automation is available, use it to operate Imagine.Art directly. Do not return to the user with only markdown files, prompt packs, workflow maps, or `ready for generation` status. The expected result is a finished MP4 ready for review, with supporting files as secondary artifacts. A finished MP4 requires locally exported/generated motion files and audio when music was planned.
 
@@ -49,7 +53,9 @@ Default path:
 4. Imagine.Art Music Studio or supplied music
 5. HyperFrames/editor assembly, timing, typography, captions, effects, and final render only after reviewed motion exists
 
-HyperFrames is never the first production layer for CampaignCraft campaign video requests. If Computer Use/browser execution is unavailable, return `ready for generation`, `motion pending`, or `blocked`; do not substitute a local video composition as final.
+HyperFrames is never the first production layer for campaign video requests. If Computer Use/browser execution is unavailable, return `ready for generation`, `motion pending`, or `blocked`; do not substitute a local video composition as final.
+
+HyperFrames is recommended for final assembly after reviewed Imagine.Art motion exists. If HyperFrames is unavailable and the runtime can install or enable it, get any required user approval for installation and set it up before final assembly. If it cannot be installed or enabled, use another available editor only for finishing reviewed motion, or report the final-assembly blocker. HyperFrames must never be used to fake missing Imagine.Art motion.
 
 Wrong first response:
 
@@ -69,7 +75,7 @@ Also wrong:
 I'll use the HyperFrames workflow for this since the request is for an HTML-based campaign video composition.
 ```
 
-The user does not need to say "Imagine.Art" for this default to apply. In CampaignCraft, ordinary language such as "campaign video," "fashion film," "commercial," "social ad," or "professionally shot video" is enough to trigger the Imagine.Art-first path.
+The user does not need to say "Imagine.Art" for this default to apply. In this repo, ordinary language such as "campaign video," "fashion film," "commercial," "social ad," or "professionally shot video" is enough to trigger the Imagine.Art-first path.
 
 ## Required Campaign Parts
 

@@ -1,6 +1,6 @@
 # Contributing
 
-CampaignCraft is opinionated. Contributions should help agents make better aesthetic decisions, not just produce longer prompts.
+imagine-campaign-director is opinionated. Contributions should help agents make better aesthetic decisions, not just produce longer prompts.
 
 ## Add Campaign Archetypes
 

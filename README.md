@@ -1,98 +1,60 @@
 # imagine-campaign-director
 
-A practical guide for using a coding agent with Imagine.Art to make campaign videos from your idea, product photos, brand kit, mood board, and references.
+This turns a product photo, brand kit, reference, or rough idea into a campaign video built inside Imagine.Art, with an AI agent doing the planning, workflow setup, generation, review, and packaging.
 
+Use it when you want a real Imagine.Art campaign workflow and review video, not just a pile of prompts.
 
-`imagine-campaign-director` helps an agent behave less like a random prompt generator and more like a small production team: strategist, creative director, workflow builder, prompt engineer, assistant editor, and QC reviewer.
-
-It is for creators, founders, marketers, filmmakers, and community members who want to turn real source material into an Imagine.Art campaign workflow with a plan, reusable visual references, motion, music when needed, and honest review notes.
+Codex is the AI coding agent that reads this repo and runs the job. Computer Use is the tool that lets Codex click, type, paste, and download inside Google Chrome. We recommend Codex because Imagine.Art workflow canvases need reliable browser, canvas, clipboard, download, and file-verification control; Claude and other agents' computer-use tools can struggle with those workflow interactions.
 
 ![How imagine-campaign-director works](docs/community-how-to/assets/01-simple-flow.png)
 
-## The Short Version
+## What You Need
 
-1. Give your agent this repo.
-2. Give it your idea and source files.
-3. Tell it what kind of campaign you want.
-4. The agent plans the campaign before spending credits.
-5. It builds the Imagine.Art workflow, makes the assets, checks the result, and packages a review video.
+Do this before you ask for a campaign video.
 
-## Who This Is For
+1. **Use Codex**
+   Codex works best because it can read this repo, follow `AGENTS.md`, use tools, spawn required subagents, and operate a browser when Computer Use is available. Subagents are helper agents Codex uses to brainstorm, critique, and catch weak campaign ideas before credits are spent.
 
-Use it when you want an agent to help make:
+2. **Enable Computer Use or browser control**
+   Use a Codex workspace or thread where Computer Use, Browser Use, browser automation, or desktop control is available. If Codex asks to enable or allow Computer Use, allow it. If your Codex UI has a tools or plugins area, enable Computer Use and browser control there.
 
-- Product launch videos
-- Fashion, beauty, fragrance, and lifestyle campaigns
-- Brand mood films
-- App feature promos
-- Social ads for TikTok, Reels, YouTube Shorts, or paid media
-- Music-led visual spots
-- Reference-driven campaign tests from a product photo or brand kit
-- Existing workflow audits before spending more credits
+3. **Use Google Chrome**
+   Keep Chrome open. Codex needs to operate the same browser session where Imagine.Art is open.
 
-## What To Give The Agent
+4. **Log in to Imagine.Art**
+   Log in to Imagine.Art in that same Chrome session before starting. If Codex sees a login screen, it must stop and report **`blocked: Imagine.Art login required`**.
 
-You do not need all of this, but the more context you provide, the less the agent has to guess.
+5. **Allow the Chrome clipboard prompt**
+   Chrome may show a prompt that says `www.imagine.art wants to see text and images copied to the clipboard`. This is normal. Codex needs clipboard access to paste workflow data into Imagine.Art. Click **Allow**.
 
-![What to give the agent](docs/community-how-to/assets/02-what-to-give.png)
+6. **Have Codex install or enable HyperFrames**
+   HyperFrames is recommended for final assembly after Imagine.Art motion exists. It helps Codex do precise timing, captions, typography, transitions, logo lockups, and MP4 export. It should not replace missing Imagine.Art motion.
 
-Helpful inputs:
+> Important:
+> - If Codex cannot control Chrome, it cannot finish the campaign.
+> - If Imagine.Art is not logged in, Codex should stop and tell you to log in.
+> - If required subagent swarms are unavailable, Codex should stop instead of pretending the campaign is complete.
 
-- Your idea: what you want to make, even if it is rough.
-- Product photos: packshots, details, labels, materials, or screenshots.
-- Brand kit: logo, colors, type, product rules, sample posts, tone.
-- Mood board: lighting, locations, textures, fashion references, visual atmosphere.
-- Reference videos: examples for pacing, camera style, edits, or taste level.
-- Audience: who it is for and what they should feel.
-- What to avoid: cliches, styles you hate, wrong audience cues, legal or brand limits.
+## How To Start
 
-## Starter Prompt
-
-Before you run this, make sure you are already logged in to Imagine.Art in the same browser or desktop session the agent will control. If the agent opens Imagine.Art and sees a login screen, it should stop, report `blocked: Imagine.Art login required`, and ask you to log in before it continues.
-
-Copy this into Codex, Claude Code, Cursor, or another coding agent with browser/computer-use access:
+Copy this prompt into Codex and replace `<your idea here>` with what you want to make. Attach any product photos, brand kits, mood boards, or references you have. The detailed execution rules are already inside this repo, so the prompt can stay short.
 
 ```text
-Use this repo: https://github.com/Vyro-ai/imagine-campaign-director
+Use @Computer Use / sub-agent swarms and this repo:
+https://github.com/Vyro-ai/imagine-campaign-director
 
-I want to make a [duration] [format] campaign video for [product / brand / idea].
-
-Here are my source materials: [product photo, brand kit, mood board, references].
-
-The vibe should be [visual direction].
-The audience is [audience].
-The CTA is [CTA, if any].
-Avoid [things to avoid].
-
-Plan the campaign first, then build the Imagine.Art workflow, generate the needed assets, create motion and music if needed, check the result, and package a review video with notes.
+to create <your idea here>
 ```
 
-## What The Agent Should Do
+## Example Prompts
 
-A strong run should follow this order:
-
-1. Understand the brief. What is the product, audience, format, runtime, and goal?
-2. Use your real files. Product photos, brand kits, and references should guide the result.
-3. Plan before spending. The agent should define the concept, shot list, and music/edit direction first.
-4. Create reusable references. The product, brand look, people, wardrobe, and style should stay consistent.
-5. Build the Imagine.Art workflow. The workflow should be readable and organized.
-6. Generate stills before motion. Still images and keyframes help keep the video consistent.
-7. Make motion and music. Animate the approved visuals and generate or import music when the brief needs it.
-8. Review honestly. The agent should reject broken outputs and document blockers.
-9. Package the result. Final review video, notes, and source manifest.
-
-![How the agent uses your files](docs/community-how-to/assets/03-use-your-files.png)
-
-## Examples
-
-### Product Launch Video
+### Product Launch
 
 ```text
 Use imagine-campaign-director to create a 15-second vertical launch ad for this canned drink.
 Use the product photo and brand kit as the visual source.
-The vibe is moody late-night convenience-store cinema, made for creators and gamers.
+The vibe is moody late-night convenience-store cinema for creators and gamers.
 Avoid sports drink cliches, smiling-at-camera acting, and fake labels.
-Deliver a review video plus notes.
 ```
 
 ### Fashion Campaign
@@ -101,25 +63,6 @@ Deliver a review video plus notes.
 Use imagine-campaign-director to make a 30-second luxury fashion film.
 The mood is rain, black glass, chrome, restrained performance, and a strong final hero image.
 Keep the model and wardrobe consistent across shots.
-Plan the campaign before creating the workflow.
-```
-
-### App Feature Promo
-
-```text
-Use imagine-campaign-director to make a 20-second promo for this app feature.
-Mix clean UI moments with cinematic context shots.
-Use captions and deterministic type in the edit.
-Make it clear, fast, and premium.
-```
-
-### Brand Kit Stress Test
-
-```text
-Use imagine-campaign-director to test this brand kit as a campaign system.
-Create three possible campaign directions.
-Pick the strongest direction, then make a short workflow plan and example visuals.
-Do not invent new logos, colors, or product details.
 ```
 
 ### Existing Workflow Audit
@@ -130,96 +73,66 @@ Do not launch anything yet.
 Tell me what is missing, what might waste credits, what assets are not connected, and what needs to be fixed before generation continues.
 ```
 
+## What To Attach
+
+You can start with a rough idea, but files help a lot.
+
+![What to give the agent](docs/community-how-to/assets/02-what-to-give.png)
+
+Good inputs:
+
+- Product photos: packshots, labels, details, materials, screenshots.
+- Brand kit: logo, colors, fonts, sample posts, tone, rules.
+- Mood board: lighting, locations, fashion, texture, atmosphere.
+- Reference videos: pacing, camera style, edits, taste level.
+- Audience: who the video is for.
+- CTA: what the viewer should do.
+- Avoid list: cliches, wrong looks, legal limits, brand mistakes.
+
+If you only have one sentence, that is fine. Codex should expand the brief before generating.
+
+## If Something Goes Wrong
+
+- **`blocked: Imagine.Art login required`**: You are not logged in to Imagine.Art in the Chrome session Codex controls. Log in there, then ask Codex to continue.
+- **`blocked: missing Computer Use/browser automation`**: Codex cannot control Chrome or Imagine.Art. Use a Codex environment with Computer Use or browser control enabled.
+- **`blocked: subagents unavailable`**: The repo requires subagent swarms for campaign materialization and signoff. Use an agent environment that can spawn subagents.
+- **Chrome clipboard permission prompt**: This is normal. Imagine.Art may ask to see text and images copied to the clipboard. Codex needs this to paste workflow data into the canvas. Click **Allow**.
+- **`blocked: subscription/credits`**: Imagine.Art cannot generate because the account does not have the needed access or credits.
+- **`blocked: export failure`**: A clip may exist in the canvas, but Codex could not download or verify the motion file. It should not fake the final video.
+- **HyperFrames unavailable**: Codex can still generate Imagine.Art motion, but final assembly may be weaker or blocked. Best results come from installing or enabling HyperFrames for finishing.
+
+## What Finished Means
+
+A finished run should give you five things you can check:
+
+- A clear campaign direction and shot plan.
+- An Imagine.Art workflow built from your source materials.
+- Generated motion clips, not just still images or a browser preview.
+- A review MP4 with music if music was planned.
+- QC notes, revision notes, and a shot-source manifest showing where each shot came from.
+
+If motion failed, export failed, music is missing, login is blocked, or the result is only a proxy, Codex should say that clearly.
+
 ## Credit Safety
 
-The repo includes rules to help agents avoid accidental duplicate runs. In plain English:
-
-- Pick the right thing before clicking run.
-- Check the cost before spending.
-- Click once.
-- Wait for results.
-- If anything is unclear, stop and ask instead of guessing.
+Before spending Imagine.Art credits, Codex should know exactly what it is running. It should select the right node, check the cost, click once, wait for the result, and stop if selection or cost is unclear.
 
 ![Before spending credits](docs/community-how-to/assets/04-before-credits.png)
 
-## Do I Need HyperFrames?
+## FAQ
 
-Not always. Imagine.Art is the generation layer. HyperFrames is an optional finishing layer for precise edits: captions, typography, transitions, logo/product lockups, music timing, and final export.
+**Do I need HyperFrames?**
 
-If your agent already has HyperFrames installed, it can use it after the Imagine.Art motion clips are generated and reviewed.
+You do not need it before Imagine.Art generation, but you should have Codex install or enable it for finishing. Imagine.Art is the generation layer. HyperFrames is the finishing layer for captions, typography, logo lockups, transitions, timing, and final MP4 export. It should never be used to fake missing Imagine.Art motion.
 
-If HyperFrames is not installed, the agent should say so and either:
+**Can I use another agent?**
 
-- Use another available editor/export path.
-- Mark final assembly as blocked until HyperFrames or another editor is available.
+Maybe, but best results come from Codex with Computer Use and subagents available. If another agent cannot control Chrome, use subagent swarms, download files, or verify motion exports, it should report a blocker.
 
-HyperFrames should not be used to fake missing Imagine.Art motion.
+## For Developers
 
-## What Finished Should Mean
-
-A campaign is not finished just because something appeared on the canvas. A serious review-ready result should have:
-
-- Source assets accounted for
-- A written campaign direction
-- A shot plan
-- Generated stills or references where needed
-- Motion clips made from approved visuals
-- Music included if the brief called for music
-- Exported or downloaded video files
-- A final review video
-- Notes about what worked, what failed, and what changed
-
-If motion failed, music is missing, or the export is only a slideshow/proxy, the agent should say that clearly.
-
-## Good Agent Behavior
-
-Look for these signs:
-
-- It asks for or uses your real assets.
-- It plans the video before generating.
-- It keeps the product and brand consistent.
-- It creates a readable workflow.
-- It avoids repeated accidental runs.
-- It tells you when something is blocked.
-- It does not call a weak proxy "finished."
-
-Watch for these red flags:
-
-- It ignores your brand kit or product photo.
-- It invents a fake replacement for your brand assets.
-- It makes every shot feel the same.
-- It creates a silent video when you expected music.
-- It launches the same thing multiple times by accident.
-- It calls a canvas preview a final export.
-- It returns a slideshow when you asked for motion.
-
-## For Agent Authors
-
-This repo also contains stricter production docs for agents that need to operate Imagine.Art directly:
-
-- `AGENTS.md`: primary agent instructions
-- `docs/PRODUCTION_STANDARD.md`: completion labels, campaign quality bar, and finished-output rules
-- `docs/AUTOMATION_CONTRACT.md`: browser execution, failure handling, and cleanup expectations
-- `docs/WORKFLOW_EXECUTION_GUIDE.md`: staged Imagine.Art run order
-- `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`: workflow section and node plan
-- `docs/QUALITY_CONTROL.md`: QC scoring and reference-parity checks
-- `docs/PRE_SPEND_CONFIDENCE_GATE.md`: launch-safety rules before spending credits
-- `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`: export requirements and motion-completion rules
-- `docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md`: still-frame prompting system
-- `docs/ADVERSARIAL_SWARM_PROTOCOL.md`: ideation and critique swarm protocol
-
-Agents should read `AGENTS.md` first, then follow the docs relevant to the job.
-
-## Limitations
-
-- Outputs still depend on model capability and available Imagine.Art features.
-- Generated video usually needs iteration.
-- The repo needs browser or computer-use access for fully automated Imagine.Art operation.
-- The controlled browser must already be logged in to Imagine.Art. If it is not, the agent should treat login as a blocker and instruct the user to log in.
-- Text and logos can fail in generated media, so final typography should be deterministic when possible.
-- Identity and product consistency can drift and must be checked.
-- Users are responsible for copyright, trademark, publicity, likeness, and brand-rights clearance.
+Agent and production rules live in [AGENTS.md](AGENTS.md). The detailed production docs are in [docs/](docs/).
 
 ## One-Line Summary
 
-`imagine-campaign-director` gives your agent a serious production process for turning your idea and files into an Imagine.Art campaign workflow, instead of a random pile of prompts.
+Use Codex with Computer Use and Chrome, log in to Imagine.Art first, paste the starter prompt, attach your assets, and let Codex plan, generate, verify, and package the campaign without pretending a proxy is finished.

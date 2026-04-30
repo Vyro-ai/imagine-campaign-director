@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Concrete CampaignCraft output package for the fictional Noctivelle Paris / Noir Orchid test case. This is a fresh-agent harness: a new Codex session should be able to read it, build the Imagine.Art workflow, and execute the campaign without touching private Imagine.Art workspace files.
+Concrete output package for the fictional Noctivelle Paris / Noir Orchid test case. This is a fresh-agent harness: a new Codex session should be able to read it, build the Imagine.Art workflow, and execute the campaign without touching private Imagine.Art workspace files.
 
 ## Source Inputs
 

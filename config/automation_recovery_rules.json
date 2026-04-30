@@ -1,5 +1,5 @@
 {
-  "name": "CampaignCraft automation recovery rules",
+  "name": "imagine-campaign-director automation recovery rules",
   "failure_rules": [
     {
       "failure": "stale_canvas_status",

@@ -1,6 +1,6 @@
 # Imagine.Art Live Model Strings
 
-Verified with Computer Use in the live Imagine.Art workflow UI on 2026-04-27. The visible picker label is useful for human inspection, but copied node JSON currently stores `settings.modelId`; paste payloads should use the verified IDs or a CampaignCraft `modelKey` that materializes to those IDs.
+Verified with Computer Use in the live Imagine.Art workflow UI on 2026-04-27. The visible picker label is useful for human inspection, but copied node JSON currently stores `settings.modelId`; paste payloads should use the verified IDs or a `modelKey` that materializes to those IDs.
 
 ## Required Campaign Defaults
 
@@ -10,7 +10,7 @@ Verified with Computer Use in the live Imagine.Art workflow UI on 2026-04-27. Th
 | Reference-driven stills, continuity stills, director's-notes boards | `GPT Image 2` | `settings.modelId: 41701` | `resolution: "2K"`, `quality: "high"`. |
 | Campaign motion | `Seedance 2.0` | `settings.modelId: 21905` | Use requested aspect ratio and the longest useful duration available for the shot plan. |
 
-Use these canonical keys in CampaignCraft workflow specs:
+Use these canonical keys in workflow specs:
 
 ```json
 { "modelKey": "imagineart_2" }
@@ -20,7 +20,7 @@ Use these canonical keys in CampaignCraft workflow specs:
 
 ## Observed Wrong Defaults
 
-These are valid Imagine.Art models, but they are not CampaignCraft defaults for the roles above:
+These are valid Imagine.Art models, but they are not defaults for the roles above:
 
 | Exact visible picker label | Copied JSON value | Why it matters |
 | --- | --- | --- |

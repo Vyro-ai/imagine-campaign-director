@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit a CampaignCraft campaign folder for delivery-blocking failures."""
+"""Audit a campaign folder for delivery-blocking failures."""
 
 from __future__ import annotations
 

@@ -1,6 +1,6 @@
 # Cinematic Still Prompting Playbook
 
-Use this for every still image generated inside CampaignCraft: ImagineArt 2.0, GPT Image 2, Nano Banana 2, Nano Banana Pro, product plates, storyboard boards, styleframes, first/last frames, environment plates, material macros, and director's-notes images.
+Use this for every still image generated inside this workflow: ImagineArt 2.0, GPT Image 2, Nano Banana 2, Nano Banana Pro, product plates, storyboard boards, styleframes, first/last frames, environment plates, material macros, and director's-notes images.
 
 The model choice changes by asset role, but the descriptive grammar does not. A still prompt should read like a compact cinematography brief, not a mood paragraph.
 

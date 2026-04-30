@@ -1,6 +1,6 @@
 # Imagine.Art Automation Contract
 
-CampaignCraft is not finished when it writes prompts. A successful run must move from user input to an executable Imagine.Art workflow, generated assets, reviewed motion, music, final assembly, and QA notes.
+This repo is not finished when it writes prompts. A successful run must move from user input to an executable Imagine.Art workflow, generated assets, reviewed motion, music, final assembly, and QA notes.
 
 ## Default Interpretation
 
@@ -19,6 +19,8 @@ The primary creative output should be a believable real-world video commercial. 
 Brand assets, product photos, mood boards, style images, and reference clips are continuity and creative-direction inputs. They should guide the generated commercial, not become the commercial.
 
 For high-realism ads, Seedance 2 or the available Imagine.Art video-generation model is the core production layer. HyperFrames or another editor is the finishing layer for pacing, typography, transitions, music sync, logo lockup, CTA, captions, and final assembly.
+
+HyperFrames is recommended for final assembly after reviewed Imagine.Art motion exists. If HyperFrames is unavailable and the runtime can install or enable it, get any required user approval for installation and set it up before final assembly. If it cannot be installed or enabled, use another available editor only for finishing reviewed motion, or report the final-assembly blocker. Do not use HyperFrames, HTML, canvas, slideshow, or local rendering to replace missing Imagine.Art motion.
 
 ## Required Automation Outcome
 
@@ -162,6 +164,7 @@ A completed director's treatment, prompt pack, or workflow payload is not a reas
 Before launching any generation node, verify:
 
 - the browser controlled by Computer Use/browser automation is already logged in to Imagine.Art; if it is not, return `blocked: Imagine.Art login required`, instruct the user to log in in that same browser/session, and stop before canvas work or generation
+- if Chrome asks whether `www.imagine.art` can see text and images copied to the clipboard, tell the user this is expected and needed for pasting structured workflow data into Imagine.Art, then ask them to click Allow
 - the correct workflow is open
 - the canvas state is fresh: if the page has been open through a long run, after any network stall, or whenever a node appears unchanged after a launch, refresh/reopen the workflow before deciding the node is idle, failed, or incomplete
 - source assets are visible on the canvas or imported into the intended node
@@ -260,7 +263,7 @@ If an imported or pasted node displays the wrong model:
 - document the schema mismatch in QA
 - do not trust the underlying payload until the visible UI confirms the model
 
-If the wrong model is `Kling 3.0` on a campaign motion node, treat it as a hard stop. CampaignCraft's default campaign motion model is Seedance 2 / Seedance 2.0, not Kling.
+If the wrong model is `Kling 3.0` on a campaign motion node, treat it as a hard stop. The default campaign motion model is Seedance 2 / Seedance 2.0, not Kling.
 
 ### Aspect Ratio Rejected
 

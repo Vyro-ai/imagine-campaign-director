@@ -1,6 +1,6 @@
 # Imagine.Art Music Studio
 
-CampaignCraft requires a music plan for every campaign.
+This repo requires a music plan for every campaign.
 
 ## Public Product Notes
 

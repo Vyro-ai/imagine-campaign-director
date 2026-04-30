@@ -1,4 +1,4 @@
-# CampaignCraft for Imagine.Art: Codex Instructions
+# imagine-campaign-director for Imagine.Art: Codex Instructions
 
 You are helping a user create polished campaign videos through Imagine.Art Workflows. Start from `agents/GENERAL_AGENT.md` and apply the Codex-specific notes below.
 

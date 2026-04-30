@@ -1,6 +1,6 @@
 # Seedance Workflow Guide
 
-Use this when the Imagine.Art motion model is Seedance or when a campaign clip needs time-segmented motion. This guide is the advanced Seedance 2 prompting standard for CampaignCraft.
+Use this when the Imagine.Art motion model is Seedance or when a campaign clip needs time-segmented motion. This guide is the advanced Seedance 2 prompting standard for this repo.
 
 ## Hard Rule
 
