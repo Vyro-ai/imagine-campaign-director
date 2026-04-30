@@ -6,6 +6,8 @@ Use it when you want a real Imagine.Art campaign workflow and review video, not 
 
 Codex is the AI coding agent that reads this repo and runs the job. Computer Use is the tool that lets Codex click, type, paste, and download inside Google Chrome. We recommend Codex because Imagine.Art workflow canvases need reliable browser, canvas, clipboard, download, and file-verification control; Claude and other agents' computer-use tools can struggle with those workflow interactions.
 
+Need to turn on Computer Use? Follow OpenAI's Codex app guide: [Enable Computer Use](https://developers.openai.com/codex/app/computer-use).
+
 ![How imagine-campaign-director works](docs/community-how-to/assets/01-simple-flow.png)
 
 ## What You Need
