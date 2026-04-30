@@ -2,7 +2,6 @@
 
 A practical guide for using a coding agent with Imagine.Art to make campaign videos from your idea, product photos, brand kit, mood board, and references.
 
-Repo: <https://github.com/theovercomer8/imagine-campaign-director>
 
 `imagine-campaign-director` helps an agent behave less like a random prompt generator and more like a small production team: strategist, creative director, workflow builder, prompt engineer, assistant editor, and QC reviewer.
 
