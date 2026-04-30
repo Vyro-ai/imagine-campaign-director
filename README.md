@@ -51,7 +51,7 @@ Helpful inputs:
 Copy this into Codex, Claude Code, Cursor, or another coding agent with browser/computer-use access:
 
 ```text
-Use this repo: https://github.com/theovercomer8/imagine-campaign-director
+Use this repo: https://github.com/Vyro-ai/imagine-campaign-director
 
 I want to make a [duration] [format] campaign video for [product / brand / idea].
 
