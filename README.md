@@ -46,6 +46,14 @@ https://github.com/Vyro-ai/imagine-campaign-director
 to create <your idea here>
 ```
 
+## Watch The 40-Second Walkthrough
+
+See how to start a new Codex session, use Computer Use and sub-agent swarms, build the Imagine.Art workflow, and receive the finished campaign video.
+
+https://github.com/user-attachments/assets/b2d6d263-9c35-4d58-8635-cf28c37b0f64
+
+
+
 ## Example Prompts
 
 ### Product Launch
