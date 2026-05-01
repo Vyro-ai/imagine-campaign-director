@@ -150,7 +150,7 @@ Plan the full shot system before generation. The operator should create the shot
 - Never launch motion nodes before their start frames, end frames, storyboard panels, or references are approved.
 - Never replace failed, timed-out, or non-exportable planned motion with still anchors unless the output is explicitly labeled `partial/proxy`.
 - Never launch a multi-reference motion prompt from only one connected start frame. If the prompt says `references`, uses `@Image`, or depends on a storyboard/director's-notes board, the visible node must expose and connect those reference inputs.
-- Never use edit-absolute timing inside a shorter motion node. A 5-second node must use 0-5s local timing, not 22-30s campaign timeline timing.
+- Never put duration, seconds, time ranges, or edit-absolute timing inside a motion prompt. Set the live node duration property instead, and use non-timed phase language in the prompt.
 - Never launch campaign motion as text-only.
 - Never launch a generated text/logo/label requirement inside video when it belongs in deterministic post-production.
 - Never animate from a still that has not been saved locally and documented with its model, purpose, prompt, ratio, and selection reason.

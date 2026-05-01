@@ -198,7 +198,8 @@ const REFERENCE_LANGUAGE_RULES = [
 const PLURAL_REFERENCE_PATTERN =
   /\b(?:approved\s+visual\s+references|visual\s+references|reference\s+set|reference\s+images|multiple\s+references|all\s+references)\b/i;
 const STORYBOARD_REFERENCE_PATTERN = /\b(?:director['’]s-notes|storyboard|motion\s+board|camera-movement\s+board)\b/i;
-const TIME_RANGE_PATTERN = /\b(\d+(?:\.\d+)?)\s*(?:-|–|—|to)\s*(\d+(?:\.\d+)?)\s*s\b/gi;
+const VIDEO_PROMPT_DURATION_PATTERN =
+  /\b(?:\d+(?:\.\d+)?\s*(?:-|–|—|to)\s*\d+(?:\.\d+)?\s*s|\d+(?:\.\d+)?\s*(?:s|sec|secs|second|seconds)(?:\s+(?:clip|video|shot|node|take|hold|sequence|campaign|spot))?|(?:clip|video|shot|node|take|sequence|campaign|spot)\s+duration)\b/i;
 const IMAGE_TOKEN_PATTERN = /@\s*Image\s*(\d+)/gi;
 const CONTINUITY_SHORTHAND_PATTERN =
   /\b(?:same|matching|consistent)\s+(?:adult\s+)?(?:character|person|model|woman|man|subject|identity|face|hair|wardrobe|outfit|garment|coat|product|style|look)\b/i;
@@ -799,25 +800,27 @@ function parseNodeDurationSeconds(nodeSpec) {
   return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
 }
 
-function collectPromptTimeRanges(prompt) {
-  const ranges = [];
-
-  if (typeof prompt !== "string") {
-    return ranges;
+function normalizeVideoSettings(nodeSpec, settings) {
+  if (nodeSpec.type !== "video") {
+    return;
   }
 
-  TIME_RANGE_PATTERN.lastIndex = 0;
-  let match;
-  while ((match = TIME_RANGE_PATTERN.exec(prompt)) !== null) {
-    const start = Number.parseFloat(match[1]);
-    const end = Number.parseFloat(match[2]);
+  if (settings.duration == null && nodeSpec.duration != null) {
+    settings.duration = nodeSpec.duration;
+  }
 
-    if (Number.isFinite(start) && Number.isFinite(end) && end > start) {
-      ranges.push({ start, end, raw: match[0] });
+  if (settings.duration != null) {
+    const duration = parseNodeDurationSeconds({ settings });
+    if (duration) {
+      settings.duration = Number.isInteger(duration) ? String(duration) : String(settings.duration);
     }
   }
 
-  return ranges;
+  if (settings.aspectRatio == null && settings.ratio != null) {
+    settings.aspectRatio = settings.ratio;
+  }
+
+  delete settings.ratio;
 }
 
 function maxImageTokenIndex(prompt) {
@@ -1368,18 +1371,23 @@ function validateCanonicalVideoTiming(source) {
     }
 
     const logicalId = nodeSpec.id ?? `node-${index + 1}`;
+    const name = nodeSpec.name ?? logicalId;
     const duration = parseNodeDurationSeconds(nodeSpec);
     const prompt = nodeSpec.settings?.prompt;
-    const ranges = collectPromptTimeRanges(prompt);
 
-    if (!duration || ranges.length === 0) {
+    if (!duration) {
+      throw new Error(
+        `Video node "${name}" is missing a node duration. Set settings.duration in the canonical spec; do not describe duration in the prompt.`
+      );
+    }
+
+    if (typeof prompt !== "string" || prompt.trim() === "") {
       return;
     }
 
-    const maxEnd = Math.max(...ranges.map((range) => range.end));
-    if (maxEnd > duration + 0.25) {
+    if (VIDEO_PROMPT_DURATION_PATTERN.test(prompt)) {
       throw new Error(
-        `Video node "${nodeSpec.name ?? logicalId}" has duration ${duration}s but its prompt contains timing up to ${maxEnd}s. Use node-local timing within the selected duration, choose a longer Seedance duration, or split the clip.`
+        `Video node "${name}" has duration language in its prompt. Set duration only with settings.duration and use non-timed phase language in the prompt.`
       );
     }
   });
@@ -1881,6 +1889,7 @@ function materializeCanonicalWorkflow(source, options) {
     const template = resolveTemplate(source, nodeSpec);
     const { handles, inputHandleSchemas, handleLookup } = materializeHandles(materializedId, template, nodeSpec);
     const settings = { ...(template.defaultSettings ?? {}), ...(nodeSpec.settings ?? {}) };
+    normalizeVideoSettings(nodeSpec, settings);
     applyLiveModelSettings(nodeSpec, settings);
     const importOutputType = nodeSpec.type === "import" ? inferImportOutputType(nodeSpec) : null;
 

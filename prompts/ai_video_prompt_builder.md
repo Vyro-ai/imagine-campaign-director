@@ -9,14 +9,14 @@ Convert approved stillframes and shot ladder decisions into Imagine.Art video pr
 - reference mode: text-to-video, start-frame, end-frame, reference video, beat guide
 - storyboard/reference panels available
 - director's-notes board available
-- duration
+- node duration, stored as `settings.duration` outside the prompt
 - aspect ratio
 - campaign grammar
 - subject/product hierarchy
 - camera movement
 - subject movement
 - environment/material movement
-- timing blocks
+- ordered phase ladder without seconds or duration language
 - transition logic
 - final hold
 - continuity constraints
@@ -58,7 +58,7 @@ Phase guidance:
 - 10s: about 4 phases
 - 15s: about 5-6 phases
 
-Prefer broad blocks such as `0-3s`, `3-6s`, `6-10s`, `10-13s`, and `13-15s`. Each block should have one dominant visual job, one hero event, and one camera idea.
+Set duration only on the video node property (`settings.duration`). Do not mention duration, seconds, or time ranges inside the Seedance prompt. Use non-timed phase labels such as `Opening phase`, `Phase 2`, `Phase 3`, and `Final hold`. Each phase should have one dominant visual job, one hero event, and one camera idea.
 
 For a 30-second fashion/luxury campaign, generate 2-4 multi-shot Seedance 2 campaign prompts plus any necessary dedicated b-roll/detail prompts. Do not create many independent tiny video prompts unless the edit strategy specifically needs separate inserts.
 
@@ -72,13 +72,13 @@ For a 30-second fashion/luxury campaign, generate 2-4 multi-shot Seedance 2 camp
 
 ## Seedance / Time-Segmented Rule
 
-If using Seedance or another time-aware model, include broad time blocks and one hero event per block. If a reference or beat guide is used, state its role. Do not use `same as reference` language unless the workflow plan includes the actual connected input.
+If using Seedance or another motion model, include a broad ordered phase ladder and one hero event per phase. If a reference or beat guide is used, state its role. Do not use `same as reference` language unless the workflow plan includes the actual connected input.
 
 Prompt structure:
 
 1. `Subject`: subject, wardrobe/product, environment, campaign grammar.
 2. `Reference roles`: one dominant role per connected source when visible in the UI or documented in workflow notes.
-3. `Timing ladder`: broad time blocks with concrete action and camera behavior.
+3. `Phase ladder`: broad ordered phases with concrete action and camera behavior, without seconds or duration wording.
 4. `Camera`: shot size, lens feel, movement, angle, and transition logic.
 5. `Continuity`: stable identity, wardrobe, product, environment, and grade.
 6. `Constraints`: positive visual constraints plus a short avoid list.
@@ -107,4 +107,4 @@ Before finalizing a motion prompt, write the connection contract:
 - `start/end frame`: one approved start frame wired to `imageUrl`, optional end frame wired to `lastFrame`, no `@Image` tokens
 - `reference-image set`: every required still, product-truth image, storyboard panel, and director's-notes board wired to `referenceUrl` slots, with matching `@Image1`, `@Image2`, etc. in the prompt
 
-Prompt timing must be local to the node. If the final edit uses `22-30s` but the node duration is `5s`, write the prompt as `0-5s` for that node and document the edit placement separately.
+Prompt phase order must be local to the node. If the final edit places a clip late in the campaign, document that placement outside the Seedance prompt. The prompt itself must not include edit-absolute timing, seconds, time ranges, or clip duration.

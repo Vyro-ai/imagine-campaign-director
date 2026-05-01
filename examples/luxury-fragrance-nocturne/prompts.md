@@ -37,7 +37,9 @@ Clean product-first end-card plate, smoked glass perfume bottle centered slightl
 
 ### MV / 10s Nocturne
 
-10-second Imagine.Art campaign clip from approved stillframes. 0-2s slow push toward the bottle reflection on wet pavement. 2-4s a black-gloved hand passes softly behind the bottle without touching it. 4-6s orchid petals shift in a narrow warm light strip. 6-8s macro cap detail catches a moving highlight. 8-10s locked final product hold with clean negative space for end-card typography.
+Node duration setting: 10.
+
+Prompt: Seedance campaign clip from approved stillframes. Opening phase: slow push toward the bottle reflection on wet pavement. Phase 2: a black-gloved hand passes softly behind the bottle without touching it. Phase 3: orchid petals shift in a narrow warm light strip. Phase 4: macro cap detail catches a moving highlight. Final hold: locked product hold with clean negative space for end-card typography.
 
 Negative: no fake text, no invented logo, no deformed bottle, no broken hand anatomy, no excessive smoke, no chaotic camera.
 

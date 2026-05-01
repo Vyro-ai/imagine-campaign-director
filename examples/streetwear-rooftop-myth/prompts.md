@@ -37,7 +37,9 @@ Back-view jacket silhouette against night skyline, empty sky and concrete negati
 
 ### MV / Rooftop Myth
 
-10-second Imagine.Art streetwear drop clip. 0-2s flash reveals the subject stepping into frame. 2-4s wind lifts the jacket hem and reflective piping catches light. 4-6s low-angle portrait hold with hands in pockets. 6-8s macro zipper and wet concrete detail. 8-10s subject turns away into final silhouette with clean sky for CTA.
+Node duration setting: 10.
+
+Prompt: Imagine.Art streetwear drop clip. Opening phase: flash reveals the subject stepping into frame. Phase 2: wind lifts the jacket hem and reflective piping catches light. Phase 3: low-angle portrait hold with hands in pockets. Phase 4: macro zipper and wet concrete detail. Final hold: subject turns away into final silhouette with clean sky for CTA.
 
 Negative: no fake logos, no extra fingers, no broken gait, no unreadable signage, no warped zipper.
 

@@ -55,16 +55,18 @@ Each panel prompt should lock:
 
 Include:
 
-- duration
+- duration as a video node setting outside the prompt
 - aspect ratio
 - source still or reference role
 - camera movement
 - subject movement
 - environmental movement
-- timing blocks
+- ordered phase blocks without seconds or duration language
 - transition logic
 - continuity constraints
 - final hold
+
+Do not mention clip duration, seconds, or time ranges in Seedance/video prompt text. Set duration in the node property and use phase labels inside the prompt.
 
 ## Better Than Vague
 

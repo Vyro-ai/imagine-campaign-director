@@ -68,7 +68,7 @@ When wiring references:
 - product-truth or wardrobe reference controls product/costume details when needed
 - beat guide controls timing only when explicitly connected and validated
 
-In the Seedance 2 prompt, translate the board into direct shot language. Do not write `copy the storyboard exactly`. Instead, use the board to define broad timing blocks, camera behavior, and the final hold.
+In the Seedance 2 prompt, translate the board into direct shot language. Do not write `copy the storyboard exactly`. Instead, use the board to define broad non-timed phase blocks, camera behavior, and the final hold.
 
 ## QC
 

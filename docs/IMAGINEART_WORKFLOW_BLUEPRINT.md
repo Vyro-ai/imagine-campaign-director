@@ -165,7 +165,7 @@ Each board should specify:
 
 This is the bridge between visual taste and usable motion. Do not rely on adjectives like `cinematic` or `premium` to define the move.
 
-For complex motion, create GPT Image 2 director's-notes boards using `docs/DIRECTORS_NOTES_STORYBOARDS.md`. These boards should be annotated production images with numbered phases, shot sizes, camera arrows, subject/product arrows, timing blocks, and camera-intent notes. Use them as motion choreography references for Seedance 2.
+For complex motion, create GPT Image 2 director's-notes boards using `docs/DIRECTORS_NOTES_STORYBOARDS.md`. These boards should be annotated production images with numbered phases, shot sizes, camera arrows, subject/product arrows, phase blocks, and camera-intent notes. Use them as motion choreography references for Seedance 2.
 
 Create these boards before motion nodes, review them for readability, and connect or import approved boards into the relevant Seedance 2 branch. Treat unreadable boards, ambiguous arrows, or boards with fake ad text as rejects.
 
@@ -178,6 +178,8 @@ Create one motion node per coherent Seedance 2 motion block, not necessarily one
 - 15s: about 5-6 phases
 
 Motion nodes should consume approved still anchors or explicit references. If a motion node is connected directly to an unreviewed look-development node, mark the workflow incomplete.
+
+Duration belongs only in the video node setting, not in the Seedance prompt. In canonical specs, set `settings.duration`; the live pasted JSON stores it as a string such as `"10"`. In the live UI, verify the duration control before launch. The prompt should use ordered phase language and must not say `10-second clip`, `5s shot`, `0-3s`, or similar duration/timeline text.
 
 Create motion nodes as a shot system, not as an isolated still/video pair. Once approved anchors exist, wire all intended motion branches for the selected shot ladder, verify their inputs, then launch in controlled batches. This makes the edit plan visible and prevents the workflow from collapsing into one-off experiments.
 

@@ -38,7 +38,9 @@ Chrome compact and silver cream shadow arranged on mirrored surface, clean produ
 
 ### MV / Chrome Beauty
 
-10-second Imagine.Art chrome beauty editorial. 0-2s slow push into eye reflection in compact lid. 2-4s light sweep across silver cream texture. 4-6s soft portrait reflection in chrome panel, minimal face movement. 6-8s compact rotates slowly on mirrored surface. 8-10s locked product and eye-line final hold.
+Node duration setting: 10.
+
+Prompt: Imagine.Art chrome beauty editorial. Opening phase: slow push into eye reflection in compact lid. Phase 2: light sweep across silver cream texture. Phase 3: soft portrait reflection in chrome panel, minimal face movement. Phase 4: compact rotates slowly on mirrored surface. Final hold: locked product and eye-line final hold.
 
 Negative: no distorted eyes, no broken reflection, no fake text, no warped compact, no extra fingers, no melting chrome.
 

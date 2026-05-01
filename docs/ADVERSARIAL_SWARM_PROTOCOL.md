@@ -97,7 +97,7 @@ Blocks same-pose/same-shot lookbook coverage and any attempt to ask Seedance to 
 
 Runs after anchors, storyboard/reference panels, and director boards exist.
 
-Checks visible source/reference map, approved references, local prompt timing, Seedance realism, risk simplification, and music direction.
+Checks visible source/reference map, approved references, non-timed phase prompts, Seedance realism, risk simplification, and music direction.
 
 Blocks text-only motion, disconnected references, unapproved anchors, and complex motion without a director's-notes board.
 

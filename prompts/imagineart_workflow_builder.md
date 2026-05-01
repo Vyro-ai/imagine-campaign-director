@@ -136,7 +136,7 @@ For each Seedance or reference-driven motion shot:
 - reference input role
 - approval criteria before video launch
 
-Use `docs/DIRECTORS_NOTES_STORYBOARDS.md` for complex camera choreography. A required board should be an annotated production image with numbered phases, timing blocks, shot-size labels, camera movement arrows, subject/product movement arrows, and sequence notes.
+Use `docs/DIRECTORS_NOTES_STORYBOARDS.md` for complex camera choreography. A required board should be an annotated production image with numbered phases, phase blocks, shot-size labels, camera movement arrows, subject/product movement arrows, and sequence notes.
 
 ### Motion Nodes
 
@@ -145,7 +145,7 @@ For each motion clip:
 - node name
 - source stillframe
 - model suggestion, defaulting to Seedance 2 for high-realism commercial footage when available
-- duration
+- duration as a node setting: put it in canonical JSON as `settings.duration`
 - prompt
 - variants needed
 - QC gate
@@ -159,7 +159,8 @@ For Seedance 2 multi-shot campaign nodes, include:
 - explicit input contract: `start/end frame` or `reference-image set`
 - default input contract: `reference-image set` for campaign motion
 - reference connection map with source node, target input key, slot, prompt token, and role
-- node-local timing that does not exceed the selected duration
+- non-timed phase order in the prompt; do not mention seconds, time ranges, or clip duration in `settings.prompt`
+- selected duration stored only as `settings.duration`
 - visible model guard: reject if pasted/UI node resolves to Kling 3.0
 - live run guard: set `Number of runs` to `1` before launch unless the treatment has an explicit run-budget reason
 
@@ -178,7 +179,7 @@ For each b-roll insert:
 
 - node name
 - visual job
-- duration
+- duration as a node setting, not prompt text
 - source reference
 - prompt
 - where it breathes in the edit

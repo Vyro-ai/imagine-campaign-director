@@ -95,7 +95,7 @@ Do not plan five isolated one-shot video nodes by default. Use separate motion n
 
 ## Director's Notes Boards
 
-For complicated motion, apply `docs/DIRECTORS_NOTES_STORYBOARDS.md` before Seedance 2 prompting. Use GPT Image 2 to create annotated camera-movement boards with numbered phases, camera arrows, subject/product arrows, timing blocks, shot-size notes, and sequence notes.
+For complicated motion, apply `docs/DIRECTORS_NOTES_STORYBOARDS.md` before Seedance 2 prompting. Use GPT Image 2 to create annotated camera-movement boards with numbered phases, camera arrows, subject/product arrows, phase blocks, shot-size notes, and sequence notes.
 
 The treatment must identify which shots or Seedance 2 nodes need these boards and what each board controls. A director's-notes board should guide motion choreography and phase order; it should not replace identity, product-truth, or final hero still anchors.
 

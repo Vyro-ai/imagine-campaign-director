@@ -89,7 +89,7 @@ Before launch, create a camera-movement storyboard for the clip or shot:
 
 For each panel, describe camera path separately from subject/product path. Use arrows, notes, or filenames if the UI supports image references. Assign every connected image one job: start frame, end frame, product truth, style/lighting, or motion board.
 
-For complex shots, use GPT Image 2 to generate a director's-notes storyboard following `docs/DIRECTORS_NOTES_STORYBOARDS.md`. This should look like a production board: numbered horizontal panels, camera icons or labels, colored arrows for camera/subject/environment movement, timing blocks, shot-size labels, right-side camera notes, and a bottom sequence strip.
+For complex shots, use GPT Image 2 to generate a director's-notes storyboard following `docs/DIRECTORS_NOTES_STORYBOARDS.md`. This should look like a production board: numbered horizontal panels, camera icons or labels, colored arrows for camera/subject/environment movement, phase blocks, shot-size labels, right-side camera notes, and a bottom sequence strip.
 
 Use director's-notes boards when the Seedance 2 node needs to understand a long take, approach, tilt, orbit, follow, pullback, rise/fall, beat-synced reveal, or simultaneous subject/camera movement. The board's job is camera choreography and phase order. It does not replace identity anchors, product-truth images, or final hero stills.
 
@@ -106,7 +106,7 @@ If using a music or beat-guide video:
 
 ## Multi-Shot Campaign Prompting
 
-A Seedance 2 campaign clip should contain only as many major shots or phases as the chosen duration can support clearly. As a rule of thumb:
+A Seedance 2 campaign clip should contain only as many major shots or phases as the chosen node duration can support clearly. As a rule of thumb:
 
 - 5s: 2-3 phases
 - 10s: about 4 phases
@@ -114,7 +114,7 @@ A Seedance 2 campaign clip should contain only as many major shots or phases as 
 
 More phases usually create chaos. Use the live model maximum when it helps, but do not fill time with redundant shot shapes.
 
-Use broad blocks such as `0-3s`, `3-6s`, `6-10s`, `10-13s`, and `13-15s`. Do not demand frame-accurate decimal choreography unless a previous run in the same workflow proves Seedance can follow it.
+Set the selected clip length only as the Seedance/video node duration property, normally `settings.duration` in the canonical spec. Do not mention duration, seconds, or time ranges inside the Seedance prompt. Use ordered phase labels such as `Opening phase`, `Phase 2`, `Phase 3`, and `Final hold`; do not demand frame-accurate choreography unless a previous run in the same workflow proves Seedance can follow it.
 
 Each block should have:
 
@@ -132,7 +132,7 @@ Use this structure for advanced Seedance 2 campaign prompts:
 
 1. `Subject`: precise subject, wardrobe/product, environment, and campaign grammar.
 2. `Reference roles`: what each connected source controls, only if the UI exposes references or the workflow notes need it.
-3. `Timing ladder`: broad time blocks with concrete shot behavior.
+3. `Phase ladder`: broad ordered phases with concrete shot behavior, without seconds or duration wording.
 4. `Camera`: shot size, lens feel, movement, angle, and transition logic.
 5. `Continuity`: what must stay stable across shots.
 6. `Constraints`: visual positive constraints and a short avoid list.
@@ -157,17 +157,17 @@ This is bad because it uses vague continuity language instead of explicit refere
 
 ## Better Prompt Pattern
 
-`Subject: editorial campaign built from the selected creative spine. 0-2s concrete hook event from the director's treatment. 2-5s camera discovers the campaign world through the approved environment reference. 5-8s tactile proof or performance beat from the approved material/product/wardrobe reference. 8-10s final memory image with the planned status change visible.`
+`Subject: editorial campaign built from the selected creative spine. Opening phase: concrete hook event from the director's treatment. Phase 2: camera discovers the campaign world through the approved environment reference. Phase 3: tactile proof or performance beat from the approved material/product/wardrobe reference. Final hold: final memory image with the planned status change visible.`
 
 ## Better Multi-Shot Campaign Pattern
 
 ```text
 Subject: campaign film from the selected creative spine. @Image1 controls identity/product/wardrobe truth. @Image2 controls the chosen campaign world and production design. @Image3 controls camera choreography from the director's-notes board.
 
-0-3s: concrete hook event from the treatment; the subject/product crosses a threshold, reveals a status change, or triggers the campaign's signature physical event.
-3-5s: camera discovers the specific world; use foreground, architecture, surface, weather, or set movement from @Image2 to motivate the cut.
-5-8s: tactile proof or performance beat; show material, product truth, gesture, posture shift, or environmental interaction without risky hand complexity.
-8-10s: locked final memory hold; preserve the final composition and visible status change planned in the treatment.
+Opening phase: concrete hook event from the treatment; the subject/product crosses a threshold, reveals a status change, or triggers the campaign's signature physical event.
+Phase 2: camera discovers the specific world; use foreground, architecture, surface, weather, or set movement from @Image2 to motivate the cut.
+Phase 3: tactile proof or performance beat; show material, product truth, gesture, posture shift, or environmental interaction without risky hand complexity.
+Final hold: locked final memory hold; preserve the final composition and visible status change planned in the treatment.
 
 Camera: use the camera phase order from @Image3. No generic slow push, fast orbit, or montage unless the treatment specifically justifies it.
 Continuity: preserve the identity/wardrobe from @Image1, the environment and lighting from @Image2, and the camera phase order from @Image3. No visible logos or text.

@@ -68,11 +68,12 @@ Choose one video input contract per Seedance node before writing the canonical s
 Use this only when the clip can be controlled by one approved opening image and, optionally, one approved ending image:
 
 - set `inputMode: "start-frame"` in canonical video node specs
+- set the clip length as `settings.duration` in the canonical video node spec
 - wire the approved still/import output to `imageUrl`
 - optionally wire the approved ending image to `lastFrame`
 - verify the live node shows `Start Frame` / `End Frame` behavior
 - do not mention plural `references`, `reference set`, storyboard boards, or `@Image` tokens in the prompt
-- keep the prompt timing local to the node duration, such as `0-2s`, `2-5s` for a 5-second node
+- do not mention duration or seconds in the prompt; use ordered phase language such as `Opening phase`, `Middle phase`, and `Final hold`
 
 ### Reference-Image Set Contract
 
@@ -80,10 +81,11 @@ Use this as the default for Seedance campaign motion. It is required for multi-s
 
 - do not set `inputMode: "start-frame"`
 - set `slotCounts.referenceUrl` to the exact number of reference-image inputs needed
+- set the clip length as `settings.duration` in the canonical video node spec
 - wire every required anchor/board/product-truth source to `referenceUrl` with explicit `targetSlot` values
 - use `@Image1`, `@Image2`, and so on only when the matching visible reference input exists
 - assign one dominant job to each reference: opening composition, identity/wardrobe, product truth, style/lighting, camera choreography, or final hold
-- keep broad prompt timing local to the selected node duration
+- do not mention duration or seconds in the prompt; use non-timed phase order and keep the phase count realistic for `settings.duration`
 
 Do not mix the contracts. In the current live schema, Start Frame / End Frame mode hides `Reference Images`, so a node cannot reliably consume both `imageUrl` and director-board `referenceUrl` inputs. If both are essential, use reference-image set mode or split the idea into separate Seedance nodes.
 
@@ -98,6 +100,29 @@ Every canonical motion node must have a written connection map before paste:
 | `@Image3` | product/style/identity reference | `referenceUrl` | 2 | continuity guard |
 
 If the prompt relies on a source but the map has no edge for it, the workflow is not ready to paste.
+
+## Seedance Duration Contract
+
+Duration is a node property, not prompt text. Every canonical video node must set `settings.duration` before materialization. Do not write `10-second clip`, `5s shot`, `0-3s`, or similar duration/timeline language inside `settings.prompt`.
+
+The live Imagine.Art workflow JSON stores video duration as a string value and aspect ratio as `settings.aspectRatio`. The materializer accepts numeric canonical durations and `ratio`, but outputs the live keys before paste.
+
+```json
+{
+  "id": "mv-hero",
+  "type": "video",
+  "name": "MOTION / Hero Seedance",
+  "settings": {
+    "modelKey": "seedance_2",
+    "duration": "15",
+    "aspectRatio": "9:16",
+    "prompt": "Subject: product-first launch film with restrained commercial camera language. Phase 1: the camera discovers the approved opening composition. Phase 2: the hero action reveals the product truth without changing shape. Phase 3: tactile detail and light movement build the campaign world. Final hold: settle on the planned memory image with clean negative space."
+  },
+  "slotCounts": {
+    "referenceUrl": 3
+  }
+}
+```
 
 ## Brand-Kit And Product-Lock Contracts
 
@@ -148,7 +173,8 @@ The helper rejects canonical specs when:
 - a node requests multiple runs without an exploration role and `runBudgetReason`
 - an image prompt uses `@ImageN` without at least N connected image-reference inputs
 - a reference-driven image node appears to use ImagineArt 2.0 or Nano Banana without a documented exception; use GPT Image 2 for reference-driven style/product/character continuity images
-- a video prompt contains timing beyond the node duration
+- a video node is missing `settings.duration`
+- a video prompt contains duration or seconds language instead of using the node duration property
 - a prompt says it uses multiple approved references but no `referenceUrl` edges exist
 - a prompt uses `@ImageN` without at least N `referenceUrl` inputs
 - a storyboard or director's-notes board is mentioned without a connected reference image
