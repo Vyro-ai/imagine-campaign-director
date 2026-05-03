@@ -218,7 +218,7 @@ Imagine.Art workflow canvases can show stale node states. A node that looks unch
 3. Verify the selected-node count matches the intended batch. Node focus is not node selection: a clicked node card, focused accessibility element, or expanded properties row does not prove only that node will run. Browser refresh/reopen can preserve stale multi-selection.
 4. Prove the selected node set with at least two signals before launch: visual selected-node outline/count, properties selected-node list, copied workflow JSON `selected: true` flags, or visible credit estimate. The visible credit estimate must match the intended selected-node count. If it is higher than expected, stop immediately and deselect/reselect; do not launch to test.
 5. Remember that `Number of runs: 1` only limits variants per selected node. It does not prevent spending across multiple selected nodes.
-6. For lock nodes, product locks, expensive motion nodes, and all campaign motion nodes, launch one node at a time. Do not batch motion launches. Stillframe and storyboard batches are allowed only when the selected count and credit estimate are proven and there is no prior duplicate-run incident in the current session.
+6. Use the smallest safe launch transaction. Lock nodes, product locks, Music Studio, retries, and ambiguous selections are one-node launches. Safe parallel batches are allowed only when every node in the selected set is independent, same-stage, already verified, and documented with a `batch_id`.
 7. If selection cannot be proven, return `blocked: selection ambiguous` instead of spending credits.
 8. Perform exactly one physical click or DOM click on `Run Selected`. Do not double-click, do not press Enter/Space as a fallback, and do not click again because the button still looks enabled.
 9. Immediately mark the ledger status `clicked_once` and stop sending input to the Run button. Move focus/cursor away from the button if using Computer Use. This creates a launch mutex: the selected node set is locked until the job is proven finished, failed, or blocked.
@@ -229,9 +229,31 @@ Imagine.Art workflow canvases can show stale node states. A node that looks unch
 
 When Computer Use is the control path, use a single explicit click action over repeated key presses or repeated "press Run Selected" attempts. If the tool accidentally sends multiple clicks/presses, stop using that interaction pattern for launches and switch to single-node launches with the launch mutex. Mark the workflow blocked if the UI cannot be operated without duplicate spending.
 
+### Safe Batch Transactions
+
+Parallel launch is allowed when it is faster without increasing ambiguity. A safe batch must satisfy all of these conditions:
+
+- all nodes are in the same stage type, such as still lookdev, storyboard panels, director's-notes boards, or independent motion clips
+- no node consumes the output of another node in the selected batch
+- every node's visible model, ratio, duration when relevant, input connections, and `Number of runs` have been verified
+- the selected-node count is proven with at least two signals
+- the visible credit estimate matches the intended node count and run count
+- no selected node has a matching Active Runs entry, spinner/progress state, queued/running badge, or unresolved `clicked_once` ledger entry
+- `qa/run-ledger.md` records one `batch_id`, every node id/name in the batch, selected count, credit estimate, prompt hashes/snippets, and status `armed`
+- the current session has no prior `duplicate_run_operator_error`
+
+Maximum default batch sizes:
+
+- still lookdev or production still anchors: up to 4
+- storyboard/reference panels or director's-notes boards: up to 4
+- independent campaign motion clips: up to 2
+- Music Studio, retries, product locks, identity locks, and final hero/product truth nodes: 1
+
+The launch mutex applies to the whole batch. After one click, do not relaunch any node in that batch until the batch is proven finished, failed, or blocked.
+
 ### Motion Launch Rule
 
-Campaign motion nodes are high-cost and slow-feedback. Launch them one at a time even when the edit plan contains multiple motion nodes. After each click, wait for Active Runs acknowledgement or refreshed completion before selecting the next motion node. If a duplicate-run incident occurs at any stage, all remaining paid launches in the session must be isolated one-node launches.
+Campaign motion nodes are high-cost and slow-feedback, so batch only independent motion clips. A motion batch may contain at most two nodes by default, and only when the safe batch conditions pass. Sequential motion nodes, nodes sharing uncertain references, first motion launches in a fresh session, retries, and any post-duplicate session use isolated one-node launches.
 
 Before launching or relaunching any node:
 

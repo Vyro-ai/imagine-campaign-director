@@ -53,6 +53,7 @@ FORBIDDEN_ROUTING_PATTERNS = [
     re.compile(r"\bask (the )?user\b.*\b(normal )?(credit|credits|spend|spending)\b", re.I),
     re.compile(r"\bclick (Run Selected|run) again\b.*\b(delayed|register|stale|unchanged|looks enabled|feedback)\b", re.I),
     re.compile(r"\b(run|launch) motion nodes in (small )?batches\b", re.I),
+    re.compile(r"\bbatch motion launches\b", re.I),
     re.compile(r"\bprefer one-node launches\b.*\bmotion\b", re.I),
 ]
 ALLOWED_ROUTING_CONTEXT = (
@@ -82,6 +83,11 @@ ALLOWED_ROUTING_CONTEXT = (
     "never click",
     "one-node launches only",
     "launch campaign motion nodes one at a time",
+    "safe batch",
+    "safe parallel batches",
+    "may batch up to two",
+    "at most two",
+    "independent campaign motion clips may batch",
 )
 FORBIDDEN_CREATIVE_DEFAULTS = [
     re.compile(r"\bElegant Control\b"),

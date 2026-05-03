@@ -130,7 +130,7 @@ Plan the full shot system before generation. The operator should create the shot
 
 ## Launch Discipline
 
-- Run selected nodes once per intended batch. Launch campaign motion nodes one at a time; do not batch motion launches.
+- Run selected nodes once per intended launch transaction. Safe parallel batches are allowed when every selected node is independent, same-stage, verified, and documented with a `batch_id`; otherwise launch one node at a time.
 - Before launch, write the intended node id/name, model, prompt snippet, visible run count, selected-node count, launch id, and timestamp to `qa/run-ledger.md` with status `armed`.
 - Check Active Runs before launch and after launch.
 - Node focus is not node selection. A clicked card, focused accessibility element, or open properties row does not prove only that node will run, and browser refresh/reopen can preserve stale multi-selection.
@@ -139,7 +139,7 @@ Plan the full shot system before generation. The operator should create the shot
 - `Number of runs: 1` only limits variants per selected node; it does not protect against multiple selected nodes spending credits.
 - Use the single-click launch protocol from `docs/AUTOMATION_CONTRACT.md`: one physical click or DOM click on `Run Selected`, then mark the ledger `clicked_once` and stop sending input to the run button. After `clicked_once`, the same selected set must not be launched again unless a refreshed UI proves a failed/error state, Active Runs has no matching job, and the ledger marks the prior launch `failed_confirmed`.
 - Do not double-click, press Enter/Space as a fallback, or click again because the UI is slow or because the canvas has not updated.
-- For lock nodes, product locks, final hero stills, and campaign motion nodes, launch one node at a time. Do not batch campaign motion launches.
+- For lock nodes, product locks, final hero stills, retries, ambiguous selections, and post-duplicate sessions, launch one node at a time. Independent campaign motion clips may batch up to two nodes only when the safe batch rules in `docs/AUTOMATION_CONTRACT.md` pass.
 - For single-node retries, do not use `Run Selected` unless exactly one selected node is proven. If stale canvas selection cannot be cleared, create/paste an isolated retry node.
 - If selection cannot be proven, return `blocked: selection ambiguous` instead of spending credits.
 - If a launched node looks idle, unchanged, or empty, refresh/reopen the workflow before deciding it failed or needs another run.
