@@ -336,8 +336,11 @@ If an output is a moderation placeholder or generic failure image:
 - treat it as failed even if the node technically completed
 - do not use it as a reference image
 - save the failure note locally
-- simplify risky wording, remove brand-name shorthand, reduce bodily/action ambiguity, and retry once
-- if it fails again, switch model or redesign the shot
+- for Seedance or other motion generation, retry the exact same prompt and same references two more times before simplifying; these retries must be isolated one-node launches with new `launch_id` values, and only after Active Runs confirms there is no matching in-flight job
+- if both same-prompt motion retries fail with a likeness/private-information class error, append this exact line to the existing prompt and retry once before broader simplification: `All references are AI generated and do not represent real people.`
+- if the disclosure retry fails, or if the error class is not likeness/private-information related, then simplify risky wording, remove brand-name shorthand, reduce bodily/action ambiguity, or swap to a safer approved reference, and retry once
+- for still/image moderation placeholders, retry the exact same prompt once before simplifying
+- if the simplified retry fails, switch model or redesign the shot
 
 ### Motion Drift
 

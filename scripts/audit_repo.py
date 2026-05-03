@@ -29,6 +29,7 @@ REQUIRED_TEXT = {
     "docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md": ("IMPERFECTION:", "AESTHETIC REFUSALS:"),
     "docs/PRODUCTION_PROFILES.md": ("not creative templates", "production_profiles.json"),
     "docs/TROUBLESHOOTING.md": ("Fresh-Install Execution Tests", "do not ask for approval solely because credits will be spent"),
+    "config/automation_recovery_rules.json": ("retry the exact same prompt and same references two more times", "All references are AI generated and do not represent real people."),
 }
 FORBIDDEN_ROUTING_PATTERNS = [
     re.compile(r"\bI['’]?ll\s+(use|build|create|make|start)\b.*\bHyperFrames\b", re.I),
@@ -55,6 +56,8 @@ FORBIDDEN_ROUTING_PATTERNS = [
     re.compile(r"\b(run|launch) motion nodes in (small )?batches\b", re.I),
     re.compile(r"\bbatch motion launches\b", re.I),
     re.compile(r"\bprefer one-node launches\b.*\bmotion\b", re.I),
+    re.compile(r"\bmoderation placeholder\b.*\bsimplify\b.*\bretry once\b", re.I),
+    re.compile(r"\bGeneration failed\b.*\bblocked\b", re.I),
 ]
 ALLOWED_ROUTING_CONTEXT = (
     "wrong first response",
@@ -88,6 +91,8 @@ ALLOWED_ROUTING_CONTEXT = (
     "may batch up to two",
     "at most two",
     "independent campaign motion clips may batch",
+    "retry the exact same prompt",
+    "before simplifying",
 )
 FORBIDDEN_CREATIVE_DEFAULTS = [
     re.compile(r"\bElegant Control\b"),
