@@ -9,21 +9,22 @@ Turn the user's input into a comprehensive Imagine.Art Workflow package. The inp
 1. Input Analysis
 2. Assumptions
 3. Ideation Swarm: divergent premise set, critic notes, selected/hybrid premise
-4. Creative Direction Gate: three premises, selected spine, rejected-premise notes
+4. Creative Direction Gate: forced-collision premise matrix, selected spine, rejected-premise notes
 5. Campaign Grammar
-6. Director's Treatment
-7. Aesthetic Preflight Gate
-8. Imagine.Art Workflow Section Map
-9. Node-by-Node Workflow Plan
-10. Stillframe Prompt Set
-11. Imagine.Art Music Studio Prompt + Rough Beat Map
-12. Motion Prompt Set
-13. B-Roll Plan
-14. Edit Assembly Plan
-15. Captions / Typography / Product Closeout Plan
-16. QC Gates
-17. Revision Plan
-18. Final Delivery Package
+6. Direction DNA, controlled flaw, and aesthetic refusals
+7. Director's Treatment
+8. Aesthetic Preflight Gate
+9. Imagine.Art Workflow Section Map
+10. Node-by-Node Workflow Plan
+11. Stillframe Prompt Set
+12. Imagine.Art Music Studio Prompt + Rough Beat Map
+13. Motion Prompt Set
+14. B-Roll Plan
+15. Edit Assembly Plan
+16. Captions / Typography / Product Closeout Plan
+17. QC Gates
+18. Revision Plan
+19. Final Delivery Package
 
 ## Rules
 
@@ -31,6 +32,9 @@ Turn the user's input into a comprehensive Imagine.Art Workflow package. The inp
 - If the prompt is vague or mostly taste language, apply `docs/VAGUE_PROMPT_RESCUE.md` before workflow planning.
 - Run the ideation swarm in `docs/ADVERSARIAL_SWARM_PROTOCOL.md` before choosing the creative spine. If subagents cannot be spawned, return `blocked: subagents unavailable` before canvas work or paid generation.
 - Apply `docs/CREATIVE_DIRECTION_GATE.md` before the director's treatment. Do not build a workflow from generic luxury vocabulary.
+- Commit to one translated direction DNA from `docs/REFERENCE_ANALYSIS_METHOD.md`.
+- Include one or two controlled flaws and at least three aesthetic refusals in the treatment, still prompts, motion prompts, and QC notes.
+- If the selected premise is sound-first, create the Music Studio direction and rough beat map before the shot ladder; then write still and motion plans against the beat map.
 - Apply `docs/DIRECTORS_TREATMENT_GATE.md` before touching the workflow canvas. Every shot must have a timeline range, visual job, justification, camera plan, transition logic, music relationship, and artifact-risk note.
 - Use Music Studio for original music direction.
 - Prefer stillframes/keyframes before motion when consistency matters.

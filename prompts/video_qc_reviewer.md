@@ -40,7 +40,7 @@ Then explicitly answer:
 
 ## Required Reference-Parity Review
 
-Do not pass a render only because it has valid Imagine.Art motion. Compare it against the user's reference pack or the closest campaign archetype.
+Do not pass a render only because it has valid Imagine.Art motion. Compare it against the user's reference pack and the selected creative spine. Use the production profile only to check asset truth, continuity locks, artifact risks, and forbidden category cliches.
 
 Return this table:
 

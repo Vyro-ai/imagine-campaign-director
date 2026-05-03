@@ -24,6 +24,26 @@
     "lighting",
     "motion rhythm"
   ],
+  "single_take_mode": {
+    "duration": "10-15s when the live UI supports it and the treatment is one continuous phrase",
+    "requirements": [
+      "one continuous environment",
+      "one camera path",
+      "no internal cuts",
+      "one subject/product choreography",
+      "controlled flaw included",
+      "final hold belongs to the choreography"
+    ],
+    "avoid": "Do not add b-roll inserts or montage phases to a single-take plan."
+  },
+  "sound_first_mode": {
+    "requirements": [
+      "Music Studio direction before shot ladder",
+      "rough beat ladder before Seedance prompt",
+      "visual reveals and holds assigned to beats or silences",
+      "exact seconds kept out of Seedance prompt text"
+    ]
+  },
   "risk_simplifications": {
     "hands": "hide, silhouette, fingers together, one simple motion",
     "glass": "use reflection, light, droplets, condensation, or silhouette instead of finger contact",

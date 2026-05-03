@@ -2,9 +2,9 @@
 
 imagine-campaign-director is opinionated. Contributions should help agents make better aesthetic decisions, not just produce longer prompts.
 
-## Add Campaign Archetypes
+## Add Production Profiles
 
-Add archetypes when they describe a repeatable campaign structure with a clear purpose, shot logic, and failure modes. Update both `docs/CAMPAIGN_ARCHETYPES.md` and `config/campaign_archetypes.json`.
+Add production profiles only when they describe production obligations: protected asset truth, continuity locks, artifact risks, forbidden category cliches, and compatible edit forms. Do not add repeatable campaign structures here. Update both `docs/PRODUCTION_PROFILES.md` and `config/production_profiles.json`.
 
 ## Add Shot Types
 
@@ -12,7 +12,7 @@ Shot types should describe purpose, camera grammar, motion, best uses, and AI fa
 
 ## Add Examples
 
-Examples must use fictional brands/products only. Include brief, shot list, prompt pack, negative prompts, editing notes, QC score, and revision notes.
+Examples must use fictional brands/products only. Include brief, production profile, treatment, shot list, prompt pack, aesthetic refusals, artifact avoids, editing notes, QC score, and revision notes.
 
 ## Update Rubrics
 

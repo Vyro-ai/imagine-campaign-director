@@ -104,10 +104,12 @@ MOOD:
 COMPOSITION:
 ASPECT RATIO:
 TEXTURE:
+IMPERFECTION:
+AESTHETIC REFUSALS:
 AVOID:
 ```
 
-Minimum required blocks are `SHOT`, `SUBJECT`, `ENVIRONMENT`, `LIGHTING`, `CAMERA`, `COLOR GRADE`, `COMPOSITION`, and `AVOID`. Include a concrete camera body/look, lens or focal length, lighting direction, color grade, composition rule, and the universal avoid list. If an image node is a non-visual utility note and cannot use the still grammar, mark it with `metadata.stillPromptExempt: true` and a concrete `metadata.stillPromptExemptReason`.
+Minimum required blocks are `SHOT`, `SUBJECT`, `ENVIRONMENT`, `LIGHTING`, `CAMERA`, `COLOR GRADE`, `COMPOSITION`, and `AVOID`. Include `IMPERFECTION` and `AESTHETIC REFUSALS` for campaign stills, hero frames, reference anchors, and images that feed motion. Include a concrete camera body/look, lens or focal length, lighting direction, color grade, composition rule, and the universal avoid list. If an image node is a non-visual utility note and cannot use the still grammar, mark it with `metadata.stillPromptExempt: true` and a concrete `metadata.stillPromptExemptReason`.
 
 Recurring people/products/garments are never allowed to be a set of disconnected original stills. First create or import the lock reference(s). Then every dependent still must be reference-driven from those lock nodes. If there is one lead model, every shot anchor containing that model must wire the lead lock to `imageUrl` and say `@Image1 controls identity, face, hair, wardrobe, and posture`.
 
@@ -171,6 +173,7 @@ For commercial/social/professionally produced video requests, each Seedance shot
 - shot-specific action
 - real production language: lens, camera movement, lighting setup, blocking, environment, practical reflections, restrained performance, and physical product interaction
 - negative prompt
+- aesthetic refusals
 - actress/model consistency rules when a human lead is requested
 
 ### B-Roll Nodes

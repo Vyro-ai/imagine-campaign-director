@@ -20,7 +20,8 @@ Convert approved stillframes and shot ladder decisions into Imagine.Art video pr
 - transition logic
 - final hold
 - continuity constraints
-- negative prompt
+- aesthetic refusals
+- negative prompt / artifact avoids
 - QC watchouts
 
 For commercial, social media campaign, TikTok/Reels ad, 30s spot, or professionally produced video requests, default to Seedance 2 or the available Imagine.Art video-generation model as the core production layer. Do not replace generated footage with HTML animation, a prompt pack, a storyboard, or a still-image slideshow.
@@ -81,7 +82,8 @@ Prompt structure:
 3. `Phase ladder`: broad ordered phases with concrete action and camera behavior, without seconds or duration wording.
 4. `Camera`: shot size, lens feel, movement, angle, and transition logic.
 5. `Continuity`: stable identity, wardrobe, product, environment, and grade.
-6. `Constraints`: positive visual constraints plus a short avoid list.
+6. `Aesthetic refusals`: three campaign-specific taste refusals, separate from artifact control.
+7. `Constraints`: positive visual constraints plus a short avoid list.
 
 If storyboard panels exist, translate them into the prompt as camera grammar:
 
@@ -108,3 +110,11 @@ Before finalizing a motion prompt, write the connection contract:
 - `reference-image set`: every required still, product-truth image, storyboard panel, and director's-notes board wired to `referenceUrl` slots, with matching `@Image1`, `@Image2`, etc. in the prompt
 
 Prompt phase order must be local to the node. If the final edit places a clip late in the campaign, document that placement outside the Seedance prompt. The prompt itself must not include edit-absolute timing, seconds, time ranges, or clip duration.
+
+## Aesthetic Refusals vs Artifact Avoids
+
+Every campaign motion prompt must include an `Aesthetic refusals` line. It names what the director will not do: no slow push, no centered product, no rooftop, no skyline, no smiling at camera, no perfect symmetry, no fake rebellion posture, no generic glass corridor.
+
+Keep artifact avoids separate: no distorted anatomy, no warped product shape, no fake text, no flicker, no identity drift, no unreadable signage. Do not let artifact controls stand in for a point of view.
+
+For sound-first campaigns, include a `Beat ladder` in the workflow notes and, when useful, in the prompt as non-timed beat relationships: cut on bottle percussion, hold through bass absence, reveal on snare, empty frame after final hit. Do not put exact seconds inside the Seedance prompt.

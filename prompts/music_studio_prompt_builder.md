@@ -14,7 +14,24 @@ Create music direction for Imagine.Art Music Studio.
 - lyric direction if vocals are used
 - duration target
 - edit hit points
+- sound-first status: visual-led score or sound-led spine
+- beat ladder: major hits, silences, holds, reveals, and final absence/hit
 - avoid list
+
+## Sound-First Mode
+
+Use this mode when the user supplies music, tempo, rhythm, voice, genre, or the creative gate selects a sound-led premise.
+
+Before the shot ladder, define:
+
+- sonic object or instrument that owns the campaign, such as bottle-on-stone, zipper teeth, breath, fluorescent buzz, heel scrape, shutter, sub drop, room tone, or vocal fragment
+- tempo or pulse
+- first audible hook
+- beat ladder for cuts, holds, reveals, and silence
+- final memory sound
+- forbidden musical moves
+
+The output must be strong enough that the visual shot ladder can be written against it. Do not translate visuals into music until after this path has been considered.
 
 ## Visual-To-Music Translation
 

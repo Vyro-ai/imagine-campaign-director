@@ -1,0 +1,60 @@
+{
+  "version": "1.0.0",
+  "profiles": [
+    {
+      "id": "packaged_product",
+      "name": "Packaged Product",
+      "best_for": ["launch", "ecommerce", "consumer packaged goods", "premium goods"],
+      "protect": ["package geometry", "label hierarchy", "material finish", "scale", "final product truth"],
+      "continuity_locks": ["product truth frame", "material finish lock", "final clean product plate"],
+      "artifact_risks": ["fake label text", "warped package shape", "invented logo", "floating components", "changing color between frames"],
+      "forbidden_category_cliches": ["centered product from frame one", "generic black-gloss luxury", "unmotivated slow push", "fake premium smoke"],
+      "compatible_edit_forms": ["withheld_product_reveal", "sound_led_beat_ladder", "wrong_genre_procedural", "reverse_reveal", "deadpan_tableau"],
+      "direction_dna_suggestions": ["Hiro product-monument grammar", "Glazer clinical distance"]
+    },
+    {
+      "id": "fashion_apparel",
+      "name": "Fashion / Apparel",
+      "best_for": ["fashion", "streetwear", "lifestyle apparel", "limited drops", "garments"],
+      "protect": ["garment silhouette", "fit", "fabric behavior", "construction details", "styling continuity"],
+      "continuity_locks": ["garment truth frame", "wardrobe lock", "model identity lock when human-led"],
+      "artifact_risks": ["garment drift", "broken walking gait", "fused accessories", "impossible fabric motion", "identity drift"],
+      "forbidden_category_cliches": ["night rooftop", "skyline", "wind-on-fabric as default", "fake rebellion posture", "generic corridor strut"],
+      "compatible_edit_forms": ["single_take_oner", "deadpan_tableau", "wrong_genre_procedural", "sound_led_beat_ladder", "reverse_reveal"],
+      "direction_dna_suggestions": ["Wiseman observational procedure", "Roy Andersson deadpan tableau", "Glazer clinical distance"]
+    },
+    {
+      "id": "fragrance",
+      "name": "Fragrance",
+      "best_for": ["fragrance", "perfume", "scent", "sensory products"],
+      "protect": ["bottle geometry", "cap shape", "glass thickness", "label truth", "liquid or surface behavior"],
+      "continuity_locks": ["bottle truth frame", "cap/detail lock", "final packshot plate"],
+      "artifact_risks": ["fake label text", "warped reflections", "floating liquid", "deformed bottle", "overdone smoke"],
+      "forbidden_category_cliches": ["wet pavement", "orchid petals", "generic smoke swirl", "hand trailing through mist", "centered bottle before final reveal"],
+      "compatible_edit_forms": ["sound_led_beat_ladder", "wrong_genre_procedural", "withheld_product_reveal", "single_take_oner", "reverse_reveal"],
+      "direction_dna_suggestions": ["Glazer clinical distance", "Wong Kar-wai blur and yearning", "Hiro product-monument grammar"]
+    },
+    {
+      "id": "beauty_cosmetics",
+      "name": "Beauty / Cosmetics",
+      "best_for": ["makeup", "skincare", "beauty tools", "editorial beauty"],
+      "protect": ["skin texture", "product shape", "shade or finish truth", "applicator geometry", "face/hand anatomy"],
+      "continuity_locks": ["product truth frame", "skin texture reference", "makeup finish lock", "model identity lock when human-led"],
+      "artifact_risks": ["plastic skin", "poreless smoothing", "distorted eyes", "broken hands", "warped reflection", "invented packaging text"],
+      "forbidden_category_cliches": ["perfect mirror symmetry", "poreless skin", "generic chrome macro", "slow product rotation", "flawless smile-to-camera"],
+      "compatible_edit_forms": ["withheld_product_reveal", "sound_led_beat_ladder", "deadpan_tableau", "wrong_genre_procedural", "reverse_reveal"],
+      "direction_dna_suggestions": ["Hiro product-monument grammar", "hard-flash power portraiture", "Petra Collins soft saturated intimacy"]
+    },
+    {
+      "id": "service_or_app",
+      "name": "Service / App",
+      "best_for": ["apps", "software", "services", "membership", "platforms"],
+      "protect": ["benefit clarity", "workflow truth", "UI/text handled deterministically", "audience problem", "CTA"],
+      "continuity_locks": ["brand kit", "UI reference if supplied", "deterministic type/end-card system"],
+      "artifact_risks": ["fake UI text", "unreadable screens", "generic stock acting", "unclear value proposition", "invented brand claims"],
+      "forbidden_category_cliches": ["floating app screens", "generic happy user montage", "fake dashboards", "overexplained voiceover", "abstract gradient tech world"],
+      "compatible_edit_forms": ["wrong_genre_procedural", "sound_led_beat_ladder", "deadpan_tableau", "reverse_reveal", "withheld_product_reveal"],
+      "direction_dna_suggestions": ["Wiseman observational procedure", "Glazer clinical distance", "deadpan tableau"]
+    }
+  ]
+}

@@ -18,10 +18,12 @@ MOOD:
 COMPOSITION:
 ASPECT RATIO:
 TEXTURE:
+IMPERFECTION:
+AESTHETIC REFUSALS:
 AVOID:
 ```
 
-Minimum required blocks for image-generation nodes are `SHOT`, `SUBJECT`, `ENVIRONMENT`, `LIGHTING`, `CAMERA`, `COLOR GRADE`, `COMPOSITION`, and `AVOID`. The workflow materializer enforces these blocks unless a node has a documented `stillPromptExemptReason`.
+Minimum required blocks for image-generation nodes are `SHOT`, `SUBJECT`, `ENVIRONMENT`, `LIGHTING`, `CAMERA`, `COLOR GRADE`, `COMPOSITION`, and `AVOID`. The workflow materializer enforces these blocks unless a node has a documented `stillPromptExemptReason`. Campaign stills, hero frames, reference anchors, and images that feed motion should also include `IMPERFECTION` and `AESTHETIC REFUSALS`.
 
 The `AVOID` block must include the universal AI-look constraints:
 
@@ -82,6 +84,8 @@ LIGHTING: Narrow warm practical strip from camera-right, cool blue ambient fill,
 CAMERA: ARRI Alexa 35 look, 35mm anamorphic lens, f/2.8, low camera height.
 COLOR GRADE: Cool cyan shadows, warm amber highlights, low saturation, realistic highlight roll-off.
 COMPOSITION: Leading stair lines, subject lower third, negative space above for final memory hold.
+IMPERFECTION: Crop cuts the upper edge of the coat by design; the model is half a beat before the clean pose.
+AESTHETIC REFUSALS: no slow push, no centered hero, no generic black-gloss luxury.
 AVOID: plastic skin, smoothed faces, oversharpening, HDR look, extra fingers, distorted hands, garbled text, cartoon style, illustration, logos, readable signage.
 ```
 

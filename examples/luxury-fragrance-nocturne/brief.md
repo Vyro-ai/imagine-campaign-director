@@ -1,12 +1,12 @@
-# Luxury Fragrance Nocturne
+# Sound-First Fragrance Evidence
 
 Fictional brand: `Nocturne Object Lab`
 
 Product: black orchid perfume in a smoked glass bottle.
 
-Goal: create a 10-second fragrance campaign with blue-hour atmosphere, wet pavement, dark wardrobe, warm skin highlights, and restrained motion.
+Goal: create a 15-second sound-first fragrance campaign in a clinical room, where object percussion and silence determine the reveal of the smoked glass bottle.
 
-Archetype: Fragrance Nocturne.
+Production profile: Fragrance.
 
 CTA: Discover the scent.
 

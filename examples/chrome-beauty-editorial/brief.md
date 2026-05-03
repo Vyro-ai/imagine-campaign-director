@@ -1,12 +1,12 @@
-# Chrome Beauty Editorial
+# Chrome Compact Product Monument
 
 Fictional brand: `Aster Mirror`.
 
 Product: chrome compact and silver cream shadow.
 
-Goal: create a beauty/editorial campaign in a chrome studio with reflective surfaces, precise makeup, extreme close-ups, and controlled camera motion.
+Goal: create a 15-second chrome beauty campaign that withholds the perfect face, uses hard rim and partial reflection, and treats the compact as a final product monument.
 
-Archetype: Chrome Beauty.
+Production profile: Beauty / Cosmetics.
 
 CTA: See the new finish.
 

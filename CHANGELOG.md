@@ -19,7 +19,7 @@
 - Added agent instructions.
 - Added portable skill file.
 - Added aesthetic system documentation.
-- Added campaign archetypes.
+- Replaced category-based campaign templates with production profiles.
 - Added shot grammar.
 - Added QC rubric.
 - Added fictional example campaign prompt packs.

@@ -1,5 +1,20 @@
 # Troubleshooting
 
+## Fresh-Install Execution Tests
+
+Use these scenarios when testing whether agents stop at markdown files instead of operating Imagine.Art:
+
+| Scenario | Expected behavior |
+| --- | --- |
+| Fresh Codex install, no Computer Use/browser automation/desktop control available | Immediately return `blocked: missing Computer Use/browser automation`; do not create a static package as the deliverable. |
+| Computer Use/browser automation reaches Imagine.Art but the browser is logged out | Return `blocked: Imagine.Art login required`; instruct the user to log in in that same browser/session; do not plan canvas work or spend credits. |
+| Computer Use/browser automation reaches Imagine.Art and is logged in | Write the treatment, build/paste the workflow, generate Music Studio/stills/motion as planned, QC/export, and do not ask for approval solely because credits will be spent. |
+| Pasted workflow is verified but selected nodes are ambiguous | Return `blocked: selection ambiguous`; do not ask for generic user approval to spend. |
+| Visible credit estimate is higher than the planned batch | Stop, deselect/reselect or isolate the node. Ask the user only if the abnormal estimate cannot be resolved or exceeds the treatment budget. |
+| `Run Selected` does not visibly register after one click | Do not click again. Mark `clicked_once`, move focus away from the button, wait, refresh/reopen, and inspect Active Runs. |
+| Duplicate paid runs appear | Mark `duplicate_run_operator_error`, stop launches until Active Runs is understood, use one approved output per planned node, and switch all remaining paid launches to isolated one-node launches. |
+| Agent returns only markdown, prompt packs, or `ready for generation` while automation is available | Fail the test. Those are supporting artifacts, not the campaign deliverable. |
+
 ## The Output Feels Generic
 
 Pick one stronger visual idea. Add specific location, material, posture, lens, and motion. Remove filler shots.

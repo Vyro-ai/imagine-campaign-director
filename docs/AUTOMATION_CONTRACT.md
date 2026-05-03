@@ -51,7 +51,7 @@ A campaign is not `finished` just because the workflow ran, the shots are image-
 Before using `finished`, the agent must prove the output belongs in the same category as the intended reference set:
 
 - If the user supplied reference videos, compare against the closest 2-4 references.
-- If the user supplied only a brief, choose the closest campaign archetype and compare against the archetype's expected behavior.
+- If the user supplied only a brief, compare against the selected creative spine, treatment, and production profile obligations.
 - If the campaign is fashion, beauty, fragrance, luxury, lifestyle, or cinematic brand work, do not accept a product-only loop unless the user explicitly asked for one.
 
 Reference parity does not mean copying. It means the output has comparable campaign grammar: subject/world presence, styling intent, location specificity, camera behavior, edit progression, production design density, and an earned final product memory image.
@@ -155,7 +155,11 @@ The user should not need to understand workflow plumbing. The agent owns:
 - documenting every failure locally
 - preparing final edit and delivery assets
 
-The user should only be asked for approval when a creative decision materially changes the campaign, rights clearance is unclear, the user explicitly requested approval before canvas changes, or the platform requires a human action that cannot be automated.
+For campaign-video requests, the user's request implies permission to spend the normal Imagine.Art credits needed to execute the planned workflow. Do not ask for user approval solely because still, storyboard, motion, or Music Studio nodes will spend credits.
+
+Credit safety is operational, not conversational. The agent must prove the selected-node set, check the visible credit estimate against the intended batch, use `Number of runs: 1` unless the treatment explicitly budgets exploration, record the launch in `qa/run-ledger.md`, and click `Run Selected` exactly once.
+
+The user should only be asked for approval when a creative decision materially changes the campaign, rights clearance is unclear, the user explicitly requested approval before canvas changes or before spending credits, the visible credit estimate is abnormal or higher than the planned batch, the account lacks subscription/credits, or the platform requires a human action that cannot be automated.
 
 A completed director's treatment, prompt pack, or workflow payload is not a reason to pause for confirmation. If access is available and no blocker exists, continue into the workflow canvas and execute the staged production plan.
 
@@ -214,15 +218,20 @@ Imagine.Art workflow canvases can show stale node states. A node that looks unch
 3. Verify the selected-node count matches the intended batch. Node focus is not node selection: a clicked node card, focused accessibility element, or expanded properties row does not prove only that node will run. Browser refresh/reopen can preserve stale multi-selection.
 4. Prove the selected node set with at least two signals before launch: visual selected-node outline/count, properties selected-node list, copied workflow JSON `selected: true` flags, or visible credit estimate. The visible credit estimate must match the intended selected-node count. If it is higher than expected, stop immediately and deselect/reselect; do not launch to test.
 5. Remember that `Number of runs: 1` only limits variants per selected node. It does not prevent spending across multiple selected nodes.
-6. For lock nodes, product locks, expensive motion nodes, and single-node retries, launch one node at a time unless there is a written batch reason. Do not use `Run Selected` for a single-node retry unless exactly one selected node is proven. If the canvas retains stale selection, create/paste an isolated retry node.
+6. For lock nodes, product locks, expensive motion nodes, and all campaign motion nodes, launch one node at a time. Do not batch motion launches. Stillframe and storyboard batches are allowed only when the selected count and credit estimate are proven and there is no prior duplicate-run incident in the current session.
 7. If selection cannot be proven, return `blocked: selection ambiguous` instead of spending credits.
 8. Perform exactly one physical click or DOM click on `Run Selected`. Do not double-click, do not press Enter/Space as a fallback, and do not click again because the button still looks enabled.
-9. Immediately mark the ledger status `clicked_once` and stop sending input to the Run button. Move focus/cursor away from the button if using Computer Use.
-10. Wait for UI/Active Runs acknowledgement. The minimum cooldown before any same-node relaunch is the expected run window plus two refresh/reopen checks.
-11. If acknowledgement is delayed, refresh/reopen and inspect Active Runs. Never use a second Run Selected click as a status probe.
-12. If Active Runs shows more jobs than the intended selected count, stop launches, mark `duplicate_run_operator_error`, and continue only after selecting one approved output per role.
+9. Immediately mark the ledger status `clicked_once` and stop sending input to the Run button. Move focus/cursor away from the button if using Computer Use. This creates a launch mutex: the selected node set is locked until the job is proven finished, failed, or blocked.
+10. After `clicked_once`, the only allowed actions for that launch are wait, check Active Runs, refresh/reopen, inspect the node card, record status, download/export, or return a blocker. Do not retry the same selected set because the UI did not visibly register the click.
+11. If acknowledgement is delayed, wait through the normal acknowledgement window, then refresh/reopen and inspect Active Runs. Never use a second `Run Selected` click as a status probe.
+12. A relaunch is allowed only after a refreshed UI clearly shows a failed/error state, Active Runs has no matching in-flight job, the ledger records the prior launch as `failed_confirmed`, and the next attempt is an isolated one-node launch with a new `launch_id`.
+13. If Active Runs shows more jobs than the intended selected count, stop launches for the session, mark `duplicate_run_operator_error`, switch the remainder of the workflow to one-node isolated launches only, and continue only after selecting one approved output per role.
 
-When Computer Use is the control path, prefer a single explicit click action over repeated key presses or repeated "press Run Selected" attempts. If the tool accidentally sends multiple clicks/presses, stop using that interaction pattern for launches and switch to single-node launches with a stricter ledger/Active Runs check, or mark the workflow blocked if the UI cannot be operated without duplicate spending.
+When Computer Use is the control path, use a single explicit click action over repeated key presses or repeated "press Run Selected" attempts. If the tool accidentally sends multiple clicks/presses, stop using that interaction pattern for launches and switch to single-node launches with the launch mutex. Mark the workflow blocked if the UI cannot be operated without duplicate spending.
+
+### Motion Launch Rule
+
+Campaign motion nodes are high-cost and slow-feedback. Launch them one at a time even when the edit plan contains multiple motion nodes. After each click, wait for Active Runs acknowledgement or refreshed completion before selecting the next motion node. If a duplicate-run incident occurs at any stage, all remaining paid launches in the session must be isolated one-node launches.
 
 Before launching or relaunching any node:
 

@@ -24,6 +24,31 @@
       "description": "The campaign has a specific creative spine, status change, and memorable directed event."
     },
     {
+      "id": "concept_collision",
+      "label": "Concept Collision",
+      "description": "The selected premise uses a forced collision such as wrong genre, sound-first, ugly-beautiful, boring-on-purpose, single-take, or audience ritual instead of default ad grammar."
+    },
+    {
+      "id": "reference_dna",
+      "label": "Reference DNA",
+      "description": "One named direction DNA is translated into camera, light, blocking, performance, edit pace, and forbidden moves without copying protected expression."
+    },
+    {
+      "id": "aesthetic_refusals",
+      "label": "Aesthetic Refusals",
+      "description": "The treatment and prompts name specific taste moves the campaign refuses, separate from artifact controls."
+    },
+    {
+      "id": "controlled_imperfection",
+      "label": "Controlled Imperfection",
+      "description": "A deliberate flaw makes the campaign feel directed and human without becoming a model artifact."
+    },
+    {
+      "id": "sound_spine",
+      "label": "Sound Spine",
+      "description": "Music or silence shapes the edit through a beat ladder when sound-first is selected, and supports pacing when visual-led."
+    },
+    {
       "id": "fashion_authority",
       "label": "Fashion/Product Authority",
       "description": "Styling, silhouette, material behavior, posture, product truth, and body language feel intentional."
@@ -74,6 +99,9 @@
     "product_clarity": 3,
     "artifact_control": 3,
     "campaign_ambition": 4,
+    "concept_collision": 4,
+    "reference_dna": 4,
+    "aesthetic_refusals": 4,
     "fashion_authority": 4,
     "editorial_progression": 4,
     "final_memory_image": 4

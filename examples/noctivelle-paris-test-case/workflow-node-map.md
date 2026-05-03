@@ -6,7 +6,7 @@ Final workflow rule: the delivered workflow should contain only used nodes. Expl
 
 1. `SOURCE / Inputs`
 2. `ANALYSIS / Brief + Asset Roles`
-3. `STRATEGY / Fragrance Nocturne`
+3. `STRATEGY / Fragrance Profile + Creative Spine`
 4. `STILLS / GPT Image 2 Storyboard Panels`
 5. `STORYBOARD / Approved Motion References`
 6. `MOTION / Seedance Shot Ladder`
@@ -25,7 +25,7 @@ Final workflow rule: the delivered workflow should contain only used nodes. Expl
 | SRC-03 | SOURCE | Upload product hero | Zip asset | Product truth, bottle geometry, closeout mood | Yes |
 | SRC-04 | SOURCE | Upload mood stills | Zip asset | Casting, city, skin, orchid references | Yes |
 | TXT-01 | ANALYSIS | Asset role summary | Brand/product/campaign text + assets | Role assignments and risks | Yes |
-| TXT-02 | STRATEGY | Campaign grammar | TXT-01 | Fragrance Nocturne rules and avoid list | Yes |
+| TXT-02 | STRATEGY | Production profile + creative spine | TXT-01 | Fragrance profile obligations, selected creative spine, refusals, and artifact avoids | Yes |
 | IMG-01 | STILLS | GPT Image 2 Panel 01 | TXT-02 + mood refs | Orchid hook still | Approved only |
 | IMG-02 | STILLS | GPT Image 2 Panel 02 | TXT-02 + mood refs | Subject intro still | Approved only |
 | IMG-03 | STILLS | GPT Image 2 Panel 03 | TXT-02 + product truth | Skin/silk/bottle edge still | Approved only |

@@ -2,28 +2,40 @@
   "version": "1.0.0",
   "structures": [
     {
-      "id": "default_thirty_second_campaign",
-      "name": "Default Thirty Second Campaign",
+      "id": "sound_led_beat_ladder",
+      "name": "Sound-Led Beat Ladder",
       "duration": "30s",
-      "beats": ["hook", "world reveal", "subject or product introduction", "material detail", "movement or use moment", "environmental breath", "emotional or attitude beat", "final approach or reveal", "final hero hold"]
+      "beats": ["first audible hook", "visual answer to rhythm", "withheld subject or product", "percussion-driven reveal", "silence or dropout hold", "tactile proof on hit", "final memory sound", "final image after sound"]
     },
     {
-      "id": "ten_second_cutdown",
-      "name": "Ten Second Cutdown",
-      "duration": "10s",
-      "beats": ["hook", "first reveal", "detail or action accent", "final hero hold"]
+      "id": "single_take_oner",
+      "name": "Single-Take Oner",
+      "duration": "10-15s",
+      "beats": ["opening composition", "entry or trigger", "continuous camera path", "status change", "empty or altered final hold"]
     },
     {
-      "id": "seven_beat_campaign",
-      "name": "Seven Beat Campaign",
+      "id": "wrong_genre_procedural",
+      "name": "Wrong-Genre Procedural",
       "duration": "20-30s",
-      "beats": ["hook", "world reveal", "product reveal", "use case", "detail proof", "benefit", "cta"]
+      "beats": ["ordinary process begins", "product enters as evidence", "rule or ritual is revealed", "mistake or interruption", "proof detail", "verdict or consequence", "brand closeout"]
     },
     {
-      "id": "editorial_film",
-      "name": "Editorial Film",
+      "id": "withheld_product_reveal",
+      "name": "Withheld Product Reveal",
       "duration": "20-60s",
-      "beats": ["iconic opener", "atmosphere", "movement sequence", "detail accent", "emotional pause", "hero close"]
+      "beats": ["world without product", "trace of product effect", "misdirected detail", "human or material consequence", "partial product proof", "full reveal", "earned closeout"]
+    },
+    {
+      "id": "deadpan_tableau",
+      "name": "Deadpan Tableau",
+      "duration": "10-30s",
+      "beats": ["locked wide frame", "ordinary action", "small absurd change", "product or subject stays underplayed", "long hold after event"]
+    },
+    {
+      "id": "reverse_reveal",
+      "name": "Reverse Reveal",
+      "duration": "15-30s",
+      "beats": ["final state first", "trace backward", "missing cause", "material clue", "original action", "product or subject reason"]
     }
   ]
 }

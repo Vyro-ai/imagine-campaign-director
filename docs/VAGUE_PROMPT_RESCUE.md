@@ -42,7 +42,7 @@ Before generation, run the ideation swarm in `docs/ADVERSARIAL_SWARM_PROTOCOL.md
 - styling/product authority
 - final memory image
 
-Then apply `docs/PRE_SPEND_CONFIDENCE_GATE.md`. Do not spend credits until the selected idea clears the scorecard.
+Then apply `docs/PRE_SPEND_CONFIDENCE_GATE.md`. This is an internal spend-readiness check, not a user-approval pause. Do not launch paid generation until the selected idea clears the scorecard; once it passes, continue execution without asking the user to approve normal campaign credit spend.
 
 ## Required Expansion Output
 
@@ -58,7 +58,7 @@ Before generating, write the expanded brief into the active workspace:
 - stillframe anchor list
 - motion prompt intent
 - music direction
-- pre-spend confidence score
+- internal spend-readiness score
 - run budget
 - QC rejects
 
@@ -81,7 +81,7 @@ These are examples, not defaults.
 
 The result is not finished if:
 
-- it feels like the agent defaulted to a known archetype instead of inventing a campaign
+- it feels like the agent defaulted to a known category template instead of inventing a campaign
 - it looks like generic AI luxury rather than a directed film
 - shots repeat the same pose, crop, background, or slow push-in shape
 - the first second is a static portrait with no hook event

@@ -1,12 +1,12 @@
-# Streetwear Rooftop Myth
+# Streetwear Stairwell Oner
 
 Fictional brand: `Fifth Signal`.
 
 Product: limited black technical jacket.
 
-Goal: create a 10-second rooftop drop campaign with flash photography, wind, skyline, and rebellious posture.
+Goal: create a 15-second single-take streetwear drop campaign in a parking garage stairwell, using observation, fluorescent buzz, and anti-pose behavior instead of rooftop flash language.
 
-Archetype: Streetwear Drop.
+Production profile: Fashion / Apparel.
 
 CTA: Drop opens Friday.
 

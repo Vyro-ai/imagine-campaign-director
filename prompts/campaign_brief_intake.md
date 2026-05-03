@@ -38,6 +38,7 @@ If the user asks for a commercial, TikTok/Reels ad, social media campaign, 30s s
 - What CTA or end-card action?
 - Should there be a main actress/model? If yes, what casting, age range, wardrobe, hair, makeup, and performance style?
 - Should the music be instrumental, vocal, or voiceover-driven?
+- Should the concept be sound-first if the user supplied music, tempo, genre, voice, rhythm, or sonic reference?
 - What brand assets must appear exactly?
 - Are there rights, likeness, or legal constraints?
 
@@ -45,7 +46,19 @@ If the user wants speed or does not answer, make conservative assumptions and la
 
 If runtime is missing, default to a `30s` campaign video.
 
-Before shot-listing a vague campaign, run the ideation swarm in `docs/ADVERSARIAL_SWARM_PROTOCOL.md`, then apply `docs/CREATIVE_DIRECTION_GATE.md`: create distinct premises, choose one creative spine, and document why it is stronger than the rejected options. If subagents cannot be spawned, return `blocked: subagents unavailable` before canvas work or paid generation.
+Before shot-listing a vague campaign, run the ideation swarm in `docs/ADVERSARIAL_SWARM_PROTOCOL.md`, then apply `docs/CREATIVE_DIRECTION_GATE.md`: create the forced-collision premise matrix, choose one creative spine, and document why it is stronger than the rejected options. If subagents cannot be spawned, return `blocked: subagents unavailable` before canvas work or paid generation.
+
+## Sound-First Path
+
+If the user supplies music, asks for a tempo/genre, references a sonic world, asks for voiceover, or the strongest forced-collision premise is `Sound First`, reverse the normal planning order:
+
+1. Build the Music Studio prompt first with `prompts/music_studio_prompt_builder.md`.
+2. Create a rough beat map with major hits, silences, vocal entries, percussion objects, and final absence/hit.
+3. Write the shot ladder against that beat map.
+4. Let audio decide shot count, cut points, holds, hero reveal, and final memory timing.
+5. Include a `BEAT_LADDER` note for Seedance nodes and final edit assembly.
+
+Sound-first does not remove still anchors or motion gates. It only changes what determines the edit.
 
 ## Vague Prompt Rescue
 
@@ -59,7 +72,7 @@ For a generic luxury/fashion request with no assets, default only the production
 - image-grounded Seedance/video only
 - QC rejects for fake text/logos, static portrait loops, repeated slow push-ins, broken walking/hands/faces, and generic AI luxury
 
-Do not default the creative world, wardrobe, location, time of day, pose language, or shot ladder. Use `docs/CREATIVE_DIRECTION_GATE.md` to invent three premises and choose one.
+Do not default the creative world, wardrobe, location, time of day, pose language, or shot ladder. Use `docs/CREATIVE_DIRECTION_GATE.md` to create the forced-collision premise matrix and choose one.
 
 Document these as assumptions, then continue into Imagine.Art execution when automation is available.
 
@@ -73,6 +86,8 @@ Return:
 - input asset role table
 - recommended campaign grammar
 - selected creative spine and rejected premise notes
+- direction DNA
+- controlled flaw and aesthetic refusals
 - shot-list requirements
 - model/actress continuity requirements
 - required Imagine.Art workflow sections

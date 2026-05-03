@@ -4,6 +4,20 @@ Premium AI campaign work is usually not expensive because it has more detail. It
 
 Before shot-listing, apply `docs/CREATIVE_DIRECTION_GATE.md`. A point of view means the campaign has a selected premise, tension, event, and final memory, not just an aesthetic category.
 
+## Direction DNA Suggestions
+
+Each campaign chooses one direction DNA from `docs/REFERENCE_ANALYSIS_METHOD.md` and translates it into camera, blocking, light, performance temperature, edit pace, and forbidden moves. Do not stack multiple named influences in final prompts.
+
+Production profiles in `config/production_profiles.json` may suggest direction DNA, but those suggestions are not creative lanes. The selected DNA must still come from the forced-collision premise and treatment.
+
+- product truth profiles often pair with Hiro product-monument grammar or Glazer clinical distance
+- fashion/apparel profiles often pair with Wiseman observational procedure, Roy Andersson deadpan tableau, or Glazer clinical distance
+- fragrance profiles often pair with Glazer clinical distance, Wong Kar-wai blur and yearning, or Hiro product-monument grammar
+- beauty/cosmetics profiles often pair with Hiro product-monument grammar, hard-flash power portraiture, or Petra Collins soft saturated intimacy
+- service/app profiles often pair with Wiseman observational procedure, Glazer clinical distance, or deadpan tableau
+
+The chosen DNA is not a style-copy request. It is a taste lock that constrains lens family, blocking, light, performance, edit pace, and refusals.
+
 ## Core Rules
 
 - Use one dominant visual idea per shot.
@@ -45,7 +59,7 @@ Before shot-listing, apply `docs/CREATIVE_DIRECTION_GATE.md`. A point of view me
 
 A premium product campaign is not the same as a polished product image with motion. It needs an order of revelation.
 
-Use this ladder unless the brief gives a better one:
+Use this ladder only when the brief and creative gate do not produce a stronger form:
 
 1. atmosphere or material hook
 2. subject/world introduction

@@ -11,7 +11,7 @@ This public package was informed by a private campaign-video production system a
 - artifact-review categories
 - stillframe-first workflow logic
 - generation-vs-editing decision rules
-- fictional campaign archetypes
+- fictional production profiles
 
 ## Unsafe To Publish
 

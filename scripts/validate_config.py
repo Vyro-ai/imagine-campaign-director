@@ -6,7 +6,6 @@ from pathlib import Path
 REQUIRED_TOP_LEVEL_KEYS = {
     "aesthetic_rubric.json": {"version", "criteria"},
     "automation_recovery_rules.json": {"name", "retry_limits", "failure_rules", "completion_statuses"},
-    "campaign_archetypes.json": {"version", "archetypes"},
     "cinematic_still_prompting.json": {"version", "required_blocks", "recommended_blocks", "universal_avoid"},
     "editing_structures.json": {"version", "structures"},
     "imagineart_model_matrix.json": {"name", "description", "global_rules", "models"},
@@ -15,6 +14,7 @@ REQUIRED_TOP_LEVEL_KEYS = {
     "music_directions.json": {"version", "directions"},
     "negative_prompt_patterns.json": {"version", "patterns"},
     "production_gates.json": {"version", "gates"},
+    "production_profiles.json": {"version", "profiles"},
     "sample_public_palette.json": {"name", "description", "usage", "colors"},
     "seedance_constraints.json": {"version", "ten_second_clip", "reference_roles", "risk_simplifications"},
     "shot_types.json": {"version", "shot_types"},
