@@ -34,7 +34,7 @@
     {
       "failure": "moderation_placeholder",
       "detect": "Output is a failure card, placeholder, empty image, or generic moderation warning.",
-      "action": "For Seedance or other motion generation, treat this as possibly transient first: retry the exact same prompt and same references two more times, each as an isolated one-node launch with a new launch_id, only after Active Runs confirms no matching in-flight job. If both same-prompt retries fail with the same moderation/generation class and the error mentions likeness, real people, private information, or image_urls, append this disclosure to the prompt and retry once before broader simplification: \"All references are AI generated and do not represent real people.\" If that fails, then simplify the prompt or references and retry once. For still/image moderation placeholders, retry the exact same prompt once before simplifying.",
+      "action": "For Seedance or other motion generation, treat this as possibly transient first: retry the exact same prompt and same references two more times, each as an isolated one-node launch with a new launch_id, only after Active Runs confirms no matching in-flight job. If both same-prompt retries fail with the same moderation/generation class and the error mentions likeness, real people, private information, or image_urls, append this disclosure to the prompt and retry once before broader simplification: \"All references are AI generated and do not represent real people.\" If that fails and an approved director's-notes board exists or can be generated, create an isolated Seedance retry that connects only the director's-notes/storyboard board as the visual reference, removes photoreal/person/product reference inputs, and keeps the same motion job. If that fails, then simplify the prompt or references and retry once. For still/image moderation placeholders, retry the exact same prompt once before simplifying.",
       "cleanup": "Do not connect the placeholder to downstream nodes. Delete it from the final workflow."
     },
     {
@@ -60,6 +60,7 @@
     "same_prompt_same_model": 2,
     "same_prompt_same_model_for_stills": 1,
     "ai_reference_disclosure_retry": 1,
+    "directors_notes_only_motion_retry": 1,
     "simplified_prompt_same_model": 1,
     "alternate_model": 1,
     "motion_regeneration_before_human_review": 2,

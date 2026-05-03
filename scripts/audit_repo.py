@@ -29,7 +29,8 @@ REQUIRED_TEXT = {
     "docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md": ("IMPERFECTION:", "AESTHETIC REFUSALS:"),
     "docs/PRODUCTION_PROFILES.md": ("not creative templates", "production_profiles.json"),
     "docs/TROUBLESHOOTING.md": ("Fresh-Install Execution Tests", "do not ask for approval solely because credits will be spent"),
-    "config/automation_recovery_rules.json": ("retry the exact same prompt and same references two more times", "All references are AI generated and do not represent real people."),
+    "config/automation_recovery_rules.json": ("retry the exact same prompt and same references two more times", "All references are AI generated and do not represent real people.", "director's-notes board"),
+    "docs/SEEDANCE_WORKFLOW_GUIDE.md": ("Director's-Notes-Only Moderation Fallback",),
 }
 FORBIDDEN_ROUTING_PATTERNS = [
     re.compile(r"\bI['’]?ll\s+(use|build|create|make|start)\b.*\bHyperFrames\b", re.I),

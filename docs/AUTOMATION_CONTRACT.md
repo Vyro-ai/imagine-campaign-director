@@ -338,7 +338,8 @@ If an output is a moderation placeholder or generic failure image:
 - save the failure note locally
 - for Seedance or other motion generation, retry the exact same prompt and same references two more times before simplifying; these retries must be isolated one-node launches with new `launch_id` values, and only after Active Runs confirms there is no matching in-flight job
 - if both same-prompt motion retries fail with a likeness/private-information class error, append this exact line to the existing prompt and retry once before broader simplification: `All references are AI generated and do not represent real people.`
-- if the disclosure retry fails, or if the error class is not likeness/private-information related, then simplify risky wording, remove brand-name shorthand, reduce bodily/action ambiguity, or swap to a safer approved reference, and retry once
+- if the disclosure retry fails and an approved director's-notes/storyboard board exists or can be generated, create an isolated Seedance retry that connects only the director's-notes/storyboard board as the visual reference; remove photoreal/person/product reference inputs that may be triggering likeness moderation, preserve the same motion job, and record `directors_notes_only_retry` in `qa/run-ledger.md`
+- if the director's-notes-only retry fails, or if no board can be made, then simplify risky wording, remove brand-name shorthand, reduce bodily/action ambiguity, or swap to a safer approved reference, and retry once
 - for still/image moderation placeholders, retry the exact same prompt once before simplifying
 - if the simplified retry fails, switch model or redesign the shot
 

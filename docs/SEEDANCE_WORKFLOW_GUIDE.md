@@ -158,6 +158,14 @@ Do not waste prompt budget on workflow mechanics such as `use the connected imag
 
 When a GPT Image 2 director's-notes board is connected, translate its panels into the timing ladder. Do not ask Seedance 2 to copy labels or read the board as final visual style; use it to control motion sequence, camera path, and phase order.
 
+## Director's-Notes-Only Moderation Fallback
+
+If Seedance rejects photoreal/person/product references with a likeness, real-people, private-information, `image_urls`, moderation, or generic generation failure, and the same-prompt retry policy in `docs/AUTOMATION_CONTRACT.md` has already been attempted, use a director's-notes-only fallback before giving up.
+
+Create or reuse an approved director's-notes/storyboard board that shows camera choreography, blocking, phase order, and final hold. Then create an isolated Seedance retry with only that board connected as the visual reference. Remove photoreal model, face, people, product-photo, and environment-photo reference inputs that may be triggering moderation. The prompt should preserve the same motion job and state that the board controls choreography and phase order, not identity or final visual style.
+
+This fallback is a recovery path, not the default. If product truth or identity is essential, use the resulting clip only if QC confirms enough parity, or regenerate safer non-person/product references before final delivery.
+
 ## Simplify Risk
 
 - hands: hide, silhouette, fingers together, one simple motion
