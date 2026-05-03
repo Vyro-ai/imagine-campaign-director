@@ -51,6 +51,9 @@ FORBIDDEN_ROUTING_PATTERNS = [
     re.compile(r"\bconfirm (the )?(credit )?spend\b", re.I),
     re.compile(r"\bconfirmation before (running|generation|spending)\b", re.I),
     re.compile(r"\bask (the )?user\b.*\b(normal )?(credit|credits|spend|spending)\b", re.I),
+    re.compile(r"\bclick (Run Selected|run) again\b.*\b(delayed|register|stale|unchanged|looks enabled|feedback)\b", re.I),
+    re.compile(r"\b(run|launch) motion nodes in (small )?batches\b", re.I),
+    re.compile(r"\bprefer one-node launches\b.*\bmotion\b", re.I),
 ]
 ALLOWED_ROUTING_CONTEXT = (
     "wrong first response",
@@ -74,6 +77,11 @@ ALLOWED_ROUTING_CONTEXT = (
     "ask only",
     "user explicitly requested",
     "explicit approval requirements",
+    "do not retry",
+    "do not click again",
+    "never click",
+    "one-node launches only",
+    "launch campaign motion nodes one at a time",
 )
 FORBIDDEN_CREATIVE_DEFAULTS = [
     re.compile(r"\bElegant Control\b"),
