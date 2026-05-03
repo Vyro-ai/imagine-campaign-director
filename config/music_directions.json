@@ -24,6 +24,22 @@
       "mood": "precise, reflective, controlled",
       "tempo": "slow-medium",
       "instruments": ["glassy synth", "tight kick", "metallic accents", "warm pad"]
+    },
+    {
+      "id": "sound_first_object_percussion",
+      "use": "sound-led spine",
+      "genre": "minimal object percussion and room tone",
+      "mood": "physical, spare, intentional",
+      "tempo": "brief-defined",
+      "instruments": ["product contact hit", "room tone", "sub pulse", "single dry snare", "silence"]
+    },
+    {
+      "id": "deadpan_tableau_room_tone",
+      "use": "background score",
+      "genre": "near-silent observational score",
+      "mood": "flat, patient, strange",
+      "tempo": "slow irregular pulse",
+      "instruments": ["fluorescent buzz", "distant HVAC", "one muted bass note", "dry footstep"]
     }
   ]
 }

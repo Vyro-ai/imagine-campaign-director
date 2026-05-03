@@ -75,7 +75,7 @@ If Computer Use/browser execution is unavailable after an explicit check, return
 3. If the input is vague or mostly taste language, apply `docs/VAGUE_PROMPT_RESCUE.md`.
 4. Choose a campaign grammar from `docs/AESTHETIC_SYSTEM.md`.
 5. Run the ideation swarm from `docs/ADVERSARIAL_SWARM_PROTOCOL.md`; then apply `docs/CREATIVE_DIRECTION_GATE.md` and write a director's treatment using `docs/DIRECTORS_TREATMENT_GATE.md`. If subagents cannot be spawned, return `blocked: subagents unavailable` before canvas work or paid generation. Do not touch the workflow canvas until the selected creative spine, film, edit, shots, directional diversity table, music spine, and Seedance 2 node plan are justified.
-6. Define reference parity: closest references/archetype, hook behavior, subject/world behavior, camera behavior, editorial progression, product reveal, and final memory image.
+6. Define reference parity: closest references, selected creative spine, production profile obligations, hook behavior, subject/world behavior, camera behavior, editorial progression, product reveal, and final memory image.
 7. Build a comprehensive workflow from `docs/IMAGINEART_WORKFLOW_BLUEPRINT.md`.
 8. Apply `docs/AUTOMATION_CONTRACT.md`, `docs/PRODUCTION_LEARNINGS.md`, `docs/WORKFLOW_EXECUTION_GUIDE.md`, `docs/ADVERSARIAL_SWARM_PROTOCOL.md`, `docs/PRE_SPEND_CONFIDENCE_GATE.md`, `docs/DIRECTIONAL_DIVERSITY_GATE.md`, `docs/DIRECTORS_EYE_GATE.md`, and `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`.
 9. For paste-first workflows, apply `docs/PASTE_FIRST_WORKFLOWS.md` and `docs/IMAGINEART_LIVE_MODEL_STRINGS.md`; use `modelKey` values that materialize to the verified live IDs instead of stale numeric IDs.
@@ -99,10 +99,10 @@ Use this sequence for commercials, social campaigns, TikTok/Reels ads, 30s spots
 
 1. Analyze brand assets and extract visual rules. If a brand kit/brand board is supplied, upload/import it as source truth and derive missing product/logo/type/style locks from it before campaign stills. Use a local image generation/editing tool for those atomic locks when available; otherwise create the atomic lock nodes inside Imagine.Art before the rest of the workflow.
 2. Define target platform, runtime, pacing, audience, CTA, and aspect ratio.
-3. Create a hero concept and an 8-12 shot structure for a 30s vertical ad.
+3. Create a hero concept and edit form from the creative gate; use an 8-12 shot structure for a 30s vertical ad only when the selected form needs conventional coverage.
 4. Generate or select consistent actress/model reference frames when a believable human lead is requested.
-5. Generate Seedance-ready prompts per shot, including shared continuity and negative prompts.
-6. Generate or specify an original Imagine.Art Music Studio bed with edit hit points.
+5. Generate Seedance-ready prompts per shot, including shared continuity, aesthetic refusals, and artifact avoids.
+6. Generate or specify an original Imagine.Art Music Studio bed with edit hit points. If the selected premise is sound-first, create the Music Studio direction and rough beat map before the shot ladder.
 7. After generated or supplied motion clips exist, assemble them in an editor or HyperFrames with beat-synced cuts, type, logo, product lockup, captions, and CTA.
 8. QC for realism, product continuity, actress/model consistency, hand/contact issues, fake text, social-platform framing, and reference parity.
 9. Deliver the final render plus source prompts, shot-source manifest, edit notes, and revision notes.
@@ -138,7 +138,8 @@ Follow the music standard in `docs/PRODUCTION_STANDARD.md` and the details in `d
 
 ## Taste Rules
 
-- Use one dominant campaign grammar.
+- Use one dominant campaign grammar and one translated direction DNA.
+- Carry one or two controlled flaws and at least three aesthetic refusals from treatment into still prompts, motion prompts, and QC notes.
 - Match the ambition level of the user's references in original form; do not merely satisfy the prompt.
 - For fashion, beauty, fragrance, luxury, lifestyle, and cinematic brand work, include campaign behavior: world, styling, subject or ritual, camera discovery, editorial progression, and an earned product closeout unless the user explicitly requests a pure product loop.
 - For professionally shot/produced ads, prompts should use production language: lens, camera movement, lighting setup, blocking, environment, practical reflections, restrained performance, and physical product interaction.
@@ -154,6 +155,7 @@ Follow the music standard in `docs/PRODUCTION_STANDARD.md` and the details in `d
 - Do not launch final campaign motion from prompt text alone. Generate or upload the needed image reference first, then connect it visibly to the motion node.
 - Before launching or relaunching any Imagine.Art node, check Active Runs, update `qa/run-ledger.md`, and refresh/reopen the workflow if the node appears stale or unchanged. Never duplicate-run a node to force a status update; if completion cannot be proven after two refresh cycles, return `blocked: node status unknown`.
 - Treat `Run Selected` as non-idempotent. Node focus is not node selection, and `Number of runs: 1` does not protect against stale multi-selection. Before launch, prove the selected-node set with at least two signals and verify the credit estimate matches the intended node count. Use exactly one click per launch transaction, record `armed` then `clicked_once` in `qa/run-ledger.md`, move focus away from the run button, and wait/refresh/check Active Runs instead of clicking again. If selection cannot be proven, return `blocked: selection ambiguous`; if Computer Use causes duplicate runs, stop launching and switch to isolated one-node launches or mark the workflow blocked.
+- Treat normal campaign credit spend as implied by the user's campaign-video request. Ask for approval only when the user requested approval, the visible credit estimate is abnormal or exceeds the planned batch, subscription/credits are unavailable, selected nodes are ambiguous, rights clearance is unclear, or the platform requires human action.
 - A generated video node is not a usable source until it has been exported or downloaded as a local file, verified with `ffprobe`, and listed in the manifest.
 - Do not call a silent export ready when music was planned. Missing audio is `blocked`, `music pending`, or explicitly approved `silent review only`.
 - Before launching GPT Image 2 storyboard/reference/director's-notes nodes, confirm the visible UI model and use a validated ratio. Start with `1:1` for storyboard panels unless the live workflow has already proven another ratio works.

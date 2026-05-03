@@ -39,6 +39,8 @@ Do not mark a campaign `ready for generation` or `motion pending` until you have
 
 Do not stop at `ready for confirmation` after writing a treatment, prompt pack, or canonical workflow payload. If Imagine.Art access is confirmed, planning is complete, and the user did not explicitly ask to approve canvas changes, the next required step is to open or focus the workflow canvas and execute the workflow.
 
+Do not ask the user to approve normal Imagine.Art credit spend for a campaign-video request. The request implies permission to spend credits within the staged run budget. Ask only for explicit approval requirements, account/subscription/credit blockers, abnormal credit estimates, ambiguous selected nodes, rights issues, missing assets, or platform actions that cannot be automated.
+
 Do not use generic language like "browser execution is unavailable here" unless you first checked whether Computer Use, browser automation, desktop control, or the in-app browser can operate Imagine.Art. If execution cannot be attempted, report `blocked`; do not present the package as the campaign deliverable.
 
 ## Tool Routing Guard
@@ -98,7 +100,7 @@ Every campaign plan should account for:
 
 If the user does not specify a runtime, default to a `30s` campaign video. Use shorter durations only when the user asks for a cutdown, platform constraint, bumper, teaser, or single-shot test.
 
-A 30-second default should usually be planned as an 8-12 shot edit assembled from reviewed Imagine.Art motion clips, not as one overstuffed 30-second generation. Individual Seedance 2 nodes should use the longest useful available duration for the creative job, including 15s when that improves continuity, while shorter b-roll/detail inserts remain valid when they produce better control.
+A 30-second default should be planned from the selected creative edit form, then assembled from reviewed Imagine.Art motion clips. Use an 8-12 shot edit when the treatment needs conventional coverage; use fewer stronger phrases when the selected form is sound-first, single-take, deadpan tableau, procedural proof, or withheld-product reveal. Individual Seedance 2 nodes should use the longest useful available duration for the creative job, including 15s when that improves continuity, while shorter b-roll/detail inserts remain valid when they produce better control.
 
 ## Context Workspace Standard
 
@@ -199,7 +201,7 @@ When live footage is needed, create `human-shoot.md` with exact spoken lines, pi
 
 ## Quality Standard
 
-A technically valid Imagine.Art export is not automatically finished. The campaign must clear reference parity: it should match the ambition level, behavior, camera grammar, styling, editorial progression, product reveal, and final memory image expected by the user's references or selected archetype.
+A technically valid Imagine.Art export is not automatically finished. The campaign must clear reference parity: it should match the ambition level, behavior, camera grammar, styling, editorial progression, product reveal, and final memory image expected by the user's references and selected creative spine. The production profile checks asset truth and risks; it does not define the creative lane.
 
 Product-only loops, generic surfaces, interchangeable macro shots, and static pretty motion are not finished fashion, beauty, fragrance, luxury, streetwear, or cinematic brand campaigns unless the user explicitly asked for that narrow format.
 

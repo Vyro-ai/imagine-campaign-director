@@ -22,8 +22,8 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 
 ## Procedure
 
-1. Verify the active workspace contains a director's treatment from `docs/DIRECTORS_TREATMENT_GATE.md`. If it does not, write it before opening the canvas, then continue. Do not return to the user for confirmation unless they explicitly requested approval before canvas changes.
-2. Run the ideation swarm, treatment critic, and pre-spend critic from `docs/ADVERSARIAL_SWARM_PROTOCOL.md`; resolve blockers before canvas work or paid generation. If subagents cannot be spawned, return `blocked: subagents unavailable`; do not continue with single-agent fallback reports.
+1. Verify the active workspace contains a director's treatment from `docs/DIRECTORS_TREATMENT_GATE.md`. If it does not, write it before opening the canvas, then continue. Do not return to the user for confirmation unless they explicitly requested approval before canvas changes or before spending credits.
+2. Run the ideation swarm, treatment critic, and internal spend-readiness critic from `docs/ADVERSARIAL_SWARM_PROTOCOL.md`; resolve blockers before canvas work or paid generation. If subagents cannot be spawned, return `blocked: subagents unavailable`; do not continue with single-agent fallback reports.
 3. Open or create the Imagine.Art workflow.
 4. For multi-node campaign builds, create a canonical workflow spec locally and materialize it with `scripts/imagineart_workflow_clipboard.mjs` following `docs/PASTE_FIRST_WORKFLOWS.md`.
 5. Copy the materialized payload through the text-only clipboard path, paste once, then verify the rendered canvas.
@@ -74,6 +74,7 @@ You are the workflow operator. Your job is to turn the campaign package into a r
 - Do not launch a multi-reference motion prompt from one start-frame edge. The visible inputs must match the written reference connection map.
 - Do not spend duplicate runs. Live `Number of runs` must be `1` unless an identity-candidate or look-dev exploration is explicitly authorized in the treatment.
 - Do not launch a motion node whose prompt mentions duration, seconds, or time ranges. Duration belongs in the node property, not the prompt.
+- Do not ask for user approval solely because generation will spend normal Imagine.Art credits. A campaign-video request authorizes the planned staged workflow unless the user explicitly required approval, credits/subscription are unavailable, the credit estimate is abnormal, selection is ambiguous, or another blocker applies.
 - Do not connect moderation placeholders downstream.
 - Do not preserve unused branches in the final workflow.
 - Do not leave nodes overlapping. If a node is created on top of another node, move it immediately before creating or launching more nodes.

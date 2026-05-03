@@ -14,7 +14,9 @@
     "FILM STOCK / FORMAT",
     "MOOD",
     "TEXTURE",
-    "ASPECT RATIO"
+    "ASPECT RATIO",
+    "IMPERFECTION",
+    "AESTHETIC REFUSALS"
   ],
   "universal_avoid": [
     "plastic skin",
@@ -62,5 +64,23 @@
     "bleach bypass high contrast low saturation",
     "pastel film palette with faded blacks",
     "monochrome deep silver tones"
+  ],
+  "imperfections": [
+    "crop cuts the top of the head",
+    "foreground obstruction blocks part of the frame",
+    "subject caught half a beat before posing",
+    "hard practical light creates an awkward cast",
+    "product only partly visible",
+    "lens flare crosses a face or product edge",
+    "frame holds after the subject exits"
+  ],
+  "aesthetic_refusals": [
+    "no slow push",
+    "no centered hero",
+    "no skyline",
+    "no smiling at camera",
+    "no glossy black surface",
+    "no perfect symmetry",
+    "no generic night rooftop"
   ]
 }

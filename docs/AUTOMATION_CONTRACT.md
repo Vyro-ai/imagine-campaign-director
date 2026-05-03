@@ -51,7 +51,7 @@ A campaign is not `finished` just because the workflow ran, the shots are image-
 Before using `finished`, the agent must prove the output belongs in the same category as the intended reference set:
 
 - If the user supplied reference videos, compare against the closest 2-4 references.
-- If the user supplied only a brief, choose the closest campaign archetype and compare against the archetype's expected behavior.
+- If the user supplied only a brief, compare against the selected creative spine, treatment, and production profile obligations.
 - If the campaign is fashion, beauty, fragrance, luxury, lifestyle, or cinematic brand work, do not accept a product-only loop unless the user explicitly asked for one.
 
 Reference parity does not mean copying. It means the output has comparable campaign grammar: subject/world presence, styling intent, location specificity, camera behavior, edit progression, production design density, and an earned final product memory image.
@@ -155,7 +155,11 @@ The user should not need to understand workflow plumbing. The agent owns:
 - documenting every failure locally
 - preparing final edit and delivery assets
 
-The user should only be asked for approval when a creative decision materially changes the campaign, rights clearance is unclear, the user explicitly requested approval before canvas changes, or the platform requires a human action that cannot be automated.
+For campaign-video requests, the user's request implies permission to spend the normal Imagine.Art credits needed to execute the planned workflow. Do not ask for user approval solely because still, storyboard, motion, or Music Studio nodes will spend credits.
+
+Credit safety is operational, not conversational. The agent must prove the selected-node set, check the visible credit estimate against the intended batch, use `Number of runs: 1` unless the treatment explicitly budgets exploration, record the launch in `qa/run-ledger.md`, and click `Run Selected` exactly once.
+
+The user should only be asked for approval when a creative decision materially changes the campaign, rights clearance is unclear, the user explicitly requested approval before canvas changes or before spending credits, the visible credit estimate is abnormal or higher than the planned batch, the account lacks subscription/credits, or the platform requires a human action that cannot be automated.
 
 A completed director's treatment, prompt pack, or workflow payload is not a reason to pause for confirmation. If access is available and no blocker exists, continue into the workflow canvas and execute the staged production plan.
 

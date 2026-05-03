@@ -20,10 +20,12 @@ MOOD: [emotional cue + genre/category cue]
 COMPOSITION: [rule of thirds / symmetry / leading lines / negative space / foreground-midground-background]
 ASPECT RATIO: [delivery ratio or crop intent]
 TEXTURE: [grain, halation, lens flare, analog softness, natural pores, realistic specular highlights]
+IMPERFECTION: [one deliberate flaw, such as awkward crop, subject not ready, foreground obstruction, flare, underexposure, harsh practical, partial reveal, or wrong-moment gesture]
+AESTHETIC REFUSALS: [three taste refusals for this campaign, separate from artifact avoids]
 AVOID: [universal avoid list + shot-specific artifact risks]
 ```
 
-The minimum required blocks are `SHOT`, `SUBJECT`, `ENVIRONMENT`, `LIGHTING`, `CAMERA`, `COLOR GRADE`, `COMPOSITION`, and `AVOID`. Add `FILM STOCK / FORMAT`, `MOOD`, `ASPECT RATIO`, and `TEXTURE` for hero frames, recurring anchors, and anything feeding video.
+The minimum required blocks are `SHOT`, `SUBJECT`, `ENVIRONMENT`, `LIGHTING`, `CAMERA`, `COLOR GRADE`, `COMPOSITION`, and `AVOID`. Add `FILM STOCK / FORMAT`, `MOOD`, `ASPECT RATIO`, and `TEXTURE` for hero frames, recurring anchors, and anything feeding video. Add `IMPERFECTION` and `AESTHETIC REFUSALS` for every campaign still, hero frame, reference anchor, and image that feeds motion.
 
 Do not start prompts with `please`, `create an image of`, or abstract taste language. Describe the still as if it already exists.
 
@@ -37,6 +39,8 @@ Use one concrete choice per category. Do not stack conflicting palettes or camer
 - Lighting: name source and direction, such as `single soft key from camera-left`, `hard rim light from a doorway`, `motivated practical lamp`, `neon magenta key`, `moonlit backlight`, `volumetric haze`.
 - Grade: choose one palette, such as `teal and orange`, `desaturated muted with cyan shadows`, `warm golden lifted blacks`, `cyan and magenta neon`, `bleach bypass`, `pastel faded blacks`, `monochrome silver`.
 - Texture: `subtle film grain`, `fine 35mm grain`, `halation around highlights`, `analog softness`, `natural skin texture`, `visible pores`, `slight asymmetry`, `realistic specular highlights`.
+- Imperfection: `crop cuts the top of the head`, `foreground shelf blocks one third of frame`, `subject caught half a beat before posing`, `hard fluorescent casts green into skin`, `product only partly visible`, `lens flare crosses the mouth`, `frame held after subject exits`.
+- Aesthetic refusals: name what this campaign will not do, such as `no slow push`, `no centered hero`, `no skyline`, `no smiling at camera`, `no glossy black surface`, `no perfect symmetry`.
 
 Universal avoid list:
 
@@ -78,6 +82,8 @@ When a workflow builder needs to mutate stills programmatically, hold this objec
   "composition": "subject camera-left, negative space camera-right, foreground-midground-background layering",
   "aspect_ratio": "9:16 delivery, cinematic crop discipline",
   "texture": "fine 35mm grain, halation around highlights, natural skin texture",
+  "imperfection": "foreground rain streak cuts through the clean product silhouette by design",
+  "aesthetic_refusals": ["no centered hero", "no slow push", "no generic black-gloss luxury"],
   "avoid": ["plastic skin", "oversharpening", "HDR look", "extra fingers", "garbled text"]
 }
 ```
@@ -87,6 +93,8 @@ When a workflow builder needs to mutate stills programmatically, hold this objec
 - Use visual nouns and production facts, not abstract emotion alone.
 - Front-load shot type and subject.
 - Prefer 8-12 precise directives over long adjective stacks.
+- Separate taste refusals from model artifact avoids. `No rooftop` is direction; `no distorted hands` is artifact control.
+- Only include an imperfection that the editor would keep. If the flaw would cause QC rejection, simplify it.
 - Use `film still`, `frame grab`, or `stills archive` when the asset should feel cinematic.
 - Do not request text in generated stills unless the still is explicitly a storyboard/director's-notes board. For background signage, ask for `illegible glyph signage`.
 - For product ads, keep final campaign typography out of generated stills. Add brand/product copy in deterministic edit/type layers.

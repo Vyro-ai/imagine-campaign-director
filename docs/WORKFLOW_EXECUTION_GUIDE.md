@@ -12,17 +12,23 @@ Start from a relevant preset or featured workflow when it matches the job. Use a
 
 Before opening or touching the canvas, complete the director's treatment in `docs/DIRECTORS_TREATMENT_GATE.md`. The workflow should execute a near-deterministic edit plan with justified shots, cut points, music hits, transition logic, and Seedance 2 node grouping already decided.
 
-Before still generation, apply `docs/DIRECTIONAL_DIVERSITY_GATE.md`, `docs/PRE_SPEND_CONFIDENCE_GATE.md`, and the pre-spend critic pass from `docs/ADVERSARIAL_SWARM_PROTOCOL.md`. A full shot ladder that varies only crop distance around the same person, outfit, corridor, and slow push is not ready for generation.
+Before still generation, apply `docs/DIRECTIONAL_DIVERSITY_GATE.md`, `docs/PRE_SPEND_CONFIDENCE_GATE.md`, and the internal spend-readiness critic pass from `docs/ADVERSARIAL_SWARM_PROTOCOL.md`. A full shot ladder that varies only crop distance around the same person, outfit, corridor, and slow push is not ready for generation.
 
 After the director's treatment is complete, continue into the canvas. Do not ask for confirmation just because the treatment or workflow payload is ready; ask only when the user requested approval before canvas changes or a specific blocker requires human action.
+
+Do not ask for approval solely because `Run Selected` will spend normal Imagine.Art credits. The campaign request implies permission to run the staged workflow. Stop only for explicit approval requirements, login, unavailable subscription/credits, abnormal credit estimates, ambiguous selected nodes, missing required source assets, UI/model failures, moderation, generation failure, or export failure.
 
 For multi-node campaign workflows, use the paste-first construction path in `docs/PASTE_FIRST_WORKFLOWS.md` by default. Generate a canonical workflow spec locally, materialize it with `scripts/imagineart_workflow_clipboard.mjs`, copy it through the text-only clipboard path, paste once, and verify the rendered canvas. Manual node creation is fallback when the node schema is unknown or paste validation fails.
 
 Avoid the paste-first trap: a large pasted graph can look complete while being unusable. A production workflow is only valid when the source assets are present, the run order is staged, and the outputs that feed motion have been selected intentionally.
 
-For commercials, social campaigns, TikTok/Reels ads, 30s spots, and professionally shot/produced videos, the default path is image-first, Seedance-led video production:
+For commercials, social campaigns, TikTok/Reels ads, 30s spots, and professionally shot/produced videos, the default path is image-first, Seedance-led video production unless the selected premise is explicitly sound-first:
 
 `source inputs -> analysis/user clarification -> ImagineArt 2.0 original stillframes or GPT Image 2 reference-driven stillframes -> approved anchors -> GPT Image 2 director's-notes boards where needed -> storyboard/reference panels -> Seedance 2 motion -> Music Studio -> HyperFrames/editor finishing -> QC/export`
+
+Sound-first branch:
+
+`source inputs -> analysis/user clarification -> Music Studio direction + rough beat map -> shot ladder against beat map -> still anchors -> director's-notes boards where needed -> Seedance 2 motion with beat ladder notes -> Music Studio generation/import -> HyperFrames/editor finishing -> QC/export`
 
 Use `ImagineArt 2.0` first for original stillframe generation when no reference control is required. Use `GPT Image 2` when the still must consume a style image, character/model reference, product photo, storyboard panel, continuity frame, or other reference. Use `Nano Banana 2` only when ImagineArt 2.0/GPT Image 2 are not the right fit for the specific asset role or live model availability. Use `Nano Banana Pro` only when final premium still fidelity or product-truth quality specifically justifies it. Document any exception.
 
@@ -72,7 +78,7 @@ Within each stage column, each planned shot gets its own row or clearly separate
 
 Do not spread nodes across several screen-widths or a huge vertical scroll. Use compact production spacing: roughly `650-800px` between stage columns and `700-900px` between shot rows. Keep connected nodes close enough that a human can trace each edge at ordinary zoom. If the graph starts exceeding a readable stage grid, reduce the number of visible one-off nodes, group shots into stronger motion blocks, and move rejects/diagnostics into a separate archive workflow instead of pushing them far away.
 
-For a 10-second campaign, plan at least 4-5 shot branches before generating unless the brief explicitly asks for a single-shot film. For 15-30 second campaigns, plan the full 8-12 shot ladder first. Do not generate one still, create one video node, and repeat without the full shot map visible on the canvas.
+For a 10-second campaign, plan enough shot branches to express the selected edit form before generating; a single-take campaign may use one branch when the treatment justifies it. For 15-30 second campaigns, plan the full shot ladder first, with 8-12 shots only when the selected form needs conventional coverage. Do not generate one still, create one video node, and repeat without the full shot map visible on the canvas.
 
 ## Node Naming
 
@@ -108,7 +114,7 @@ Run campaigns in stages:
 1. `SOURCE`: upload/import product photos, style images, mood boards, references, footage, and brand notes.
 2. `CLARIFY`: ask targeted user questions or document assumptions for platform, runtime, CTA, audience, realism, model/casting, and music.
 3. `ANALYSIS`: assign asset roles and identify continuity/artifact risks.
-4. `SHOTLIST`: create the hero concept and shot ladder; use 8-12 shots for a 30s vertical ad unless the brief requires a different structure.
+4. `SHOTLIST`: create the hero concept and shot ladder; choose the edit form from the creative gate and use 8-12 shots for a 30s vertical ad only when that form needs a conventional cut structure.
 5. `STILLS`: generate ImagineArt 2.0 original stillframe variants or GPT Image 2 reference-driven product truth frames, model/actress reference frames, hero plates, and shot reference frames.
 6. `APPROVED`: select still anchors, create/inspect a contact sheet, apply `docs/DIRECTORS_EYE_GATE.md`, and document why they passed.
 7. `STORYBOARD`: create camera-movement reference panels for Seedance shots; use GPT Image 2 director's-notes boards for complicated camera choreography.
@@ -177,7 +183,7 @@ Do not report a workflow as ready until:
 - sections are readable
 - source assets are imported/uploaded
 - clarification questions are answered or assumptions are documented
-- a shot list exists with continuity rules, Seedance prompts, negative prompts, music direction, and final edit plan
+- a shot list exists with continuity rules, Seedance prompts, aesthetic refusals, artifact avoids, music direction, and final edit plan
 - launch-critical connections are visible
 - approved stills are separated
 - generated nodes have completion entries in `qa/run-ledger.md`

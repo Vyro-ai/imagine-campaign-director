@@ -22,6 +22,22 @@ The agent must explicitly state one of these execution modes:
 
 Do not silently substitute HTML animation, prompt packs, static storyboards, or slideshows when the user asks for a finished video ad.
 
+## Single-Take Mode
+
+For 10-15s campaigns, the creative gate may select a single-take oner. This is not a fallback or a slideshow substitute; it is a deliberate Seedance 2 motion plan.
+
+Use one Seedance 2 node when the treatment can express the film as a continuous camera path:
+
+- one approved start/reference set
+- one continuous environment
+- one subject/product choreography
+- one controlled flaw
+- no internal cuts
+- no b-roll inserts
+- final hold that is part of the choreography
+
+The prompt should describe phases as a continuous move, not as a montage. Good single-take jobs include subject entering/leaving frame, product revealed through blocking, a locked tableau that changes once, a procedural demonstration, or an empty-frame final hold. If the idea needs many inserts, it is not single-take mode.
+
 ## Model / Actress Consistency
 
 If the user asks for a believable main actress/model, create a continuity strategy before motion:
@@ -135,7 +151,8 @@ Use this structure for advanced Seedance 2 campaign prompts:
 3. `Phase ladder`: broad ordered phases with concrete shot behavior, without seconds or duration wording.
 4. `Camera`: shot size, lens feel, movement, angle, and transition logic.
 5. `Continuity`: what must stay stable across shots.
-6. `Constraints`: visual positive constraints and a short avoid list.
+6. `Aesthetic refusals`: three campaign-specific taste refusals.
+7. `Constraints`: visual positive constraints and a short artifact avoid list.
 
 Do not waste prompt budget on workflow mechanics such as `use the connected image` when the image is structurally connected. Write what happens after frame 1 in direct shot language.
 

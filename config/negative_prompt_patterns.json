@@ -35,6 +35,16 @@
       "no fused accessories",
       "no broken jewelry",
       "no impossible walking gait"
+    ],
+    "aesthetic_refusals": [
+      "no slow push",
+      "no centered hero",
+      "no perfect symmetry",
+      "no night rooftop",
+      "no skyline",
+      "no fake rebellion posture",
+      "no glossy black surface",
+      "no generic glass corridor"
     ]
   }
 }

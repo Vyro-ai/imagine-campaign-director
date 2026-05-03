@@ -15,11 +15,11 @@
 
 Make Noir Orchid feel intimate, expensive, cinematic, restrained, and unforgettable. The video should sell the feeling of the fragrance before revealing the product as the final object of the mood.
 
-## Campaign Archetype
+## Production Profile
 
-Fragrance Nocturne.
+Fragrance.
 
-This is the best fit because the brand world depends on darkness, wet surfaces, warm human highlights, quiet movement, and a final product memory image. Avoid treating the campaign as a runway montage or generic beauty reel.
+This profile protects bottle geometry, cap shape, label truth, glass thickness, and final packshot reliability. It does not define the film's creative structure. Avoid treating the category as automatic wet pavement, orchids, smoke, or generic nocturnal romance unless the treatment earns those choices.
 
 ## Emotional Temperature
 

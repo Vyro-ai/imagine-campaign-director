@@ -1,41 +1,49 @@
 # Editing Structures
 
-## Default 30-Second Campaign
+## Select An Edit Form
 
-Use when the user does not specify runtime. Plan 8-12 shots, then group related beats into the longest useful Seedance 2 nodes available in the live UI.
+Use `docs/CREATIVE_DIRECTION_GATE.md` before choosing structure. The default is not a fixed ladder; it is the edit form that best expresses the selected premise.
 
-1. 0-2s: hook
-2. 2-5s: world reveal
-3. 5-8s: subject/product/styling introduction
-4. 8-11s: material or detail accent
-5. 11-15s: movement or use moment
-6. 15-19s: environmental breath or b-roll
-7. 19-23s: emotional/attitude beat
-8. 23-27s: final approach, reveal, or escalation
-9. 27-30s: final hero hold
+## Sound-Led Beat Ladder
 
-## 10-Second Cutdown
+Use when music, rhythm, voice, object percussion, or silence is the spine.
 
-Use about four major phases:
+1. first audible hook
+2. visual answer to rhythm
+3. withheld subject or product
+4. percussion-driven reveal
+5. silence or dropout hold
+6. tactile proof on hit
+7. final memory sound
+8. final image after sound
 
-1. 0-2s: hook
-2. 2-5s: world or product reveal
-3. 5-8s: detail/action accent
-4. 8-10s: final hero hold
+## Single-Take Oner
 
-## 20-Second Campaign
+Use for a deliberate 10-15s continuous phrase.
 
-1. hook
-2. world reveal
-3. product reveal
-4. movement or use moment
-5. macro proof
-6. emotional pause
-7. CTA
+1. opening composition
+2. entry or trigger
+3. continuous camera path
+4. status change
+5. empty or altered final hold
 
-## Beat-Led Edit
+## Withheld Product Reveal
 
-Use major beats for cuts, reveals, flashes, and final holds. Do not shake or flash on every beat.
+Use when the product should be earned rather than displayed from frame one.
+
+1. world without product
+2. trace of product effect
+3. misdirected detail
+4. human or material consequence
+5. partial product proof
+6. full reveal
+7. earned closeout
+
+## Conventional Coverage
+
+Use only when the selected premise needs a conventional edit. Plan 8-12 shots for 30 seconds, then group related beats into the longest useful Seedance 2 nodes available in the live UI.
+
+Do not shake or flash on every beat. Do not add b-roll just because a template expects it.
 
 ## Product Closeout
 

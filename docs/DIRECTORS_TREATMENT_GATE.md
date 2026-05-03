@@ -14,6 +14,9 @@ Do not create, paste, or launch workflow nodes until the active workspace contai
 
 - campaign thesis
 - selected creative spine and rejected-premise notes
+- direction DNA from `docs/REFERENCE_ANALYSIS_METHOD.md`
+- controlled flaw
+- aesthetic refusals
 - audience and platform
 - dominant campaign grammar
 - visual world
@@ -50,6 +53,8 @@ Every planned shot must justify its place in the edit. For each shot, document:
 - transition in and transition out
 - music or beat relationship
 - artifact risks and simplifications
+- aesthetic refusals carried into the shot
+- controlled flaw carried into the shot, if applicable
 
 Delete or merge any shot that has the same job, same shot size, same movement, and same subject behavior as another shot.
 
@@ -72,7 +77,7 @@ Before generation, define the edit enough that the final assembly is mostly mech
 - final hold duration
 - minimum motion coverage, local export verification, and audio completion requirements from `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`
 
-If the user did not specify duration, set the target duration to `30s` and plan an 8-12 shot edit.
+If the user did not specify duration, set the target duration to `30s` and choose the shot count from the selected edit form. Use 8-12 shots when the treatment needs a conventional cutdown; use fewer shots when the selected form is single-take, deadpan tableau, sound-led, or procedural proof and the choice is justified.
 
 Generation can change selects, but it should not change the whole edit shape unless QC proves the treatment failed.
 
@@ -92,6 +97,12 @@ For an explicitly 10-second fashion/luxury cutdown, prefer:
 - two 5-second multi-shot Seedance 2 nodes when continuity or risk control needs separation, plus short dedicated b-roll/detail nodes only when editorially justified
 
 Do not plan five isolated one-shot video nodes by default. Use separate motion nodes only when the edit, risk profile, or reference roles require separation.
+
+## Sound-First and Single-Take Treatments
+
+If the selected premise is sound-first, the treatment must place the Music Studio prompt and beat ladder before the shot ladder. The cut points, holds, reveals, and final memory image should answer the audio, not the other way around.
+
+If the selected premise is a single take, write one continuous camera path with blocking, phase ladder, final hold, and failure criteria. A single-take treatment may use one 10-15s Seedance 2 node for short campaigns or a small number of continuous phrases for longer campaigns. Do not add b-roll inserts just because the default campaign ladder expects them.
 
 ## Director's Notes Boards
 

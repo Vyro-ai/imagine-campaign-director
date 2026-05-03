@@ -14,6 +14,7 @@ CANONICAL_DOCS = [
     "docs/AUTOMATION_CONTRACT.md",
     "docs/WORKFLOW_EXECUTION_GUIDE.md",
     "docs/IMAGINEART_WORKFLOW_BLUEPRINT.md",
+    "docs/PRODUCTION_PROFILES.md",
     "docs/QUALITY_CONTROL.md",
     "docs/SEEDANCE_WORKFLOW_GUIDE.md",
     "docs/IMAGINEART_MUSIC_STUDIO.md",
@@ -21,7 +22,13 @@ CANONICAL_DOCS = [
 REQUIRED_TEXT = {
     "AGENTS.md": ("first action is a Computer Use/browser automation preflight", "finished MP4 ready for user review"),
     "docs/PRODUCTION_STANDARD.md": ("first action after receiving a campaign-video request", "finished MP4 ready for review"),
-    "docs/AUTOMATION_CONTRACT.md": ("finished MP4 ready for user review", "Computer Use/browser execution"),
+    "docs/AUTOMATION_CONTRACT.md": ("finished MP4 ready for user review", "Computer Use/browser execution", "Credit safety is operational, not conversational"),
+    "docs/PRE_SPEND_CONFIDENCE_GATE.md": ("internal readiness gate, not a user-approval gate",),
+    "docs/CREATIVE_DIRECTION_GATE.md": ("forced-collision matrix", "Aesthetic Refusals", "Controlled Flaw"),
+    "docs/REFERENCE_ANALYSIS_METHOD.md": ("Direction DNA", "TRANSLATION, NOT COPY"),
+    "docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.md": ("IMPERFECTION:", "AESTHETIC REFUSALS:"),
+    "docs/PRODUCTION_PROFILES.md": ("not creative templates", "production_profiles.json"),
+    "docs/TROUBLESHOOTING.md": ("Fresh-Install Execution Tests", "do not ask for approval solely because credits will be spent"),
 }
 FORBIDDEN_ROUTING_PATTERNS = [
     re.compile(r"\bI['’]?ll\s+(use|build|create|make|start)\b.*\bHyperFrames\b", re.I),
@@ -38,6 +45,12 @@ FORBIDDEN_ROUTING_PATTERNS = [
     re.compile(r"\bI don['’]?t have an Imagine\.Art browser session\b", re.I),
     re.compile(r"\bcreate a self-contained campaign folder\b", re.I),
     re.compile(r"\bexpected return is a generated video ready for review\b", re.I),
+    re.compile(r"\bready for confirmation\b", re.I),
+    re.compile(r"\bapprove (the )?(credit )?spend\b", re.I),
+    re.compile(r"\bapproval to spend\b", re.I),
+    re.compile(r"\bconfirm (the )?(credit )?spend\b", re.I),
+    re.compile(r"\bconfirmation before (running|generation|spending)\b", re.I),
+    re.compile(r"\bask (the )?user\b.*\b(normal )?(credit|credits|spend|spending)\b", re.I),
 ]
 ALLOWED_ROUTING_CONTEXT = (
     "wrong first response",
@@ -54,6 +67,32 @@ ALLOWED_ROUTING_CONTEXT = (
     "after imagine.art motion exists",
     "generic language",
     "do not return only",
+    "do not ask",
+    "do not stop",
+    "not a user-approval gate",
+    "only be asked",
+    "ask only",
+    "user explicitly requested",
+    "explicit approval requirements",
+)
+FORBIDDEN_CREATIVE_DEFAULTS = [
+    re.compile(r"\bElegant Control\b"),
+    re.compile(r"\bDisruptive Spark\b"),
+    re.compile(r"\bSensory Proof\b"),
+    re.compile(r"\binvent three premises\b", re.I),
+    re.compile(r"\bthree premises\b", re.I),
+    re.compile(r"\bcampaign archetype(s)?\b", re.I),
+    re.compile(r"\bselected archetype\b", re.I),
+    re.compile(r"\bclosest archetype\b", re.I),
+    re.compile(r"\bknown archetype\b", re.I),
+    re.compile(r"\bconfig/campaign_archetypes\.json\b", re.I),
+    re.compile(r"\bCAMPAIGN_ARCHETYPES\.md\b"),
+]
+ALLOWED_CREATIVE_CONTEXT = (
+    "old premise",
+    "rejected",
+    "not enough",
+    "audit",
 )
 
 
@@ -102,6 +141,30 @@ def main() -> int:
                 continue
             failed = True
             print(f"forbidden HyperFrames-first routing: {path.relative_to(root)}:{index}")
+        if path.relative_to(root).as_posix() != "scripts/audit_repo.py":
+            for index, line in enumerate(lines, start=1):
+                if not any(pattern.search(line) for pattern in FORBIDDEN_CREATIVE_DEFAULTS):
+                    continue
+                context = " ".join(lines[max(0, index - 3):index + 2]).lower()
+                if any(allowed in context for allowed in ALLOWED_CREATIVE_CONTEXT):
+                    continue
+                failed = True
+                print(f"forbidden old creative default: {path.relative_to(root)}:{index}")
+
+    for example_dir in sorted((root / "examples").glob("*")):
+        if not example_dir.is_dir():
+            continue
+        treatment = example_dir / "treatment.md"
+        prompts = example_dir / "prompts.md"
+        if not treatment.exists():
+            failed = True
+            print(f"missing example treatment: {treatment.relative_to(root)}")
+        if prompts.exists():
+            text = prompts.read_text(encoding="utf-8")
+            for snippet in ("Direction DNA:", "Controlled flaw:", "Aesthetic refusals:", "IMPERFECTION:", "AESTHETIC REFUSALS:"):
+                if snippet not in text:
+                    failed = True
+                    print(f"missing creative prompt marker in {prompts.relative_to(root)}: {snippet}")
 
     headings = Counter()
     phrase_counts = Counter()

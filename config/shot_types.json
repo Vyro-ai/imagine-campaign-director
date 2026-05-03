@@ -12,7 +12,7 @@
       "id": "hero_reveal",
       "name": "Hero Reveal",
       "use": "Introduce the product or central subject.",
-      "camera": "slow push-in, clean frontal or three-quarter angle",
+      "camera": "treatment-specific reveal move, locked frame, lateral slide, threshold crossing, or clean frontal angle when justified",
       "risks": ["unclear silhouette", "logo artifacts", "busy background"]
     },
     {
