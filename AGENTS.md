@@ -26,6 +26,8 @@ For all still image generation, apply `docs/CINEMATIC_STILL_PROMPTING_PLAYBOOK.m
 
 For recurring people, products, garments, or other continuity-sensitive subjects, apply `docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md`: lock the required identities first, wire those locked references into every dependent still and Seedance node, and keep live `Number of runs` at `1` unless an explicit identity/look-dev exploration budget is documented.
 
+Still anchors should be launched in batches after required product/identity locks are generated and selected. Do not serialize production stills one node at a time unless a dependency, UI ambiguity, active-run conflict, or documented QC risk requires it. `Number of runs: 1` means one output per selected node, not one selected node per launch.
+
 For campaign motion, apply `docs/MOTION_COVERAGE_AND_EXPORT_GATE.md`: every planned generated motion segment must be exported/downloaded locally, verified with `ffprobe`, and listed in the manifest before any `ready` or `finished` claim. A completed canvas node or browser preview is not enough. If a planned Seedance clip cannot be exported, return `blocked: export failure`; do not replace it with still anchors, slideshow assembly, HyperFrames, or local rendering.
 
 HyperFrames is the recommended finishing tool after reviewed Imagine.Art motion exists. If HyperFrames is not available and the environment can install or enable it, get any required user approval for installation and set it up before final assembly. If it cannot be installed or enabled, use another available editor only for finishing reviewed motion, or report the final-assembly blocker. Never use HyperFrames or any local renderer to replace missing Imagine.Art campaign motion.

@@ -75,6 +75,15 @@ Allowed multi-run cases:
 
 Production stills, director's-notes boards, and Seedance nodes default to one run. If the UI's `Number of runs` is greater than `1`, set it back to `1` before launching unless the treatment has a written run-budget reason.
 
+Default execution pattern:
+
+- Generate/import required locks first.
+- Then batch-launch dependent production still anchors and director boards where their references are already available.
+- Keep `Number of runs` at `1` per node.
+- Do not interpret the one-run rule as requiring single-node execution.
+
+`Number of runs: 1` means one output per selected node, not one selected node per launch.
+
 ## Reject Conditions
 
 Reject or rebuild the workflow when:

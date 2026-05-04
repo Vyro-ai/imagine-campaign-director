@@ -31,6 +31,9 @@ REQUIRED_TEXT = {
     "docs/TROUBLESHOOTING.md": ("Fresh-Install Execution Tests", "do not ask for approval solely because credits will be spent"),
     "config/automation_recovery_rules.json": ("retry the exact same prompt and same references two more times", "All references are AI generated and do not represent real people.", "director's-notes board"),
     "docs/SEEDANCE_WORKFLOW_GUIDE.md": ("Director's-Notes-Only Moderation Fallback",),
+    "AGENTS.md": ("Number of runs: 1` means one output per selected node, not one selected node per launch",),
+    "docs/IDENTITY_LOCKS_AND_RUN_BUDGETS.md": ("Do not interpret the one-run rule as requiring single-node execution",),
+    "docs/PRE_SPEND_CONFIDENCE_GATE.md": ("Operators should prefer safe batching over single-node serial execution once dependencies are satisfied",),
 }
 FORBIDDEN_ROUTING_PATTERNS = [
     re.compile(r"\bI['’]?ll\s+(use|build|create|make|start)\b.*\bHyperFrames\b", re.I),

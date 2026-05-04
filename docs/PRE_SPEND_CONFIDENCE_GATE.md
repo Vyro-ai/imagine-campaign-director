@@ -37,6 +37,8 @@ Before launching nodes, write a run budget:
 
 No node launch is allowed unless it maps to the budget. If the operator wants to exceed the normal planned budget, document why before launching. Ask the user only when the overage is material, abnormal, or outside the treatment's documented exploration budget.
 
+A budget row may be launched as a selected-node batch when each selected node maps to that row and each node is configured for one run. Operators should prefer safe batching over single-node serial execution once dependencies are satisfied. `Number of runs: 1` means one output per selected node, not one selected node per launch.
+
 ## First-Dollar Hook
 
 The first paid generation must support the first 1-2 second hook or the locked identity/product needed for that hook. Do not begin with generic mood plates when the hook is unresolved.
